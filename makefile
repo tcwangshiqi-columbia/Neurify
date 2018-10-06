@@ -13,17 +13,8 @@ debug: CFLAGS += -DDEBUG -g
 debug: LDFLAGS += -DDEBUG -g
 
 
-demo4: demo4.o
-	$(CC) -o $@ $^ $(LPFLAGS)
-
-demo3: demo3.o
-	$(CC) -o $@ $^ $(LPFLAGS)
-
 network_test: matrix.o nnet.o network_test.o split.o
 	$(CC) -o $@ $^ $(LDFLAGS) $(LPFLAGS)
-
-cblas_test:matrix.o cblas_test.o
-	$(CC) -o $@ $^ $(LDFLAGS)
 
 c.o: 
 	$(CC) $(CFLAGS) $(LPFLAGS) $<  -o $@
