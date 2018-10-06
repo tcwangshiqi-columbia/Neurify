@@ -1,7 +1,7 @@
 # Neurify (NIPS'18)
 Neurify is an efficient formal verification system for analyzing self-defined properties on given neural networks. It leverages symbolic linear relaxations based on symbolic interval analysis to provide tight output approximations. For cases unproved, it can further use linear solver to cut down false positives. In general, it is fast and can scale to large networks (e.g., over 10,000 ReLUs).   
 
-You can find detailed description of Neurify in paper [Efficient Formal Safety Analysis of Neural Networks](https://arxiv.org/abs/1809.08098).
+You can find detailed description of Neurify in paper [Efficient Formal Safety Analysis of Neural Networks](https://arxiv.org/abs/1809.08098). Neurify is a followup paper upon a previous state-of-the-art verification system ReluVal. You can find the detailed description of symbolic interval analysis in paper [Formal Security Analysis of Neural Networks using Symbolic Intervals](https://arxiv.org/pdf/1804.10829.pdf).
 
 This repository contains the implementation of Neurify and the evalutions on convolutional MNIST models, convolutional DAVE models, ACAS Xu models and Drebin models described in the paper.
 
@@ -71,7 +71,9 @@ Here is an example for running ReluVal:
 
 ### Properties
 
-The ACAS Xu properties reported in the paper are defined in the Appendix A and in the file "properties". One can easily create own properties with following three steps: (1) creating new models in the same style as ones in folder "nnet", (2) adding new bounded input ranges in function load_inputs in file "nnet.c", and (3) adding check function of the property in function check_functions and check_functions1 in file "split.c". 
+* The MNIST properties are defined as the classfier will not misclassify the given images bounded by L-1, L-2 and L-infinite. 
+* The DAVE properties are defined as the classifier will predict correct steering angle (e.g., variance from original angle is less than 30 degree).
+* The ACAS Xu properties are reported and defined in ReluVal. One can find them in  Appendix A.
 
 ### ACAS Xu experiments
 
@@ -87,12 +89,11 @@ The test on ACAS Xu can be easily ran with pre-written scripts in folder "script
 ```
 @inproceedings {Shiqi18,
 	author = {Shiqi Wang and Kexin Pei and Justin Whitehouse and Junfeng Yang and Suman Jana},
-	title = {Formal Security Analysis of Neural Networks using Symbolic Intervals},
-	booktitle = {27th {USENIX} Security Symposium ({USENIX} Security 18)},
+	title = {Efficient Formal Safety Analysis of Neural Networks},
+	booktitle = {NIPS 2018},
 	year = {2018},
 	address = {Baltimore, MD},
-	url = {https://www.usenix.org/conference/usenixsecurity18/presentation/wang-shiqi},
-	publisher = {{USENIX} Association},
+	url = {https://nips.cc/Conferences/2018/Schedule?showEvent=11616}
 }
 ```
 
