@@ -27,7 +27,7 @@ git clone https://github.com/tcwangshiqi-columbia/Neurify
 ```
 
 ### Compiling:
-Please make sure the path of OpenBLAS is the same as the one in MakeFile. Then you can compile ReluVal with following command:
+Please make sure the path of OpenBLAS is the same as the one in MakeFile. Then you can compile Neurify with following command:
 
 ```
 cd Neurify
@@ -62,7 +62,7 @@ The program will terminate in three ways: (1) a concrete adversarial is found, a
 
 ### Example
 
-Here is an example for running ReluVal:
+Here is an example for running Neurify:
 
 ```
 ./network_test 0 models/conv.nnet
@@ -105,7 +105,7 @@ cd ACAS
 ```
 
 
-## Citing ReluVal
+## Citing Neurify
 ```
 @inproceedings {Shiqi18,
 	author = {Shiqi, Wang and Pei, Kexin and Justin, Whitehouse and Yang, Junfeng and Jana, Suman},
