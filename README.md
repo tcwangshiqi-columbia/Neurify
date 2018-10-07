@@ -76,7 +76,7 @@ Here is an example for running Neurify:
 * The ACAS Xu properties are reported and defined in ReluVal. One can find them in  Appendix A.
 
 
-### Convolutional model experiments
+### Convolutional Model Experiments
 
 The test on MNIST or DAVE models can be easily ran with commands. Here is an example:
 
@@ -86,7 +86,7 @@ cd convolutional
 ./network_test 500 models/dave_small.nnet
 ```
 
-### Drebin model experiments
+### Drebin Model Experiments
 
 The test on Drebin models can be easily ran with commands. Here is an example:
 
@@ -95,7 +95,7 @@ cd drebin
 ./network_test 101 models/drebin.nnet
 ```
 
-### ACAS Xu experiments
+### ACAS Xu Experiments
 
 The test on ACAS Xu can be easily ran with pre-written scripts in folder "scripts". Here is an example:
 
@@ -104,7 +104,7 @@ cd ACAS
 ./scripts/run_property5.sh
 ```
 
-### Custom properties
+### Custom Properties
 
 One can customized their own properties, models and inputs. The properties can predefined in network.c and check function for each property can be added in split.c. For self-trained models, currently we support to convert the model trained with Keras or tensorflow to the format supported by Neurify by using transfer.py. At last, self-defined inputs can be added into test set with unnormalized value and one can test them by updating the path in nnet.c.
 
