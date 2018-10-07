@@ -104,6 +104,10 @@ cd ACAS
 ./scripts/run_property5.sh
 ```
 
+### Custom properties
+
+One can customized their own properties, models and inputs. The properties can predefined in network.c and check function for each property can be added in split.c. For self-trained models, currently we support to convert the model trained with Keras or tensorflow to the format supported by Neurify by using transfer.py. At last, self-defined inputs can be added into test set with unnormalized value and one can test them by updating the path in nnet.c.
+
 
 ## Citing Neurify
 ```
