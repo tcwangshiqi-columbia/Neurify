@@ -1,7 +1,7 @@
 # Neurify (NIPS'18)
-Neurify is an efficient formal verification system for analyzing self-defined properties on given neural networks. It leverages symbolic linear relaxations based on symbolic interval analysis to provide tight output approximations. For cases unproved, it can further use linear solver to cut down false positives. In general, it is fast and can scale to large networks (e.g., over 10,000 ReLUs).   
+Neurify is an efficient formal verification system for analyzing self-defined properties on given neural networks. It leverages symbolic linear relaxations based on symbolic interval analysis to provide tight output approximations. For cases unproved, it can further use linear solver to cut down false positives. In general, it is able to scale to large networks (e.g., over 10,000 ReLUs).   
 
-You can find detailed description of Neurify in paper [Efficient Formal Safety Analysis of Neural Networks](https://arxiv.org/abs/1809.08098). Neurify is a followup paper upon a previous state-of-the-art verification system ReluVal. You can find the detailed description of symbolic interval analysis in paper [Formal Security Analysis of Neural Networks using Symbolic Intervals](https://arxiv.org/pdf/1804.10829.pdf).
+You can find detailed descriptions of Neurify in paper [Efficient Formal Safety Analysis of Neural Networks](https://arxiv.org/abs/1809.08098). Neurify is a followup paper upon a previous state-of-the-art verification system ReluVal. Detailed descriptions of symbolic interval analysis in paper [Formal Security Analysis of Neural Networks using Symbolic Intervals](https://arxiv.org/pdf/1804.10829.pdf).
 
 This repository contains the implementations of Neurify and the evalutions on convolutional MNIST models, convolutional DAVE models and Drebin models described in the paper. The updates on ACAS Xu model have been merged into original [ReluVal's repo](https://github.com/tcwangshiqi-columbia/ReluVal). Neurify's performance on ACAS Xu is on average 20 times better than original ReluVal's and 5000 times better than solver-based system like Reluplex. 
 
@@ -30,8 +30,7 @@ git clone https://github.com/tcwangshiqi-columbia/Neurify
 Please make sure the path of OpenBLAS is the same as the one in MakeFile. Then you can compile Neurify with following command:
 
 ```
-cd Neurify
-cd convolutional
+cd Neurify/convolutional
 make
 ```
 
@@ -41,7 +40,7 @@ make
 * nnet.c: deal with network instance and do symbolic interval analysis
 * split.c: manage iterative refinement and dynamic thread rebalancing
 * matrix.c: matrix operations supported by OpenBLAS
-* models(nnet)/: all the models
+* models/: all the models
 * scripts/: scripts to run the ACAS Xu evaluations reported in paper 
 
 ## Running 
@@ -62,13 +61,15 @@ The program will terminate in three ways: (1) a concrete adversarial is found, a
 
 ### Example
 
-Here is an example for running Neurify:
+Here is an example for running Neurify by checking whether convolutional MNIST model (models/conv.nnet) will always predict correct labels within input ranges bounded by infinite norm (property 0) for given testing images (one can select images in network_test.c):
 
 ```
 ./network_test 0 models/conv.nnet
 ```
 
 ### Properties
+
+Here are the property list that Neurify already supported. 0: MNIST L-infinite norm; 54: MNIST L-1 norm; 55: MNIST brightness; 101: Drebin; 500: DAVE L-infinite norm; 504: DAVE L-1 norm; 505: DAVE brightness; 510: DAVE contrast.
 
 * The MNIST properties are defined as the classfier will not misclassify the given images bounded by L-1, L-2 and L-infinite. 
 * The DAVE properties are defined as the classifier will predict correct steering angle (e.g., variance from original angle is less than 30 degree).
@@ -106,12 +107,12 @@ cd ACAS
 
 ### Custom Properties
 
-One can customized their own properties, models and inputs. The properties can predefined in network.c and check function for each property can be added in split.c. For self-trained models, currently we support to convert the model trained with Keras or tensorflow to the format supported by Neurify by using transfer.py with configured model path. At last, self-defined inputs can be added into test set with unnormalized value and one can test them by updating the path in nnet.c.
+One can customized their own properties, models and inputs. The properties can be predefined in network.c and check function for each property can be added in split.c. For self-trained models, we provide transfer.py to convert the model trained with Keras or tensorflow to the format supported. At last, self-defined inputs can be added into test set with unnormalized value and one can test them by updating the path in nnet.c.
 
 
 ## Citing Neurify
 ```
-@inproceedings {Shiqi18,
+@inproceedings {shiqi2018neurify,
 	author = {Shiqi, Wang and Pei, Kexin and Justin, Whitehouse and Yang, Junfeng and Jana, Suman},
 	title = {Efficient Formal Safety Analysis of Neural Networks},
 	booktitle = {32nd Conference on Neural Information Processing Systems (NIPS)},

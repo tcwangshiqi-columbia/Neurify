@@ -125,26 +125,13 @@ int main( int argc, char *argv[]){
     int image_start, image_length;
 
     if (PROPERTY == 0) {
-        // choose all pixels to intervals
+        // choose all pixels to intervals bouned by infinite norm
         // 69(8406),71(114.10), 82(217) are three hard-provable images
         // 69(321),71(31.73),82(58.14)
         // 50: 82(2348.40)
         image_length = 100;
         image_start = 0;
         INF = 25;
-    }
-    else if (PROPERTY == 1) {
-        // conv mnist
-        // choose 200 most uninfluencial pixels to interval
-        image_length = 20;
-        image_start = 0;
-        INF = 25;
-    }
-    else if (PROPERTY == 4) {
-        // conv mnist
-        image_length = 18;
-        image_start = 82;
-        INF = 5.0;
     }
     else if (PROPERTY == 54) {
         // L1 for convolutional MNIST
