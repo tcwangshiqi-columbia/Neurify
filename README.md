@@ -3,7 +3,7 @@ Neurify is an efficient formal verification system for analyzing self-defined pr
 
 You can find detailed description of Neurify in paper [Efficient Formal Safety Analysis of Neural Networks](https://arxiv.org/abs/1809.08098). Neurify is a followup paper upon a previous state-of-the-art verification system ReluVal. You can find the detailed description of symbolic interval analysis in paper [Formal Security Analysis of Neural Networks using Symbolic Intervals](https://arxiv.org/pdf/1804.10829.pdf).
 
-This repository contains the implementation of Neurify and the evalutions on convolutional MNIST models, convolutional DAVE models, ACAS Xu models and Drebin models described in the paper.
+This repository contains the implementations of Neurify and the evalutions on convolutional MNIST models, convolutional DAVE models and Drebin models described in the paper. The updates on ACAS Xu model have been merged into original [ReluVal's repo](https://github.com/tcwangshiqi-columbia/ReluVal). Neurify's performance on ACAS Xu is on average 20 times better than original ReluVal's and 5000 times better than solver-based system like Reluplex. 
 
 
 ## Prerequisite
