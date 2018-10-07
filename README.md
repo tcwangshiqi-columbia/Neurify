@@ -31,6 +31,7 @@ Please make sure the path of OpenBLAS is the same as the one in MakeFile. Then y
 
 ```
 cd Neurify
+cd convolutional
 make
 ```
 
@@ -51,49 +52,67 @@ property: the saftety property want to verify
 
 network: the network want to test with
 
-target: wanted label of the property
-
 need to print = 0: whether need to print the detailed information of each split. 0 is not and 1 is yes. Default value is 0.
 
 test for one run = 0: whether need to estimate the output range without split refinement. 0 is no, 1 is yes. Default value is 0.
 
 check mode = 0: choose the mode of formal anlysis. Normal split and check mode is 0. Check adv mode is 1. Check adv mode will prevent further splits as long as the bisection depth goes upper than 20 so as to locate concrete adversarial examples faster. Default value is 0.
 
-The program will terminate in two ways: (1) a concrete adversarial is found, and (2) the property is verified as safe.
+The program will terminate in three ways: (1) a concrete adversarial is found, and (2) the property is verified as safe, and (3) Neurify hits predifined depth threshold indicating timeouts.
 
 ### Example
 
 Here is an example for running ReluVal:
 
 ```
-./network_test 5 ./nnet/ACASXU_run2a_1_1_batch_2000.nnet 4
+./network_test 0 models/conv.nnet
 ```
 
 ### Properties
 
 * The MNIST properties are defined as the classfier will not misclassify the given images bounded by L-1, L-2 and L-infinite. 
 * The DAVE properties are defined as the classifier will predict correct steering angle (e.g., variance from original angle is less than 30 degree).
+* The Drebin properties are defined as the classifier will still detect malware applications in terms of how many features are allowed to be given. 
 * The ACAS Xu properties are reported and defined in ReluVal. One can find them in  Appendix A.
+
+
+### Convolutional model experiments
+
+The test on MNIST or DAVE models can be easily ran with commands. Here is an example:
+
+```
+cd convolutional
+./network_test 0 models/conv_madry.nnet
+./network_test 500 models/dave_small.nnet
+```
+
+### Drebin model experiments
+
+The test on Drebin models can be easily ran with commands. Here is an example:
+
+```
+cd drebin
+./network_test 101 models/drebin.nnet
+```
 
 ### ACAS Xu experiments
 
 The test on ACAS Xu can be easily ran with pre-written scripts in folder "scripts". Here is an example:
 
 ```
+cd ACAS
 ./scripts/run_property5.sh
 ```
 
 
 ## Citing ReluVal
-
 ```
 @inproceedings {Shiqi18,
-	author = {Shiqi Wang and Kexin Pei and Justin Whitehouse and Junfeng Yang and Suman Jana},
+	author = {Shiqi, Wang and Pei, Kexin and Justin, Whitehouse and Yang, Junfeng and Jana, Suman},
 	title = {Efficient Formal Safety Analysis of Neural Networks},
-	booktitle = {NIPS 2018},
+	booktitle = {32nd Conference on Neural Information Processing Systems (NIPS)},
 	year = {2018},
-	address = {Baltimore, MD},
-	url = {https://nips.cc/Conferences/2018/Schedule?showEvent=11616}
+	address = {Montreal, Canada}
 }
 ```
 
