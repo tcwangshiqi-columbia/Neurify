@@ -3,7 +3,9 @@ Neurify is an efficient formal verification system for analyzing self-defined pr
 
 You can find detailed descriptions of Neurify in paper [Efficient Formal Safety Analysis of Neural Networks](https://arxiv.org/abs/1809.08098). Neurify is a followup paper upon a previous state-of-the-art verification system ReluVal. Detailed descriptions of symbolic interval analysis in paper [Formal Security Analysis of Neural Networks using Symbolic Intervals](https://arxiv.org/pdf/1804.10829.pdf).
 
-This repository contains the implementations of Neurify and the evalutions on convolutional MNIST models, convolutional DAVE models and Drebin models described in the paper. The updates on ACAS Xu model have been merged into original [ReluVal's repo](https://github.com/tcwangshiqi-columbia/ReluVal). Neurify's performance on ACAS Xu is on average 20 times better than original ReluVal's and 5000 times better than solver-based system like Reluplex. 
+This repository contains the implementations of Neurify and the evalutions on convolutional MNIST models, convolutional DAVE models and Drebin models described in the paper. The updates on ACAS Xu model have been merged into original [ReluVal's repo](https://github.com/tcwangshiqi-columbia/ReluVal). Neurify's performance on ACAS Xu is on average 20 times better than original ReluVal's and 5000 times better than solver-based system like Reluplex.
+
+We highly recommend users to compile and run the code under Linux 16.04 in case any potential dependency errors or compilation bugs.
 
 
 ## Prerequisite
@@ -30,7 +32,7 @@ git clone https://github.com/tcwangshiqi-columbia/Neurify
 Please make sure the path of OpenBLAS is the same as the one in MakeFile. Then you can compile Neurify with following command:
 
 ```
-cd Neurify/convolutional
+cd Neurify/mnist
 make
 ```
 
