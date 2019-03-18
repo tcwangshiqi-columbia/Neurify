@@ -132,6 +132,8 @@ int forward_prop_interval_equation_linear2(struct NNet *network, struct Interval
 
 void sort(float *array, int num, int *ind);
 
+void sort_layers(int numLayers, int*layerSizes, int wrong_node_length, int*wrong_nodes);
+
 void set_input_constraints(struct Interval *input, lprec *lp, int *rule_num);
 
 void set_node_constraints(lprec *lp, float *equation, int start, int *rule_num, int sig, int inputSize);

@@ -322,16 +322,16 @@ int main( int argc, char *argv[]){
         printMatrix(&output_interval.lower_matrix);
 
         sort(grad, full_wrong_node_length, wrong_nodes);
-
-        avg_wrong_length += wrong_node_length; 
+		
+		sort_layers(nnet->numLayers, nnet->layerSizes, full_wrong_node_length, wrong_nodes);
+		avg_wrong_length += wrong_node_length; 
 
         printf("total wrong nodes: %d, wrong nodes in fully connect layers: %d\n", wrong_node_length, full_wrong_node_length );
         /*
-        for(int w=0;w<full_wrong_node_length;w++){
+		for(int w=0;w<full_wrong_node_length;w++){
             printf("%d\n",wrong_nodes[w] );
         }
-        */
-        
+		*/ 
         int output_map[outputSize];
         for(int oi=0;oi<outputSize;oi++){
             if(output_interval.upper_matrix.data[oi]>0 && oi!=nnet->target){

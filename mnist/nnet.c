@@ -1,5 +1,5 @@
 /*
- ------------------------------------------------------------------
+   ------------------------------------------------------------------
  ** Top contributors:
  **   Shiqi Wang
  ** This file is part of the Neurify project.
@@ -722,6 +722,26 @@ void sort(float *array, int num, int *ind){
         }
     }
 }
+
+
+void sort_layers(int numLayers, int *layerSizes, int wrong_node_length, int *wrong_nodes){
+	int wrong_nodes_tmp[wrong_node_length];
+	memset(wrong_nodes_tmp, 0, sizeof(int)*wrong_node_length);
+	int j = 0;
+	int count_node = 0;
+	for (int layer = 1; layer < numLayers-1; layer++){
+		count_node += layerSizes[layer]; 
+		for (int i = 0; i < wrong_node_length; i++){
+			if(wrong_nodes[i]<count_node){
+				wrong_nodes_tmp[j] = wrong_nodes[i];
+				j++;
+			}
+		}
+		
+	}
+	wrong_nodes = wrong_nodes_tmp;
+}
+
 
 void sort_top(float *array, int num, int *ind){
     float tmp;
