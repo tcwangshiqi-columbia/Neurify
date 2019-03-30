@@ -116,6 +116,8 @@ void check_adv(struct NNet *nnet, struct Interval *input);
 
 int check_functions(struct NNet *nnet, struct Interval *output);
 
+int check_functions_norm(struct NNet *nnet, struct Interval *output);
+
 int check_functions1(struct NNet *nnet, struct Matrix *output);
 
 int check_not_min(struct NNet *nnet, struct Interval *output);

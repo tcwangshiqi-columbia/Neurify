@@ -45,6 +45,18 @@ int check_not_max(struct NNet *nnet, struct Interval *output){
     return 0;
 }
 
+int check_not_max_norm(struct NNet *nnet, struct Interval *output){
+    float t = output->lower_matrix.data[nnet->target];
+	for(int i=0;i<nnet->outputSize;i++){
+	    if(output->upper_matrix.data[i]>t && i != nnet->target){
+			return 1;
+		}
+	}
+	return 0;
+}
+
+
+
 
 int check_max_constant(struct NNet *nnet, struct Interval *output){
     if(output->upper_matrix.data[nnet->target]>0.5011){
@@ -193,6 +205,10 @@ int check_not_min1_p11(struct NNet *nnet, struct Matrix *output){
         return 1;
     }
     return 0;
+}
+
+int check_functions_norm(struct NNet *nnet, struct Interval *output){
+    return check_not_max_norm(nnet, output);
 }
 
 

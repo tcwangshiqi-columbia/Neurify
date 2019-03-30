@@ -320,7 +320,7 @@ int main( int argc, char *argv[]){
         printMatrix(&output_interval.upper_matrix);
         printf("lower matrix:");
         printMatrix(&output_interval.lower_matrix);
-
+		
         sort(grad, full_wrong_node_length, wrong_nodes);
 		
 		sort_layers(nnet->numLayers, nnet->layerSizes, full_wrong_node_length, wrong_nodes);
@@ -342,8 +342,7 @@ int main( int argc, char *argv[]){
             }
         }
 
-        isOverlap = check_functions(nnet, &output_interval);
-
+        isOverlap = check_functions_norm(nnet, &output_interval);
         lprec *lp;
         
         int rule_num = 0;
