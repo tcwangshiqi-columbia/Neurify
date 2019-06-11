@@ -2985,11 +2985,11 @@ int forward_prop_interval_equation_linear_conv(struct NNet *network, struct Inte
                     for(k=0;k<inputSize;k++){
                         if(new_equation[k+i*(inputSize+1)]>=0){
                             tempVal_lower += new_equation[k+i*(inputSize+1)] * input->lower_matrix.data[k]-OUTWARD_ROUND;
-                            tempVal_upper += new_equation[k+i*(inputSize+1)] * input->upper_matrix.data[k]-OUTWARD_ROUND;
+                            tempVal_upper += new_equation[k+i*(inputSize+1)] * input->upper_matrix.data[k]+OUTWARD_ROUND;
                         }
                         else{
                             tempVal_lower += new_equation[k+i*(inputSize+1)] * input->upper_matrix.data[k]-OUTWARD_ROUND;
-                            tempVal_upper += new_equation[k+i*(inputSize+1)] * input->lower_matrix.data[k]-OUTWARD_ROUND;
+                            tempVal_upper += new_equation[k+i*(inputSize+1)] * input->lower_matrix.data[k]+OUTWARD_ROUND;
                         } 
                     }
                 }

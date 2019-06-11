@@ -1189,11 +1189,11 @@ int forward_prop_interval_equation_conv_lp(struct NNet *nnet, struct Interval *i
                 for(k=0;k<inputSize;k++){
                     if(new_equation[k+i*(inputSize+1)]>=0){
                         tempVal_lower += new_equation[k+i*(inputSize+1)] * input->lower_matrix.data[k]-OUTWARD_ROUND;
-                        tempVal_upper += new_equation[k+i*(inputSize+1)] * input->upper_matrix.data[k]-OUTWARD_ROUND;
+                        tempVal_upper += new_equation[k+i*(inputSize+1)] * input->upper_matrix.data[k]+OUTWARD_ROUND;
                     }
                     else{
                         tempVal_lower += new_equation[k+i*(inputSize+1)] * input->upper_matrix.data[k]-OUTWARD_ROUND;
-                        tempVal_upper += new_equation[k+i*(inputSize+1)] * input->lower_matrix.data[k]-OUTWARD_ROUND;
+                        tempVal_upper += new_equation[k+i*(inputSize+1)] * input->lower_matrix.data[k]+OUTWARD_ROUND;
                     } 
                 }
             }
@@ -1316,7 +1316,9 @@ int forward_prop_interval_equation_conv_lp(struct NNet *nnet, struct Interval *i
                     for(int k=0;k<inputSize+1;k++){
                         new_equation[k+i*(inputSize+1)] -= new_equation[k+nnet->target*(inputSize+1)]; 
                     }
-
+                    if(i < nnet->target){
+                        new_equation[inputSize+i*(inputSize+1)] -= bias.data[nnet->target];
+                    }
                     
                     for(int err_ind=0;err_ind<err_row;err_ind++){
                         new_equation_err[err_ind+i*ERR_NODE] -= new_equation_err[err_ind+nnet->target*ERR_NODE];
