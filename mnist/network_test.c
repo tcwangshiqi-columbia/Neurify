@@ -334,14 +334,13 @@ int main( int argc, char *argv[]){
 		*/ 
         int output_map[outputSize];
         for(int oi=0;oi<outputSize;oi++){
-            if(output_interval.upper_matrix.data[oi]>0 && oi!=nnet->target){
+            if(output_interval.upper_matrix.data[oi]>output_interval.lower_matrix.data[nnet->target] && oi!=nnet->target){
                 output_map[oi]=1;
             }
             else{
                 output_map[oi]=0;
             }
         }
-
         isOverlap = check_functions_norm(nnet, &output_interval);
         lprec *lp;
         
