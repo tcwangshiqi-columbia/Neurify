@@ -60,7 +60,11 @@ need to print = 0: whether need to print the detailed information of each split.
 
 test for one run = 0: whether need to estimate the output range without split refinement. 0 is no, 1 is yes. Default value is 0.
 
-check mode = 0: choose the mode of formal anlysis. Normal split and check mode is 0. Check adv mode is 1. Check adv mode will prevent further splits as long as the bisection depth goes upper than 20 so as to locate concrete adversarial examples faster. Default value is 0.
+check mode = 0: choose the mode of formal anlysis. Normal split and check mode is 0. Check adv mode is 1. Check adv mode will prevent further splits as long as the bisection depth goes upper than 10 so as to locate concrete adversarial examples faster. Default value is 0.
+
+MAX_DEPTH: A flexible parameter to adjust the timeout threshold.
+
+norm_input: Whether needs to normalize the input.
 
 The program will terminate in three ways: (1) a concrete adversarial is found, and (2) the property is verified as safe, and (3) Neurify hits predifined depth threshold indicating timeouts.
 
@@ -118,7 +122,9 @@ cd ACAS
 
 ### Supporting Other ML Frameworks
 
-Please check the nnet model format in "format descriptions" file for more details.
+Please check the nnet model format in "format descriptions" file for more details. In transfer.py, we provide a sample file to transfer tensorflow model to nnet format.
+
+In file "docker", you can find a dockerfile and requirements for running Neurify, and sample scripts for transferring keras models to nnet format (credit to [Jonas Klamroth](https://www.fzi.de/en/about-us/organisation/detail/address/klamroth/)).
 
 ## Citing Neurify
 ```

@@ -61,7 +61,7 @@ char* config_args(int argc, char *argv[]){
             if(atoi(argv[i])==0){
                 // Regular mode
                 CHECK_ADV_MODE = 0;
-                MAX_DEPTH = 5;
+                MAX_DEPTH = 10;
             }
             if(atoi(argv[i])==1){
                 // Only check for adv
