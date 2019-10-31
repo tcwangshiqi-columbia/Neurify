@@ -32,6 +32,49 @@ float avg_depth = 50;
 int progress_list[PROGRESS_DEPTH];
 int total_progress[PROGRESS_DEPTH];
 
+
+
+/*
+ * Here is the function checking whether the output range always 
+ * satisfies your customized safety property.
+ */
+int check_functions(struct NNet *nnet, struct Interval *output){
+    if (PROPERTY == 1){
+        /*
+         * You need to customize your own checking function
+         * For instance, you can check whether the first output
+         * is always the smallest. You can also check whether 
+         * one of the output is always larger than 0.001, etc.
+         */
+    }
+
+    return check_not_max(nnet, output);
+}
+
+
+/*
+ * Here is the function checking whether the given concrete outupt 
+ * violates your customized safety property.
+ */
+int check_functions1(struct NNet *nnet, struct Matrix *output){
+
+    if (PROPERTY == 1){
+        /*
+         * You need to customize your own checking function for adv
+         * For instance, you can check whether the first output
+         * is always the smallest. You can also check whether 
+         * one of the output is always larger than 0.001, etc.
+         */
+    }
+
+    return check_not_max1(nnet, output);
+}
+
+
+ /*
+  * You need to customize your own checking function.
+  * Here is a couple of sample functions that you could use.
+  */
 int check_not_max(struct NNet *nnet, struct Interval *output){
     for(int i=0;i<nnet->outputSize;i++){
         if(output->upper_matrix.data[i]>0 && i != nnet->target){
@@ -40,18 +83,6 @@ int check_not_max(struct NNet *nnet, struct Interval *output){
     }
     return 0;
 }
-
-int check_not_max_norm(struct NNet *nnet, struct Interval *output){
-    float t = output->lower_matrix.data[nnet->target];
-	for(int i=0;i<nnet->outputSize;i++){
-	    if(output->upper_matrix.data[i]>t && i != nnet->target){
-			return 1;
-		}
-	}
-	return 0;
-}
-
-
 
 
 int check_max_constant(struct NNet *nnet, struct Interval *output){
@@ -82,30 +113,6 @@ int check_min(struct NNet *nnet, struct Interval *output){
     return 1;
 }
 
-
-int check_min_p7(struct NNet *nnet, struct Interval *output){
-    for(int i=0;i<nnet->outputSize;i++){
-        if(i != 3 && i != 4){
-            if(output->upper_matrix.data[i]< output->lower_matrix.data[4] && output->upper_matrix.data[i]< output->lower_matrix.data[3])
-                return 0;
-        }
-    }
-    return 1;
-}
-
-
-int check_not_min_p8(struct NNet *nnet, struct Interval *output){
-    for(int i=0;i<nnet->outputSize;i++){
-        if(i!=0 && i!=1){
-            if(output->lower_matrix.data[i]< output->upper_matrix.data[0] && output->lower_matrix.data[i]< output->upper_matrix.data[1]){
-                return 1;
-            }
-        }
-    }
-    return 0;
-}
-
-
 int check_not_min(struct NNet *nnet, struct Interval *output){
 	for(int i=0;i<nnet->outputSize;i++){
 		if(output->lower_matrix.data[i]<0 && i != nnet->target){
@@ -122,17 +129,6 @@ int check_not_min_p11(struct NNet *nnet, struct Interval *output){
         return 1;
 
     return 0;
-}
-
-
-int check_min1_p7(struct NNet *nnet, struct Matrix *output){
-    for(int i=0;i<nnet->outputSize;i++){
-        if(i != 3 && i != 4){
-            if(output->data[i]<output->data[3] && output->data[i]<output->data[4])
-                return 0;
-        }
-    }
-    return 1;
 }
 
 
@@ -184,40 +180,11 @@ int check_not_min1(struct NNet *nnet, struct Matrix *output){
 }
 
 
-int check_not_min1_p8(struct NNet *nnet, struct Matrix *output){
-    for(int i=0;i<nnet->outputSize;i++){
-        if(i != 0 && i!=1){
-            if(output->data[i]<output->data[0] && output->data[i]<output->data[1])
-                return 1;
-        }
-    }
-    return 0;
-}
 
 
-int check_not_min1_p11(struct NNet *nnet, struct Matrix *output){
-
-    if(output->data[0]<0){
-        return 1;
-    }
-    return 0;
-}
-
-int check_functions_norm(struct NNet *nnet, struct Interval *output){
-    return check_not_max_norm(nnet, output);
-}
-
-
-int check_functions(struct NNet *nnet, struct Interval *output){
-    return check_not_max(nnet, output);
-}
-
-
-int check_functions1(struct NNet *nnet, struct Matrix *output){
-    return check_not_max1(nnet, output);
-}
-
-
+/*
+ * Multithread function
+ */
 void *direct_run_check_conv_lp_thread(void *args){
     struct direct_run_check_conv_lp_args *actual_args = args;
     direct_run_check_conv_lp(actual_args->nnet, actual_args->input,\
@@ -236,39 +203,6 @@ void *direct_run_check_conv_lp_thread(void *args){
     return NULL;
 }
 
-
-void check_adv(struct NNet* nnet, struct Interval *input){
-    float a[nnet->inputSize];
-    struct Matrix adv = {a, 1, nnet->inputSize};
-    for(int i=0;i<nnet->inputSize;i++){
-        float upper = input->upper_matrix.data[i];
-        float lower = input->lower_matrix.data[i];
-        float middle = (lower+upper)/2;
-        a[i] = middle;
-    }
-    float out[nnet->outputSize];
-    struct Matrix output = {out, nnet->outputSize, 1};
-    forward_prop(nnet, &adv, &output);
-    int is_adv = 0;
-    is_adv = check_functions1(nnet, &output);
-    //printMatrix(&adv);
-    //printMatrix(&output);
-    if(is_adv){
-        printf("adv found:\n");
-        //printMatrix(&adv);
-        printMatrix(&output);
-        int adv_output = 0;
-        for(int i=0;i<nnet->outputSize;i++){
-            if(output.data[i]>0 && i != nnet->target){
-                    adv_output = i;
-            }
-        }
-        printf("%d ---> %d", nnet->target, adv_output);
-        pthread_mutex_lock(&lock);
-        adv_found = 1;
-        pthread_mutex_unlock(&lock);
-    }
-}
 
 void check_adv1(struct NNet* nnet, struct Matrix *adv){
     float out[nnet->outputSize];
@@ -473,8 +407,12 @@ int forward_prop_interval_equation_conv_lp(struct NNet *nnet,
     // The actual row number for index is ERR_NODE
     // but the row used for matmul is the true current error node err_row
     // This is because all the other lines are 0
-    struct Matrix equation_err_matrix = {(float*)equation_err, ERR_NODE, inputSize};
-    struct Matrix new_equation_err_matrix = {(float*)new_equation_err, ERR_NODE, inputSize};  
+    struct Matrix equation_err_matrix = {
+                (float*)equation_err, ERR_NODE, inputSize
+            };
+    struct Matrix new_equation_err_matrix = {
+                (float*)new_equation_err, ERR_NODE, inputSize
+            };  
 
      struct SymInterval sInterval = {
                 &equation_matrix, &new_equation_matrix,

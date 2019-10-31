@@ -344,7 +344,7 @@ int main( int argc, char *argv[]){
         int depth = 0;
         if(isOverlap){
             if(CHECK_ADV_MODE){
-                printf("Adv mode (CHECK_ADV_MODE)\n");
+                printf("Check Adv Mode (CHECK_ADV_MODE)\n");
                 for (int n=0;n<full_wrong_node_length;n++){
                     wrong_nodes[n] = wrong_nodes[err_row_conv+n];
                 }

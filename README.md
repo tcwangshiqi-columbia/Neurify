@@ -32,7 +32,7 @@ git clone https://github.com/tcwangshiqi-columbia/Neurify
 Please make sure the path of OpenBLAS is the same as the one in MakeFile. Then you can compile Neurify with following command:
 
 ```
-cd Neurify/mnist
+cd Neurify/general
 make
 ```
 
@@ -43,7 +43,6 @@ make
 * split.c: manage iterative refinement and dynamic thread rebalancing
 * matrix.c: matrix operations supported by OpenBLAS
 * models/: all the models
-* scripts/: scripts to run the ACAS Xu evaluations reported in paper 
 
 ## Running 
 
@@ -61,7 +60,7 @@ check mode = 0: choose the mode of formal anlysis. Normal split and check mode i
 
 The program will terminate in three ways: (1) a concrete adversarial is found, and (2) the property is verified as safe, and (3) Neurify hits predifined depth threshold indicating timeouts.
 
-### Example
+### Usage
 
 Here is an example for running Neurify by checking whether convolutional MNIST model (models/conv.nnet) will always predict correct labels within input ranges bounded by infinite norm (property 0) for given testing images (one can select images in network_test.c):
 
@@ -69,24 +68,30 @@ Here is an example for running Neurify by checking whether convolutional MNIST m
 ./network_test 0 models/conv.nnet
 ```
 
+Please check network.c to see the detailed descriptions of optional input parameters. 
+
+Note that there are two different modes of Neurify. One is regular mode. It will return (1) the input is verified safe, (2) verified unsafe by locating concrete adversarial examples, (3) time out. One can preset the MAX_DEPTH to adjust the timeout threshold. The second mode is CHECK_ADV_MODE. It will do a breath-first search with shallow MAX_DEPTH aiming to locate the adversarial examples quickly. Compared to the regular mode, it can find the concrete adversarial examples in a much faster way, but no verification for safety can be provided under this mode. Therefore, it's recommended to first run the CHECK_ADV_MODE quickly. If no adversarial examples can be located for the specific input, then we can use the regular mode with large MAX_DEPTH to verify its safety.
+
+
 ### Properties
 
-Here are the property list that Neurify already supported. 0: MNIST L-infinite norm; 54: MNIST L-1 norm; 55: MNIST brightness; 101: Drebin; 500: DAVE L-infinite norm; 504: DAVE L-1 norm; 505: DAVE brightness; 510: DAVE contrast.
+One can customized their own properties, models and inputs. The whole project is updated and merged into file "general" such that people can easily customize Neurify for their own purpose. To customize, one needs to update (1) the input loading function in nnet.c, (2) property checking functions in split.c, and (3) input ranges of the safety property in network.c.
+
+Here are the property list that Neurify can supported. 0: MNIST L-infinite norm; 54: MNIST L-1 norm; 55: MNIST brightness; 101: Drebin; 500: DAVE L-infinite norm; 504: DAVE L-1 norm; 505: DAVE brightness; 510: DAVE contrast.
 
 * The MNIST properties are defined as the classfier will not misclassify the given images bounded by L-1, L-2 and L-infinite. 
 * The DAVE properties are defined as the classifier will predict correct steering angle (e.g., variance from original angle is less than 30 degree).
 * The Drebin properties are defined as the classifier will still detect malware applications in terms of how many features are allowed to be given. 
-* The ACAS Xu properties are reported and defined in ReluVal. One can find them in  Appendix A.
+* The ACAS Xu properties are reported and defined in ReluVal. One can find them in Appendix A.
 
 
 ### Convolutional Model Experiments
 
-The test on MNIST or DAVE models can be easily ran with commands. Here is an example:
+The test on MNIST can be easily ran with commands. Here is an example:
 
 ```
-cd convolutional
+cd general
 ./network_test 0 models/conv_madry.nnet
-./network_test 500 models/dave_small.nnet
 ```
 
 ### Drebin Model Experiments
@@ -100,17 +105,12 @@ cd drebin
 
 ### ACAS Xu Experiments
 
-The test on ACAS Xu can be easily ran with pre-written scripts in folder "scripts". Here is an example:
+Please clone the [ReluVal's repo](https://github.com/tcwangshiqi-columbia/ReluVal). The test on ACAS Xu can be easily ran with pre-written scripts in folder "scripts". Here is an example:
 
 ```
 cd ACAS
 ./scripts/run_property5.sh
 ```
-
-### Custom Properties
-
-One can customized their own properties, models and inputs. The properties can be predefined in network.c and check function for each property can be added in split.c. For self-trained models, we provide transfer.py to convert the model trained with Keras or tensorflow to the format supported. At last, self-defined inputs can be added into test set with unnormalized value and one can test them by updating the path in nnet.c.
-
 
 ## Citing Neurify
 ```
