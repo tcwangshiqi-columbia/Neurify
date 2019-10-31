@@ -9,5 +9,7 @@ line4 and later: each line describes the information for convolutional layers as
 ===================
 
 
-
-transfer.py is a sample code for transferring the tensorflow/keras models to nnet format. Due to the version problem or model definitions, chances are high that one needs to slightly change the code to transfer one's models successfully. Note that one must check closely whether the returned outputs of transferred nnet model are the same as the outputs of your own network under tensorflow/keras.
+Tips for transferring the models:
+transfer.py is a sample code for transferring the tensorflow/keras models to nnet format.
+Due to the version conflicts or model definitions in different ML frameworks, chances are high that one needs to slightly change the code to successfully transfer the models. 
+Note that one must check closely whether the returned outputs of transferred nnet model in Neurify are the same as the outputs of your own network under tensorflow/keras.

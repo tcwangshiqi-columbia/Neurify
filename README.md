@@ -5,6 +5,8 @@ You can find detailed descriptions of Neurify in paper [Efficient Formal Safety 
 
 This repository contains the implementations of Neurify and the evalutions on convolutional MNIST models, convolutional DAVE models and Drebin models described in the paper. The updates on ACAS Xu model have been merged into original [ReluVal's repo](https://github.com/tcwangshiqi-columbia/ReluVal). Neurify's performance on ACAS Xu is on average 20 times better than original ReluVal's and 5000 times better than solver-based system like Reluplex.
 
+[News] PyTorch version of symbolic interval analysis supporting cuda is now available at [Symbolic Interval Library](https://github.com/tcwangshiqi-columbia/symbolic_interval).
+
 We highly recommend users to compile and run the code under Linux 16.04 in case any potential dependency or compilation errors.
 
 
@@ -111,6 +113,10 @@ Please clone the [ReluVal's repo](https://github.com/tcwangshiqi-columbia/ReluVa
 cd ACAS
 ./scripts/run_property5.sh
 ```
+
+### Supporting Other ML Frameworks
+
+Please check the nnet model format in "format descriptions" file for more details.
 
 ## Citing Neurify
 ```
