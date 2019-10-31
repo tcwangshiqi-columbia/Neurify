@@ -8,6 +8,7 @@ This repository contains the implementations of Neurify and the evalutions on co
 We highly recommend users to compile and run the code under Linux 16.04 in case any potential dependency or compilation errors.
 
 [News] PyTorch version of symbolic interval analysis (supporting gpus) is now available at our [Symbolic Interval Library](https://github.com/tcwangshiqi-columbia/symbolic_interval).
+[News] We have updated the interface and code structure in "general" file such that people can customize Neurify in an easier way. It replaces the original mnist folder.
 
 
 ## Prerequisite
