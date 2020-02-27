@@ -37,119 +37,119 @@ int total_progress[PROGRESS_DEPTH];
   * You need to customize your own checking function.
   * Here is a couple of sample functions that you could use.
   */
-int check_not_max(struct NNet *nnet, struct Interval *output){
+bool check_not_max(struct NNet *nnet, struct Interval *output){
     for(int i=0;i<nnet->outputSize;i++){
         if(output->upper_matrix.data[i]>0 && i != nnet->target){
-            return 1;
+            return true;
         }
     }
-    return 0;
+    return false;
 }
 
 
-int check_max_constant(struct NNet *nnet, struct Interval *output){
+bool check_max_constant(struct NNet *nnet, struct Interval *output){
     if(output->upper_matrix.data[nnet->target]>0.5011){
-        return 1;
+        return true;
     }
     else{
-        return 0;
+        return false;
     }
 }
 
-int check_max(struct NNet *nnet, struct Interval *output){
+bool check_max(struct NNet *nnet, struct Interval *output){
     for(int i=0;i<nnet->outputSize;i++){
         if(output->lower_matrix.data[i]>0 && i != nnet->target){
-            return 0;
+            return false;
         }
     }
-    return 1;
+    return true;
 }
 
 
-int check_min(struct NNet *nnet, struct Interval *output){
+bool check_min(struct NNet *nnet, struct Interval *output){
     for(int i=0;i<nnet->outputSize;i++){
         if(output->upper_matrix.data[i]<0 && i != nnet->target){
-            return 0;
+            return false;
         }
     }
-    return 1;
+    return true;
 }
 
-int check_not_min(struct NNet *nnet, struct Interval *output){
+bool check_not_min(struct NNet *nnet, struct Interval *output){
 	for(int i=0;i<nnet->outputSize;i++){
 		if(output->lower_matrix.data[i]<0 && i != nnet->target){
-			return 1;
+			return true;
 		}
 	}
-	return 0;
+	return false;
 }
 
 
-int check_not_min_p11(struct NNet *nnet, struct Interval *output){
+bool check_not_min_p11(struct NNet *nnet, struct Interval *output){
 
     if(output->lower_matrix.data[0]<0)
-        return 1;
+        return true;
 
-    return 0;
+    return false;
 }
 
 
-int check_max_constant1(struct NNet *nnet, struct Matrix *output){
+bool check_max_constant1(struct NNet *nnet, struct Matrix *output){
     if(output->data[nnet->target]<0.5011){
-        return 0;
+        return false;
     }
-    return 1;
+    return true;
 }
 
 
-int check_max1(struct NNet *nnet, struct Matrix *output){
+bool check_max1(struct NNet *nnet, struct Matrix *output){
     for(int i=0;i<nnet->outputSize;i++){
         if(output->data[i]>0 && i != nnet->target){
-            return 0;
+            return false;
         }
     }
-    return 1;
+    return true;
 }
 
 
-int check_min1(struct NNet *nnet, struct Matrix *output){
+bool check_min1(struct NNet *nnet, struct Matrix *output){
     for(int i=0;i<nnet->outputSize;i++){
         if(output->data[i]<0 && i != nnet->target){
-            return 0;
+            return false;
         }
     }
-    return 1;
+    return true;
 }
 
 
-int check_not_max1(struct NNet *nnet, struct Matrix *output){
+bool check_not_max1(struct NNet *nnet, struct Matrix *output){
     for(int i=0;i<nnet->outputSize;i++){
         if(output->data[i]>0 && i != nnet->target){
-            return 1;
+            return true;
         }
     }
-    return 0;
+    return false;
 }
 
 
-int check_not_min1(struct NNet *nnet, struct Matrix *output){
+bool check_not_min1(struct NNet *nnet, struct Matrix *output){
     for(int i=0;i<nnet->outputSize;i++){
         if(output->data[i]<0 && i != nnet->target){
-            return 1;
+            return true;
         }
     }
-    return 0;
+    return false;
 }
 
 
-int check_not_max_norm(struct NNet *nnet, struct Interval *output){
+bool check_not_max_norm(struct NNet *nnet, struct Interval *output){
     float t = output->lower_matrix.data[nnet->target];
     for(int i=0;i<nnet->outputSize;i++){
         if(output->upper_matrix.data[i]>t && i != nnet->target){
-            return 1;
+            return true;
         }
     }
-    return 0;
+    return false;
 }
 
 
@@ -157,7 +157,7 @@ int check_not_max_norm(struct NNet *nnet, struct Interval *output){
  * Here is the function checking whether the output range always 
  * satisfies your customized safety property.
  */
-int check_functions(struct NNet *nnet, struct Interval *output){
+bool check_functions(struct NNet *nnet, struct Interval *output){
     if (PROPERTY == 1){
         /*
          * You need to customize your own checking function
@@ -176,7 +176,7 @@ int check_functions(struct NNet *nnet, struct Interval *output){
  * satisfies your customized safety property but without output norm.
  * This is only used in network_test.c once for checking before splits.
  */
-int check_functions_norm(struct NNet *nnet, struct Interval *output){
+bool check_functions_norm(struct NNet *nnet, struct Interval *output){
     return check_not_max_norm(nnet, output);
 }
 
@@ -185,7 +185,7 @@ int check_functions_norm(struct NNet *nnet, struct Interval *output){
  * Here is the function checking whether the given concrete outupt 
  * violates your customized safety property.
  */
-int check_functions1(struct NNet *nnet, struct Matrix *output){
+bool check_functions1(struct NNet *nnet, struct Matrix *output){
 
     if (PROPERTY == 1){
         /*

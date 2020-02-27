@@ -222,7 +222,7 @@ int main( int argc, char *argv[]){
         printMatrix(&output);
 
         gettimeofday(&start, NULL);
-        int isOverlap = 0;
+        bool isOverlap = false;
 
         int wrong_node_length = 0; 
         int full_wrong_node_length = 0;
@@ -349,7 +349,7 @@ int main( int argc, char *argv[]){
         time_spent = ((float)(finish.tv_sec-start.tv_sec)*1000000 +\
                 (float)(finish.tv_usec-start.tv_usec)) / 1000000;
 
-        if(isOverlap==0 && adv_found == 0 && !can_t_prove){
+        if(!isOverlap && adv_found == 0 && !can_t_prove){
             if (CHECK_ADV_MODE){
                 printf("no adv found\n");
                 can_t_prove_list[no_prove] = img;
