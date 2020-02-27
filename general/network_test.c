@@ -170,8 +170,6 @@ int main( int argc, char *argv[]){
                     (struct Matrix){o_upper, outputSize, 1}
                 };
 
-        int n = 0;
-        int feature_range_length = 0;
         int split_feature = -1;
         printf("running image %d with network %s\n", img, FULL_NET_PATH);
         printf("Infinite Norm: %f\n", INF);
@@ -185,25 +183,6 @@ int main( int argc, char *argv[]){
                 printf("wrong input!\n");
                 exit(0);
             }
-
-            if(input_interval.upper_matrix.data[i]!=\
-                        input_interval.lower_matrix.data[i]){
-                n++;
-            }
-
-        }
-
-        feature_range_length = n;
-        int *feature_range = (int*)malloc(n*sizeof(int));
-
-        for(int i=0, n=0;i<nnet->inputSize;i++){
-
-            if(input_interval.upper_matrix.data[i]!=\
-                        input_interval.lower_matrix.data[i]){
-                feature_range[n] = i;
-                n++;
-            }
-
         }
 
         float *equation_upper = (float*)malloc(sizeof(float) *\
@@ -393,7 +372,6 @@ int main( int argc, char *argv[]){
         printf("%d %d %d\n", adv_num, non_adv, no_prove);
         printf("time: %f \n\n", time_spent);
         destroy_conv_network(nnet);
-        free(feature_range);
 
         free(equation_upper);
         free(equation_lower);
