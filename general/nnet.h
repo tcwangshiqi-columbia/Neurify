@@ -185,7 +185,7 @@ int forward_prop_interval_equation_linear_try(struct NNet *network, struct Inter
                                      float *wrong_up_s_up, float *wrong_up_s_low,
                                      float *wrong_low_s_up, float *wrong_low_s_low);
 */
-int forward_prop_interval_equation_linear_conv(struct NNet *network, struct Interval *input,
+void forward_prop_interval_equation_linear_conv(struct NNet *network, struct Interval *input,
                                      struct Interval *output, float *grad,
                                      float *equation, float *equation_err,
                                      float *new_equation, float *new_equation_err,

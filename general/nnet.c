@@ -1326,7 +1326,7 @@ int sym_relu_layer(struct SymInterval *sInterval,
 }
 
 
-int forward_prop_interval_equation_linear_conv(struct NNet *network,
+void forward_prop_interval_equation_linear_conv(struct NNet *network,
                             struct Interval *input,
                              struct Interval *output, float *grad,
                              float *equation, float *equation_err,
@@ -1461,6 +1461,4 @@ int forward_prop_interval_equation_linear_conv(struct NNet *network,
     }
 
     backward_prop_conv(nnet, grad, R);
-
-    return 1;
 }
