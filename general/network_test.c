@@ -128,9 +128,8 @@ int main( int argc, char *argv[]){
 
     float avg_wrong_length = 0.0;
     
-    for(int img_ind=0; img_ind<image_length;img_ind++){
+    for(int img=image_start; img<image_start+image_length; img++){
 
-        int img = image_start + img_ind;
         adv_found=0;
         can_t_prove=0;
         printf("start load network\n");
