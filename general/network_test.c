@@ -132,9 +132,9 @@ int main( int argc, char *argv[]){
 
         adv_found=0;
         can_t_prove=0;
-        printf("start load network\n");
+        printf("start loading network\n");
         struct NNet* nnet = load_conv_network(FULL_NET_PATH, img);
-        printf("done load network\n");
+        printf("done loading network\n");
 
         int numLayers    = nnet->numLayers;
         int inputSize    = nnet->inputSize;
