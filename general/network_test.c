@@ -263,8 +263,7 @@ int main( int argc, char *argv[]){
 
         forward_prop_interval_equation_linear_conv(nnet, &input_interval,\
                              &output_interval,\
-                             grad, equation, equation_err,\
-                             new_equation, new_equation_err,\
+                             grad, equation, new_equation,\
                              wrong_nodes, &wrong_node_length,\
                              &full_wrong_node_length,\
                              equation_conv, equation_conv_err, &err_row_conv);

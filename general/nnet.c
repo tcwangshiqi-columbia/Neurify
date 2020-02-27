@@ -1329,8 +1329,7 @@ int sym_relu_layer(struct SymInterval *sInterval,
 void forward_prop_interval_equation_linear_conv(struct NNet *network,
                             struct Interval *input,
                              struct Interval *output, float *grad,
-                             float *equation, float *equation_err,
-                             float *new_equation, float *new_equation_err,
+                             float *equation, float *new_equation,
                              int *wrong_nodes, int *wrong_node_length,
                              int *full_wrong_node_length,
                              float *equation_conv, float *equation_conv_err,
@@ -1344,6 +1343,12 @@ void forward_prop_interval_equation_linear_conv(struct NNet *network,
     int inputSize    = nnet->inputSize;
     int outputSize   = nnet->outputSize;
     int maxLayerSize   = nnet->maxLayerSize;
+    
+    ERR_NODE = 5000;
+    float *equation_err = (float*)malloc(sizeof(float) *\
+                            ERR_NODE*maxLayerSize);
+    float *new_equation_err = (float*)malloc(sizeof(float) *\
+                            ERR_NODE*maxLayerSize);
 
     int R[numLayers][maxLayerSize];
     memset(R, 0, sizeof(float)*numLayers*maxLayerSize);
@@ -1461,4 +1466,7 @@ void forward_prop_interval_equation_linear_conv(struct NNet *network,
     }
 
     backward_prop_conv(nnet, grad, R);
+
+    free(equation_err);
+    free(new_equation_err);
 }
