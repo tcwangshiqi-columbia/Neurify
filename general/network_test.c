@@ -222,7 +222,7 @@ int main( int argc, char *argv[]){
         printMatrix(&output);
 
         gettimeofday(&start, NULL);
-        bool isOverlap = false;
+        bool is_overlap = false;
 
         int wrong_node_length = 0; 
         int full_wrong_node_length = 0;
@@ -303,7 +303,7 @@ int main( int argc, char *argv[]){
                 output_map[oi]=0;
             }
         }
-        isOverlap = check_functions_norm(nnet, &output_interval);
+        is_overlap = check_functions_norm(nnet, &output_interval);
         lprec *lp;
         
         int rule_num = 0;
@@ -320,7 +320,7 @@ int main( int argc, char *argv[]){
 
         gettimeofday(&start, NULL);
         int depth = 0;
-        if(isOverlap){
+        if(is_overlap){
             if(CHECK_ADV_MODE){
                 printf("Check Adv Mode (CHECK_ADV_MODE)\n");
                 for (int n=0;n<full_wrong_node_length;n++){
@@ -332,7 +332,7 @@ int main( int argc, char *argv[]){
                 printf("Regular Mode (No CHECK_ADV_MODE)\n");
             }
             // split
-            isOverlap = split_interval_conv_lp(nnet, &input_interval,\
+            is_overlap = split_interval_conv_lp(nnet, &input_interval,\
                                 output_map,\
                                 equation, equation_err,\
                                 new_equation, new_equation_err,\
@@ -343,13 +343,13 @@ int main( int argc, char *argv[]){
         }
 
         //write_LP(lp, stdout);
-        //isOverlap = check_functions(nnet, &output_interval);
+        //is_overlap = check_functions(nnet, &output_interval);
         
         gettimeofday(&finish, NULL);
         time_spent = ((float)(finish.tv_sec-start.tv_sec)*1000000 +\
                 (float)(finish.tv_usec-start.tv_usec)) / 1000000;
 
-        if(!isOverlap && adv_found == 0 && !can_t_prove){
+        if(!is_overlap && adv_found == 0 && !can_t_prove){
             if (CHECK_ADV_MODE){
                 printf("no adv found\n");
                 can_t_prove_list[no_prove] = img;
