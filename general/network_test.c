@@ -221,7 +221,6 @@ int main( int argc, char *argv[]){
         printf("concrete output:");
         printMatrix(&output);
 
-        gettimeofday(&start, NULL);
         bool is_overlap = false;
 
         int wrong_node_length = 0; 
@@ -250,7 +249,6 @@ int main( int argc, char *argv[]){
         wrong_node_length = 0;
 
         ERR_NODE = 5000;
-        //wrong_node_length = 0;
         float *equation_err = (float*)malloc(sizeof(float) *\
                                 ERR_NODE*maxLayerSize);
         float *new_equation_err = (float*)malloc(sizeof(float) *\
