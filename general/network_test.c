@@ -380,6 +380,8 @@ int main( int argc, char *argv[]){
         free(new_equation);
         free(equation_err);
         free(new_equation_err);
+        free(equation_conv);
+        free(equation_conv_err);
         delete_lp(lp);
 
     }
