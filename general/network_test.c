@@ -130,7 +130,7 @@ int main( int argc, char *argv[]){
     
     for(int img=image_start; img<image_start+image_length; img++){
 
-        adv_found=0;
+        adv_found = false;
         can_t_prove=0;
         printf("start loading network\n");
         struct NNet* nnet = load_conv_network(FULL_NET_PATH, img);
@@ -347,7 +347,7 @@ int main( int argc, char *argv[]){
         time_spent = ((float)(finish.tv_sec-start.tv_sec)*1000000 +\
                 (float)(finish.tv_usec-start.tv_usec)) / 1000000;
 
-        if(!is_overlap && adv_found == 0 && !can_t_prove){
+        if(!is_overlap && !adv_found && !can_t_prove){
             if (CHECK_ADV_MODE){
                 printf("no adv found\n");
                 can_t_prove_list[no_prove] = img;

@@ -18,7 +18,7 @@
 int NEED_PRINT = 0;
 int NEED_FOR_ONE_RUN = 0;
 int input_depth = 0;
-int adv_found = 0;
+bool adv_found = false;
 int can_t_prove = 0;
 int count = 0;
 int thread_tot_cnt  = 0;
@@ -249,7 +249,7 @@ void check_adv1(struct NNet* nnet, struct Matrix *adv){
         }
         printf("%d ---> %d\n", nnet->target, adv_output);
         pthread_mutex_lock(&lock);
-        adv_found = 1;
+        adv_found = true;
         pthread_mutex_unlock(&lock);
     }
 }
