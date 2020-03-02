@@ -218,7 +218,6 @@ int main( int argc, char *argv[]){
         bool is_overlap = false;
 
         int total_nodes = 0;
-        int full_wrong_node_length = 0;
         for(int layer=1;layer<numLayers;layer++){
             total_nodes += nnet->layerSizes[layer];
         }
@@ -240,7 +239,8 @@ int main( int argc, char *argv[]){
         float grad[total_nodes];
         memset(grad, 0, sizeof(float)*total_nodes);
 
-        int wrong_node_length = 0; 
+        int wrong_node_length = 0;
+        int full_wrong_node_length = 0;
         
         ERR_NODE = 5000;
         float *equation_err = (float*)malloc(sizeof(float) *\
