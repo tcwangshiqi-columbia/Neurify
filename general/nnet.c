@@ -1202,16 +1202,12 @@ void relu_bound(struct SymInterval *sInterval, struct NNet *nnet,
     if(err_row>0){
         
         for(int err_ind=0;err_ind<err_row;err_ind++){
-
-            if((*sInterval->new_err_matrix).data[err_ind+i*ERR_NODE]>0){
-                
-                tempVal_upper += (*sInterval->new_err_matrix).data[err_ind+i*ERR_NODE];
-
+            float error_value = (*sInterval->new_err_matrix).data[err_ind+i*ERR_NODE];
+            if(error_value > 0){
+                tempVal_upper += error_value;
             }
             else{
-
-                tempVal_lower += (*sInterval->new_err_matrix).data[err_ind+i*ERR_NODE];
-
+                tempVal_lower += error_value;
             }
         }
     }
