@@ -184,22 +184,6 @@ int main( int argc, char *argv[]){
             }
         }
 
-        float *equation_upper = (float*)malloc(sizeof(float) *\
-                                (inputSize+1)*maxLayerSize);
-        float *equation_lower = (float*)malloc(sizeof(float) *\
-                                (inputSize+1)*maxLayerSize);
-        float *new_equation_upper = (float*)malloc(sizeof(float) *\
-                                    (inputSize+1)*maxLayerSize);
-        float *new_equation_lower = (float*)malloc(sizeof(float) *\
-                                    (inputSize+1)*maxLayerSize);
-
-        struct Interval equation_inteval = {
-            (struct Matrix){(float*)equation_lower, inputSize+1,\
-                        nnet->layerSizes[1]},
-            (struct Matrix){(float*)equation_upper, inputSize+1,\
-                        nnet->layerSizes[1]}
-        };
-
         float *equation = (float*)malloc(sizeof(float) *\
                                 (inputSize+1)*maxLayerSize);
         float *new_equation = (float*)malloc(sizeof(float) *\
@@ -363,10 +347,6 @@ int main( int argc, char *argv[]){
         printf("time: %f \n\n", time_spent);
         destroy_conv_network(nnet);
 
-        free(equation_upper);
-        free(equation_lower);
-        free(new_equation_upper);
-        free(new_equation_lower);
         free(equation);
         free(new_equation);
         free(equation_err);

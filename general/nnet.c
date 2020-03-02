@@ -1361,7 +1361,6 @@ void forward_prop_interval_equation_linear_conv(struct NNet *nnet,
     
     for (int i=0; i < nnet->inputSize; i++)
     {
-        printf("Setting %d = 1\n", i*(inputSize+2));
         equation[i*(inputSize+1)+i] = 1;
     }
 
