@@ -1375,9 +1375,7 @@ void forward_prop_interval_equation_linear_conv(struct NNet *nnet,
         
         if(nnet->layerTypes[layer]==0) {
             // FC layer
-            struct Matrix weights = nnet->weights[layer];
-            struct Matrix bias = nnet->bias[layer];
-
+            
             sym_fc_layer(&sInterval, nnet, layer, err_row);
             
             /*store equation and error matrix for later splitting*/
