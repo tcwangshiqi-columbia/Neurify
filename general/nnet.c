@@ -1308,7 +1308,6 @@ void forward_prop_interval_equation_linear_conv(struct NNet *nnet,
                              float *equation_conv, float *equation_conv_err,
                              int *err_row_conv)
 {
-    int i,j,k,layer;
     int node_cnt=0;
 
     int numLayers    = nnet->numLayers;
@@ -1360,14 +1359,15 @@ void forward_prop_interval_equation_linear_conv(struct NNet *nnet,
 
     float tempVal_upper=0.0, tempVal_lower=0.0;
     
-    for (i=0; i < nnet->inputSize; i++)
+    for (int i=0; i < nnet->inputSize; i++)
     {
+        printf("Setting %d = 1\n", i*(inputSize+2));
         equation[i*(inputSize+1)+i] = 1;
     }
 
     //err_row is the number that is wrong before current layer
     int err_row=0;
-    for (layer = 0; layer<numLayers; layer++)
+    for (int layer = 0; layer<numLayers; layer++)
     {
         // printf("%d, %d", layer, nnet->layerSizes[layer]);
         memset(new_equation, 0, sizeof(float)*(inputSize+1)*maxLayerSize);
