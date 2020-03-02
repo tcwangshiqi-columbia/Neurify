@@ -184,11 +184,6 @@ int main( int argc, char *argv[]){
             }
         }
 
-        float *equation = (float*)malloc(sizeof(float) *\
-                                (inputSize+1)*maxLayerSize);
-        float *new_equation = (float*)malloc(sizeof(float) *\
-                                (inputSize+1)*maxLayerSize);
-
         
         //forward_prop(nnet, &input_prev_matrix, &output);
         if(inputSize<10){
@@ -291,6 +286,11 @@ int main( int argc, char *argv[]){
         //write_LP(lp, stdout);
         int target = 0;
         int sig = 0;
+
+        float *equation = (float*)malloc(sizeof(float) *\
+                                (inputSize+1)*maxLayerSize);
+        float *new_equation = (float*)malloc(sizeof(float) *\
+                                (inputSize+1)*maxLayerSize);
 
         gettimeofday(&start, NULL);
         int depth = 0;
