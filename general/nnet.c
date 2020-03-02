@@ -418,7 +418,7 @@ void sort(float *array, int num, int *ind){
 }
 
 
-void sort_layers(int numLayers, int *layerSizes, int wrong_node_length, int *wrong_nodes){
+void sort_layers(int numLayers, int *layerSizes, int wrong_node_length, int *wrong_nodes_map){
 	int wrong_nodes_tmp[wrong_node_length];
 	memset(wrong_nodes_tmp, 0, sizeof(int)*wrong_node_length);
 	int j = 0;
@@ -427,16 +427,16 @@ void sort_layers(int numLayers, int *layerSizes, int wrong_node_length, int *wro
 		count_node += layerSizes[layer]; 
         // printf("%d, %d\n", count_node, count_node-layerSizes[layer]);
 		for (int i = 0; i < wrong_node_length; i++){
-			if(wrong_nodes[i]<count_node && wrong_nodes[i]>=count_node-layerSizes[layer]){
-				wrong_nodes_tmp[j] = wrong_nodes[i];
+			if(wrong_nodes_map[i]<count_node && wrong_nodes_map[i]>=count_node-layerSizes[layer]){
+				wrong_nodes_tmp[j] = wrong_nodes_map[i];
                 //printf("%d, %d;", j, wrong_nodes_tmp[j]);
 				j++;
 			}
 		}
 		
 	}
-    memcpy(wrong_nodes, wrong_nodes_tmp, sizeof(int)*wrong_node_length);
-    // printf("%d\n", wrong_nodes[0]);
+    memcpy(wrong_nodes_map, wrong_nodes_tmp, sizeof(int)*wrong_node_length);
+    // printf("%d\n", wrong_nodes_map[0]);
 }
 
 
@@ -1224,7 +1224,7 @@ int sym_relu_layer(struct SymInterval *sInterval,
                     struct NNet *nnet, 
                     int R[][nnet->maxLayerSize],
                     int layer, int err_row,
-                    int *wrong_nodes, 
+                    int *wrong_nodes_map, 
                     int*wrong_node_length,
                     int *node_cnt){
 
@@ -1266,7 +1266,7 @@ int sym_relu_layer(struct SymInterval *sInterval,
             }
             else{
                 //wrong node length includes the wrong nodes in convolutional layers
-                wrong_nodes[*wrong_node_length] = *node_cnt;
+                wrong_nodes_map[*wrong_node_length] = *node_cnt;
                 // printf("%d,",*node_cnt);
                 *wrong_node_length += 1;
                 wcnt += 1;
@@ -1303,7 +1303,7 @@ int sym_relu_layer(struct SymInterval *sInterval,
 void forward_prop_interval_equation_linear_conv(struct NNet *nnet,
                             struct Interval *input,
                              struct Interval *output, float *grad,
-                             int *wrong_nodes, int *wrong_node_length,
+                             int *wrong_nodes_map, int *wrong_node_length,
                              int *full_wrong_node_length,
                              float *equation_conv, float *equation_conv_err,
                              int *err_row_conv)
@@ -1391,7 +1391,7 @@ void forward_prop_interval_equation_linear_conv(struct NNet *nnet,
             }
             
             int wcnt = sym_relu_layer(&sInterval, input, output, nnet, R,
-                                layer, err_row, wrong_nodes,
+                                layer, err_row, wrong_nodes_map,
                                 wrong_node_length, &node_cnt);
             
             *full_wrong_node_length = *full_wrong_node_length + wcnt;
@@ -1412,7 +1412,7 @@ void forward_prop_interval_equation_linear_conv(struct NNet *nnet,
             }
 
             int wcnt = sym_relu_layer(&sInterval, input, output, nnet, R,
-                                layer, err_row, wrong_nodes,
+                                layer, err_row, wrong_nodes_map,
                                 wrong_node_length, &node_cnt);
 
         }

@@ -222,13 +222,13 @@ int main( int argc, char *argv[]){
         for(int layer=1;layer<numLayers;layer++){
             total_nodes += nnet->layerSizes[layer];
         }
-        int wrong_nodes[total_nodes];
+        int wrong_nodes_map[total_nodes];
         float wrong_up_s_up[total_nodes];
         float wrong_up_s_low[total_nodes];
         float wrong_low_s_up[total_nodes];
         float wrong_low_s_low[total_nodes];
         
-        memset(wrong_nodes,0,sizeof(int)*total_nodes);
+        memset(wrong_nodes_map,0,sizeof(int)*total_nodes);
         memset(wrong_up_s_up,0,sizeof(float)*total_nodes);
         memset(wrong_up_s_low,0,sizeof(float)*total_nodes);
         memset(wrong_low_s_up,0,sizeof(float)*total_nodes);
@@ -257,7 +257,7 @@ int main( int argc, char *argv[]){
 
         forward_prop_interval_equation_linear_conv(nnet, &input_interval,\
                              &output_interval,\
-                             grad, wrong_nodes, &wrong_node_length,\
+                             grad, wrong_nodes_map, &wrong_node_length,\
                              &full_wrong_node_length,\
                              equation_conv, equation_conv_err, &err_row_conv);
 
@@ -267,9 +267,9 @@ int main( int argc, char *argv[]){
         printf("lower matrix:");
         printMatrix(&output_interval.lower_matrix);
 
-        sort(grad, wrong_node_length, wrong_nodes);
+        sort(grad, wrong_node_length, wrong_nodes_map);
 		sort_layers(nnet->numLayers, nnet->layerSizes,\
-                wrong_node_length, wrong_nodes);
+                wrong_node_length, wrong_nodes_map);
 
 		avg_wrong_length += wrong_node_length; 
 
@@ -278,7 +278,7 @@ int main( int argc, char *argv[]){
                     full_wrong_node_length );
         /*
 		for(int w=0;w<wrong_node_length;w++){
-            printf("%d,",wrong_nodes[w]);
+            printf("%d,",wrong_nodes_map[w]);
         }
 		*/
 
@@ -314,7 +314,7 @@ int main( int argc, char *argv[]){
             if(CHECK_ADV_MODE){
                 printf("Check Adv Mode (CHECK_ADV_MODE)\n");
                 for (int n=0;n<full_wrong_node_length;n++){
-                    wrong_nodes[n] = wrong_nodes[err_row_conv+n];
+                    wrong_nodes_map[n] = wrong_nodes_map[err_row_conv+n];
                 }
                 wrong_node_length = full_wrong_node_length;
             }
@@ -326,7 +326,7 @@ int main( int argc, char *argv[]){
                                 output_map,\
                                 equation, equation_err,\
                                 new_equation, new_equation_err,\
-                                wrong_nodes, &wrong_node_length, sigs,\
+                                wrong_nodes_map, &wrong_node_length, sigs,\
                                 equation_conv, equation_conv_err,\
                                 err_row_conv,\
                                 lp, &rule_num, depth);
