@@ -223,31 +223,31 @@ int main( int argc, char *argv[]){
 
         bool is_overlap = false;
 
-        int wrong_node_length = 0; 
+        int total_nodes = 0;
         int full_wrong_node_length = 0;
         for(int layer=1;layer<numLayers;layer++){
-            wrong_node_length += nnet->layerSizes[layer];
+            total_nodes += nnet->layerSizes[layer];
         }
-        int wrong_nodes[wrong_node_length];
-        float wrong_up_s_up[wrong_node_length];
-        float wrong_up_s_low[wrong_node_length];
-        float wrong_low_s_up[wrong_node_length];
-        float wrong_low_s_low[wrong_node_length];
+        int wrong_nodes[total_nodes];
+        float wrong_up_s_up[total_nodes];
+        float wrong_up_s_low[total_nodes];
+        float wrong_low_s_up[total_nodes];
+        float wrong_low_s_low[total_nodes];
         
-        memset(wrong_nodes,0,sizeof(int)*wrong_node_length);
-        memset(wrong_up_s_up,0,sizeof(float)*wrong_node_length);
-        memset(wrong_up_s_low,0,sizeof(float)*wrong_node_length);
-        memset(wrong_low_s_up,0,sizeof(float)*wrong_node_length);
-        memset(wrong_low_s_low,0,sizeof(float)*wrong_node_length);
+        memset(wrong_nodes,0,sizeof(int)*total_nodes);
+        memset(wrong_up_s_up,0,sizeof(float)*total_nodes);
+        memset(wrong_up_s_low,0,sizeof(float)*total_nodes);
+        memset(wrong_low_s_up,0,sizeof(float)*total_nodes);
+        memset(wrong_low_s_low,0,sizeof(float)*total_nodes);
 
-        int sigs[wrong_node_length];
-        memset(sigs, -1, sizeof(int)*wrong_node_length);
+        int sigs[total_nodes];
+        memset(sigs, -1, sizeof(int)*total_nodes);
 
-        float grad[wrong_node_length];
-        memset(grad, 0, sizeof(float)*wrong_node_length);
+        float grad[total_nodes];
+        memset(grad, 0, sizeof(float)*total_nodes);
 
-        wrong_node_length = 0;
-
+        int wrong_node_length = 0; 
+        
         ERR_NODE = 5000;
         float *equation_err = (float*)malloc(sizeof(float) *\
                                 ERR_NODE*maxLayerSize);
