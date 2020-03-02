@@ -170,7 +170,6 @@ int main( int argc, char *argv[]){
                     (struct Matrix){o_upper, outputSize, 1}
                 };
 
-        int split_feature = -1;
         printf("running image %d with network %s\n", img, FULL_NET_PATH);
         printf("Infinite Norm: %f\n", INF);
         //printMatrix(&input_upper);

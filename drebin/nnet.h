@@ -55,7 +55,6 @@ struct NNet
     int target;
     int *feature_range;
     int feature_range_length;
-    int split_feature;
 };
 
 //Functions Implemented
