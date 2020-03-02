@@ -193,11 +193,6 @@ int main( int argc, char *argv[]){
         float *new_equation_lower = (float*)malloc(sizeof(float) *\
                                     (inputSize+1)*maxLayerSize);
 
-        float *equation_input_lower = (float*)malloc(sizeof(float) *\
-                                    (inputSize+1)*nnet->layerSizes[1]);
-        float *equation_input_upper = (float*)malloc(sizeof(float) *\
-                                    (inputSize+1)*nnet->layerSizes[1]);
-
         struct Interval equation_inteval = {
             (struct Matrix){(float*)equation_lower, inputSize+1,\
                         nnet->layerSizes[1]},
@@ -372,8 +367,6 @@ int main( int argc, char *argv[]){
         free(equation_lower);
         free(new_equation_upper);
         free(new_equation_lower);
-        free(equation_input_upper);
-        free(equation_input_lower);
         free(equation);
         free(new_equation);
         free(equation_err);
