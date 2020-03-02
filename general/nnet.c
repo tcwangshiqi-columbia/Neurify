@@ -1245,10 +1245,8 @@ int sym_relu_layer(struct SymInterval *sInterval,
                 for(int k=0;k<inputSize+1;k++){
                     (*sInterval->new_eq_matrix).data[k+i*(inputSize+1)] = 0;
                 }
-                if(err_row>0){
-                    for(int err_ind=0;err_ind<err_row;err_ind++){
-                        (*sInterval->new_err_matrix).data[err_ind+i*ERR_NODE] = 0;
-                    }
+                for(int err_ind=0;err_ind<err_row;err_ind++){
+                    (*sInterval->new_err_matrix).data[err_ind+i*ERR_NODE] = 0;
                 }
                 R[layer][i] = 0;
             }
@@ -1267,12 +1265,9 @@ int sym_relu_layer(struct SymInterval *sInterval,
                     (*sInterval->new_eq_matrix).data[k+i*(inputSize+1)] *= \
                                 tempVal_upper / (tempVal_upper - tempVal_lower);
                 }
-                if(err_row>0){
-                    //printf("err_row:%d ul: %f\n",err_row,  tempVal_upper / (tempVal_upper - tempVal_lower));
-                    for(int err_ind=0;err_ind<err_row;err_ind++){
-                        (*sInterval->new_err_matrix).data[err_ind+i*ERR_NODE] *=\
-                                    tempVal_upper / (tempVal_upper - tempVal_lower);
-                    }
+                for(int err_ind=0;err_ind<err_row;err_ind++){
+                    (*sInterval->new_err_matrix).data[err_ind+i*ERR_NODE] *=\
+                                tempVal_upper / (tempVal_upper - tempVal_lower);
                 }
                 
                 (*sInterval->new_err_matrix).data[*wrong_node_length-1+i*ERR_NODE] -=\
