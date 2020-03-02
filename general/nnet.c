@@ -1165,28 +1165,19 @@ void relu_bound(struct SymInterval *sInterval, struct NNet *nnet,
     }
     
     for(int k=0;k<inputSize;k++){
-
-        if((*sInterval->new_eq_matrix).data[k+i*(inputSize+1)]>=0){
-            
+        float weight = (*sInterval->new_eq_matrix).data[k+i*(inputSize+1)];
+        if(weight>=0){
             tempVal_lower +=\
-                    (*sInterval->new_eq_matrix).data[k+i*(inputSize+1)] *\
-                    input->lower_matrix.data[k]-needed_outward_round;
+                    weight * input->lower_matrix.data[k]-needed_outward_round;
             tempVal_upper +=\
-                    (*sInterval->new_eq_matrix).data[k+i*(inputSize+1)] *\
-                    input->upper_matrix.data[k]+needed_outward_round;
-
+                    weight * input->upper_matrix.data[k]+needed_outward_round;
         }
         else{
-
             tempVal_lower +=\
-                    (*sInterval->new_eq_matrix).data[k+i*(inputSize+1)] *\
-                    input->upper_matrix.data[k]-needed_outward_round;
+                    weight * input->upper_matrix.data[k]-needed_outward_round;
             tempVal_upper +=\
-                    (*sInterval->new_eq_matrix).data[k+i*(inputSize+1)] *\
-                    input->lower_matrix.data[k]+needed_outward_round;
-                    
+                    weight * input->lower_matrix.data[k]+needed_outward_round;       
         } 
-
     }
     
 
