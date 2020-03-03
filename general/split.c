@@ -404,7 +404,7 @@ int sym_relu_lp(struct SymInterval *sInterval, struct Interval *input,
 }
 
 
-int forward_prop_interval_equation_conv_lp(struct NNet *nnet,
+bool forward_prop_interval_equation_conv_lp(struct NNet *nnet,
                          struct Interval *input, int *output_map,
                          float *equation, float *equation_err,
                          float *new_equation, float *new_equation_err,
@@ -414,7 +414,7 @@ int forward_prop_interval_equation_conv_lp(struct NNet *nnet,
                          lprec *lp, int *rule_num)
 {
     int node_cnt=0;
-    int need_to_split=0;
+    bool need_to_split = false;
 
     int numLayers    = nnet->numLayers;
     int inputSize    = nnet->inputSize;
@@ -591,7 +591,7 @@ int forward_prop_interval_equation_conv_lp(struct NNet *nnet,
                     if(output_map[i]){
                         if(!set_output_constraints(lp, new_equation, i*(inputSize+1),\
                                     rule_num, inputSize, MAX, &upper, input_prev)){
-                            need_to_split = 1;
+                            need_to_split = true;
                             output_map[i] = 1;
                             if(NEED_PRINT){
                                 printf("target:%d, sig:%d, node:%d--Objective value: %f\n",\

@@ -92,7 +92,7 @@ int pop_queue(int *wrong_nodes, int *wrong_node_length);
 int search_queue(int *wrong_nodes, int *wrong_node_length, int node_cnt);
 
 
-int forward_prop_interval_equation_conv_lp(struct NNet *nnet, struct Interval *input, int *output_map,
+bool forward_prop_interval_equation_conv_lp(struct NNet *nnet, struct Interval *input, int *output_map,
                                  float *equation, float *equation_err,
                                  float *new_equation, float *new_equation_err, int *sigs,
                                  float *equation_conv, float *equation_conv_err, float err_row_conv,
