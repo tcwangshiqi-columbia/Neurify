@@ -413,7 +413,6 @@ int forward_prop_interval_equation_conv_lp(struct NNet *nnet,
                          int target, int sig,
                          lprec *lp, int *rule_num)
 {
-    int i,j,k,layer;
     int node_cnt=0;
     int need_to_split=0;
 
@@ -447,7 +446,7 @@ int forward_prop_interval_equation_conv_lp(struct NNet *nnet,
 
     float tempVal_upper=0.0, tempVal_lower=0.0;
     
-    for (i=0; i < nnet->inputSize; i++)
+    for (int i=0; i < nnet->inputSize; i++)
     {
         equation[i*(inputSize+1)+i] = 1;
     }    
@@ -457,7 +456,7 @@ int forward_prop_interval_equation_conv_lp(struct NNet *nnet,
     //err_row is the number that is wrong before current layer
     int err_row=0;
     int wrong_node_length = 0;
-    for (layer = 0; layer<(numLayers); layer++)
+    for (int layer = 0; layer<(numLayers); layer++)
     {
         //printf("sig:%d, layer:%d\n",sig, layer );
         
@@ -549,7 +548,7 @@ int forward_prop_interval_equation_conv_lp(struct NNet *nnet,
         else{
 
             //printf("last layer\n");
-            for (i=0; i < nnet->layerSizes[layer+1]; i++){
+            for (int i=0; i < nnet->layerSizes[layer+1]; i++){
 
                 if(NEED_PRINT){
                     relu_bound(&sInterval, nnet, input, i, layer, err_row,\
@@ -742,8 +741,7 @@ int split_interval_conv_lp(struct NNet *nnet, struct Interval *input,
     int maxLayerSize = nnet->maxLayerSize;
     int outputSize = nnet->outputSize;
 
-    int target = 0;
-    target = pop_queue(wrong_nodes, wrong_node_length);
+    int target = pop_queue(wrong_nodes, wrong_node_length);
     // printf("%d, %d\n", wrong_nodes[0], wrong_nodes[1]);
     int sig = 0;
     int isOverlap1, isOverlap2;
@@ -796,7 +794,7 @@ int split_interval_conv_lp(struct NNet *nnet, struct Interval *input,
     sigs1[target] = 1;
     sigs2[target] = 0;
     pthread_mutex_lock(&lock);
-    if((depth <= avg_depth- MIN_DEPTH_PER_THREAD) &&\
+    if((depth <= avg_depth - MIN_DEPTH_PER_THREAD) &&\
             (count<=MAX_THREAD) && !NEED_FOR_ONE_RUN) {
         pthread_mutex_unlock(&lock);
         pthread_t workers1, workers2;
