@@ -466,19 +466,6 @@ bool forward_prop_interval_equation_conv_lp(struct NNet *nnet,
         struct Matrix weights = nnet->weights[layer];
         struct Matrix bias = nnet->bias[layer];
         
-        // if(nnet->layerTypes[layer] == 0){
-            // printf("fc layer");
-            // struct Matrix weights = nnet->weights[layer];
-            // struct Matrix bias = nnet->bias[layer];
-
-            // sym_fc_layer(&sInterval, nnet, layer, err_row);
-
-        // }
-        // else{
-            // printf("conv layer\n");
-            // sym_conv_layer(&sInterval, nnet, layer, err_row);
-        // }
-        
         if (CHECK_ADV_MODE){
             if(layer>0 && nnet->layerTypes[layer]==0 &&\
                         nnet->layerTypes[layer-1]==1){
@@ -525,11 +512,7 @@ bool forward_prop_interval_equation_conv_lp(struct NNet *nnet,
             else{
                 if(nnet->layerTypes[layer] == 0){
                     //printf("fc layer");
-                    struct Matrix weights = nnet->weights[layer];
-                    struct Matrix bias = nnet->bias[layer];
-
                     sym_fc_layer(&sInterval, nnet, layer, err_row);
-
                 }
                 else{
                     //printf("conv layer\n");
