@@ -42,7 +42,6 @@ struct NNet *load_conv_network(const char* filename, int img)
     int bufferSize = 650000;
     char *buffer = (char*)malloc(sizeof(char)*bufferSize);
     char *record, *line;
-    int i=0, layer=0, row=0, j=0, param=0;
 
     struct NNet *nnet = (struct NNet*)malloc(sizeof(struct NNet));
 
@@ -62,7 +61,7 @@ struct NNet *load_conv_network(const char* filename, int img)
     nnet->layerSizes = (int*)malloc(sizeof(int)*(nnet->numLayers+1));
     line = fgets(buffer,bufferSize,fstream);
     record = strtok(line,",\n");
-    for (i = 0; i<((nnet->numLayers)+1); i++)
+    for (int i = 0; i<((nnet->numLayers)+1); i++)
     {
         nnet->layerSizes[i] = atoi(record);
         record = strtok(NULL,",\n");
@@ -75,7 +74,7 @@ struct NNet *load_conv_network(const char* filename, int img)
     nnet->convLayersNum = 0;
     line = fgets(buffer,bufferSize,fstream);
     record = strtok(line,",\n");
-    for (i = 0; i<nnet->numLayers; i++)
+    for (int i = 0; i<nnet->numLayers; i++)
     {
         nnet->layerTypes[i] = atoi(record);
         if(nnet->layerTypes[i]==1){
@@ -85,14 +84,14 @@ struct NNet *load_conv_network(const char* filename, int img)
     }
     //initial convlayer parameters
     nnet->convLayer = (int**)malloc(sizeof(int *)*nnet->convLayersNum);
-    for(i=0; i<nnet->convLayersNum;i++){
+    for(int i = 0; i < nnet->convLayersNum; i++){
         nnet->convLayer[i] = (int*)malloc(sizeof(int)*5);
     }
 
     for(int cl=0;cl<nnet->convLayersNum;cl++){
         line = fgets(buffer,bufferSize,fstream);
         record = strtok(line,",\n");
-        for (i = 0; i<5; i++){
+        for (int i = 0; i<5; i++){
             nnet->convLayer[cl][i] = atoi(record);
             //printf("%d,", nnet->convLayer[cl][i]);
             record = strtok(NULL,",\n");
@@ -107,16 +106,16 @@ struct NNet *load_conv_network(const char* filename, int img)
     //The third dimension will be the number of neurons in that layer
     //The fourth dimension will be the number of inputs to that layer
     //
-    //Note that the bias array will have only number per neuron, so
+    //Note that the bias array will have only one number per neuron, so
     //    its fourth dimension will always be one
     //
     nnet->matrix = (float****)malloc(sizeof(float *)*(nnet->numLayers));
-    for (layer = 0; layer<nnet->numLayers; layer++){
+    for (int layer = 0; layer<nnet->numLayers; layer++){
         if(nnet->layerTypes[layer]==0){
             nnet->matrix[layer] = (float***)malloc(sizeof(float *)*2);
             nnet->matrix[layer][0] = (float**)malloc(sizeof(float *)*nnet->layerSizes[layer+1]);
             nnet->matrix[layer][1] = (float**)malloc(sizeof(float *)*nnet->layerSizes[layer+1]);
-            for (row = 0; row<nnet->layerSizes[layer+1]; row++){
+            for (int row = 0; row < nnet->layerSizes[layer+1]; row++){
                 nnet->matrix[layer][0][row] = (float*)malloc(sizeof(float)*nnet->layerSizes[layer]);
                 nnet->matrix[layer][1][row] = (float*)malloc(sizeof(float));
             }
@@ -124,7 +123,7 @@ struct NNet *load_conv_network(const char* filename, int img)
     }
 
     nnet->conv_matrix = (float****)malloc(sizeof(float *)*nnet->convLayersNum);
-    for(layer=0;layer<nnet->convLayersNum;layer++){
+    for(int layer = 0; layer < nnet->convLayersNum; layer++){
         int out_channel = nnet->convLayer[layer][0];
         int in_channel = nnet->convLayer[layer][1];
         int kernel_size = nnet->convLayer[layer][2]*nnet->convLayer[layer][2];
@@ -139,15 +138,15 @@ struct NNet *load_conv_network(const char* filename, int img)
     }
 
     nnet->conv_bias = (float**)malloc(sizeof(float*)*nnet->convLayersNum);
-    for(layer=0;layer<nnet->convLayersNum;layer++){
+    for(int layer = 0; layer < nnet->convLayersNum; layer++){
         int out_channel = nnet->convLayer[layer][0];
         nnet->conv_bias[layer] = (float*)malloc(sizeof(float)*out_channel);
     }
     
-    layer = 0;
-    param = 0;
-    i=0;
-    j=0;
+    int layer = 0;
+    int param = 0;
+    int i=0;
+    int j=0;
     char *tmpptr=NULL;
 
     int oc=0, ic=0, kernel=0;
