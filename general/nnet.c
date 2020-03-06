@@ -265,8 +265,7 @@ struct NNet *load_conv_network(const char* filename, int img)
             nnet->target = o;
         }
     }
-    float orig_weights[nnet->layerSizes[layer]];
-    float orig_bias;
+
     struct Matrix *weights = malloc(nnet->numLayers*sizeof(struct Matrix));
     struct Matrix *bias = malloc(nnet->numLayers*sizeof(struct Matrix));
 
@@ -276,58 +275,20 @@ struct NNet *load_conv_network(const char* filename, int img)
         weights[layer].col = nnet->layerSizes[layer+1];
         weights[layer].data =\
                     (float*)malloc(sizeof(float)*weights[layer].row * weights[layer].col);
-        int n=0;
-        if(0){
-            /*
-             * Make the weights of last layer to minus the target one.
-             */
-            if(layer==nnet->numLayers-1){
-                orig_bias = nnet->matrix[layer][1][nnet->target][0];
-                memcpy(orig_weights, nnet->matrix[layer][0][nnet->target],\
-                                     sizeof(float)*nnet->layerSizes[layer]);
-                for(int i=0;i<weights[layer].col;i++){
-                    for(int j=0;j<weights[layer].row;j++){
-                        weights[layer].data[n] = nnet->matrix[layer][0][i][j]-orig_weights[j];
-                        n++;
-                    }
-                }
-                bias[layer].col = nnet->layerSizes[layer+1];
-                bias[layer].row = (float)1;
-                bias[layer].data = (float*)malloc(sizeof(float)*bias[layer].col);
-                for(int i=0;i<bias[layer].col;i++){
-                    bias[layer].data[i] = nnet->matrix[layer][1][i][0]-orig_bias;
-                }
-            }
-            else{
-                for(int i=0;i<weights[layer].col;i++){
-                    for(int j=0;j<weights[layer].row;j++){
-                        weights[layer].data[n] = nnet->matrix[layer][0][i][j];
-                        n++;
-                    }
-                }
-                bias[layer].col = nnet->layerSizes[layer+1];
-                bias[layer].row = (float)1;
-                bias[layer].data = (float*)malloc(sizeof(float)*bias[layer].col);
-                for(int i=0;i<bias[layer].col;i++){
-                    bias[layer].data[i] = nnet->matrix[layer][1][i][0];
-                }
-            }
-        }
-        else{
-            for(int i=0;i<weights[layer].col;i++){
-                for(int j=0;j<weights[layer].row;j++){
-                    weights[layer].data[n] = nnet->matrix[layer][0][i][j];
-                    n++;
-                }
-            }
-            bias[layer].col = nnet->layerSizes[layer+1];
-            bias[layer].row = (float)1;
-            bias[layer].data = (float*)malloc(sizeof(float)*bias[layer].col);
-            for(int i=0;i<bias[layer].col;i++){
-                bias[layer].data[i] = nnet->matrix[layer][1][i][0];
-            }
-        }
         
+        int n=0;
+        for(int i=0;i<weights[layer].col;i++){
+            for(int j=0;j<weights[layer].row;j++){
+                weights[layer].data[n] = nnet->matrix[layer][0][i][j];
+                n++;
+            }
+        }
+        bias[layer].col = nnet->layerSizes[layer+1];
+        bias[layer].row = (float)1;
+        bias[layer].data = (float*)malloc(sizeof(float)*bias[layer].col);
+        for(int i=0;i<bias[layer].col;i++){
+            bias[layer].data[i] = nnet->matrix[layer][1][i][0];
+        }
     } 
     nnet->weights = weights;
     nnet->bias = bias;
