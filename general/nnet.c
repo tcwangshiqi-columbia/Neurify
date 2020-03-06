@@ -258,8 +258,9 @@ struct NNet *load_conv_network(const char* filename, int img)
     evaluate_conv(nnet, &input_prev_matrix, &output);
     printMatrix(&output);
     
-    float largest = -100000.0;
-    for(int o=0;o<nnet->outputSize;o++){
+    float largest = output.data[0];
+    nnet->target = 0;
+    for(int o=1;o<nnet->outputSize;o++){
         if(output.data[o]>largest){
             largest = output.data[o];
             nnet->target = o;
