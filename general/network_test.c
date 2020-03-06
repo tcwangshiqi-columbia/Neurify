@@ -212,9 +212,6 @@ int main( int argc, char *argv[]){
         memset(wrong_low_s_up,0,sizeof(float)*total_nodes);
         memset(wrong_low_s_low,0,sizeof(float)*total_nodes);
 
-        int sigs[total_nodes];
-        memset(sigs, -1, sizeof(int)*total_nodes);
-
         float grad[total_nodes];
         memset(grad, 0, sizeof(float)*total_nodes);
 
@@ -305,6 +302,10 @@ int main( int argc, char *argv[]){
             else{
                 printf("Regular Mode (No CHECK_ADV_MODE)\n");
             }
+
+            int sigs[total_nodes];
+            memset(sigs, -1, sizeof(int)*total_nodes);
+
             // split
             is_overlap = split_interval_conv_lp(nnet, &input_interval,\
                                 output_map,\
