@@ -309,7 +309,7 @@ int sym_relu_lp(struct SymInterval *sInterval,
     for (int i=0; i < nnet->layerSizes[layer+1]; i++)
     {
 
-        relu_bound(sInterval, new_sInterval, nnet, input, i, layer, err_row,\
+        relu_bound(new_sInterval, nnet, input, i, layer, err_row,\
                     &tempVal_lower, &tempVal_upper);
 
         if(*node_cnt == target){
@@ -538,7 +538,7 @@ bool forward_prop_interval_equation_conv_lp(struct NNet *nnet,
             for (int i=0; i < nnet->layerSizes[layer+1]; i++){
 
                 if(NEED_PRINT){
-                    relu_bound(&sInterval, &new_sInterval, nnet, input, i, layer, err_row,\
+                    relu_bound(&new_sInterval, nnet, input, i, layer, err_row,\
                             &tempVal_lower, &tempVal_upper);
                     printf("target:%d, sig:%d, node:%d, l:%f, u:%f\n",\
                                 target, sig, i, tempVal_lower, tempVal_upper);

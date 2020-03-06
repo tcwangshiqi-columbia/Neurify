@@ -1116,7 +1116,7 @@ void sym_conv_layer(struct SymInterval *sInterval,
 
 // calculate the upper and lower bound for the ith node in each layer
 void relu_bound(struct SymInterval *sInterval,
-                struct SymInterval *new_sInterval, struct NNet *nnet, 
+                struct NNet *nnet, 
                 struct Interval *input, int i, int layer, int err_row, 
                 float *low, float *up){
     float tempVal_upper=0.0, tempVal_lower=0.0;
@@ -1128,7 +1128,7 @@ void relu_bound(struct SymInterval *sInterval,
     }
     
     for(int k=0;k<inputSize;k++){
-        float weight = (*new_sInterval->eq_matrix).data[k+i*(inputSize+1)];
+        float weight = (*sInterval->eq_matrix).data[k+i*(inputSize+1)];
         if(weight>=0){
             tempVal_lower +=\
                     weight * input->lower_matrix.data[k]-needed_outward_round;
@@ -1145,13 +1145,13 @@ void relu_bound(struct SymInterval *sInterval,
     
 
     
-    tempVal_lower += (*new_sInterval->eq_matrix).data[inputSize+i*(inputSize+1)];
-    tempVal_upper += (*new_sInterval->eq_matrix).data[inputSize+i*(inputSize+1)];
+    tempVal_lower += (*sInterval->eq_matrix).data[inputSize+i*(inputSize+1)];
+    tempVal_upper += (*sInterval->eq_matrix).data[inputSize+i*(inputSize+1)];
 
     if(err_row>0){
         
         for(int err_ind=0;err_ind<err_row;err_ind++){
-            float error_value = (*new_sInterval->err_matrix).data[err_ind+i*ERR_NODE];
+            float error_value = (*sInterval->err_matrix).data[err_ind+i*ERR_NODE];
             if(error_value > 0){
                 tempVal_upper += error_value;
             }
@@ -1189,7 +1189,7 @@ int sym_relu_layer(struct SymInterval *sInterval,
     for (int i=0; i < nnet->layerSizes[layer+1]; i++)
     {
 
-        relu_bound(sInterval, new_sInterval, nnet, input, i, layer, err_row,\
+        relu_bound(new_sInterval, nnet, input, i, layer, err_row,\
                     &tempVal_lower, &tempVal_upper);
         
         //Perform ReLU relaxation
@@ -1304,8 +1304,6 @@ void forward_prop_interval_equation_linear_conv(struct NNet *nnet,
                 &new_equation_matrix, &new_equation_err_matrix
             };
 
-    float tempVal_upper=0.0, tempVal_lower=0.0;
-    
     for (int i=0; i < nnet->inputSize; i++)
     {
         equation[i*(inputSize+1)+i] = 1;

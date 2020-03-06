@@ -72,7 +72,7 @@ void sym_fc_layer(struct SymInterval *sInterval, struct SymInterval *new_sInterv
 
 void sym_conv_layer(struct SymInterval *sInterval, struct SymInterval *new_sInterval, struct NNet *nnet, int layer, int err_row);
 
-void relu_bound(struct SymInterval *sInterval, struct SymInterval *new_sInterval, struct NNet *nnet, 
+void relu_bound(struct SymInterval *sInterval, struct NNet *nnet, 
                 struct Interval *input, int i, int layer, int err_row, 
                 float *low, float *up);
 
