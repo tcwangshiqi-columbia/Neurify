@@ -131,7 +131,7 @@ int main( int argc, char *argv[]){
     for(int img=image_start; img<image_start+image_length; img++){
 
         adv_found = false;
-        can_t_prove=0;
+        can_t_prove = false;
         printf("start loading network\n");
         struct NNet* nnet = load_conv_network(FULL_NET_PATH, img);
         printf("done loading network\n");

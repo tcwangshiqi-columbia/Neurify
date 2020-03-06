@@ -19,7 +19,7 @@ int NEED_PRINT = 0;
 int NEED_FOR_ONE_RUN = 0;
 int input_depth = 0;
 bool adv_found = false;
-int can_t_prove = 0;
+bool can_t_prove = false;
 int count = 0;
 int thread_tot_cnt  = 0;
 int smear_cnt = 0;
@@ -258,7 +258,7 @@ void check_adv1(struct NNet* nnet, struct Matrix *adv){
 int pop_queue(int *wrong_nodes, int *wrong_node_length){
     if(*wrong_node_length==0){
         printf("underflow\n");
-        can_t_prove = 1;
+        can_t_prove = true;
         return -1;
     }
     int node = wrong_nodes[0];
@@ -702,7 +702,7 @@ int split_interval_conv_lp(struct NNet *nnet, struct Interval *input,
     }
     
     if(depth>=MAX_DEPTH){
-        can_t_prove = 1;
+        can_t_prove = true;
     }
 
     if(can_t_prove){
