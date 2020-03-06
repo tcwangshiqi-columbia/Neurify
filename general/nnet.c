@@ -1002,6 +1002,14 @@ void sym_fc_layer(struct SymInterval *sInterval, struct NNet *nnet,
         (*sInterval->new_err_matrix).row = (*sInterval->err_matrix).row = err_row;
     }
 
+    int inputSize = nnet->inputSize;
+    if(nnet->layerTypes[layer] == 0){
+        for (int i=0; i < nnet->layerSizes[layer]; i++){
+            (*sInterval->new_eq_matrix).data[inputSize+i*(inputSize+1)] +=\
+                bias.data[i];
+        }
+    }
+
     (*sInterval->err_matrix).col = (*sInterval->new_err_matrix).col =\
                         nnet->layerSizes[layer+1];
 }
@@ -1181,12 +1189,7 @@ void relu_bound(struct SymInterval *sInterval, struct NNet *nnet,
     }
     
 
-    if(nnet->layerTypes[layer] == 0){
     
-        (*sInterval->new_eq_matrix).data[inputSize+i*(inputSize+1)] +=\
-                                    nnet->bias[layer].data[i];
-    }
-
     tempVal_lower += (*sInterval->new_eq_matrix).data[inputSize+i*(inputSize+1)];
     tempVal_upper += (*sInterval->new_eq_matrix).data[inputSize+i*(inputSize+1)];
 
