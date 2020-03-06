@@ -219,10 +219,6 @@ int main( int argc, char *argv[]){
         int full_wrong_node_length = 0;
         
         ERR_NODE = 5000;
-        float *equation_err = (float*)malloc(sizeof(float) *\
-                                ERR_NODE*maxLayerSize);
-        float *new_equation_err = (float*)malloc(sizeof(float) *\
-                                ERR_NODE*maxLayerSize);
         // the equation of last convolutional layer 
         float *equation_conv = (float*)malloc(sizeof(float) *\
                                 (inputSize+1)*maxLayerSize);
@@ -282,11 +278,6 @@ int main( int argc, char *argv[]){
         set_presolve(lp, PRESOLVE_LINDEP, get_presolveloops(lp));
         //write_LP(lp, stdout);
 
-        float *equation = (float*)malloc(sizeof(float) *\
-                                (inputSize+1)*maxLayerSize);
-        float *new_equation = (float*)malloc(sizeof(float) *\
-                                (inputSize+1)*maxLayerSize);
-
         gettimeofday(&start, NULL);
         int depth = 0;
         if(is_overlap){
@@ -307,8 +298,6 @@ int main( int argc, char *argv[]){
             // split
             is_overlap = split_interval_conv_lp(nnet, &input_interval,\
                                 output_map,\
-                                equation, equation_err,\
-                                new_equation, new_equation_err,\
                                 wrong_nodes_map, &wrong_node_length, sigs,\
                                 equation_conv, equation_conv_err,\
                                 err_row_conv,\
@@ -346,10 +335,6 @@ int main( int argc, char *argv[]){
         printf("time: %f \n\n", time_spent);
         destroy_conv_network(nnet);
 
-        free(equation);
-        free(new_equation);
-        free(equation_err);
-        free(new_equation_err);
         free(equation_conv);
         free(equation_conv_err);
         delete_lp(lp);
