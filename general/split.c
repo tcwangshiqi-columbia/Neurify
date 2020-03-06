@@ -288,7 +288,9 @@ int min(float a, float b){
 }
 
 
-int sym_relu_lp(struct SymInterval *sInterval, struct Interval *input,
+int sym_relu_lp(struct SymInterval *sInterval,
+                    struct SymInterval *new_sInterval,
+                    struct Interval *input,
                     int *output_map,
                     struct NNet *nnet,
                     int layer, int err_row,
@@ -307,23 +309,23 @@ int sym_relu_lp(struct SymInterval *sInterval, struct Interval *input,
     for (int i=0; i < nnet->layerSizes[layer+1]; i++)
     {
 
-        relu_bound(sInterval, nnet, input, i, layer, err_row,\
+        relu_bound(sInterval, new_sInterval, nnet, input, i, layer, err_row,\
                     &tempVal_lower, &tempVal_upper);
 
         if(*node_cnt == target){
             if(sig==1){
-                set_node_constraints(lp, (*sInterval->new_eq_matrix).data,\
+                set_node_constraints(lp, (*new_sInterval->eq_matrix).data,\
                         i*(inputSize+1), rule_num, sig, inputSize);
             }
             else{
-                set_node_constraints(lp, (*sInterval->new_eq_matrix).data,\
+                set_node_constraints(lp, (*new_sInterval->eq_matrix).data,\
                         i*(inputSize+1), rule_num, sig, inputSize);
                 for(int k=0;k<inputSize+1;k++){
-                    (*sInterval->new_eq_matrix).data[k+i*(inputSize+1)] = 0;
+                    (*new_sInterval->eq_matrix).data[k+i*(inputSize+1)] = 0;
                 }
                 if(err_row>0){
                     for(int err_ind=0;err_ind<err_row;err_ind++){
-                        (*sInterval->new_err_matrix).data[err_ind+i*ERR_NODE] = 0;
+                        (*new_sInterval->err_matrix).data[err_ind+i*ERR_NODE] = 0;
                     }
                 }
             }
@@ -339,11 +341,11 @@ int sym_relu_lp(struct SymInterval *sInterval, struct Interval *input,
         if(sigs[*node_cnt] == 0 && *node_cnt != target){
             //printf("sigs0:%d\n", node_cnt);
             for(int k=0;k<inputSize+1;k++){
-                (*sInterval->new_eq_matrix).data[k+i*(inputSize+1)] = 0;
+                (*new_sInterval->eq_matrix).data[k+i*(inputSize+1)] = 0;
             }
             if(err_row>0){
                 for(int err_ind=0;err_ind<err_row;err_ind++){
-                    (*sInterval->new_err_matrix).data[err_ind+i*ERR_NODE] = 0;
+                    (*new_sInterval->err_matrix).data[err_ind+i*ERR_NODE] = 0;
                 }
             }
             *node_cnt += 1;
@@ -360,11 +362,11 @@ int sym_relu_lp(struct SymInterval *sInterval, struct Interval *input,
         if (tempVal_upper<=0.0){
             tempVal_upper = 0.0;
             for(int k=0;k<inputSize+1;k++){
-                (*sInterval->new_eq_matrix).data[k+i*(inputSize+1)] = 0;
+                (*new_sInterval->eq_matrix).data[k+i*(inputSize+1)] = 0;
             }
             if(err_row>0){
                 for(int err_ind=0;err_ind<err_row;err_ind++){
-                    (*sInterval->new_err_matrix).data[err_ind+i*ERR_NODE] = 0;
+                    (*new_sInterval->err_matrix).data[err_ind+i*ERR_NODE] = 0;
                 }
             }
         }
@@ -378,20 +380,20 @@ int sym_relu_lp(struct SymInterval *sInterval, struct Interval *input,
             //printf("wrong: %d,%d:%f, %f\n",layer, i, tempVal_lower, tempVal_upper);
             
             for(int k=0;k<inputSize+1;k++){
-                (*sInterval->new_eq_matrix).data[k+i*(inputSize+1)] =\
-                                (*sInterval->new_eq_matrix).data[k+i*(inputSize+1)]*\
+                (*new_sInterval->eq_matrix).data[k+i*(inputSize+1)] =\
+                                (*new_sInterval->eq_matrix).data[k+i*(inputSize+1)]*\
                                 tempVal_upper / (tempVal_upper - tempVal_lower);
             }
             if(err_row>0){
                 //printf("err_row:%d ul: %f\n",err_row,  tempVal_upper /\
                      (tempVal_upper - tempVal_lower));
                 for(int err_ind=0;err_ind<err_row;err_ind++){
-                    (*sInterval->new_err_matrix).data[err_ind+i*ERR_NODE] *=\
+                    (*new_sInterval->err_matrix).data[err_ind+i*ERR_NODE] *=\
                                 tempVal_upper / (tempVal_upper - tempVal_lower);
                 }
             }
             
-            (*sInterval->new_err_matrix).data[*wrong_node_length-1+i*ERR_NODE] -=\
+            (*new_sInterval->err_matrix).data[*wrong_node_length-1+i*ERR_NODE] -=\
                                                 tempVal_upper*tempVal_lower/\
                                                 (tempVal_upper-tempVal_lower);
         }
@@ -439,9 +441,11 @@ bool forward_prop_interval_equation_conv_lp(struct NNet *nnet,
                 (float*)new_equation_err, ERR_NODE, inputSize
             };  
 
-     struct SymInterval sInterval = {
-                &equation_matrix, &new_equation_matrix,
-                &equation_err_matrix, &new_equation_err_matrix
+    struct SymInterval sInterval = {
+                &equation_matrix, &equation_err_matrix
+            };
+    struct SymInterval new_sInterval = {
+                &new_equation_matrix, &new_equation_err_matrix
             };
 
     float tempVal_upper=0.0, tempVal_lower=0.0;
@@ -489,7 +493,7 @@ bool forward_prop_interval_equation_conv_lp(struct NNet *nnet,
                 continue;
             }
             else{
-                sym_fc_layer(&sInterval, nnet, layer, err_row);
+                sym_fc_layer(&sInterval, &new_sInterval, nnet, layer, err_row);
             }
         }
         else{
@@ -512,11 +516,11 @@ bool forward_prop_interval_equation_conv_lp(struct NNet *nnet,
             else{
                 if(nnet->layerTypes[layer] == 0){
                     //printf("fc layer");
-                    sym_fc_layer(&sInterval, nnet, layer, err_row);
+                    sym_fc_layer(&sInterval, &new_sInterval, nnet, layer, err_row);
                 }
                 else{
                     //printf("conv layer\n");
-                    sym_conv_layer(&sInterval, nnet, layer, err_row);
+                    sym_conv_layer(&sInterval, &new_sInterval, nnet, layer, err_row);
                 }
             }
             
@@ -524,7 +528,7 @@ bool forward_prop_interval_equation_conv_lp(struct NNet *nnet,
         
         if(layer<(numLayers-1)){
             // printf("relu layer\n");
-            sym_relu_lp(&sInterval, input, output_map, nnet, layer,\
+            sym_relu_lp(&sInterval, &new_sInterval, input, output_map, nnet, layer,\
                         err_row, &wrong_node_length, &node_cnt,\
                         target, sig, sigs, lp, rule_num);
         }
@@ -534,7 +538,7 @@ bool forward_prop_interval_equation_conv_lp(struct NNet *nnet,
             for (int i=0; i < nnet->layerSizes[layer+1]; i++){
 
                 if(NEED_PRINT){
-                    relu_bound(&sInterval, nnet, input, i, layer, err_row,\
+                    relu_bound(&sInterval, &new_sInterval, nnet, input, i, layer, err_row,\
                             &tempVal_lower, &tempVal_upper);
                     printf("target:%d, sig:%d, node:%d, l:%f, u:%f\n",\
                                 target, sig, i, tempVal_lower, tempVal_upper);

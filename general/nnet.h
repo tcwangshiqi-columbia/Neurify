@@ -63,22 +63,20 @@ struct NNet
 struct SymInterval
 {
     struct Matrix *eq_matrix;
-    struct Matrix *new_eq_matrix;
     struct Matrix *err_matrix;
-    struct Matrix *new_err_matrix;
 };
 
 
-void sym_fc_layer(struct SymInterval *sInterval, struct NNet *nnet, int layer, int err_row);
+void sym_fc_layer(struct SymInterval *sInterval, struct SymInterval *new_sInterval, struct NNet *nnet, int layer, int err_row);
 
 
-void sym_conv_layer(struct SymInterval *sInterval, struct NNet *nnet, int layer, int err_row);
+void sym_conv_layer(struct SymInterval *sInterval, struct SymInterval *new_sInterval, struct NNet *nnet, int layer, int err_row);
 
-void relu_bound(struct SymInterval *sInterval, struct NNet *nnet, 
+void relu_bound(struct SymInterval *sInterval, struct SymInterval *new_sInterval, struct NNet *nnet, 
                 struct Interval *input, int i, int layer, int err_row, 
                 float *low, float *up);
 
-int sym_relu_layer(struct SymInterval *sInterval, struct Interval *input, struct Interval *output,
+int sym_relu_layer(struct SymInterval *sInterva, struct SymInterval *new_sInterval, struct Interval *input, struct Interval *output,
                     struct NNet *nnet, int R[][nnet->maxLayerSize],
                     int layer, int err_row,
                     int *wrong_nodes, int * wrong_node_length, int *node_cnt);
