@@ -619,7 +619,7 @@ bool forward_prop_interval_equation_conv_lp(struct NNet *nnet,
 }
 
 
-int direct_run_check_conv_lp(struct NNet *nnet, struct Interval *input,
+bool direct_run_check_conv_lp(struct NNet *nnet, struct Interval *input,
                      bool *output_map, float *equation, float *equation_err,
                      float *new_equation, float *new_equation_err,
                      int *wrong_nodes, int *wrong_node_length, int *sigs,
@@ -630,12 +630,12 @@ int direct_run_check_conv_lp(struct NNet *nnet, struct Interval *input,
     pthread_mutex_lock(&lock);
     if(adv_found){
         pthread_mutex_unlock(&lock);
-        return 0;
+        return false;
     }
 
     if(can_t_prove){
         pthread_mutex_unlock(&lock);
-        return 0;
+        return false;
     }
     pthread_mutex_unlock(&lock);
 
@@ -643,9 +643,7 @@ int direct_run_check_conv_lp(struct NNet *nnet, struct Interval *input,
         solve(lp);
     }
 
-    int isOverlap = 0;
-
-    isOverlap = forward_prop_interval_equation_conv_lp(nnet, input,\
+    bool isOverlap = forward_prop_interval_equation_conv_lp(nnet, input,\
                             output_map, equation, equation_err,\
                             new_equation, new_equation_err,\
                             sigs, equation_conv, equation_conv_err,\
