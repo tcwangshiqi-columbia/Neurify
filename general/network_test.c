@@ -281,8 +281,6 @@ int main( int argc, char *argv[]){
         set_input_constraints(&input_interval, lp, &rule_num);
         set_presolve(lp, PRESOLVE_LINDEP, get_presolveloops(lp));
         //write_LP(lp, stdout);
-        int target = 0;
-        int sig = 0;
 
         float *equation = (float*)malloc(sizeof(float) *\
                                 (inputSize+1)*maxLayerSize);
@@ -364,7 +362,7 @@ int main( int argc, char *argv[]){
                 adv_num, non_adv, no_prove);
     printf("avg wrong node length:%f\n", avg_wrong_length);
     if(no_prove>0){
-        printf("image that have not been proved:\n");
+        printf("images that have not been proved:\n");
         for(int ind=0;ind<no_prove;ind++){
             printf("%d ", can_t_prove_list[ind]);
         }
