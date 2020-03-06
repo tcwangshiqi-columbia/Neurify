@@ -591,7 +591,13 @@ void initialize_input_interval(struct NNet* nnet,
     if(PROPERTY == 0){
         for(int i =0;i<inputSize;i++){
             u[i] = input[i]+INF;
+            if(u[i] > nnet->max) {
+                u[i] = nnet->max;
+            }
             l[i] = input[i]-INF;
+            if(l[i] < nnet->min) {
+                l[i] = nnet->min;
+            }
         }
     }
     else if(PROPERTY == 1){
@@ -651,7 +657,7 @@ void load_inputs(int img, int inputSize, float *input){
 void denormalize_input(struct NNet *nnet, struct Matrix *input){
     for (int i=0; i<nnet->inputSize;i++)
     {
-        input->data[i] = input->data[i]*(nnet->range) + nnet->mean;
+        input->data[i] = input->data[i] * (nnet->max - nnet->min) + nnet->min;
     }
 
     /*
@@ -667,20 +673,9 @@ void denormalize_input_interval(struct NNet *nnet, struct Interval *input){
 
 
 void normalize_input(struct NNet *nnet, struct Matrix *input){
-    for (int i=0; i<nnet->inputSize;i++)
+    for (int i = 0; i < nnet->inputSize; i++)
     {
-        if (input->data[i]>nnet->max)
-        {
-            input->data[i] = (nnet->max-nnet->mean)/(nnet->range);
-        }
-        else if (input->data[i]<nnet->min)
-        {
-            input->data[i] = (nnet->min-nnet->mean)/(nnet->range);
-        }
-        else
-        {
-            input->data[i] = (input->data[i]-nnet->mean)/(nnet->range);
-        }
+        input->data[i] = (input->data[i] - nnet->min) / (nnet->max - nnet->min);
     }
 
     /*
