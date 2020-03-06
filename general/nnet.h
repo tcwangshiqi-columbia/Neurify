@@ -27,7 +27,6 @@ extern struct timeval start,finish, last_finish;
 //Neural Network Struct
 struct NNet 
 {
-    int symmetric;     //1 if network is symmetric, 0 otherwise
     int numLayers;     //Number of layers in the network
     int inputSize;     //Number of inputs to the network
     int outputSize;    //Number of outputs to the network
@@ -47,8 +46,6 @@ struct NNet
 
     float min;      //Minimum value of inputs
     float max;     //Maximum value of inputs
-    float mean;     //Array of the means used to scale the inputs and outputs
-    float range;    //Array of the ranges used to scale the inputs and outputs
     float ****matrix; //4D jagged array that stores the weights and biases
                        //the neural network.
     struct Matrix* weights;

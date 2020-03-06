@@ -67,14 +67,10 @@ struct NNet *load_conv_network(const char* filename, int img)
         nnet->layerSizes[i] = atoi(record);
         record = strtok(NULL,",\n");
     }
-    //Load the symmetric paramter
-    nnet->symmetric = 0;
     //Load Min and Max values of inputs
     nnet->min = MIN_PIXEL;
     nnet->max = MAX_PIXEL;
-    //Load Mean and Range of inputs
-    nnet->mean = MIN_PIXEL;
-    nnet->range = MAX_PIXEL;
+    
     nnet->layerTypes = (int*)malloc(sizeof(int)*nnet->numLayers);
     nnet->convLayersNum = 0;
     line = fgets(buffer,bufferSize,fstream);
