@@ -690,7 +690,7 @@ int direct_run_check_conv_lp(struct NNet *nnet, struct Interval *input,
 }
 
 
-int split_interval_conv_lp(struct NNet *nnet, struct Interval *input,
+bool split_interval_conv_lp(struct NNet *nnet, struct Interval *input,
                      bool *output_map, float *equation, float *equation_err,
                      float *new_equation, float *new_equation_err,
                      int *wrong_nodes, int *wrong_node_length, int *sigs,
@@ -701,7 +701,7 @@ int split_interval_conv_lp(struct NNet *nnet, struct Interval *input,
     pthread_mutex_lock(&lock);
     if(adv_found){
         pthread_mutex_unlock(&lock);
-        return 0;
+        return false;
     }
     
     if(depth>=MAX_DEPTH){
@@ -710,7 +710,7 @@ int split_interval_conv_lp(struct NNet *nnet, struct Interval *input,
 
     if(can_t_prove){
         pthread_mutex_unlock(&lock);
-        return 0;
+        return false;
     }
     pthread_mutex_unlock(&lock);
 
@@ -730,7 +730,8 @@ int split_interval_conv_lp(struct NNet *nnet, struct Interval *input,
     int target = pop_queue(wrong_nodes, wrong_node_length);
     // printf("%d, %d\n", wrong_nodes[0], wrong_nodes[1]);
     int sig = 0;
-    int isOverlap1, isOverlap2;
+    bool isOverlap1 = false;
+    bool isOverlap2 = false;
 
     float *equation1 = (float*)malloc(sizeof(float) *\
                             (inputSize+1)*maxLayerSize);
@@ -828,8 +829,8 @@ int split_interval_conv_lp(struct NNet *nnet, struct Interval *input,
         count--;
         pthread_mutex_unlock(&lock);
 
-        isOverlap1 = 0;
-        isOverlap2 = 0;
+        isOverlap1 = false;
+        isOverlap2 = false;
 
     }
     else{
@@ -860,7 +861,7 @@ int split_interval_conv_lp(struct NNet *nnet, struct Interval *input,
     delete_lp(lp1);
     delete_lp(lp2);
 
-    int result = isOverlap1 || isOverlap2;
+    bool result = isOverlap1 || isOverlap2;
     depth --;
 
     if(!result && depth<=PROGRESS_DEPTH){

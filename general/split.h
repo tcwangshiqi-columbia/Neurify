@@ -107,7 +107,7 @@ int direct_run_check_conv_lp(struct NNet *nnet, struct Interval *input, bool *ou
                      int target, int sig,
                      lprec *lp, int *rule_num, int depth);
 
-int split_interval_conv_lp(struct NNet *nnet, struct Interval *input, bool *output_map,
+bool split_interval_conv_lp(struct NNet *nnet, struct Interval *input, bool *output_map,
                      float *equation, float *equation_err,
                      float *new_equation, float *new_equation_err,
                      int *wrong_nodes, int *wrong_node_length, int *sigs,
