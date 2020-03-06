@@ -291,7 +291,6 @@ int min(float a, float b){
 int sym_relu_lp(struct SymInterval *sInterval,
                     struct SymInterval *new_sInterval,
                     struct Interval *input,
-                    int *output_map,
                     struct NNet *nnet,
                     int layer, int err_row,
                     int*wrong_node_length, int *node_cnt,
@@ -407,7 +406,7 @@ int sym_relu_lp(struct SymInterval *sInterval,
 
 
 bool forward_prop_interval_equation_conv_lp(struct NNet *nnet,
-                         struct Interval *input, int *output_map,
+                         struct Interval *input, bool *output_map,
                          float *equation, float *equation_err,
                          float *new_equation, float *new_equation_err,
                          int *sigs, float *equation_conv,
@@ -528,7 +527,7 @@ bool forward_prop_interval_equation_conv_lp(struct NNet *nnet,
         
         if(layer<(numLayers-1)){
             // printf("relu layer\n");
-            sym_relu_lp(&sInterval, &new_sInterval, input, output_map, nnet, layer,\
+            sym_relu_lp(&sInterval, &new_sInterval, input, nnet, layer,\
                         err_row, &wrong_node_length, &node_cnt,\
                         target, sig, sigs, lp, rule_num);
         }
@@ -579,7 +578,7 @@ bool forward_prop_interval_equation_conv_lp(struct NNet *nnet,
                         if(!set_output_constraints(lp, new_equation, i*(inputSize+1),\
                                     rule_num, inputSize, MAX, &upper, input_prev)){
                             need_to_split = true;
-                            output_map[i] = 1;
+                            output_map[i] = true;
                             if(NEED_PRINT){
                                 printf("target:%d, sig:%d, node:%d--Objective value: %f\n",\
                                             target, sig, i, upper);
@@ -590,7 +589,7 @@ bool forward_prop_interval_equation_conv_lp(struct NNet *nnet,
                             }
                         }
                         else{
-                            output_map[i] = 0;
+                            output_map[i] = false;
                             if(NEED_PRINT){
                                 printf("target:%d, sig:%d, node:%d--unsat\n",\
                                             target, sig, i);
@@ -621,7 +620,7 @@ bool forward_prop_interval_equation_conv_lp(struct NNet *nnet,
 
 
 int direct_run_check_conv_lp(struct NNet *nnet, struct Interval *input,
-                     int *output_map, float *equation, float *equation_err,
+                     bool *output_map, float *equation, float *equation_err,
                      float *new_equation, float *new_equation_err,
                      int *wrong_nodes, int *wrong_node_length, int *sigs,
                      float *equation_conv, float *equation_conv_err, float err_row_conv,
@@ -692,7 +691,7 @@ int direct_run_check_conv_lp(struct NNet *nnet, struct Interval *input,
 
 
 int split_interval_conv_lp(struct NNet *nnet, struct Interval *input,
-                     int *output_map, float *equation, float *equation_err,
+                     bool *output_map, float *equation, float *equation_err,
                      float *new_equation, float *new_equation_err,
                      int *wrong_nodes, int *wrong_node_length, int *sigs,
                      float *equation_conv, float *equation_conv_err,
@@ -759,10 +758,10 @@ int split_interval_conv_lp(struct NNet *nnet, struct Interval *input,
     memcpy(wrong_nodes1, wrong_nodes, sizeof(int)*wrong_node_length1);
     memcpy(wrong_nodes2, wrong_nodes, sizeof(int)*wrong_node_length2);
 
-    int output_map1[outputSize];
-    int output_map2[outputSize];
-    memcpy(output_map1, output_map, sizeof(int)*outputSize);
-    memcpy(output_map2, output_map, sizeof(int)*outputSize);
+    bool output_map1[outputSize];
+    bool output_map2[outputSize];
+    memcpy(output_map1, output_map, sizeof(bool)*outputSize);
+    memcpy(output_map2, output_map, sizeof(bool)*outputSize);
 
     int sigSize = 0; 
     for(int layer=1;layer<nnet->numLayers;layer++){

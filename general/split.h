@@ -51,7 +51,7 @@ struct direct_run_check_conv_lp_args
 {
 	struct NNet *nnet;
 	struct Interval *input;
-	int *output_map;
+	bool *output_map;
 	float *equation;
 	float *equation_err;
 	float *new_equation;
@@ -92,14 +92,14 @@ int pop_queue(int *wrong_nodes, int *wrong_node_length);
 int search_queue(int *wrong_nodes, int *wrong_node_length, int node_cnt);
 
 
-bool forward_prop_interval_equation_conv_lp(struct NNet *nnet, struct Interval *input, int *output_map,
+bool forward_prop_interval_equation_conv_lp(struct NNet *nnet, struct Interval *input, bool *output_map,
                                  float *equation, float *equation_err,
                                  float *new_equation, float *new_equation_err, int *sigs,
                                  float *equation_conv, float *equation_conv_err, float err_row_conv,
                                  int target, int sig,
                                  lprec *lp, int *rule_num);
 
-int direct_run_check_conv_lp(struct NNet *nnet, struct Interval *input, int *output_map,
+int direct_run_check_conv_lp(struct NNet *nnet, struct Interval *input, bool *output_map,
                      float *equation, float *equation_err,
                      float *new_equation, float *new_equation_err,
                      int *wrong_nodes, int *wrong_node_length, int *sigs,
@@ -107,7 +107,7 @@ int direct_run_check_conv_lp(struct NNet *nnet, struct Interval *input, int *out
                      int target, int sig,
                      lprec *lp, int *rule_num, int depth);
 
-int split_interval_conv_lp(struct NNet *nnet, struct Interval *input, int *output_map,
+int split_interval_conv_lp(struct NNet *nnet, struct Interval *input, bool *output_map,
                      float *equation, float *equation_err,
                      float *new_equation, float *new_equation_err,
                      int *wrong_nodes, int *wrong_node_length, int *sigs,
