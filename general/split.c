@@ -330,45 +330,8 @@ int sym_relu_lp(struct SymInterval *sInterval,
             tempVal_lower = 0;
         }
 
-        //printf("relu relaxation\n");
-        if (tempVal_upper<=0.0){
-            tempVal_upper = 0.0;
-            for(int k=0;k<inputSize+1;k++){
-                (*new_sInterval->eq_matrix).data[k+i*(inputSize+1)] = 0;
-            }
-            if(err_row>0){
-                for(int err_ind=0;err_ind<err_row;err_ind++){
-                    (*new_sInterval->err_matrix).data[err_ind+i*ERR_NODE] = 0;
-                }
-            }
-        }
-        else if(tempVal_lower>=0.0){
-        }
-        else{
-            //wrong node length includes the wrong nodes in convolutional layers
-            //wrong_nodes[*wrong_node_length] = *node_cnt;
-            *wrong_node_length += 1;
-            wcnt += 1;
-            //printf("wrong: %d,%d:%f, %f\n",layer, i, tempVal_lower, tempVal_upper);
-            
-            for(int k=0;k<inputSize+1;k++){
-                (*new_sInterval->eq_matrix).data[k+i*(inputSize+1)] =\
-                                (*new_sInterval->eq_matrix).data[k+i*(inputSize+1)]*\
-                                tempVal_upper / (tempVal_upper - tempVal_lower);
-            }
-            if(err_row>0){
-                //printf("err_row:%d ul: %f\n",err_row,  tempVal_upper /\
-                     (tempVal_upper - tempVal_lower));
-                for(int err_ind=0;err_ind<err_row;err_ind++){
-                    (*new_sInterval->err_matrix).data[err_ind+i*ERR_NODE] *=\
-                                tempVal_upper / (tempVal_upper - tempVal_lower);
-                }
-            }
-            
-            (*new_sInterval->err_matrix).data[*wrong_node_length-1+i*ERR_NODE] -=\
-                                                tempVal_upper*tempVal_lower/\
-                                                (tempVal_upper-tempVal_lower);
-        }
+        relax_relu(nnet, new_sInterval, tempVal_lower, tempVal_upper, i,
+            err_row, wrong_node_length, &wcnt);
 
         *node_cnt += 1;
     }

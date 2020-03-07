@@ -1165,6 +1165,47 @@ void relu_bound(struct SymInterval *sInterval,
     *low = tempVal_lower;
 }
 
+int relax_relu(struct NNet *nnet, struct SymInterval *sym_interval,
+    float lower_bound, float upper_bound, int i,
+    int err_row, int *wrong_node_length, int *wcnt) {
+    int inputSize = nnet->inputSize;
+
+    //printf("relu relaxation\n");
+    if (upper_bound<=0.0){
+        upper_bound = 0.0;
+        for(int k=0;k<inputSize+1;k++){
+            (*sym_interval->eq_matrix).data[k+i*(inputSize+1)] = 0;
+        }
+        for(int err_ind=0;err_ind<err_row;err_ind++){
+            (*sym_interval->err_matrix).data[err_ind+i*ERR_NODE] = 0;
+        }
+        return 0;
+    }
+    else if(lower_bound>=0.0){
+        return 2;
+    }
+    else{
+        //wrong node length includes the wrong nodes in convolutional layers
+        *wrong_node_length += 1;
+        *wcnt += 1;
+        //printf("wrong: %d,%d:%f, %f\n",layer, i, lower_bound, upper_bound);
+        
+        for(int k=0;k<inputSize+1;k++){
+            (*sym_interval->eq_matrix).data[k+i*(inputSize+1)] *=\
+                            upper_bound / (upper_bound - lower_bound);
+        }
+        for(int err_ind=0;err_ind<err_row;err_ind++){
+            (*sym_interval->err_matrix).data[err_ind+i*ERR_NODE] *=\
+                        upper_bound / (upper_bound - lower_bound);
+        }
+        
+        (*sym_interval->err_matrix).data[*wrong_node_length-1+i*ERR_NODE] -=\
+                                            upper_bound*lower_bound/\
+                                            (upper_bound-lower_bound);
+        return 1;
+    }
+}
+
 
 // relax the relu layers and get the new symbolic equations
 int sym_relu_layer(struct SymInterval *sInterval,
@@ -1199,45 +1240,14 @@ int sym_relu_layer(struct SymInterval *sInterval,
             output->lower_matrix.data[i] = tempVal_lower;
         }
         else {
-            if (tempVal_upper<=0.0){
-                tempVal_upper = 0.0;
-                for(int k=0;k<inputSize+1;k++){
-                    (*new_sInterval->eq_matrix).data[k+i*(inputSize+1)] = 0;
-                }
-                for(int err_ind=0;err_ind<err_row;err_ind++){
-                    (*new_sInterval->err_matrix).data[err_ind+i*ERR_NODE] = 0;
-                }
-                R[layer][i] = 0;
-            }
-            else if(tempVal_lower>=0.0){
-                R[layer][i] = 2;
-            }
-            else{
-                //wrong node length includes the wrong nodes in convolutional layers
-                wrong_nodes_map[*wrong_node_length] = *node_cnt;
-                // printf("%d,",*node_cnt);
-                *wrong_node_length += 1;
-                wcnt += 1;
-                //printf("wrong: %d,%d:%f, %f\n",layer, i, tempVal_lower, tempVal_upper);
-                
-                for(int k=0;k<inputSize+1;k++){
-                    (*new_sInterval->eq_matrix).data[k+i*(inputSize+1)] *= \
-                                tempVal_upper / (tempVal_upper - tempVal_lower);
-                }
-                for(int err_ind=0;err_ind<err_row;err_ind++){
-                    (*new_sInterval->err_matrix).data[err_ind+i*ERR_NODE] *=\
-                                tempVal_upper / (tempVal_upper - tempVal_lower);
-                }
-                
-                (*new_sInterval->err_matrix).data[*wrong_node_length-1+i*ERR_NODE] -=\
-                                                    tempVal_upper*tempVal_lower/\
-                                                    (tempVal_upper-tempVal_lower);
+            R[layer][i] = relax_relu(nnet, new_sInterval, tempVal_lower,
+                tempVal_upper, i, err_row, wrong_node_length, &wcnt);
 
-                R[layer][i] = 1;
+            if(R[layer][i] == 1) {
+                wrong_nodes_map[(*wrong_node_length) - 1] = *node_cnt;
             }
         }
         (*node_cnt) += 1;  
-
     }
 
     return wcnt;
