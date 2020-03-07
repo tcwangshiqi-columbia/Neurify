@@ -500,33 +500,14 @@ bool forward_prop_interval_equation_conv_lp(struct NNet *nnet,
             }
         }
         else{
-            if(layer == 0){
-                memcpy(new_equation, equation_conv,\
-                        sizeof(float)*(inputSize+1)*maxLayerSize);
-                memcpy(new_equation_err, equation_conv_err,\
-                        sizeof(float)*ERR_NODE*maxLayerSize);
-                err_row = err_row_conv;
-                wrong_node_length = err_row;
-                equation_matrix.col = new_equation_matrix.col =\
-                        nnet->layerSizes[layer+1];
-
-                new_equation_err_matrix.row =\
-                        equation_err_matrix.row = err_row;
-                equation_err_matrix.col = new_equation_err_matrix.col =\
-                        nnet->layerSizes[layer+1];
-
+            if(nnet->layerTypes[layer] == 0){
+                //printf("fc layer");
+                sym_fc_layer(&sInterval, &new_sInterval, nnet, layer, err_row);
             }
             else{
-                if(nnet->layerTypes[layer] == 0){
-                    //printf("fc layer");
-                    sym_fc_layer(&sInterval, &new_sInterval, nnet, layer, err_row);
-                }
-                else{
-                    //printf("conv layer\n");
-                    sym_conv_layer(&sInterval, &new_sInterval, nnet, layer, err_row);
-                }
+                //printf("conv layer\n");
+                sym_conv_layer(&sInterval, &new_sInterval, nnet, layer, err_row);
             }
-            
         }
         
         if(layer<(numLayers-1)){
