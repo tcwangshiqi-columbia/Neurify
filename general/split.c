@@ -461,12 +461,10 @@ bool forward_prop_interval_equation_conv_lp(struct NNet *nnet,
         equation[i*(inputSize+1)+i] = 1;
     }    
 
-    memset(equation_err,0, sizeof(float)*ERR_NODE*maxLayerSize);
-
     //err_row is the number that is wrong before current layer
     int err_row=0;
     int wrong_node_length = 0;
-    for (int layer = 0; layer<(numLayers); layer++)
+    for (int layer = 0; layer<numLayers; layer++)
     {
         //printf("sig:%d, layer:%d\n",sig, layer );
         
