@@ -220,7 +220,7 @@ void *direct_run_check_conv_lp_thread(void *args){
                      actual_args->equation_conv,\
                      actual_args->equation_conv_err,\
                      actual_args->err_row_conv,\
-                     actual_args->target, actual_args->sig,\
+                     actual_args->target,\
                      actual_args->lp, actual_args->rule_num, actual_args->depth);
     return NULL;
 }
@@ -290,7 +290,7 @@ int sym_relu_lp(struct SymInterval *sInterval,
                     struct NNet *nnet,
                     int layer, int err_row,
                     int*wrong_node_length, int *node_cnt,
-                    int target, int sig, int *sigs,
+                    int target, int *sigs,
                     lprec *lp, int *rule_num){
 
 
@@ -307,13 +307,13 @@ int sym_relu_lp(struct SymInterval *sInterval,
                     &tempVal_lower, &tempVal_upper);
 
         if(*node_cnt == target){
-            if(sig==1){
+            if(sigs[target]==1){
                 set_node_constraints(lp, (*new_sInterval->eq_matrix).data,\
-                        i*(inputSize+1), rule_num, sig, inputSize);
+                        i*(inputSize+1), rule_num, sigs[target], inputSize);
             }
             else{
                 set_node_constraints(lp, (*new_sInterval->eq_matrix).data,\
-                        i*(inputSize+1), rule_num, sig, inputSize);
+                        i*(inputSize+1), rule_num, sigs[target], inputSize);
             }
         }
 
@@ -340,8 +340,7 @@ bool forward_prop_interval_equation_conv_lp(struct NNet *nnet,
                          struct Interval *input, bool *output_map,
                          int *sigs, float *equation_conv,
                          float *equation_conv_err, float err_row_conv,
-                         int target, int sig,
-                         lprec *lp, int *rule_num)
+                         int target, lprec *lp, int *rule_num)
 {
     int node_cnt=0;
     bool need_to_split = false;
@@ -449,7 +448,7 @@ bool forward_prop_interval_equation_conv_lp(struct NNet *nnet,
             // printf("relu layer\n");
             sym_relu_lp(&sInterval, &new_sInterval, input, nnet, layer,\
                         err_row, &wrong_node_length, &node_cnt,\
-                        target, sig, sigs, lp, rule_num);
+                        target, sigs, lp, rule_num);
         }
         else{
 
@@ -461,7 +460,7 @@ bool forward_prop_interval_equation_conv_lp(struct NNet *nnet,
                     relu_bound(&new_sInterval, nnet, input, i, layer, err_row,\
                             &tempVal_lower, &tempVal_upper);
                     printf("target:%d, sig:%d, node:%d, l:%f, u:%f\n",\
-                                target, sig, i, tempVal_lower, tempVal_upper);
+                                target, sigs[target], i, tempVal_lower, tempVal_upper);
                 }
                 
 
@@ -502,7 +501,7 @@ bool forward_prop_interval_equation_conv_lp(struct NNet *nnet,
                             output_map[i] = true;
                             if(NEED_PRINT){
                                 printf("target:%d, sig:%d, node:%d--Objective value: %f\n",\
-                                            target, sig, i, upper);
+                                            target, sigs[target], i, upper);
                             }
                             check_adv1(nnet, &input_prev_matrix);
                             if(adv_found){
@@ -513,7 +512,7 @@ bool forward_prop_interval_equation_conv_lp(struct NNet *nnet,
                             output_map[i] = false;
                             if(NEED_PRINT){
                                 printf("target:%d, sig:%d, node:%d--unsat\n",\
-                                            target, sig, i);
+                                            target, sigs[target], i);
                             }
                         }
                     }
@@ -547,7 +546,7 @@ bool forward_prop_interval_equation_conv_lp(struct NNet *nnet,
 bool direct_run_check_conv_lp(struct NNet *nnet, struct Interval *input,
                      bool *output_map, int *wrong_nodes, int *wrong_node_length,
                      int *sigs, float *equation_conv, float *equation_conv_err,
-                     float err_row_conv, int target, int sig, lprec *lp,
+                     float err_row_conv, int target, lprec *lp,
                      int *rule_num, int depth)
 {
     pthread_mutex_lock(&lock);
@@ -569,8 +568,7 @@ bool direct_run_check_conv_lp(struct NNet *nnet, struct Interval *input,
     bool isOverlap = forward_prop_interval_equation_conv_lp(nnet, input,\
                             output_map, \
                             sigs, equation_conv, equation_conv_err,\
-                            err_row_conv, target, sig,\
-                            lp, rule_num);
+                            err_row_conv, target, lp, rule_num);
 
     //printf("sig:%d, i:%d\n",sig, isOverlap );
     if(depth<=PROGRESS_DEPTH && !isOverlap){
@@ -589,7 +587,7 @@ bool direct_run_check_conv_lp(struct NNet *nnet, struct Interval *input,
 
     if(isOverlap && !NEED_FOR_ONE_RUN){
         if(NEED_PRINT)
-            printf("depth:%d, sig:%d Need to split!\n\n", depth, sig);
+            printf("depth:%d, sig:%d Need to split!\n\n", depth, sigs[target]);
         isOverlap = split_interval_conv_lp(nnet, input, output_map,
                          wrong_nodes, wrong_node_length, sigs,\
                          equation_conv, equation_conv_err, err_row_conv,\
@@ -598,7 +596,7 @@ bool direct_run_check_conv_lp(struct NNet *nnet, struct Interval *input,
     else{
         if(!adv_found)
             if(NEED_PRINT) 
-                printf("depth:%d, sig:%d, UNSAT, great!\n\n", depth, sig);
+                printf("depth:%d, sig:%d, UNSAT, great!\n\n", depth, sigs[target]);
             pthread_mutex_lock(&lock);
                 avg_depth -= (avg_depth) / AVG_WINDOW;
                 avg_depth += depth / AVG_WINDOW;
@@ -681,9 +679,6 @@ bool split_interval_conv_lp(struct NNet *nnet, struct Interval *input,
     memcpy(sigs1, sigs, sizeof(int)*sigSize);
     memcpy(sigs2, sigs, sizeof(int)*sigSize);
 
-    int sig1,sig2;
-    sig1 = 1;
-    sig2 = 0;
     sigs1[target] = 1;
     sigs2[target] = 0;
     pthread_mutex_lock(&lock);
@@ -695,16 +690,14 @@ bool split_interval_conv_lp(struct NNet *nnet, struct Interval *input,
                             nnet, input, output_map1,
                             wrong_nodes1, &wrong_node_length1, sigs1,\
                             equation_conv, equation_conv_err, err_row_conv,\
-                            target, sig1,\
-                            lp1, &rule_num1, depth
+                            target, lp1, &rule_num1, depth
                         };
 
         struct direct_run_check_conv_lp_args args2 = {
                             nnet, input, output_map2,
                             wrong_nodes2, &wrong_node_length2, sigs2,\
                             equation_conv, equation_conv_err, err_row_conv,\
-                            target, sig2,\
-                            lp2, &rule_num2, depth
+                            target, lp2, &rule_num2, depth
                         };
 
         pthread_create(&workers1, NULL,\
@@ -741,15 +734,13 @@ bool split_interval_conv_lp(struct NNet *nnet, struct Interval *input,
                             output_map1,\
                             wrong_nodes1, &wrong_node_length1, sigs1,\
                             equation_conv, equation_conv_err, err_row_conv,\
-                            target, sig1,\
-                            lp1, &rule_num1, depth);
+                            target, lp1, &rule_num1, depth);
 
         isOverlap2 = direct_run_check_conv_lp(nnet, input,\
                             output_map2,\
                             wrong_nodes2, &wrong_node_length2, sigs2,\
                             equation_conv, equation_conv_err, err_row_conv,\
-                            target, sig2,\
-                            lp2, &rule_num2, depth);
+                            target, lp2, &rule_num2, depth);
     }
 
     delete_lp(lp1);
