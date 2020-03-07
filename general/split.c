@@ -315,17 +315,7 @@ int sym_relu_lp(struct SymInterval *sInterval,
             else{
                 set_node_constraints(lp, (*new_sInterval->eq_matrix).data,\
                         i*(inputSize+1), rule_num, sig, inputSize);
-                for(int k=0;k<inputSize+1;k++){
-                    (*new_sInterval->eq_matrix).data[k+i*(inputSize+1)] = 0;
-                }
-                if(err_row>0){
-                    for(int err_ind=0;err_ind<err_row;err_ind++){
-                        (*new_sInterval->err_matrix).data[err_ind+i*ERR_NODE] = 0;
-                    }
-                }
             }
-            *node_cnt += 1;
-            continue;
         }
         
         //Perform ReLU relaxation
@@ -333,24 +323,11 @@ int sym_relu_lp(struct SymInterval *sInterval,
 
         // handle the nodes that are split
         //printf("splits for previous nodes\n");
-        if(sigs[*node_cnt] == 0 && *node_cnt != target){
-            //printf("sigs0:%d\n", node_cnt);
-            for(int k=0;k<inputSize+1;k++){
-                (*new_sInterval->eq_matrix).data[k+i*(inputSize+1)] = 0;
-            }
-            if(err_row>0){
-                for(int err_ind=0;err_ind<err_row;err_ind++){
-                    (*new_sInterval->err_matrix).data[err_ind+i*ERR_NODE] = 0;
-                }
-            }
-            *node_cnt += 1;
-            continue;
+        if(sigs[*node_cnt] == 0){
+            tempVal_upper = 0;
         }
-
-        if(sigs[*node_cnt] == 1 && *node_cnt != target){
-            //printf("sigs1:%d\n", node_cnt);
-            *node_cnt += 1;
-            continue;
+        else if(sigs[*node_cnt] == 1){
+            tempVal_lower = 0;
         }
 
         //printf("relu relaxation\n");
