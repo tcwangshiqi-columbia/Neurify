@@ -293,17 +293,16 @@ int sym_relu_lp(struct SymInterval *sInterval,
                     int target, int sig, int *sigs,
                     lprec *lp, int *rule_num){
 
-    float tempVal_upper=0.0, tempVal_lower=0.0;
 
     int inputSize = nnet->inputSize;
-    struct Matrix weights = nnet->weights[layer];
-    struct Matrix bias = nnet->bias[layer];
+    
     //record the number of wrong nodes
     int wcnt = 0;
 
     for (int i=0; i < nnet->layerSizes[layer+1]; i++)
     {
 
+        float tempVal_upper=0.0, tempVal_lower=0.0;
         relu_bound(new_sInterval, nnet, input, i, layer, err_row,\
                     &tempVal_lower, &tempVal_upper);
 
@@ -317,12 +316,8 @@ int sym_relu_lp(struct SymInterval *sInterval,
                         i*(inputSize+1), rule_num, sig, inputSize);
             }
         }
-        
-        //Perform ReLU relaxation
-        //if(layer == 3) printf("%d %d %f %f\n", layer, i, tempVal_lower, tempVal_upper);
 
         // handle the nodes that are split
-        //printf("splits for previous nodes\n");
         if(sigs[*node_cnt] == 0){
             tempVal_upper = 0;
         }
@@ -330,6 +325,7 @@ int sym_relu_lp(struct SymInterval *sInterval,
             tempVal_lower = 0;
         }
 
+        //Perform ReLU relaxation
         relax_relu(nnet, new_sInterval, tempVal_lower, tempVal_upper, i,
             err_row, wrong_node_length, &wcnt);
 
@@ -337,7 +333,6 @@ int sym_relu_lp(struct SymInterval *sInterval,
     }
 
     return wcnt;
-
 }
 
 

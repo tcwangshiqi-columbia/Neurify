@@ -1219,22 +1219,19 @@ int sym_relu_layer(struct SymInterval *sInterval,
                     int*wrong_node_length,
                     int *node_cnt){
 
-    float tempVal_upper=0.0, tempVal_lower=0.0;
 
     int inputSize = nnet->inputSize;
-    struct Matrix weights = nnet->weights[layer];
-    struct Matrix bias = nnet->bias[layer];
+    
     //record the number of wrong nodes
     int wcnt = 0;
 
     for (int i=0; i < nnet->layerSizes[layer+1]; i++)
     {
-
+        float tempVal_upper=0.0, tempVal_lower=0.0;
         relu_bound(new_sInterval, nnet, input, i, layer, err_row,\
                     &tempVal_lower, &tempVal_upper);
         
         //Perform ReLU relaxation
-        //if(layer == 3) printf("%d %d %f %f\n", layer, i, tempVal_lower, tempVal_upper);
         if(layer == nnet->numLayers - 1) {
             output->upper_matrix.data[i] = tempVal_upper;
             output->lower_matrix.data[i] = tempVal_lower;
@@ -1251,7 +1248,6 @@ int sym_relu_layer(struct SymInterval *sInterval,
     }
 
     return wcnt;
-
 }
 
 
