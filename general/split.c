@@ -454,7 +454,6 @@ bool forward_prop_interval_equation_conv_lp(struct NNet *nnet,
                 &new_equation_matrix, &new_equation_err_matrix
             };
 
-    float tempVal_upper=0.0, tempVal_lower=0.0;
     
     for (int i=0; i < nnet->inputSize; i++)
     {
@@ -542,6 +541,7 @@ bool forward_prop_interval_equation_conv_lp(struct NNet *nnet,
             for (int i=0; i < nnet->layerSizes[layer+1]; i++){
 
                 if(NEED_PRINT){
+                    float tempVal_upper=0.0, tempVal_lower=0.0;
                     relu_bound(&new_sInterval, nnet, input, i, layer, err_row,\
                             &tempVal_lower, &tempVal_upper);
                     printf("target:%d, sig:%d, node:%d, l:%f, u:%f\n",\
