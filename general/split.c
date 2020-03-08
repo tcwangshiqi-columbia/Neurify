@@ -505,6 +505,10 @@ bool forward_prop_interval_equation_conv_lp(struct NNet *nnet,
                             }
                             check_adv1(nnet, &input_prev_matrix);
                             if(adv_found){
+                                free(equation);
+                                free(new_equation);
+                                free(equation_err);
+                                free(new_equation_err);
                                 return 0;
                             }
                         }
