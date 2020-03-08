@@ -230,17 +230,15 @@ void check_adv1(struct NNet* nnet, struct Matrix *adv){
     float out[nnet->outputSize];
     struct Matrix output = {out, nnet->outputSize, 1};
     forward_prop_conv(nnet, adv, &output);
-    int is_adv = 0;
-    // printMatrix(&output);
-    is_adv = check_functions1(nnet, &output);
+    bool is_adv = check_functions1(nnet, &output);
     if(is_adv){
         printf("adv found:\n");
         //printMatrix(adv);
         printMatrix(&output);
-        int adv_output = 0;
+        int adv_output = nnet->target;
         for(int i=0;i<nnet->outputSize;i++){
-            if(output.data[i]>0 && i != nnet->target){
-                    adv_output = i;
+            if(output.data[i]>output.data[adv_output]){
+                adv_output = i;
             }
         }
         printf("%d ---> %d\n", nnet->target, adv_output);
