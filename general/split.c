@@ -19,7 +19,7 @@ int NEED_PRINT = 0;
 int NEED_FOR_ONE_RUN = 0;
 int input_depth = 0;
 bool adv_found = false;
-bool can_t_prove = false;
+bool analysis_uncertain = false;
 int count = 0;
 int thread_tot_cnt  = 0;
 int smear_cnt = 0;
@@ -254,7 +254,7 @@ void check_adv1(struct NNet* nnet, struct Matrix *adv){
 int pop_queue(int *wrong_nodes, int *wrong_node_length){
     if(*wrong_node_length==0){
         printf("underflow\n");
-        can_t_prove = true;
+        analysis_uncertain = true;
         return -1;
     }
     int node = wrong_nodes[0];
@@ -559,10 +559,6 @@ bool direct_run_check_conv_lp(struct NNet *nnet, struct Interval *input,
         return false;
     }
 
-    if(can_t_prove){
-        pthread_mutex_unlock(&lock);
-        return false;
-    }
     pthread_mutex_unlock(&lock);
 
     if(depth<=3){
@@ -622,13 +618,12 @@ bool split_interval_conv_lp(struct NNet *nnet, struct Interval *input,
     }
     
     if(depth>=MAX_DEPTH){
-        can_t_prove = true;
-    }
-
-    if(can_t_prove){
+        printf("Maximum depth reached\n");
+        analysis_uncertain = true;
         pthread_mutex_unlock(&lock);
         return false;
     }
+
     pthread_mutex_unlock(&lock);
 
     if(depth==0){

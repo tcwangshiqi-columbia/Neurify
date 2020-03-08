@@ -25,7 +25,7 @@ extern int NEED_PRINT;
 extern int NEED_FOR_ONE_RUN;
 extern int input_depth;
 extern bool adv_found;
-extern bool can_t_prove;
+extern bool analysis_uncertain;
 
 extern int CHECK_ADV_MODE;
 
