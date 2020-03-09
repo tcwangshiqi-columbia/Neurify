@@ -245,8 +245,8 @@ int main( int argc, char *argv[]){
 
 		avg_wrong_length += wrong_node_length; 
 
-        printf("total wrong nodes: %d, wrong nodes in"\
-                    "fully connect layers: %d\n", wrong_node_length,\
+        printf("total wrong nodes: %d, wrong nodes in "\
+                    "fully connected layers: %d\n", wrong_node_length,\
                     full_wrong_node_length );
         /*
 		for(int w=0;w<wrong_node_length;w++){
