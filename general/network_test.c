@@ -201,16 +201,7 @@ int main( int argc, char *argv[]){
             total_nodes += nnet->layerSizes[layer];
         }
         int wrong_nodes_map[total_nodes];
-        float wrong_up_s_up[total_nodes];
-        float wrong_up_s_low[total_nodes];
-        float wrong_low_s_up[total_nodes];
-        float wrong_low_s_low[total_nodes];
-        
         memset(wrong_nodes_map,0,sizeof(int)*total_nodes);
-        memset(wrong_up_s_up,0,sizeof(float)*total_nodes);
-        memset(wrong_up_s_low,0,sizeof(float)*total_nodes);
-        memset(wrong_low_s_up,0,sizeof(float)*total_nodes);
-        memset(wrong_low_s_low,0,sizeof(float)*total_nodes);
 
         float grad[total_nodes];
         memset(grad, 0, sizeof(float)*total_nodes);
