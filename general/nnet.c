@@ -956,11 +956,9 @@ void sym_fc_layer(struct SymInterval *sInterval,
     }
 
     int inputSize = nnet->inputSize;
-    if(nnet->layerTypes[layer] == 0){
-        for (int i=0; i < nnet->layerSizes[layer+1]; i++){
-            (*new_sInterval->eq_matrix).data[inputSize+i*(inputSize+1)] +=\
-                bias.data[i];
-        }
+    for (int i=0; i < nnet->layerSizes[layer+1]; i++){
+        (*new_sInterval->eq_matrix).data[inputSize+i*(inputSize+1)] += \
+            bias.data[i];
     }
 
     (*sInterval->err_matrix).col = (*new_sInterval->err_matrix).col =\
