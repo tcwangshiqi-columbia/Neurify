@@ -1367,9 +1367,7 @@ void forward_prop_interval_equation_linear_conv(struct NNet *nnet,
         //printf("\n");
         memcpy(equation, new_equation, sizeof(float)*(inputSize+1)*maxLayerSize);
         memcpy(equation_err, new_equation_err, sizeof(float)*(ERR_NODE)*maxLayerSize);
-        equation_matrix.row = new_equation_matrix.row;
         equation_matrix.col = new_equation_matrix.col;
-        equation_err_matrix.row = new_equation_err_matrix.row;
         equation_err_matrix.col = new_equation_err_matrix.col;
         err_row = *wrong_node_length;
     }
