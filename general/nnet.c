@@ -401,12 +401,10 @@ void set_input_constraints(struct Interval *input,
                         lprec *lp, int *rule_num)
 {
     int Ncol = 784;
-    REAL row[Ncol+1];
-    int colno[Ncol+1];
-    memset(row, 0, Ncol*sizeof(float));
+    REAL row[1];
+    int colno[1];
     set_add_rowmode(lp, TRUE);
     for(int var=1;var<Ncol+1;var++){
-        memset(colno, 0, Ncol*sizeof(int));
         colno[0] = var;
         row[0] = 1;
         add_constraintex(lp, 1, row, colno, LE,\
@@ -425,9 +423,8 @@ void set_node_constraints(lprec *lp, float *equation,
 {
     int Ncol = inputSize;
     REAL row[Ncol+1];
-    int colno[Ncol+1];
-    memset(row, 0, Ncol*sizeof(float));
     set_add_rowmode(lp, TRUE);
+    row[0] = 0;
     for(int j=1;j<Ncol+1;j++){
         row[j] = equation[start+j-1];
     }
@@ -452,8 +449,8 @@ float set_output_constraints(lprec *lp, float *equation,
     int Ncol = inputSize;
     REAL row[Ncol+1];
     int colno[Ncol+1];
-    memset(row, 0, Ncol*sizeof(float));
     set_add_rowmode(lp, TRUE);
+    row[0] = 0;
     for(int j=1;j<Ncol+1;j++){
         row[j] = equation[start_place+j-1];
     }
@@ -512,8 +509,7 @@ float set_wrong_node_constraints(lprec *lp,
     int Ncol = inputSize;
     REAL row[Ncol+1];
     int colno[Ncol+1];
-    memset(row, 0, Ncol*sizeof(float));
-
+    row[0] = 0;
     for(int j=1;j<Ncol+1;j++){
         row[j] = equation[start+j-1];
     }
