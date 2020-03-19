@@ -261,7 +261,6 @@ int main( int argc, char *argv[]){
         
         int rule_num = 0;
         int Ncol = inputSize;
-        REAL row[Ncol+1];
         lp = make_lp(0, Ncol);
         set_verbose(lp, IMPORTANT);
         
@@ -270,7 +269,6 @@ int main( int argc, char *argv[]){
         //write_LP(lp, stdout);
 
         gettimeofday(&start, NULL);
-        int depth = 0;
         if(is_overlap){
             if(CHECK_ADV_MODE){
                 printf("Check Adv Mode (CHECK_ADV_MODE)\n");
@@ -287,6 +285,7 @@ int main( int argc, char *argv[]){
             memset(sigs, -1, sizeof(int)*total_nodes);
 
             // split
+            int depth = 0;
             is_overlap = split_interval_conv_lp(nnet, &input_interval,\
                                 output_map,\
                                 wrong_nodes_map, &wrong_node_length, sigs,\
