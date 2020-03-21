@@ -466,11 +466,11 @@ float set_output_constraints(lprec *lp, float *equation,
                     -equation[inputSize+start_place]);
         set_minim(lp);
     }
+    *rule_num += 1;
     
     set_add_rowmode(lp, FALSE);
     
     set_obj_fnex(lp, Ncol+1, row, NULL);
-    *rule_num += 1;
     //write_lp(lp, "model3.lp");
     int ret = 0;
 
