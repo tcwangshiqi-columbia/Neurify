@@ -565,9 +565,9 @@ int forward_prop_interval_equation_conv_lp(struct NNet *nnet,
                         new_equation[k+i*(inputSize+1)] -=\
                                 new_equation[k+nnet->target*(inputSize+1)]; 
                     }
-                    if(i < nnet->target){
-                        new_equation[inputSize+i*(inputSize+1)] -= bias.data[nnet->target];
-                    }
+                    //if(i < nnet->target){
+                    //    new_equation[inputSize+i*(inputSize+1)] -= bias.data[nnet->target];
+                    //}
                     
                     for(int err_ind=0;err_ind<err_row;err_ind++){
                         new_equation_err[err_ind+i*ERR_NODE] -=\
