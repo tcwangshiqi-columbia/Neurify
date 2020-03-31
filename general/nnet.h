@@ -50,8 +50,6 @@ struct NNet
                        //the neural network.
     struct Matrix* weights;
     struct Matrix* bias;
-    struct Matrix* pos_weights;
-    struct Matrix* neg_weights;
 
     int target;
     int *feature_range;
