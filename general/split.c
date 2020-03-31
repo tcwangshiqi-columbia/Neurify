@@ -402,9 +402,6 @@ bool forward_prop_interval_equation_conv_lp(struct NNet *nnet,
         memset(new_equation, 0, sizeof(float)*(inputSize+1)*maxLayerSize);
         memset(new_equation_err,0,sizeof(float)*ERR_NODE*maxLayerSize);
         
-        struct Matrix weights = nnet->weights[layer];
-        struct Matrix bias = nnet->bias[layer];
-        
         if (CHECK_ADV_MODE){
             if(layer>0 && nnet->layerTypes[layer]==0 &&\
                         nnet->layerTypes[layer-1]==1){
