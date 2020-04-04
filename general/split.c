@@ -305,6 +305,11 @@ int sym_relu_lp(struct SymInterval *sInterval,
                     &tempVal_lower, &tempVal_upper);
 
         if(*node_cnt == target){
+            if(err_row > 0) {
+                printf("err_row (%d) must not be > 0 \n", err_row);
+                exit(1);
+            }
+
             if(sigs[target]==1){
                 set_node_constraints(lp, (*new_sInterval->eq_matrix).data,\
                         i*(inputSize+1), rule_num, sigs[target], inputSize);
