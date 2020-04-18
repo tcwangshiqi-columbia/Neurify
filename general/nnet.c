@@ -1202,8 +1202,7 @@ int relax_relu(struct NNet *nnet, struct SymInterval *sym_interval,
 
 
 // relax the relu layers and get the new symbolic equations
-int sym_relu_layer(struct SymInterval *sInterval,
-                    struct SymInterval *new_sInterval,
+int sym_relu_layer(struct SymInterval *new_sInterval,
                     struct Interval *input,
                     struct Interval *output,
                     struct NNet *nnet, 
@@ -1334,7 +1333,7 @@ void forward_prop_interval_equation_linear_conv(struct NNet *nnet,
 
             }
             
-            int wcnt = sym_relu_layer(&sInterval, &new_sInterval, input, output, nnet, R,
+            int wcnt = sym_relu_layer(&new_sInterval, input, output, nnet, R,
                                 layer, err_row, wrong_nodes_map,
                                 wrong_node_length, &node_cnt);
             
@@ -1355,7 +1354,7 @@ void forward_prop_interval_equation_linear_conv(struct NNet *nnet,
 
             }
 
-            int wcnt = sym_relu_layer(&sInterval, &new_sInterval, input, output, nnet, R,
+            int wcnt = sym_relu_layer(&new_sInterval, input, output, nnet, R,
                                 layer, err_row, wrong_nodes_map,
                                 wrong_node_length, &node_cnt);
 

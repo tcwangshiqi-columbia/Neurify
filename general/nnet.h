@@ -78,7 +78,7 @@ int relax_relu(struct NNet *nnet, struct SymInterval *sym_interval,
     float lower_bound, float upper_bound, int i,
     int err_row, int *wrong_node_length, int *wcnt);
 
-int sym_relu_layer(struct SymInterval *sInterva, struct SymInterval *new_sInterval, struct Interval *input, struct Interval *output,
+int sym_relu_layer(struct SymInterval *new_sInterval, struct Interval *input, struct Interval *output,
                     struct NNet *nnet, int R[][nnet->maxLayerSize],
                     int layer, int err_row,
                     int *wrong_nodes, int * wrong_node_length, int *node_cnt);

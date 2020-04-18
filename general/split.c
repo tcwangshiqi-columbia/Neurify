@@ -282,8 +282,7 @@ int min(float a, float b){
 }
 
 
-int sym_relu_lp(struct SymInterval *sInterval,
-                    struct SymInterval *new_sInterval,
+int sym_relu_lp(struct SymInterval *new_sInterval,
                     struct Interval *input,
                     struct NNet *nnet,
                     int layer, int err_row,
@@ -446,7 +445,7 @@ bool forward_prop_interval_equation_conv_lp(struct NNet *nnet,
         
         if(layer<(numLayers-1)){
             // printf("relu layer\n");
-            sym_relu_lp(&sInterval, &new_sInterval, input, nnet, layer,\
+            sym_relu_lp(&new_sInterval, input, nnet, layer,\
                         err_row, &wrong_node_length, &node_cnt,\
                         target, sigs, lp, rule_num);
         }
