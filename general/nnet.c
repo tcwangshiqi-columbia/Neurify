@@ -398,9 +398,9 @@ void sort_layers(int numLayers, int *layerSizes, int wrong_node_length, int *wro
 
 
 void set_input_constraints(struct Interval *input,
-                        lprec *lp, int *rule_num)
+                        lprec *lp, int *rule_num, int inputSize)
 {
-    int Ncol = 784;
+    int Ncol = inputSize;
     REAL row[1];
     int colno[1];
     set_add_rowmode(lp, TRUE);

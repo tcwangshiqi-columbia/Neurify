@@ -142,7 +142,7 @@ void sort(float *array, int num, int *ind);
 
 void sort_layers(int numLayers, int*layerSizes, int wrong_node_length, int*wrong_nodes);
 
-void set_input_constraints(struct Interval *input, lprec *lp, int *rule_num);
+void set_input_constraints(struct Interval *input, lprec *lp, int *rule_num, int inputSize);
 
 void set_node_constraints(lprec *lp, float *equation, int start, int *rule_num, int sig, int inputSize);
 
@@ -170,8 +170,6 @@ void backward_prop(struct NNet *nnet, float *grad, int R[][nnet->maxLayerSize]);
 void backward_prop_conv(struct NNet *nnet, float *grad, int R[][nnet->maxLayerSize]);
 
 void backward_prop_old(struct NNet *nnet, struct Interval *grad, int R[][nnet->maxLayerSize]);
-
-void set_input_constraints(struct Interval *input, lprec *lp, int *rule_num);
 
 /*
 int forward_prop_interval_equation_linear_try(struct NNet *network, struct Interval *input,

@@ -264,7 +264,7 @@ int main( int argc, char *argv[]){
         lp = make_lp(0, Ncol);
         set_verbose(lp, IMPORTANT);
         
-        set_input_constraints(&input_interval, lp, &rule_num);
+        set_input_constraints(&input_interval, lp, &rule_num, inputSize);
         set_presolve(lp, PRESOLVE_LINDEP, get_presolveloops(lp));
         //write_LP(lp, stdout);
 
