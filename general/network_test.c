@@ -230,10 +230,6 @@ int main( int argc, char *argv[]){
         printf("lower matrix:");
         printMatrix(&output_interval.lower_matrix);
 
-        sort(grad, wrong_node_length, wrong_nodes_map);
-		sort_layers(nnet->numLayers, nnet->layerSizes,\
-                wrong_node_length, wrong_nodes_map);
-
 		avg_wrong_length += wrong_node_length; 
 
         printf("total wrong nodes: %d, wrong nodes in "\
@@ -288,7 +284,7 @@ int main( int argc, char *argv[]){
             int depth = 0;
             is_overlap = split_interval_conv_lp(nnet, &input_interval,\
                                 output_map,\
-                                wrong_nodes_map, &wrong_node_length, sigs,\
+                                grad, wrong_nodes_map, &wrong_node_length, sigs,\
                                 equation_conv, equation_conv_err,\
                                 err_row_conv,\
                                 lp, &rule_num, depth);
