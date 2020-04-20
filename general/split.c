@@ -27,8 +27,6 @@ int smear_cnt = 0;
 int progress = 0;
 int MAX_DEPTH = 30;
 
-float avg_depth = 50;
-
 int progress_list[PROGRESS_DEPTH];
 int total_progress[PROGRESS_DEPTH];
 
@@ -609,10 +607,6 @@ bool direct_run_check_conv_lp(struct NNet *nnet, struct Interval *input,
         if(!adv_found)
             if(NEED_PRINT) 
                 printf("depth:%d, sig:%d, UNSAT, great!\n\n", depth, sigs[target]);
-            pthread_mutex_lock(&lock);
-                avg_depth -= (avg_depth) / AVG_WINDOW;
-                avg_depth += depth / AVG_WINDOW;
-            pthread_mutex_unlock(&lock);
     }
     return isOverlap;
 }
@@ -690,8 +684,7 @@ bool split_interval_conv_lp(struct NNet *nnet, struct Interval *input,
     sigs1[target] = 1;
     sigs2[target] = 0;
     pthread_mutex_lock(&lock);
-    if((depth <= avg_depth - MIN_DEPTH_PER_THREAD) &&\
-            (count<=MAX_THREAD) && !NEED_FOR_ONE_RUN) {
+    if(count<MAX_THREAD && !NEED_FOR_ONE_RUN) {
         pthread_mutex_unlock(&lock);
         pthread_t workers1, workers2;
         struct direct_run_check_conv_lp_args args1 = {
