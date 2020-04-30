@@ -317,7 +317,8 @@ int main( int argc, char *argv[]){
             printf("can't prove!\n");
         }
 
-        printf("%d %d %d\n", adv_num, non_adv, no_prove);
+        printf("Current analysis result: %d adv, %d non-adv, %d undetermined \n",
+          adv_num, non_adv, no_prove);
         printf("time: %f \n\n", time_spent);
         destroy_conv_network(nnet);
 
@@ -329,8 +330,8 @@ int main( int argc, char *argv[]){
 
     avg_wrong_length /= (float)image_length;
 
-    printf("adv: %d, non-adv: %d, not_proved: %d\n",\
-                adv_num, non_adv, no_prove);
+    printf("Final analysis result: %d adv, %d non-adv, %d undetermined \n", 
+        adv_num, non_adv, no_prove);
     printf("avg wrong node length:%f\n", avg_wrong_length);
     if(no_prove>0){
         printf("images that have not been proved:\n");
