@@ -94,7 +94,8 @@ int main( int argc, char *argv[]){
     openblas_set_num_threads(1);
 
     srand((unsigned)time(NULL));
-    double time_spent;
+    double time_spent = 0;
+    double total_time_spent = 0;
     int i,j,layer;
 
     int image_start, image_length;
@@ -129,6 +130,7 @@ int main( int argc, char *argv[]){
     float avg_wrong_length = 0.0;
     
     for(int img=image_start; img<image_start+image_length; img++){
+        gettimeofday(&start, NULL);
 
         adv_found = false;
         analysis_uncertain = false;
@@ -264,7 +266,6 @@ int main( int argc, char *argv[]){
         set_presolve(lp, PRESOLVE_LINDEP, get_presolveloops(lp));
         //write_LP(lp, stdout);
 
-        gettimeofday(&start, NULL);
         if(is_overlap){
             if(CHECK_ADV_MODE){
                 printf("Check Adv Mode (CHECK_ADV_MODE)\n");
@@ -296,6 +297,7 @@ int main( int argc, char *argv[]){
         gettimeofday(&finish, NULL);
         time_spent = ((float)(finish.tv_sec-start.tv_sec)*1000000 +\
                 (float)(finish.tv_usec-start.tv_usec)) / 1000000;
+        total_time_spent += time_spent;
 
         if(!is_overlap && !adv_found && !analysis_uncertain){
             if (CHECK_ADV_MODE){
@@ -333,6 +335,7 @@ int main( int argc, char *argv[]){
     printf("Final analysis result: %d adv, %d non-adv, %d undetermined \n", 
         adv_num, non_adv, no_prove);
     printf("avg wrong node length:%f\n", avg_wrong_length);
+    printf("Total time: %f \n\n", total_time_spent);
     if(no_prove>0){
         printf("images that have not been proved:\n");
         for(int ind=0;ind<no_prove;ind++){
