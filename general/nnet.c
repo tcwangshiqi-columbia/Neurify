@@ -1277,7 +1277,7 @@ void forward_prop_interval_equation_linear_conv(struct NNet *nnet,
     memset(new_equation_err, 0, sizeof(float)*ERR_NODE*maxLayerSize);
 
     int R[numLayers][maxLayerSize];
-    memset(R, 0, sizeof(float)*numLayers*maxLayerSize);
+    memset(R, 0, sizeof(int)*numLayers*maxLayerSize);
 
     // equation is the temp equation for each layer
     float *equation = (float*)malloc(sizeof(float) *\
