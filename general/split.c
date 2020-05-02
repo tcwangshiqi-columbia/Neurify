@@ -497,8 +497,10 @@ bool forward_prop_interval_equation_conv_lp(struct NNet *nnet,
                     struct Matrix output_matrix = {o, outputSize, 1};
                     memset(o, 0, sizeof(float)*outputSize);
                     if(output_map[i]){
-                        if(!set_output_constraints(lp, new_equation, i*(inputSize+1),\
-                                    rule_num, inputSize, MAX, &upper, input_prev)){
+                        int search = set_output_constraints(lp, new_equation,
+                            i*(inputSize+1), rule_num, inputSize, MAX, &upper,
+                            input_prev);
+                        if(search == 1){
                             need_to_split = true;
                             output_map[i] = true;
                             if(NEED_PRINT){
@@ -513,6 +515,9 @@ bool forward_prop_interval_equation_conv_lp(struct NNet *nnet,
                                 free(new_equation_err);
                                 return 0;
                             }
+                        }
+                        else if(search == -1)  { // timeout
+                            need_to_split = 1;
                         }
                         else{
                             output_map[i] = false;

@@ -445,7 +445,6 @@ float set_output_constraints(lprec *lp, float *equation,
 {
     
     float time_spent=0.0;
-    int unsat = 0;
     int Ncol = inputSize;
     REAL row[Ncol+1];
     int colno[Ncol+1];
@@ -476,11 +475,13 @@ float set_output_constraints(lprec *lp, float *equation,
 
     //printf("in1\n");
 
+    set_timeout(lp, 30);
     ret = solve(lp);
 
     //printf("in2,%d\n",ret);
     
-    if(ret == OPTIMAL){
+    int feasible = 0;
+    if(ret == OPTIMAL || ret == SUBOPTIMAL){
         int Ncol = inputSize;
         double row[Ncol+1];
         *output = get_objective(lp) + equation[inputSize+start_place];
@@ -488,16 +489,24 @@ float set_output_constraints(lprec *lp, float *equation,
         for(int j=0;j<Ncol;j++){
             input_prev[j] = (float)row[j];
         }
+        feasible = 1;
     }
-    else{
-        //printf("unsat!\n");
-        unsat = 1;
+    else if(ret == TIMEOUT) {
+        feasible = -1;
+        printf("Timout while solving LP \n");
+    }
+    else if(ret == INFEASIBLE) {
+        feasible = 0;
+    }
+    else {
+        printf("Abort - Unexpected LP solver return value: %d \n", ret);
+        exit(1);
     }
     
     del_constraint(lp, *rule_num);
     *rule_num -= 1; 
     
-    return unsat;
+    return feasible;
 }
 
 float set_wrong_node_constraints(lprec *lp,
