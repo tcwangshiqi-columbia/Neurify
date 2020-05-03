@@ -232,6 +232,14 @@ int main( int argc, char *argv[]){
         printf("lower matrix:");
         printMatrix(&output_interval.lower_matrix);
 
+        for(int i = 0; i < outputSize; i++) {
+            if(output_interval.upper_matrix.data[i] < output.data[i] ||
+               output_interval.lower_matrix.data[i] > output.data[i]) {
+                printf("Invalid approximation \n");
+                exit(1);
+            }
+        }
+
 		avg_wrong_length += wrong_node_length; 
 
         printf("total wrong nodes: %d, wrong nodes in "\
