@@ -150,14 +150,13 @@ struct NNet *load_conv_network(const char* filename, int img)
     char *tmpptr=NULL;
 
     int oc=0, ic=0, kernel=0;
-    int out_channel=0,in_channel=0,kernel_size=0;
+    int out_channel=0,kernel_size=0;
 
     //Read in parameters and put them in the matrix
     float w = 0.0;
     while((line=fgets(buffer,bufferSize,fstream))!=NULL){
         if(nnet->layerTypes[layer]==1){
             out_channel = nnet->convLayer[layer][0];
-            in_channel = nnet->convLayer[layer][1];
             kernel_size = nnet->convLayer[layer][2]*nnet->convLayer[layer][2];
             if(oc>=out_channel){
                 if (param==0)
@@ -170,7 +169,6 @@ struct NNet *load_conv_network(const char* filename, int img)
                     layer++;
                     if(nnet->layerTypes[layer]==1){
                         out_channel = nnet->convLayer[layer][0];
-                        in_channel = nnet->convLayer[layer][1];
                         kernel_size = nnet->convLayer[layer][2]*nnet->convLayer[layer][2];
                     }                    
                 }
@@ -322,7 +320,6 @@ void destroy_conv_network(struct NNet *nnet)
             free(nnet->matrix[i]);
         }
         for(i=0;i<nnet->convLayersNum;i++){
-            int kernel_size = nnet->convLayer[i][2]*nnet->convLayer[i][2];
             int in_channel = nnet->convLayer[i][1];
             int out_channel = nnet->convLayer[i][0];
             for(int oc=0;oc<out_channel;oc++){
@@ -443,19 +440,14 @@ float set_output_constraints(lprec *lp, float *equation,
                 int start_place, int *rule_num, int inputSize,
                 int is_max, float *output, float *input_prev)
 {
-    
-    float time_spent=0.0;
     int Ncol = inputSize;
     REAL row[Ncol+1];
-    int colno[Ncol+1];
     set_add_rowmode(lp, TRUE);
     row[0] = 0;
     for(int j=1;j<Ncol+1;j++){
         row[j] = equation[start_place+j-1];
     }
     if(is_max){
-        //printf("greater than : %f\n",\
-                -equation[inputSize+start_place] );
         add_constraintex(lp, 1, row, NULL, GE,\
                     -equation[inputSize+start_place]);
         set_maxim(lp);
@@ -517,7 +509,6 @@ float set_wrong_node_constraints(lprec *lp,
     int unsat = 0;
     int Ncol = inputSize;
     REAL row[Ncol+1];
-    int colno[Ncol+1];
     row[0] = 0;
     for(int j=1;j<Ncol+1;j++){
         row[j] = equation[start+j-1];
@@ -652,7 +643,7 @@ void normalize_input_interval(struct NNet *nnet, struct Interval *input){
 }
 
 
-int forward_prop_conv(struct NNet *network,
+void forward_prop_conv(struct NNet *network,
             struct Matrix *input, struct Matrix *output){
     evaluate_conv(network, input, output);
     float t = output->data[network->target];
@@ -663,7 +654,7 @@ int forward_prop_conv(struct NNet *network,
 
 
 int forward_prop(struct NNet *network, struct Matrix *input, struct Matrix *output){
-    int i,j,layer;
+    int layer;
     if (network ==NULL)
     {
         printf("Data is Null!\n");
@@ -672,7 +663,6 @@ int forward_prop(struct NNet *network, struct Matrix *input, struct Matrix *outp
     struct NNet* nnet = network;
     int numLayers    = nnet->numLayers;
     int inputSize    = nnet->inputSize;
-    int outputSize   = nnet->outputSize;
 
     float z[nnet->maxLayerSize];
     float a[nnet->maxLayerSize];
@@ -710,7 +700,6 @@ int evaluate_conv(struct NNet *network, struct Matrix *input, struct Matrix *out
 
     struct NNet* nnet = network;
     int numLayers    = nnet->numLayers;
-    int inputSize    = nnet->inputSize;
     int outputSize   = nnet->outputSize;
 
     float ****matrix = nnet->matrix;
@@ -845,7 +834,6 @@ void backward_prop_conv(struct NNet *nnet, float *grad,
     int i, j, layer;
     int numLayers    = nnet->numLayers;
     int inputSize    = nnet->inputSize;
-    int outputSize   = nnet->outputSize;
     int maxLayerSize   = nnet->maxLayerSize;
 
     float grad_upper[maxLayerSize];
@@ -1219,11 +1207,8 @@ int sym_relu_layer(struct SymInterval *new_sInterval,
                     int layer, int err_row,
                     int *wrong_nodes_map, 
                     int*wrong_node_length,
-                    int *node_cnt){
-
-
-    int inputSize = nnet->inputSize;
-    
+                    int *node_cnt)
+{    
     //record the number of wrong nodes
     int wcnt = 0;
 
@@ -1265,7 +1250,6 @@ void forward_prop_interval_equation_linear_conv(struct NNet *nnet,
 
     int numLayers    = nnet->numLayers;
     int inputSize    = nnet->inputSize;
-    int outputSize   = nnet->outputSize;
     int maxLayerSize   = nnet->maxLayerSize;
     
     ERR_NODE = 5000;
@@ -1363,10 +1347,8 @@ void forward_prop_interval_equation_linear_conv(struct NNet *nnet,
 
             }
 
-            int wcnt = sym_relu_layer(&new_sInterval, input, output, nnet, R,
-                                layer, err_row, wrong_nodes_map,
-                                wrong_node_length, &node_cnt);
-
+            sym_relu_layer(&new_sInterval, input, output, nnet, R, layer,
+                err_row, wrong_nodes_map, wrong_node_length, &node_cnt);
         }
         //printf("\n");
         memcpy(equation, new_equation, sizeof(float)*(inputSize+1)*maxLayerSize);

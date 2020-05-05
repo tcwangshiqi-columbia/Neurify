@@ -104,7 +104,7 @@ int evaluate_conv(struct NNet *network, struct Matrix *input, struct Matrix *out
 */
 int forward_prop(struct NNet *network, struct Matrix *input, struct Matrix *output);
 
-int forward_prop_conv(struct NNet *network, struct Matrix *input, struct Matrix *output);
+void forward_prop_conv(struct NNet *network, struct Matrix *input, struct Matrix *output);
 
 int forward_prop_interval(struct NNet *network, struct Interval *input, struct Interval *output);
 /*  

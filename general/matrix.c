@@ -19,8 +19,6 @@ void add_constant(struct Matrix* A, float alpha){
 
 void matmul_with_bias(struct Matrix* A, struct Matrix* B, struct Matrix* C)
 {
-    //cblas_dgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans, m, \
-                        n, k, alpha, A, k, B, n, beta, C, n);
     int m = A->row;
     int k = A->col;
     int n = B->col;
@@ -32,8 +30,6 @@ void matmul_with_bias(struct Matrix* A, struct Matrix* B, struct Matrix* C)
 
 void matmul(struct Matrix* A, struct Matrix* B, struct Matrix* C)
 {
-    //cblas_dgemm(CblasRowMajor, CblasNoTrans, CblasNoTrans, m, \
-    					n, k, alpha, A, k, B, n, beta, C, n);
     int m = A->row;
     int k = A->col;
     int n = B->col;
@@ -46,13 +42,6 @@ void matmul(struct Matrix* A, struct Matrix* B, struct Matrix* C)
 void multiply(struct Matrix* A, struct Matrix* B){
     for(int i=0;i<A->row*A->col;i++){
         A->data[i] = A->data[i]*B->data[i];
-    }
-}
-
-void *multiply_args(void *args){
-    compute_multiply *actual_args = args;
-    for(int i=0;i<10000000;i++){
-        multiply(actual_args->A, actual_args->B);
     }
 }
 

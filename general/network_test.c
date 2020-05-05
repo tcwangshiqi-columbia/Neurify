@@ -9,7 +9,7 @@
  -----------------------------------------------------------------
  */
 
-
+#include <openblas/cblas.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -24,7 +24,7 @@ void sig_handler(int signo)
 }
 
 char* config_args(int argc, char *argv[]){
-    char *FULL_NET_PATH;
+    char *FULL_NET_PATH = NULL;
     if(argc>8 || argc<3) {
         printf("please specify a network\n");
         printf("./network_test [property] [network]"
@@ -96,9 +96,9 @@ int main( int argc, char *argv[]){
     srand((unsigned)time(NULL));
     double time_spent = 0;
     double total_time_spent = 0;
-    int i,j,layer;
 
-    int image_start, image_length;
+    int image_start = 0;
+    int image_length = 0;
     if(PROPERTY == 0){
         image_length = 1000;
         image_start = 0;
@@ -156,12 +156,6 @@ int main( int argc, char *argv[]){
             normalize_input(nnet, &input_prev_matrix);
             normalize_input_interval(nnet, &input_interval);
         }
-
-        float grad_upper[inputSize], grad_lower[inputSize];
-        struct Interval grad_interval = {
-                    (struct Matrix){grad_upper, 1, inputSize},
-                    (struct Matrix){grad_lower, 1, inputSize}
-                };
 
         float o[nnet->outputSize];
         struct Matrix output = {o, outputSize, 1};

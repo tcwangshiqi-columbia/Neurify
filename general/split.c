@@ -494,7 +494,6 @@ bool forward_prop_interval_equation_conv_lp(struct NNet *nnet,
                     struct Matrix input_prev_matrix = {input_prev, 1, inputSize};
                     memset(input_prev, 0, sizeof(float)*inputSize);
                     float o[outputSize];
-                    struct Matrix output_matrix = {o, outputSize, 1};
                     memset(o, 0, sizeof(float)*outputSize);
                     if(output_map[i]){
                         int search = set_output_constraints(lp, new_equation,
@@ -646,8 +645,6 @@ bool split_interval_conv_lp(struct NNet *nnet, struct Interval *input,
 
     depth ++;
 
-    int inputSize = nnet->inputSize;
-    int maxLayerSize = nnet->maxLayerSize;
     int outputSize = nnet->outputSize;
 
     sort(grad, *wrong_node_length, wrong_nodes);
@@ -655,7 +652,6 @@ bool split_interval_conv_lp(struct NNet *nnet, struct Interval *input,
             *wrong_node_length, wrong_nodes);
     int target = pop_queue(wrong_nodes, wrong_node_length);
     // printf("%d, %d\n", wrong_nodes[0], wrong_nodes[1]);
-    int sig = 0;
     bool isOverlap1 = false;
     bool isOverlap2 = false;
 
