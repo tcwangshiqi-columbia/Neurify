@@ -269,6 +269,11 @@ int main( int argc, char *argv[]){
         //write_LP(lp, stdout);
 
         if(is_overlap){
+            if(full_wrong_node_length == 0) {
+                printf("Not implemented: At least one node needs to be able to be split to " \
+                    "test the LP. \n");
+                exit(1);
+            }
             if(CHECK_ADV_MODE){
                 printf("Check Adv Mode (CHECK_ADV_MODE)\n");
                 for (int n=0;n<full_wrong_node_length;n++){
