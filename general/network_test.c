@@ -143,11 +143,11 @@ int main( int argc, char *argv[]){
         int outputSize   = nnet->outputSize;
         int maxLayerSize = nnet->maxLayerSize;
 
-        float u[inputSize], l[inputSize], input_prev[inputSize];
+        float u[inputSize+1], l[inputSize+1], input_prev[inputSize];
         struct Matrix input_prev_matrix = {input_prev, 1, inputSize};
 
-        struct Matrix input_upper = {u,1,nnet->inputSize};
-        struct Matrix input_lower = {l,1,nnet->inputSize};
+        struct Matrix input_upper = {u,1,nnet->inputSize+1};
+        struct Matrix input_lower = {l,1,nnet->inputSize+1};
         struct Interval input_interval = {input_lower, input_upper};
 
         initialize_input_interval(nnet, img, inputSize, input_prev, u, l);

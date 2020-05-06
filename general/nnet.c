@@ -552,6 +552,9 @@ void initialize_input_interval(struct NNet* nnet,
                 l[i] = nnet->min;
             }
         }
+        // used for biases
+        u[inputSize] = 1;
+        l[inputSize] = 1;
     }
     else if(PROPERTY == 1){
         /*
@@ -1118,7 +1121,7 @@ void relu_bound(struct SymInterval *sInterval,
         needed_outward_round = OUTWARD_ROUND;
     }
     
-    for(int k=0;k<inputSize;k++){
+    for(int k=0;k<inputSize+1;k++){
         float weight = (*sInterval->eq_matrix).data[k+i*(inputSize+1)];
         if(weight>=0){
             tempVal_lower +=\
@@ -1133,11 +1136,6 @@ void relu_bound(struct SymInterval *sInterval,
                     weight * input->lower_matrix.data[k]+needed_outward_round;       
         } 
     }
-    
-
-    
-    tempVal_lower += (*sInterval->eq_matrix).data[inputSize+i*(inputSize+1)];
-    tempVal_upper += (*sInterval->eq_matrix).data[inputSize+i*(inputSize+1)];
 
     if(err_row>0){
         
