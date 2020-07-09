@@ -11,6 +11,7 @@ We highly recommend users to compile and run the code under Linux 16.04 in case 
 
 [News] We have updated the interface and code structure in "general" file such that people can customize Neurify in an easier way. It replaces the original mnist folder.
 
+[News] Neurify code has been cleaned up thanks to [Christopher Brix](https://www.christopher-brix.de/)!
 
 ## Prerequisite
 
@@ -20,7 +21,7 @@ OpenBLAS library is used for matrix multiplication speedup. So please make sure 
 
 ```
 wget http://github.com/xianyi/OpenBLAS/archive/v0.2.20.tar.gz
-tar -xzf SOpenBLAS-0.2.20.tar.gz
+tar -xzf v0.2.20.tar.gz 
 cd OpenBLAS-0.2.20
 make
 make PREFIX=/path/to/your/installation install
@@ -145,7 +146,7 @@ In file "docker", you can find a dockerfile and requirements for running Neurify
 * [Justin Whitehouse](https://www.college.columbia.edu/node/11475) - jaw2228@columbia.edu
 * [Junfeng Yang](http://www.cs.columbia.edu/~junfeng/) - junfeng@cs.columbia.edu
 * [Suman Jana](http://www.cs.columbia.edu/~suman/) - suman@cs.columbia.edu
-
+* [Christopher Brix](https://www.christopher-brix.de/) - Christopher.Brix@rwth-aachen.de
 
 ## License
 Copyright (C) 2018-2019 by its authors and contributors and their institutional affiliations under the terms of modified BSD license.
