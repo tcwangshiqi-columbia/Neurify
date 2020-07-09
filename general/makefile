@@ -5,7 +5,7 @@ LPFLAGS= lp_dev/liblpsolve55.a -lm -ldl
 DEPS=matrix.h nnet.h split.h
 
 all: network_test
-all: CFLAGS += -O3
+all: CFLAGS += -O3 -Wall -pedantic
 all: LDFLAGS += -O3
 
 debug: network_test

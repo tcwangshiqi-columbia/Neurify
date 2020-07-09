@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <sys/time.h>
 #include <time.h>
-#include <cblas.h>
+#include <openblas/cblas.h>
 
 struct Matrix
 {
@@ -27,9 +27,6 @@ void matmul(struct Matrix* A, struct Matrix* B, struct Matrix* C);
 void matmul_with_bias(struct Matrix* A, struct Matrix* B, struct Matrix* C);
 
 void multiply(struct Matrix* A, struct Matrix* B);
-
-
-void *multiply_args(void *args);
 
 void printMatrix(struct Matrix* A);
 

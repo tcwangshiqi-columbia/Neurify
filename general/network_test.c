@@ -9,7 +9,7 @@
  -----------------------------------------------------------------
  */
 
-
+#include <openblas/cblas.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -24,7 +24,7 @@ void sig_handler(int signo)
 }
 
 char* config_args(int argc, char *argv[]){
-    char *FULL_NET_PATH;
+    char *FULL_NET_PATH = NULL;
     if(argc>8 || argc<3) {
         printf("please specify a network\n");
         printf("./network_test [property] [network]"
@@ -94,14 +94,15 @@ int main( int argc, char *argv[]){
     openblas_set_num_threads(1);
 
     srand((unsigned)time(NULL));
-    double time_spent;
-    int i,j,layer;
+    double time_spent = 0;
+    double total_time_spent = 0;
 
-    int image_start, image_length;
+    int image_start = 0;
+    int image_length = 0;
     if(PROPERTY == 0){
-        image_length = 100;
+        image_length = 1000;
         image_start = 0;
-        INF = 15;
+        INF = 10;
     }
     else if(PROPERTY==1){
         /*
@@ -128,25 +129,25 @@ int main( int argc, char *argv[]){
 
     float avg_wrong_length = 0.0;
     
-    for(int img_ind=0; img_ind<image_length;img_ind++){
+    for(int img=image_start; img<image_start+image_length; img++){
+        gettimeofday(&start, NULL);
 
-        int img = image_start + img_ind;
-        adv_found=0;
-        can_t_prove=0;
-        printf("start load network\n");
+        adv_found = false;
+        analysis_uncertain = false;
+        printf("start loading network\n");
         struct NNet* nnet = load_conv_network(FULL_NET_PATH, img);
-        printf("done load network\n");
+        printf("done loading network\n");
 
         int numLayers    = nnet->numLayers;
         int inputSize    = nnet->inputSize;
         int outputSize   = nnet->outputSize;
         int maxLayerSize = nnet->maxLayerSize;
 
-        float u[inputSize], l[inputSize], input_prev[inputSize];
+        float u[inputSize+1], l[inputSize+1], input_prev[inputSize];
         struct Matrix input_prev_matrix = {input_prev, 1, inputSize};
 
-        struct Matrix input_upper = {u,1,nnet->inputSize};
-        struct Matrix input_lower = {l,1,nnet->inputSize};
+        struct Matrix input_upper = {u,1,nnet->inputSize+1};
+        struct Matrix input_lower = {l,1,nnet->inputSize+1};
         struct Interval input_interval = {input_lower, input_upper};
 
         initialize_input_interval(nnet, img, inputSize, input_prev, u, l);
@@ -155,12 +156,6 @@ int main( int argc, char *argv[]){
             normalize_input(nnet, &input_prev_matrix);
             normalize_input_interval(nnet, &input_interval);
         }
-
-        float grad_upper[inputSize], grad_lower[inputSize];
-        struct Interval grad_interval = {
-                    (struct Matrix){grad_upper, 1, inputSize},
-                    (struct Matrix){grad_lower, 1, inputSize}
-                };
 
         float o[nnet->outputSize];
         struct Matrix output = {o, outputSize, 1};
@@ -171,9 +166,6 @@ int main( int argc, char *argv[]){
                     (struct Matrix){o_upper, outputSize, 1}
                 };
 
-        int n = 0;
-        int feature_range_length = 0;
-        int split_feature = -1;
         printf("running image %d with network %s\n", img, FULL_NET_PATH);
         printf("Infinite Norm: %f\n", INF);
         //printMatrix(&input_upper);
@@ -186,52 +178,7 @@ int main( int argc, char *argv[]){
                 printf("wrong input!\n");
                 exit(0);
             }
-
-            if(input_interval.upper_matrix.data[i]!=\
-                        input_interval.lower_matrix.data[i]){
-                n++;
-            }
-
         }
-
-        feature_range_length = n;
-        int *feature_range = (int*)malloc(n*sizeof(int));
-
-        for(int i=0, n=0;i<nnet->inputSize;i++){
-
-            if(input_interval.upper_matrix.data[i]!=\
-                        input_interval.lower_matrix.data[i]){
-                feature_range[n] = i;
-                n++;
-            }
-
-        }
-
-        float *equation_upper = (float*)malloc(sizeof(float) *\
-                                (inputSize+1)*maxLayerSize);
-        float *equation_lower = (float*)malloc(sizeof(float) *\
-                                (inputSize+1)*maxLayerSize);
-        float *new_equation_upper = (float*)malloc(sizeof(float) *\
-                                    (inputSize+1)*maxLayerSize);
-        float *new_equation_lower = (float*)malloc(sizeof(float) *\
-                                    (inputSize+1)*maxLayerSize);
-
-        float *equation_input_lower = (float*)malloc(sizeof(float) *\
-                                    (inputSize+1)*nnet->layerSizes[1]);
-        float *equation_input_upper = (float*)malloc(sizeof(float) *\
-                                    (inputSize+1)*nnet->layerSizes[1]);
-
-        struct Interval equation_inteval = {
-            (struct Matrix){(float*)equation_lower, inputSize+1,\
-                        nnet->layerSizes[1]},
-            (struct Matrix){(float*)equation_upper, inputSize+1,\
-                        nnet->layerSizes[1]}
-        };
-
-        float *equation = (float*)malloc(sizeof(float) *\
-                                (inputSize+1)*maxLayerSize);
-        float *new_equation = (float*)malloc(sizeof(float) *\
-                                (inputSize+1)*maxLayerSize);
 
         
         //forward_prop(nnet, &input_prev_matrix, &output);
@@ -243,40 +190,22 @@ int main( int argc, char *argv[]){
         printf("concrete output:");
         printMatrix(&output);
 
-        gettimeofday(&start, NULL);
-        int isOverlap = 0;
+        bool is_overlap = false;
 
-        int wrong_node_length = 0; 
-        int full_wrong_node_length = 0;
+        int total_nodes = 0;
         for(int layer=1;layer<numLayers;layer++){
-            wrong_node_length += nnet->layerSizes[layer];
+            total_nodes += nnet->layerSizes[layer];
         }
-        int wrong_nodes[wrong_node_length];
-        float wrong_up_s_up[wrong_node_length];
-        float wrong_up_s_low[wrong_node_length];
-        float wrong_low_s_up[wrong_node_length];
-        float wrong_low_s_low[wrong_node_length];
+        int wrong_nodes_map[total_nodes];
+        memset(wrong_nodes_map,0,sizeof(int)*total_nodes);
+
+        float grad[total_nodes];
+        memset(grad, 0, sizeof(float)*total_nodes);
+
+        int wrong_node_length = 0;
+        int full_wrong_node_length = 0;
         
-        memset(wrong_nodes,0,sizeof(int)*wrong_node_length);
-        memset(wrong_up_s_up,0,sizeof(float)*wrong_node_length);
-        memset(wrong_up_s_low,0,sizeof(float)*wrong_node_length);
-        memset(wrong_low_s_up,0,sizeof(float)*wrong_node_length);
-        memset(wrong_low_s_low,0,sizeof(float)*wrong_node_length);
-
-        int sigs[wrong_node_length];
-        memset(sigs, -1, sizeof(int)*wrong_node_length);
-
-        float grad[wrong_node_length];
-        memset(grad, 0, sizeof(float)*wrong_node_length);
-
-        wrong_node_length = 0;
-
         ERR_NODE = 5000;
-        //wrong_node_length = 0;
-        float *equation_err = (float*)malloc(sizeof(float) *\
-                                ERR_NODE*maxLayerSize);
-        float *new_equation_err = (float*)malloc(sizeof(float) *\
-                                ERR_NODE*maxLayerSize);
         // the equation of last convolutional layer 
         float *equation_conv = (float*)malloc(sizeof(float) *\
                                 (inputSize+1)*maxLayerSize);
@@ -287,9 +216,7 @@ int main( int argc, char *argv[]){
 
         forward_prop_interval_equation_linear_conv(nnet, &input_interval,\
                              &output_interval,\
-                             grad, equation, equation_err,\
-                             new_equation, new_equation_err,\
-                             wrong_nodes, &wrong_node_length,\
+                             grad, wrong_nodes_map, &wrong_node_length,\
                              &full_wrong_node_length,\
                              equation_conv, equation_conv_err, &err_row_conv);
 
@@ -299,79 +226,87 @@ int main( int argc, char *argv[]){
         printf("lower matrix:");
         printMatrix(&output_interval.lower_matrix);
 
-        sort(grad, wrong_node_length, wrong_nodes);
-		sort_layers(nnet->numLayers, nnet->layerSizes,\
-                wrong_node_length, wrong_nodes);
+        for(int i = 0; i < outputSize; i++) {
+            if(output_interval.upper_matrix.data[i] < output.data[i] ||
+               output_interval.lower_matrix.data[i] > output.data[i]) {
+                printf("Invalid approximation \n");
+                exit(1);
+            }
+        }
 
 		avg_wrong_length += wrong_node_length; 
 
-        printf("total wrong nodes: %d, wrong nodes in"\
-                    "fully connect layers: %d\n", wrong_node_length,\
+        printf("total wrong nodes: %d, wrong nodes in "\
+                    "fully connected layers: %d\n", wrong_node_length,\
                     full_wrong_node_length );
         /*
 		for(int w=0;w<wrong_node_length;w++){
-            printf("%d,",wrong_nodes[w]);
+            printf("%d,",wrong_nodes_map[w]);
         }
 		*/
 
-        int output_map[outputSize];
+        bool output_map[outputSize];
         for(int oi=0;oi<outputSize;oi++){
             if(output_interval.upper_matrix.data[oi]>\
                     output_interval.lower_matrix.data[nnet->target] &&\
                     oi!=nnet->target){
-                output_map[oi]=1;
+                output_map[oi] = true;
             }
             else{
-                output_map[oi]=0;
+                output_map[oi] = false;
             }
         }
-        isOverlap = check_functions_norm(nnet, &output_interval);
+        is_overlap = check_functions_norm(nnet, &output_interval);
         lprec *lp;
         
         int rule_num = 0;
         int Ncol = inputSize;
-        REAL row[Ncol+1];
         lp = make_lp(0, Ncol);
         set_verbose(lp, IMPORTANT);
         
-        set_input_constraints(&input_interval, lp, &rule_num);
+        set_input_constraints(&input_interval, lp, &rule_num, inputSize);
         set_presolve(lp, PRESOLVE_LINDEP, get_presolveloops(lp));
         //write_LP(lp, stdout);
-        int target = 0;
-        int sig = 0;
 
-        gettimeofday(&start, NULL);
-        int depth = 0;
-        if(isOverlap){
+        if(is_overlap){
+            if(full_wrong_node_length == 0) {
+                printf("Not implemented: At least one node needs to be able to be split to " \
+                    "test the LP. \n");
+                exit(1);
+            }
             if(CHECK_ADV_MODE){
                 printf("Check Adv Mode (CHECK_ADV_MODE)\n");
                 for (int n=0;n<full_wrong_node_length;n++){
-                    wrong_nodes[n] = wrong_nodes[err_row_conv+n];
+                    wrong_nodes_map[n] = wrong_nodes_map[err_row_conv+n];
                 }
                 wrong_node_length = full_wrong_node_length;
             }
             else{
                 printf("Regular Mode (No CHECK_ADV_MODE)\n");
             }
+
+            int sigs[total_nodes];
+            memset(sigs, -1, sizeof(int)*total_nodes);
+
             // split
-            isOverlap = split_interval_conv_lp(nnet, &input_interval,\
+            int depth = 0;
+            is_overlap = split_interval_conv_lp(nnet, &input_interval,\
                                 output_map,\
-                                equation, equation_err,\
-                                new_equation, new_equation_err,\
-                                wrong_nodes, &wrong_node_length, sigs,\
+                                grad, wrong_nodes_map, &wrong_node_length, sigs,\
                                 equation_conv, equation_conv_err,\
                                 err_row_conv,\
                                 lp, &rule_num, depth);
         }
 
         //write_LP(lp, stdout);
-        //isOverlap = check_functions(nnet, &output_interval);
+        //is_overlap = check_functions(nnet, &output_interval);
         
         gettimeofday(&finish, NULL);
         time_spent = ((float)(finish.tv_sec-start.tv_sec)*1000000 +\
                 (float)(finish.tv_usec-start.tv_usec)) / 1000000;
+        total_time_spent += time_spent;
 
-        if(isOverlap==0 && adv_found == 0 && !can_t_prove){
+        if(!is_overlap && !adv_found && !analysis_uncertain){
             if (CHECK_ADV_MODE){
                 printf("no adv found\n");
                 can_t_prove_list[no_prove] = img;
@@ -391,32 +326,25 @@ int main( int argc, char *argv[]){
             printf("can't prove!\n");
         }
 
-        printf("%d %d %d\n", adv_num, non_adv, no_prove);
+        printf("Current analysis result: %d adv, %d non-adv, %d undetermined \n",
+          adv_num, non_adv, no_prove);
         printf("time: %f \n\n", time_spent);
         destroy_conv_network(nnet);
-        free(feature_range);
 
-        free(equation_upper);
-        free(equation_lower);
-        free(new_equation_upper);
-        free(new_equation_lower);
-        free(equation_input_upper);
-        free(equation_input_lower);
-        free(equation);
-        free(new_equation);
-        free(equation_err);
-        free(new_equation_err);
+        free(equation_conv);
+        free(equation_conv_err);
         delete_lp(lp);
 
     }
 
     avg_wrong_length /= (float)image_length;
 
-    printf("adv: %d, non-adv: %d, not_proved: %d\n",\
-                adv_num, non_adv, no_prove);
+    printf("Final analysis result: %d adv, %d non-adv, %d undetermined \n", 
+        adv_num, non_adv, no_prove);
     printf("avg wrong node length:%f\n", avg_wrong_length);
+    printf("Total time: %f \n\n", total_time_spent);
     if(no_prove>0){
-        printf("image that have not been proved:\n");
+        printf("images that have not been proved:\n");
         for(int ind=0;ind<no_prove;ind++){
             printf("%d ", can_t_prove_list[ind]);
         }
