@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <sys/time.h>
 #include <time.h>
-#include <openblas/cblas.h>
+#include <cblas.h>
 
 struct Matrix
 {
@@ -19,7 +19,7 @@ typedef struct {
 
 void add_constant(struct Matrix* A, float alpha);
 
-void matmul_with_factor(struct Matrix* A, struct Matrix* B, struct Matrix* C, 
+void matmul_with_factor(struct Matrix* A, struct Matrix* B, struct Matrix* C,
 						float alpha, float beta);
 
 void matmul(struct Matrix* A, struct Matrix* B, struct Matrix* C);

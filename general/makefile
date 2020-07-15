@@ -1,11 +1,11 @@
 CC=gcc
 CFLAGS=-I /opt/OpenBLAS/include/ 
 LDFLAGS= -L/opt/OpenBLAS/lib -lopenblas -lpthread -lm
-LPFLAGS= lp_dev/liblpsolve55.a -lm -ldl
+LPFLAGS= lp_dev/liblpsolve55.a -lm -ldl -no-pie -fPIC
 DEPS=matrix.h nnet.h split.h
 
 all: network_test
-all: CFLAGS += -O3 -Wall -pedantic
+all: CFLAGS += -O3
 all: LDFLAGS += -O3
 
 debug: network_test
