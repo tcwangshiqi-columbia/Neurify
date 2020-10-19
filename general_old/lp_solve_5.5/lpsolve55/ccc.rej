@@ -1,0 +1,11 @@
+--- ccc	(revision 11215)
++++ ccc	(revision 11216)
+@@ -28,7 +28,7 @@
+ echo '#include <stdio.h>'>>/tmp/isnan.c
+ echo '#include <stdlib.h>'>>/tmp/isnan.c
+ echo '#include <math.h>'>>/tmp/isnan.c
+-echo 'main(){isnan(0);}'>>/tmp/isnan.c
++echo 'main(){isnan(0.0);}'>>/tmp/isnan.c
+ $c $CFLAGS /tmp/isnan.c -o /tmp/isnan $math >/dev/null 2>&1
+ if [ $? = 0 ]
+ then NOISNAN=

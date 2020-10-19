@@ -12,13 +12,13 @@
 #include "nnet.h"
 
 
-int PROPERTY = 5;
+int PROPERTY = 1;
 char *LOG_FILE = "logs/log.txt";
-float INF = 1;
+float INF = 0.05;
 
-int ERR_NODE=10;
+int ERR_NODE=5000;
 
-int NORM_INPUT=1;
+int NORM_INPUT=0;
 
 int CHECK_ADV_MODE = 0;
 
@@ -57,6 +57,7 @@ struct NNet *load_conv_network(const char* filename, int img)
     nnet->outputSize = atoi(strtok(NULL,",\n"));
     nnet->maxLayerSize = atoi(strtok(NULL,",\n"));
 
+
     //Allocate space for and read values of the array members of the network
     nnet->layerSizes = (int*)malloc(sizeof(int)*(nnet->numLayers+1));
     line = fgets(buffer,bufferSize,fstream);
@@ -67,8 +68,10 @@ struct NNet *load_conv_network(const char* filename, int img)
         record = strtok(NULL,",\n");
     }
     //Load Min and Max values of inputs
-    nnet->min = MIN_PIXEL;
-    nnet->max = MAX_PIXEL;
+    //nnet->min = MIN_PIXEL;
+    //nnet->max = MAX_PIXEL;
+    nnet->min = -1.0;
+    nnet->max = 1.0;
     
     nnet->layerTypes = (int*)malloc(sizeof(int)*nnet->numLayers);
     nnet->convLayersNum = 0;
@@ -240,7 +243,7 @@ struct NNet *load_conv_network(const char* filename, int img)
             i++;
         }            
     }
-    //printf("load matrix done\n");
+    printf("load matrix done\n");
     
     float input_prev[nnet->inputSize];
     struct Matrix input_prev_matrix = {input_prev, 1, nnet->inputSize};
@@ -255,7 +258,7 @@ struct NNet *load_conv_network(const char* filename, int img)
     //printf("normalize_input done\n");
     evaluate_conv(nnet, &input_prev_matrix, &output);
     printMatrix(&output);
-    
+
     float largest = output.data[0];
     nnet->target = 0;
     for(int o=1;o<nnet->outputSize;o++){
@@ -413,6 +416,27 @@ void set_input_constraints(struct Interval *input,
     set_add_rowmode(lp, FALSE);
 }
 
+void add_l1_constraint(struct Interval *input, lprec *lp, int *rule_num, float l1){
+    int Ncol = input->upper_matrix.col;
+    REAL row[Ncol+1];
+    memset(row, 0, Ncol*sizeof(float));
+    set_add_rowmode(lp, TRUE);
+    for(int j=1;j<Ncol+1;j++){
+        if(input->upper_matrix.data[j-1]<0){
+            row[j]=-1;
+        }
+        else if(input->lower_matrix.data[j-1]>0){
+            row[j]=1;
+        }
+        else{
+            row[j]=2*input->upper_matrix.data[j-1]/(input->upper_matrix.data[j-1]-input->lower_matrix.data[j-1])-1;
+        }
+    }
+    add_constraintex(lp, 1, row, NULL, LE, l1);
+    set_add_rowmode(lp, FALSE);
+    *rule_num += 1;
+}
+
 
 void set_node_constraints(lprec *lp, float *equation,
                         int start, int *rule_num,
@@ -547,7 +571,7 @@ void initialize_input_interval(struct NNet* nnet,
             if(u[i] > nnet->max) {
                 u[i] = nnet->max;
             }
-            l[i] = input[i]-INF;
+		    l[i] = input[i]-INF;
             if(l[i] < nnet->min) {
                 l[i] = nnet->min;
             }
@@ -560,6 +584,21 @@ void initialize_input_interval(struct NNet* nnet,
         /*
          * Customize your own initial input range
          */
+	    // TODO: FIX HS FEATURES and only vary outside features
+        for(int i =0;i<inputSize;i++){
+            u[i] = input[i]+INF;
+            if(u[i] > nnet->max) {
+                u[i] = nnet->max;
+            }
+            l[i] = input[i]-INF;
+            if(l[i] < nnet->min) {
+                l[i] = nnet->min;
+            }
+        }
+
+        // used for biases
+        u[inputSize] = 1;
+        l[inputSize] = 1;
     }
     else{
         for(int i =0;i<inputSize;i++){
@@ -571,27 +610,23 @@ void initialize_input_interval(struct NNet* nnet,
 }
 
 
+// TODO: add ability to read in random files
 void load_inputs(int img, int inputSize, float *input){
 
-    if(img>=100000){
-        printf("ERR: Over 100000 images!\n");
-        exit(1);
-    }
-    char str[12];
-    char image_name[18];
+    //char str[12];
+    //char image_name[100];
 
     /*
      * Customize your own dataset
      */
 
-    char tmp[18] = "images/image";
-    strcpy(image_name, tmp);
+    //char tmp[18] = "images/image";
+    //strcpy(image_name, tmp);
 
-    sprintf(str, "%d", img);
-    FILE *fstream = fopen(strcat(image_name,str),"r");
+    //sprintf(str, "%d", img);
+    FILE *fstream = fopen("text_inputs/spellbindingfunanddeliciouslyexploitative","r");
     if (fstream == NULL)
     {
-        printf("no input:%s!\n", image_name);
         exit(1);
     }
     int bufferSize = 10240*5;

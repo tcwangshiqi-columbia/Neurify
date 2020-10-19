@@ -1,0 +1,3 @@
+Only the folder `general` has been compiled to work properly.
+
+The version of lp_solver in all of the other folders needs replacing with the correctly compiled verson in my home directory.

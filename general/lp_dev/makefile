@@ -1,6 +1,6 @@
 CC=gcc
-CFLAGS=-I /opt/OpenBLAS/include/ 
-LDFLAGS= -L/opt/OpenBLAS/lib -lopenblas -lpthread -lm
+CFLAGS=-I /home/rhiba/packages/include
+LDFLAGS= -L/home/rhiba/packages/lib -lopenblas -lpthread -lm
 LPFLAGS= liblpsolve55.a -lm -ldl
 DEPS=matrix.h nnet.h split.h
 

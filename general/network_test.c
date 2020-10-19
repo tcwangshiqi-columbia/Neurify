@@ -114,6 +114,9 @@ int main( int argc, char *argv[]){
          * that you want to load in nnet.c; (2) the check_function
          * and check_function1 in split.c.
          */
+	 image_length = 1;
+	 image_start = 0;
+	 INF = 1;
     }
     else{
         image_length = 1;
@@ -146,8 +149,8 @@ int main( int argc, char *argv[]){
         float u[inputSize+1], l[inputSize+1], input_prev[inputSize];
         struct Matrix input_prev_matrix = {input_prev, 1, inputSize};
 
-        struct Matrix input_upper = {u,1,nnet->inputSize+1};
-        struct Matrix input_lower = {l,1,nnet->inputSize+1};
+        struct Matrix input_upper = {u,1,nnet->inputSize};
+        struct Matrix input_lower = {l,1,nnet->inputSize};
         struct Interval input_interval = {input_lower, input_upper};
 
         initialize_input_interval(nnet, img, inputSize, input_prev, u, l);
@@ -189,6 +192,9 @@ int main( int argc, char *argv[]){
         evaluate_conv(nnet, &input_prev_matrix, &output);
         printf("concrete output:");
         printMatrix(&output);
+        // ABOVE IS FINE
+        printMatrix(&input_interval.upper_matrix);
+        printMatrix(&input_interval.lower_matrix);
 
         bool is_overlap = false;
 
@@ -256,7 +262,7 @@ int main( int argc, char *argv[]){
                 output_map[oi] = false;
             }
         }
-        is_overlap = check_functions_norm(nnet, &output_interval);
+        is_overlap = check_functions(nnet, &output_interval);
         lprec *lp;
         
         int rule_num = 0;
@@ -265,6 +271,13 @@ int main( int argc, char *argv[]){
         set_verbose(lp, IMPORTANT);
         
         set_input_constraints(&input_interval, lp, &rule_num, inputSize);
+
+        if (PROPERTY == 1) {
+            add_l1_constraint(&input_interval, lp, &rule_num,\
+                    INF);
+        }
+
+
         set_presolve(lp, PRESOLVE_LINDEP, get_presolveloops(lp));
         //write_LP(lp, stdout);
 

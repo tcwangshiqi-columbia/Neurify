@@ -155,17 +155,45 @@ bool check_not_max_norm(struct NNet *nnet, struct Interval *output){
  * Here is the function checking whether the output range always 
  * satisfies your customized safety property.
  */
+
 bool check_functions(struct NNet *nnet, struct Interval *output){
+    // check not overlapping
+    // if there is ever an overlapping output interval between idx 0 and 1, that
+    // indicates the classification can be changed.
+    // In this case, return ??? (TRUE)
+    printf("Output upper: %f %f\n",output->upper_matrix.data[0],output->upper_matrix.data[1]);
+    printf("Output lower: %f %f\n",output->lower_matrix.data[0],output->lower_matrix.data[1]);
     if (PROPERTY == 1){
-        /*
-         * You need to customize your own checking function
-         * For instance, you can check whether the first output
-         * is always the smallest. You can also check whether 
-         * one of the output is always larger than 0.001, etc.
-         */
+        int target_opp = (nnet->target == 0)? 1 : 0;
+        // only ever going to be 2 outputs
+        // if the other upper bound is greater than the targets lower bound, they can overlap
+        if (output->upper_matrix.data[target_opp] > output->lower_matrix.data[nnet->target]){
+            return true;
+        }
+
+        return false;
     }
 
     return check_not_max(nnet, output);
+}
+
+/*
+ * Here is the function checking whether the given concrete outupt 
+ * violates your customized safety property.
+ */
+bool check_functions1(struct NNet *nnet, struct Matrix *output){
+
+    printf("Output: %f %f\n",output->data[0],output->data[1]);
+    if (PROPERTY == 1){
+        int target_opp = (nnet->target == 0)? 1 : 0;
+        // if target_opp is > target, then this is bad
+        if (output->data[target_opp] > output->data[nnet->target]) {
+            return true;
+        }
+        return false;
+    }
+
+    return check_not_max1(nnet, output);
 }
 
 
@@ -179,23 +207,6 @@ bool check_functions_norm(struct NNet *nnet, struct Interval *output){
 }
 
 
-/*
- * Here is the function checking whether the given concrete outupt 
- * violates your customized safety property.
- */
-bool check_functions1(struct NNet *nnet, struct Matrix *output){
-
-    if (PROPERTY == 1){
-        /*
-         * You need to customize your own checking function for adv
-         * For instance, you can check whether the first output
-         * is always the smallest. You can also check whether 
-         * one of the output is always larger than 0.001, etc.
-         */
-    }
-
-    return check_not_max1(nnet, output);
-}
 
 
 
@@ -223,12 +234,30 @@ void *direct_run_check_conv_lp_thread(void *args){
     return NULL;
 }
 
+int check_l1(float *input, int inputSize){
+    float abs = 0;
+    for(int i=0;i<inputSize;i++){
+        if(input[i]>=0){
+            abs+=input[i];
+        }
+        else{
+            abs-=input[i];
+        }
+    }
+    if(abs<=INF){
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
 
 void check_adv1(struct NNet* nnet, struct Matrix *adv){
     float out[nnet->outputSize];
     struct Matrix output = {out, nnet->outputSize, 1};
     forward_prop_conv(nnet, adv, &output);
     bool is_adv = check_functions1(nnet, &output);
+
     if(is_adv){
         printf("adv found:\n");
         //printMatrix(adv);
