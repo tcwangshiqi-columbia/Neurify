@@ -54,8 +54,8 @@ if round_ is not None:
 
 # Create the model
 model = Sequential()
-model.add(Dense(32, input_shape=(maxlen*emb_dims,), activation='relu'))
-model.add(Dense(16, activation='relu'))
+model.add(Dense(16, input_shape=(maxlen*emb_dims,), activation='relu'))
+#model.add(Dense(32, activation='relu'))
 model.add(Dense(2,name='before_softmax'))
 model.add(Activation('softmax'))
 model.compile(loss='categorical_crossentropy', 
@@ -75,5 +75,5 @@ y_train_chunk = to_categorical(y_train, num_classes=2)
 model.fit(X_train_chunk, y_train_chunk, batch_size=512, epochs=100)
 model.evaluate(X_test, y_test, batch_size=512)
 
-model.save_weights('models/SST_fc_5d_10inp_format_16_32_2.h5')
-model.save('models/fullmodel_SST_fc_5d_10inp_format_16_32_2.h5')
+model.save_weights('models/SST_fc_5d_10inp_format_16hu.h5')
+model.save('models/fullmodel_SST_fc_5d_10inp_format_16hu.h5')

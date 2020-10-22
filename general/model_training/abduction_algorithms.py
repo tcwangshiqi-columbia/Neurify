@@ -11,16 +11,15 @@ import itertools
 import multiprocessing as mp
 import numpy as np
 import random
-import tensorflow as tf
 import time
-from keras import backend as K
+import tensorflow as tf
+from tensorflow import keras
 from pysat.examples.hitman import Hitman
 from tensorflow.keras.models import load_model
 from tensorflow.keras.activations import linear as keras_linear
 from tensorflow.python.framework.graph_util import convert_variables_to_constants
 
 import sys
-sys.path.append('./../../../Marabou/')
 from maraboupy import Marabou
 from maraboupy import MarabouUtils, MarabouCore
 
@@ -196,6 +195,7 @@ def Entails(h, network, input_, input_bounds, output_constraints,
         network.setUpperBound(inputVars[n], input_bounds[n][1])    
     # Constants (before and after Free Params) are set equal to their original value
     for n in c_ranges:
+        #sets var n = constant
         equation = MarabouUtils.Equation()
         equation.addAddend(1, n)
         equation.setScalar(input_[n])
@@ -203,11 +203,19 @@ def Entails(h, network, input_, input_bounds, output_constraints,
     # y1>=(y0-\eps) inequality constraint
     #  (which becomes strict with a small epsilon added to one of the outputs)
     # API: \sum_i vars_i*coeffs_i <= scalar
-    y0, y1, eps = output_constraints
-    MarabouUtils.addInequality(network, [outputVars[y0], outputVars[y1]], [1,-1], eps)
+    # 
+    y_targ_idx, y_opp_idx, eps = output_constraints
+    # eps should be negative, if its positve make it negative
+    if eps > 0:
+        eps = -eps
+    network.addInequality([outputVars[y_targ_idx], outputVars[y_opp_idx]], [1,-1], eps)
+
     # Call to C++ Marabou solver
     logger("Results for value {}".format(h), verbose, "DEBUG")
-    vals, _ = network.solve(verbose=0)
+    opts = Marabou.createOptions(verbosity=0)
+    vals, _ = network.solve(options=opts,verbose=False)
+    #print(vals)
+    #sys.exit(0)
     return vals
 
 def PickFalseLits(C_setminus_h, filename, input_, input_bounds, output_constraints, 
@@ -301,6 +309,9 @@ def smallest_explanation(model, filename, numpy_input, eps, y_hat, output_constr
     input_ = numpy_input.flatten().tolist()
     input_len = len(input_)
     input_bounds = [[input_[i]-eps, input_[i]+eps] for i in range(input_len)]
+    #print(input_bounds)
+    #sys.exit(0)
+    # input bounds match with Neurify
     GAMMA = []
     timer = 0 
     while True:
@@ -317,7 +328,7 @@ def smallest_explanation(model, filename, numpy_input, eps, y_hat, output_constr
         h = idx2word(h, window_size, input_len)  # fixed vars
         logger("MinimumHS {}".format(h), verbose, "DEBUG")
         # Start procedure
-        network = Marabou.read_tf(filename)
+        network = Marabou.read_tf(filename,modelType='savedModel_v2',savedModelTags=['serving_default'])
         # 1. Look for an adversarial attack *before* Entails (at line 5 Alg. 2)
         if adv_attacks is True:
             adv_args = (adv_args[0], adv_args[1][:6] + (h,) + adv_args[1][7:])  # set mask on inputs that should not be tested

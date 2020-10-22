@@ -21,8 +21,8 @@ def FCModel(weights_path):
     maxlen = 10
     emb_dims = 5
     model = Sequential()
-    model.add(Dense(32, input_shape=(maxlen*emb_dims,), activation='relu'))
-    model.add(Dense(16, activation='relu'))
+    model.add(Dense(16, input_shape=(maxlen*emb_dims,), activation='relu'))
+    #model.add(Dense(32, activation='relu'))
     model.add(Dense(2,name='before_softmax'))
     model.add(Activation('softmax'))
     model.compile(loss='categorical_crossentropy', 

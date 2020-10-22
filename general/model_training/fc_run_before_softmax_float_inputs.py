@@ -8,7 +8,7 @@ from __future__ import print_function
 
 import tensorflow as tf
 from tensorflow import keras
-from tensorflow.keras.models import load_model, Sequential
+from tensorflow.keras.datasets import mnist
 from tensorflow.keras.layers import Dense, Input, Activation
 from tensorflow.keras.models import Model
 from tensorflow.keras.utils import CustomObjectScope
@@ -55,6 +55,15 @@ if __name__ == '__main__':
     input_without_padding = input_without_padding.lower().split(' ') 
     input_ = input_without_padding[:num_words] + ['<PAD>']*(num_words - len(input_without_padding))
     x = embedding(input_)
+    with open('../text_inputs/new_mara_in','r') as f:
+    #with open('../text_inputs/test','r') as f:
+        text_in = f.read().split(',')[:-1]
+    text_in = list(map(float,text_in))
+    text_in = np.array([text_in])
+   # print(text_in)
+   # print(x)
+    x = text_in
+
 
     extractor = tf.keras.models.Model(inputs=model.inputs,outputs=model.layers[-2].output)
     features = extractor.predict(x)
