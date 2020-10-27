@@ -34,7 +34,6 @@ def FCModel(weights_path):
     emb_dims = 5
     model = Sequential()
     model.add(Dense(16, input_shape=(maxlen*emb_dims,), activation='relu'))
-   # model.add(Dense(32, activation='relu'))
     model.add(Dense(2,name='before_softmax'))
     model.add(Activation('softmax'))
     model.compile(loss='categorical_crossentropy', 
@@ -57,8 +56,6 @@ input_without_padding = '... spellbinding fun and deliciously exploitative'
 # Global Variables
 verbose = True
 randomize_pickfalselits = False  # shuffle free variables before feeding them to pickfalselits
-frozen_graph_path = 'tf_model.pb'
-frozen_graph_prefix = './'
 emb_dims = 5
 input_len = emb_dims*10
 num_words = int(input_len/emb_dims)
@@ -66,7 +63,7 @@ model_input_shape = (1, emb_dims*num_words)
 HS_maxlen = 100000  # max size of GAMMA in smallest_explanation
 
 # Load model and test the input_ review
-model = FCModel('models/SST_fc_5d_10inp_format_16hu.h5')
+model = FCModel('models/SST_fc_5d_10inp_format_16hu_norm.h5')
 
 # Load embedding
 path_to_embeddings = './embeddings/'
@@ -78,6 +75,8 @@ embedding = lambda W : np.array([index2embedding[word2index[w]] for w in W]).res
 input_without_padding = input_without_padding.lower().split(' ') 
 input_ = input_without_padding[:num_words] + ['<PAD>']*(num_words - len(input_without_padding))
 x = embedding(input_)
+# normalise
+x = (x+1)/2
 
 input_shape = x.shape
 prediction = model.predict(x)
@@ -87,16 +86,9 @@ c_hat = np.max(prediction)
 print("Classifiation for the input is {} (confidence {})".format(y_hat, c_hat))
 
 model_before_softmax = tf.keras.models.Model(inputs=model.inputs,outputs=model.layers[-2].output)
-tf.saved_model.save(model_before_softmax,'test_model/')
-filename = 'test_model/'
+filename = 'models/SST_fc_5d_10inp_format_16hu_norm_f/' 
+tf.saved_model.save(model_before_softmax,'models/SST_fc_5d_10inp_format_16hu_norm_f/')
 
-# Graph
-#frozen_graph = freeze_session(K.get_session(), output_names=[out.op.name for out in model.outputs])
-# Remove softmax layer
-#del frozen_graph.node[-1] 
-#tf.train.write_graph(frozen_graph, frozen_graph_prefix, frozen_graph_path, as_text=False)
-#filename = frozen_graph_prefix + frozen_graph_path
-# constraints: target_idx, opp_idx, tolerance
 output_constraints = [y_hat, (1 if y_hat==0 else 0), -1e-3]
 
 # Start Main

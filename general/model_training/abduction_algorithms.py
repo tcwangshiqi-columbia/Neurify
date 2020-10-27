@@ -190,6 +190,7 @@ def Entails(h, network, input_, input_bounds, output_constraints,
     inputVars = network.inputVars[0][0].flatten()
     outputVars = network.outputVars[0].flatten()
     # Set input bounds
+    print(input_bounds)
     for n in f_ranges:
         network.setLowerBound(inputVars[n], input_bounds[n][0])
         network.setUpperBound(inputVars[n], input_bounds[n][1])    
@@ -213,9 +214,7 @@ def Entails(h, network, input_, input_bounds, output_constraints,
     # Call to C++ Marabou solver
     logger("Results for value {}".format(h), verbose, "DEBUG")
     opts = Marabou.createOptions(verbosity=0)
-    vals, _ = network.solve(options=opts,verbose=False)
-    #print(vals)
-    #sys.exit(0)
+    vals, _ = network.solve(options=opts,verbose=True)
     return vals
 
 def PickFalseLits(C_setminus_h, filename, input_, input_bounds, output_constraints, 
@@ -308,7 +307,7 @@ def smallest_explanation(model, filename, numpy_input, eps, y_hat, output_constr
     start_time = time.time()
     input_ = numpy_input.flatten().tolist()
     input_len = len(input_)
-    input_bounds = [[input_[i]-eps, input_[i]+eps] for i in range(input_len)]
+    input_bounds = [[input_[i]-eps if input_[i]-eps >= 0 else 0, input_[i]+eps if input_[i]+eps <= 1 else 1] for i in range(input_len)]
     #print(input_bounds)
     #sys.exit(0)
     # input bounds match with Neurify

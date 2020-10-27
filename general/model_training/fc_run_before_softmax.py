@@ -55,6 +55,7 @@ if __name__ == '__main__':
     input_without_padding = input_without_padding.lower().split(' ') 
     input_ = input_without_padding[:num_words] + ['<PAD>']*(num_words - len(input_without_padding))
     x = embedding(input_)
+    x = (x+1)/2
 
     extractor = tf.keras.models.Model(inputs=model.inputs,outputs=model.layers[-2].output)
     features = extractor.predict(x)

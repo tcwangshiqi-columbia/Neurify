@@ -1,21 +1,18 @@
-'''Directly running this python script will train the
-fully connected DNN for MNIST dataset.
-This script can also be loaded as the pretrained model
-by others
-'''
+import sys
+import os
+# quick fix to specify the GPUs to use, comment out if there is no one using 100% of them
+os.environ["CUDA_VISIBLE_DEVICES"]="0,2"
 
-from __future__ import print_function
-
-import keras
-from keras.datasets import mnist
-from keras.layers import Dense, Input, Activation
-from keras.models import Model
-from keras.utils import CustomObjectScope
-from keras.initializers import glorot_uniform
+import tensorflow as tf
+from tensorflow import  keras
+from tensorflow.keras.datasets import mnist
+from tensorflow.keras.layers import Dense, Input, Activation
+from tensorflow.keras.models import Model
+from tensorflow.keras.utils import CustomObjectScope
+from tensorflow.keras.initializers import glorot_uniform
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Activation, Embedding, Dense, Dropout, Conv1D, Conv2D, Flatten, GlobalAveragePooling2D, AveragePooling2D, MaxPooling2D, BatchNormalization  #create model
 import numpy as np
-import sys
 
 def FCModel(weights_path):
     maxlen = 10

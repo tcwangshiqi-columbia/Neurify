@@ -1,3 +1,5 @@
 Only the folder `general` has been compiled to work properly.
 
 The version of lp_solver in all of the other folders needs replacing with the correctly compiled verson in my home directory.
+
+You MUST normalise your inputs, or at least have them be a positive interval.

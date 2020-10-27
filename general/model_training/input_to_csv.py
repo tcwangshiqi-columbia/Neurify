@@ -13,7 +13,6 @@ from text_utils import clean_text, stem_lem
 import re
 
 input_without_padding = '... spellbinding fun and deliciously exploitative'
-out_file = re.sub(r'[^a-zA-Z]+','',input_without_padding)
 
 num_words = 10
 emb_dims = 5
@@ -27,8 +26,9 @@ embedding = lambda W : np.array([index2embedding[word2index[w]] for w in W]).res
 input_without_padding = input_without_padding.lower().split(' ') 
 input_ = input_without_padding[:num_words] + ['<PAD>']*(num_words - len(input_without_padding))
 x = embedding(input_)
+# normalise
+x = (x+1)/2
 x = x.flatten()
 
 out_string = ','.join([str(i) for i in x])
-with open('inputs/'+out_file,'w') as f:
-    f.write(out_string)
+print(out_string+',')

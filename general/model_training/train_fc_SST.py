@@ -2,6 +2,11 @@
 Simple yet useful blob to train all the models from IMDB, SST and AG datasets
 - TODO: make all these functions dynamic and merge shared code
 """
+import os
+import sys
+
+# quick fix to specify the GPUs to use, comment out if there is no one using 100% of them
+os.environ["CUDA_VISIBLE_DEVICES"]="0,2"
 
 import numpy as np
 import string
@@ -66,14 +71,22 @@ model.compile(loss='categorical_crossentropy',
 X_test = [[index2embedding[word2index[x]] for x in xx] for xx in X_test]
 X_test = np.asarray(pad_sequences(X_test, maxlen=maxlen, emb_size=emb_dims))
 X_test = X_test.reshape(len(X_test), maxlen*emb_dims)
+# normalise, Neurify requires >=0 inputs
+# original range is [-1,1], turn it into [0,1]
+X_test = (X_test+1)/2
+
 y_test = to_categorical(y_test, num_classes=2)
 
 X_train_chunk = [[index2embedding[word2index[x]] for x in xx] for xx in X_train]        
 X_train_chunk = np.asarray(pad_sequences(X_train_chunk, maxlen=maxlen, emb_size=emb_dims))
 X_train_chunk = X_train_chunk.reshape(len(X_train_chunk), maxlen*emb_dims)
+# normalise, Neurify requires >=0 inputs
+# original range is [-1,1], turn it into [0,1]
+X_train_chunk = (X_train_chunk+1)/2
+
 y_train_chunk = to_categorical(y_train, num_classes=2)
 model.fit(X_train_chunk, y_train_chunk, batch_size=512, epochs=100)
 model.evaluate(X_test, y_test, batch_size=512)
 
-model.save_weights('models/SST_fc_5d_10inp_format_16hu.h5')
-model.save('models/fullmodel_SST_fc_5d_10inp_format_16hu.h5')
+model.save_weights('models/SST_fc_5d_10inp_format_16hu_norm.h5')
+model.save('models/fullmodel_SST_fc_5d_10inp_format_16hu_norm.h5')

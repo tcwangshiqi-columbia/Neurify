@@ -12,13 +12,13 @@
 #include "nnet.h"
 
 
-int PROPERTY = 1;
+int PROPERTY = 5;
 char *LOG_FILE = "logs/log.txt";
-float INF = 0.05;
+float INF = 1;
 
-int ERR_NODE=5000;
+int ERR_NODE=10;
 
-int NORM_INPUT=0;
+int NORM_INPUT=1;
 
 int CHECK_ADV_MODE = 0;
 
@@ -68,9 +68,7 @@ struct NNet *load_conv_network(const char* filename, int img)
         record = strtok(NULL,",\n");
     }
     //Load Min and Max values of inputs
-    //nnet->min = MIN_PIXEL;
-    //nnet->max = MAX_PIXEL;
-    nnet->min = -1.0;
+    nnet->min = 0.0;
     nnet->max = 1.0;
     
     nnet->layerTypes = (int*)malloc(sizeof(int)*nnet->numLayers);
@@ -246,6 +244,7 @@ struct NNet *load_conv_network(const char* filename, int img)
     printf("load matrix done\n");
     
     float input_prev[nnet->inputSize];
+    printf("input size: %d\n",nnet->inputSize);
     struct Matrix input_prev_matrix = {input_prev, 1, nnet->inputSize};
     float o[nnet->outputSize];
     struct Matrix output = {o, nnet->outputSize, 1};
@@ -258,7 +257,7 @@ struct NNet *load_conv_network(const char* filename, int img)
     //printf("normalize_input done\n");
     evaluate_conv(nnet, &input_prev_matrix, &output);
     printMatrix(&output);
-
+    
     float largest = output.data[0];
     nnet->target = 0;
     for(int o=1;o<nnet->outputSize;o++){
@@ -416,27 +415,6 @@ void set_input_constraints(struct Interval *input,
     set_add_rowmode(lp, FALSE);
 }
 
-void add_l1_constraint(struct Interval *input, lprec *lp, int *rule_num, float l1){
-    int Ncol = input->upper_matrix.col;
-    REAL row[Ncol+1];
-    memset(row, 0, Ncol*sizeof(float));
-    set_add_rowmode(lp, TRUE);
-    for(int j=1;j<Ncol+1;j++){
-        if(input->upper_matrix.data[j-1]<0){
-            row[j]=-1;
-        }
-        else if(input->lower_matrix.data[j-1]>0){
-            row[j]=1;
-        }
-        else{
-            row[j]=2*input->upper_matrix.data[j-1]/(input->upper_matrix.data[j-1]-input->lower_matrix.data[j-1])-1;
-        }
-    }
-    add_constraintex(lp, 1, row, NULL, LE, l1);
-    set_add_rowmode(lp, FALSE);
-    *rule_num += 1;
-}
-
 
 void set_node_constraints(lprec *lp, float *equation,
                         int start, int *rule_num,
@@ -571,7 +549,7 @@ void initialize_input_interval(struct NNet* nnet,
             if(u[i] > nnet->max) {
                 u[i] = nnet->max;
             }
-		    l[i] = input[i]-INF;
+            l[i] = input[i]-INF;
             if(l[i] < nnet->min) {
                 l[i] = nnet->min;
             }
@@ -584,21 +562,6 @@ void initialize_input_interval(struct NNet* nnet,
         /*
          * Customize your own initial input range
          */
-	    // TODO: FIX HS FEATURES and only vary outside features
-        for(int i =0;i<inputSize;i++){
-            u[i] = input[i]+INF;
-            if(u[i] > nnet->max) {
-                u[i] = nnet->max;
-            }
-            l[i] = input[i]-INF;
-            if(l[i] < nnet->min) {
-                l[i] = nnet->min;
-            }
-        }
-
-        // used for biases
-        u[inputSize] = 1;
-        l[inputSize] = 1;
     }
     else{
         for(int i =0;i<inputSize;i++){
@@ -610,21 +573,8 @@ void initialize_input_interval(struct NNet* nnet,
 }
 
 
-// TODO: add ability to read in random files
 void load_inputs(int img, int inputSize, float *input){
-
-    //char str[12];
-    //char image_name[100];
-
-    /*
-     * Customize your own dataset
-     */
-
-    //char tmp[18] = "images/image";
-    //strcpy(image_name, tmp);
-
-    //sprintf(str, "%d", img);
-    FILE *fstream = fopen("text_inputs/spellbindingfunanddeliciouslyexploitative","r");
+    FILE *fstream = fopen("text_inputs/0_spellbinding.csv","r");
     if (fstream == NULL)
     {
         exit(1);

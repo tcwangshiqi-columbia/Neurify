@@ -63,6 +63,7 @@ if __name__ == '__main__':
    # print(text_in)
    # print(x)
     x = text_in
+    x = (x+1)/2
 
 
     extractor = tf.keras.models.Model(inputs=model.inputs,outputs=model.layers[-2].output)
