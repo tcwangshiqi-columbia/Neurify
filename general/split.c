@@ -230,16 +230,16 @@ void check_adv1(struct NNet* nnet, struct Matrix *adv){
     forward_prop_conv(nnet, adv, &output);
     bool is_adv = check_functions1(nnet, &output);
     if(is_adv){
-        printf("adv found:\n");
+        //printf("adv found:\n");
         //printMatrix(adv);
-        printMatrix(&output);
+        //printMatrix(&output);
         int adv_output = nnet->target;
         for(int i=0;i<nnet->outputSize;i++){
             if(output.data[i]>output.data[adv_output]){
                 adv_output = i;
             }
         }
-        printf("%d ---> %d\n", nnet->target, adv_output);
+        //printf("%d ---> %d\n", nnet->target, adv_output);
         pthread_mutex_lock(&lock);
         adv_found = true;
         pthread_mutex_unlock(&lock);
@@ -461,8 +461,10 @@ bool forward_prop_interval_equation_conv_lp(struct NNet *nnet,
                     float tempVal_upper=0.0, tempVal_lower=0.0;
                     relu_bound(&new_sInterval, nnet, input, i, layer, err_row,\
                             &tempVal_lower, &tempVal_upper);
+                    /*
                     printf("target:%d, sig:%d, node:%d, l:%f, u:%f\n",\
                                 target, sigs[target], i, tempVal_lower, tempVal_upper);
+                    */
                 }
                 
 
@@ -503,8 +505,10 @@ bool forward_prop_interval_equation_conv_lp(struct NNet *nnet,
                             need_to_split = true;
                             output_map[i] = true;
                             if(NEED_PRINT){
+                                /*
                                 printf("target:%d, sig:%d, node:%d--Objective value: %f\n",\
                                             target, sigs[target], i, upper);
+                                */
                             }
                             check_adv1(nnet, &input_prev_matrix);
                             if(adv_found){
@@ -521,8 +525,10 @@ bool forward_prop_interval_equation_conv_lp(struct NNet *nnet,
                         else{
                             output_map[i] = false;
                             if(NEED_PRINT){
+                                /*
                                 printf("target:%d, sig:%d, node:%d--unsat\n",\
                                             target, sigs[target], i);
+                                */
                             }
                         }
                     }
@@ -589,19 +595,19 @@ bool direct_run_check_conv_lp(struct NNet *nnet, struct Interval *input,
         pthread_mutex_lock(&lock);
             progress_list[depth-1] += 1;
         pthread_mutex_unlock(&lock);
-        fprintf(stderr, " progress: ");
+        //fprintf(stderr, " progress: ");
         for(int p=1;p<PROGRESS_DEPTH+1;p++){
             if(p>depth){
                 total_progress[p-1] -= pow(2,(p-depth));
             }
-            fprintf(stderr, " %d/%d ", progress_list[p-1], total_progress[p-1]);
+            //fprintf(stderr, " %d/%d ", progress_list[p-1], total_progress[p-1]);
         }
-        fprintf(stderr, "\n");
+        //fprintf(stderr, "\n");
     }
 
     if(isOverlap && !NEED_FOR_ONE_RUN){
         if(NEED_PRINT)
-            printf("depth:%d, sig:%d Need to split!\n\n", depth, sigs[target]);
+            //printf("depth:%d, sig:%d Need to split!\n\n", depth, sigs[target]);
         isOverlap = split_interval_conv_lp(nnet, input, output_map, grad,
                          wrong_nodes_map, &wrong_node_length, sigs,\
                          equation_conv, equation_conv_err, err_row_conv,\
@@ -609,8 +615,8 @@ bool direct_run_check_conv_lp(struct NNet *nnet, struct Interval *input,
     }
     else{
         if(!adv_found)
-            if(NEED_PRINT) 
-                printf("depth:%d, sig:%d, UNSAT, great!\n\n", depth, sigs[target]);
+            if(NEED_PRINT) {}
+                //printf("depth:%d, sig:%d, UNSAT, great!\n\n", depth, sigs[target]);
     }
     return isOverlap;
 }
@@ -754,12 +760,14 @@ bool split_interval_conv_lp(struct NNet *nnet, struct Interval *input,
     if(!result && depth<=PROGRESS_DEPTH){
         pthread_mutex_lock(&lock);
             progress_list[depth-1] += 1;
-        fprintf(stderr, " progress: ");
+        //fprintf(stderr, " progress: ");
         for(int p=1;p<PROGRESS_DEPTH+1;p++){
+            /*
             fprintf(stderr, " %d/%d ",\
                     progress_list[p-1], total_progress[p-1]);
+            */
         }
-        fprintf(stderr, "\n");
+        //fprintf(stderr, "\n");
         pthread_mutex_unlock(&lock);
     }
 

@@ -84,11 +84,12 @@ int sym_relu_layer(struct SymInterval *new_sInterval, struct Interval *input, st
                     int *wrong_nodes, int * wrong_node_length, int *node_cnt);
 
 //Functions Implemented
-struct NNet *load_conv_network(const char *filename, int img);
+struct NNet *load_conv_network(const char *filename, float *input);
 
 void load_inputs(int img, int inputSize, float *input);
 
-void initialize_input_interval(struct NNet *nnet, int img, int inputSize, float *input, float *u, float *l);
+int find_in_h(int needle, int* h, int h_size);
+void initialize_input_interval(struct NNet *nnet, float *input, int input_size, int *h, int h_size, float *u, float *l, float eps);
 
 /*  
  * Uses for loop to calculate the output

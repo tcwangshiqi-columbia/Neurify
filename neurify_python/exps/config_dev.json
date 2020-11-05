@@ -1,0 +1,13 @@
+{
+    "kweights_file":"../models/SST_fc_5d_10inp_format_16hu_norm.h5",
+    "nnet_file":"../models/SST_fc_5d_10inp_format_16hu_norm.nnet",
+    "embedding_file":"../embeddings/custom-embedding-SST.5d.txt",
+    "max_len":10,
+    "emb_dims":5,
+    "layer_sizes":[16,2],
+    "layer_types":[0,0],
+    "verbose":true,
+    "hs_maxlen":100000,
+    "random_pfl":false,
+    "out_folder":"dev_results/"
+}

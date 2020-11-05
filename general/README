@@ -1,0 +1,4 @@
+1) `make`
+2) cp libentails.so ~/home/username/your/lib/dir
+3) (Make sure your so dir is in your path).
+4) cp entails.h ~/home/username/your/include/dir

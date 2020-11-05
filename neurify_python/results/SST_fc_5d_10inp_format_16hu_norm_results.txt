@@ -1,0 +1,712 @@
+Input: ['you', 'will', 'probably', 'love', 'it', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.05 Window size: 5
+Classification: 1 (confidence 0.694377064704895)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 9)
+MSE words: ['you', 'will', 'probably', 'love', 'it', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Complementary set of MSE: [35, 36, 37, 38, 39]
+Execution Time (s): 19.887816667556763
+
+Input: ['a', 'delightful', 'coming-of-age', 'story', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.01 Window size: 5
+Classification: 1 (confidence 0.9712310433387756)
+MSE found: [] (size 0)
+MSE words: []
+Complementary set of MSE: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Execution Time (s): 0.009166240692138672
+
+Input: ['a', 'delightful', 'coming-of-age', 'story', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.05 Window size: 5
+Classification: 1 (confidence 0.9712310433387756)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 45, 46, 47, 48, 49] (size 7)
+MSE words: ['a', 'delightful', 'coming-of-age', 'story', '<PAD>', '<PAD>', '<PAD>']
+Complementary set of MSE: [30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44]
+Execution Time (s): 17.642837524414062
+
+Input: ['a', 'delightful', 'coming-of-age', 'story', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.1 Window size: 5
+Classification: 1 (confidence 0.9712310433387756)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 9)
+MSE words: ['a', 'delightful', 'coming-of-age', 'story', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Complementary set of MSE: [35, 36, 37, 38, 39]
+Execution Time (s): 21.363049507141113
+
+Input: ['insanely', 'hilarious', '!', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.01 Window size: 5
+Classification: 1 (confidence 0.9695802927017212)
+MSE found: [] (size 0)
+MSE words: []
+Complementary set of MSE: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Execution Time (s): 0.007223367691040039
+
+Input: ['insanely', 'hilarious', '!', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.05 Window size: 5
+Classification: 1 (confidence 0.9695802927017212)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 45, 46, 47, 48, 49] (size 7)
+MSE words: ['insanely', 'hilarious', '!', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Complementary set of MSE: [30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44]
+Execution Time (s): 17.6013286113739
+
+Input: ['insanely', 'hilarious', '!', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.1 Window size: 5
+Classification: 1 (confidence 0.9695802927017212)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 9)
+MSE words: ['insanely', 'hilarious', '!', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Complementary set of MSE: [35, 36, 37, 38, 39]
+Execution Time (s): 21.591099977493286
+
+Input: ['yet', 'the', 'act', 'is', 'still', 'charming', 'here', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.01 Window size: 5
+Classification: 1 (confidence 0.8288990259170532)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19] (size 4)
+MSE words: ['yet', 'the', 'act', 'is']
+Complementary set of MSE: [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Execution Time (s): 2.233927011489868
+
+Input: ['yet', 'the', 'act', 'is', 'still', 'charming', 'here', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.05 Window size: 5
+Classification: 1 (confidence 0.8288990259170532)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 9)
+MSE words: ['yet', 'the', 'act', 'is', 'still', 'charming', 'here', '<PAD>', '<PAD>']
+Complementary set of MSE: [35, 36, 37, 38, 39]
+Execution Time (s): 20.63144612312317
+
+Input: ['the', 'extent', 'to', 'which', 'it', 'succeeds', 'is', 'impressive', '<PAD>', '<PAD>']
+Eps: 0.01 Window size: 5
+Classification: 1 (confidence 0.964127242565155)
+MSE found: [] (size 0)
+MSE words: []
+Complementary set of MSE: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Execution Time (s): 0.006315946578979492
+
+Input: ['the', 'extent', 'to', 'which', 'it', 'succeeds', 'is', 'impressive', '<PAD>', '<PAD>']
+Eps: 0.05 Window size: 5
+Classification: 1 (confidence 0.964127242565155)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 7)
+MSE words: ['the', 'extent', 'to', 'which', 'it', '<PAD>', '<PAD>']
+Complementary set of MSE: [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39]
+Execution Time (s): 17.94675612449646
+
+Input: ['the', 'extent', 'to', 'which', 'it', 'succeeds', 'is', 'impressive', '<PAD>', '<PAD>']
+Eps: 0.1 Window size: 5
+Classification: 1 (confidence 0.964127242565155)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 9)
+MSE words: ['the', 'extent', 'to', 'which', 'it', 'succeeds', 'is', '<PAD>', '<PAD>']
+Complementary set of MSE: [35, 36, 37, 38, 39]
+Execution Time (s): 20.383766412734985
+
+Input: ['strange', 'funny', 'twisted', 'brilliant', 'and', 'macabre', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.01 Window size: 5
+Classification: 1 (confidence 0.9234875440597534)
+MSE found: [0, 1, 2, 3, 4] (size 1)
+MSE words: ['strange']
+Complementary set of MSE: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Execution Time (s): 0.043621063232421875
+
+Input: ['strange', 'funny', 'twisted', 'brilliant', 'and', 'macabre', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.05 Window size: 5
+Classification: 1 (confidence 0.9234875440597534)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 8)
+MSE words: ['strange', 'funny', 'twisted', 'brilliant', 'and', '<PAD>', '<PAD>', '<PAD>']
+Complementary set of MSE: [25, 26, 27, 28, 29, 35, 36, 37, 38, 39]
+Execution Time (s): 19.127928972244263
+
+Input: ['strange', 'funny', 'twisted', 'brilliant', 'and', 'macabre', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.1 Window size: 5
+Classification: 1 (confidence 0.9234875440597534)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 9)
+MSE words: ['strange', 'funny', 'twisted', 'brilliant', 'and', 'macabre', '<PAD>', '<PAD>', '<PAD>']
+Complementary set of MSE: [35, 36, 37, 38, 39]
+Execution Time (s): 19.92775249481201
+
+Input: ['still', 'this', 'flick', 'is', 'fun', 'and', 'host', 'to', 'some', 'truly']
+Eps: 0.01 Window size: 5
+Classification: 1 (confidence 0.9524266123771667)
+MSE found: [15, 16, 17, 18, 19] (size 1)
+MSE words: ['is']
+Complementary set of MSE: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Execution Time (s): 0.008569717407226562
+
+Input: ['still', 'this', 'flick', 'is', 'fun', 'and', 'host', 'to', 'some', 'truly']
+Eps: 0.05 Window size: 5
+Classification: 1 (confidence 0.9524266123771667)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 8)
+MSE words: ['still', 'this', 'flick', 'is', 'fun', 'host', 'some', 'truly']
+Complementary set of MSE: [25, 26, 27, 28, 29, 35, 36, 37, 38, 39]
+Execution Time (s): 19.246826648712158
+
+Input: ['still', 'this', 'flick', 'is', 'fun', 'and', 'host', 'to', 'some', 'truly']
+Eps: 0.1 Window size: 5
+Classification: 1 (confidence 0.9524266123771667)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 9)
+MSE words: ['still', 'this', 'flick', 'is', 'fun', 'and', 'host', 'some', 'truly']
+Complementary set of MSE: [35, 36, 37, 38, 39]
+Execution Time (s): 19.900792598724365
+
+Input: ['a', 'rigorously', 'structured', 'and', 'exquisitely', 'filmed', 'drama', 'about', 'a', 'father']
+Eps: 0.01 Window size: 5
+Classification: 1 (confidence 0.9330564141273499)
+MSE found: [15, 16, 17, 18, 19, 45, 46, 47, 48, 49] (size 2)
+MSE words: ['and', 'father']
+Complementary set of MSE: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44]
+Execution Time (s): 0.06819701194763184
+
+Input: ['a', 'rigorously', 'structured', 'and', 'exquisitely', 'filmed', 'drama', 'about', 'a', 'father']
+Eps: 0.05 Window size: 5
+Classification: 1 (confidence 0.9330564141273499)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 8)
+MSE words: ['a', 'rigorously', 'structured', 'and', 'exquisitely', 'drama', 'a', 'father']
+Complementary set of MSE: [25, 26, 27, 28, 29, 35, 36, 37, 38, 39]
+Execution Time (s): 19.592363119125366
+
+Input: ['a', 'rigorously', 'structured', 'and', 'exquisitely', 'filmed', 'drama', 'about', 'a', 'father']
+Eps: 0.1 Window size: 5
+Classification: 1 (confidence 0.9330564141273499)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 9)
+MSE words: ['a', 'rigorously', 'structured', 'and', 'exquisitely', 'filmed', 'drama', 'a', 'father']
+Complementary set of MSE: [35, 36, 37, 38, 39]
+Execution Time (s): 20.47533631324768
+
+Input: ['an', 'operatic', 'sprawling', 'picture', 'that', 'is', 'entertainingly', 'acted', 'magnificently', 'shot']
+Eps: 0.01 Window size: 5
+Classification: 1 (confidence 0.9736932516098022)
+MSE found: [] (size 0)
+MSE words: []
+Complementary set of MSE: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Execution Time (s): 0.0018770694732666016
+
+Input: ['an', 'operatic', 'sprawling', 'picture', 'that', 'is', 'entertainingly', 'acted', 'magnificently', 'shot']
+Eps: 0.05 Window size: 5
+Classification: 1 (confidence 0.9736932516098022)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 45, 46, 47, 48, 49] (size 7)
+MSE words: ['an', 'operatic', 'sprawling', 'picture', 'that', 'is', 'shot']
+Complementary set of MSE: [30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44]
+Execution Time (s): 16.927926301956177
+
+Input: ['an', 'operatic', 'sprawling', 'picture', 'that', 'is', 'entertainingly', 'acted', 'magnificently', 'shot']
+Eps: 0.1 Window size: 5
+Classification: 1 (confidence 0.9736932516098022)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 9)
+MSE words: ['an', 'operatic', 'sprawling', 'picture', 'that', 'is', 'entertainingly', 'magnificently', 'shot']
+Complementary set of MSE: [35, 36, 37, 38, 39]
+Execution Time (s): 20.05261778831482
+
+Input: ['whether', 'or', 'not', 'you', 'are', 'enlightened', 'by', 'any', 'of', 'derrida']
+Eps: 0.1 Window size: 5
+Classification: 0 (confidence 0.8530968427658081)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 9)
+MSE words: ['whether', 'or', 'not', 'you', 'are', 'enlightened', 'by', 'of', 'derrida']
+Complementary set of MSE: [35, 36, 37, 38, 39]
+Execution Time (s): 20.82205319404602
+
+Input: ['exquisitely', 'nuanced', 'in', 'mood', 'tics', 'and', 'dialogue', 'this', 'chamber', 'drama']
+Eps: 0.01 Window size: 5
+Classification: 1 (confidence 0.9809792637825012)
+MSE found: [] (size 0)
+MSE words: []
+Complementary set of MSE: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Execution Time (s): 0.001603841781616211
+
+Input: ['exquisitely', 'nuanced', 'in', 'mood', 'tics', 'and', 'dialogue', 'this', 'chamber', 'drama']
+Eps: 0.05 Window size: 5
+Classification: 1 (confidence 0.9809792637825012)
+MSE found: [0, 1, 2, 3, 4, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 6)
+MSE words: ['exquisitely', 'mood', 'tics', 'dialogue', 'chamber', 'drama']
+Complementary set of MSE: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 25, 26, 27, 28, 29, 35, 36, 37, 38, 39]
+Execution Time (s): 11.167333841323853
+
+Input: ['exquisitely', 'nuanced', 'in', 'mood', 'tics', 'and', 'dialogue', 'this', 'chamber', 'drama']
+Eps: 0.1 Window size: 5
+Classification: 1 (confidence 0.9809792637825012)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 8)
+MSE words: ['exquisitely', 'nuanced', 'in', 'mood', 'tics', 'dialogue', 'chamber', 'drama']
+Complementary set of MSE: [25, 26, 27, 28, 29, 35, 36, 37, 38, 39]
+Execution Time (s): 19.52531409263611
+
+Input: ['it', 'is', 'a', 'much', 'more', 'emotional', 'journey', 'than', 'what', 'shyamalan']
+Eps: 0.05 Window size: 5
+Classification: 1 (confidence 0.7243108749389648)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 9)
+MSE words: ['it', 'is', 'a', 'much', 'more', 'emotional', 'journey', 'what', 'shyamalan']
+Complementary set of MSE: [35, 36, 37, 38, 39]
+Execution Time (s): 20.008171558380127
+
+Input: ['you', 'really', 'have', 'to', 'salute', 'writer-director', 'haneke', '(', 'he', 'adapted']
+Eps: 0.01 Window size: 5
+Classification: 1 (confidence 0.9329725503921509)
+MSE found: [15, 16, 17, 18, 19, 45, 46, 47, 48, 49] (size 2)
+MSE words: ['to', 'adapted']
+Complementary set of MSE: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44]
+Execution Time (s): 0.07144904136657715
+
+Input: ['you', 'really', 'have', 'to', 'salute', 'writer-director', 'haneke', '(', 'he', 'adapted']
+Eps: 0.05 Window size: 5
+Classification: 1 (confidence 0.9329725503921509)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 8)
+MSE words: ['you', 'really', 'have', 'to', 'salute', 'haneke', 'he', 'adapted']
+Complementary set of MSE: [25, 26, 27, 28, 29, 35, 36, 37, 38, 39]
+Execution Time (s): 19.2181613445282
+
+Input: ['you', 'really', 'have', 'to', 'salute', 'writer-director', 'haneke', '(', 'he', 'adapted']
+Eps: 0.1 Window size: 5
+Classification: 1 (confidence 0.9329725503921509)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 9)
+MSE words: ['you', 'really', 'have', 'to', 'salute', 'writer-director', 'haneke', 'he', 'adapted']
+Complementary set of MSE: [35, 36, 37, 38, 39]
+Execution Time (s): 20.018590688705444
+
+Input: ['star/producer', 'salma', 'hayek', 'and', 'director', 'julie', 'taymor', 'have', 'infused', 'frida']
+Eps: 0.01 Window size: 5
+Classification: 1 (confidence 0.9533294439315796)
+MSE found: [15, 16, 17, 18, 19] (size 1)
+MSE words: ['and']
+Complementary set of MSE: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Execution Time (s): 0.008736371994018555
+
+Input: ['star/producer', 'salma', 'hayek', 'and', 'director', 'julie', 'taymor', 'have', 'infused', 'frida']
+Eps: 0.05 Window size: 5
+Classification: 1 (confidence 0.9533294439315796)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 8)
+MSE words: ['star/producer', 'salma', 'hayek', 'and', 'director', 'taymor', 'infused', 'frida']
+Complementary set of MSE: [25, 26, 27, 28, 29, 35, 36, 37, 38, 39]
+Execution Time (s): 19.028512001037598
+
+Input: ['star/producer', 'salma', 'hayek', 'and', 'director', 'julie', 'taymor', 'have', 'infused', 'frida']
+Eps: 0.1 Window size: 5
+Classification: 1 (confidence 0.9533294439315796)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 9)
+MSE words: ['star/producer', 'salma', 'hayek', 'and', 'director', 'julie', 'taymor', 'infused', 'frida']
+Complementary set of MSE: [35, 36, 37, 38, 39]
+Execution Time (s): 20.249836921691895
+
+Input: ['this', 'is', 'wild', 'surreal', 'stuff', ',', 'but', 'brilliant', 'and', 'the']
+Eps: 0.01 Window size: 5
+Classification: 1 (confidence 0.9598156213760376)
+MSE found: [] (size 0)
+MSE words: []
+Complementary set of MSE: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Execution Time (s): 0.006325244903564453
+
+Input: ['this', 'is', 'wild', 'surreal', 'stuff', ',', 'but', 'brilliant', 'and', 'the']
+Eps: 0.05 Window size: 5
+Classification: 1 (confidence 0.9598156213760376)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 7)
+MSE words: ['this', 'is', 'wild', 'surreal', 'stuff', 'and', 'the']
+Complementary set of MSE: [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39]
+Execution Time (s): 17.683685779571533
+
+Input: ['this', 'is', 'wild', 'surreal', 'stuff', ',', 'but', 'brilliant', 'and', 'the']
+Eps: 0.1 Window size: 5
+Classification: 1 (confidence 0.9598156213760376)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 9)
+MSE words: ['this', 'is', 'wild', 'surreal', 'stuff', ',', 'but', 'and', 'the']
+Complementary set of MSE: [35, 36, 37, 38, 39]
+Execution Time (s): 20.286380529403687
+
+Input: ['still', 'this', 'flick', 'is', 'fun', 'and', 'host', 'to', 'some', 'truly']
+Eps: 0.01 Window size: 5
+Classification: 1 (confidence 0.9524266123771667)
+MSE found: [15, 16, 17, 18, 19] (size 1)
+MSE words: ['is']
+Complementary set of MSE: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Execution Time (s): 0.009554624557495117
+
+Input: ['still', 'this', 'flick', 'is', 'fun', 'and', 'host', 'to', 'some', 'truly']
+Eps: 0.05 Window size: 5
+Classification: 1 (confidence 0.9524266123771667)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 8)
+MSE words: ['still', 'this', 'flick', 'is', 'fun', 'host', 'some', 'truly']
+Complementary set of MSE: [25, 26, 27, 28, 29, 35, 36, 37, 38, 39]
+Execution Time (s): 19.293089151382446
+
+Input: ['still', 'this', 'flick', 'is', 'fun', 'and', 'host', 'to', 'some', 'truly']
+Eps: 0.1 Window size: 5
+Classification: 1 (confidence 0.9524266123771667)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 9)
+MSE words: ['still', 'this', 'flick', 'is', 'fun', 'and', 'host', 'some', 'truly']
+Complementary set of MSE: [35, 36, 37, 38, 39]
+Execution Time (s): 19.90323257446289
+
+Input: ['it', 'is', 'a', 'satisfying', 'summer', 'blockbuster', 'and', 'worth', 'a', 'look']
+Eps: 0.01 Window size: 5
+Classification: 1 (confidence 0.9944204688072205)
+MSE found: [] (size 0)
+MSE words: []
+Complementary set of MSE: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Execution Time (s): 0.0012054443359375
+
+Input: ['it', 'is', 'a', 'satisfying', 'summer', 'blockbuster', 'and', 'worth', 'a', 'look']
+Eps: 0.05 Window size: 5
+Classification: 1 (confidence 0.9944204688072205)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 40, 41, 42, 43, 44] (size 6)
+MSE words: ['it', 'is', 'a', 'satisfying', 'summer', 'a']
+Complementary set of MSE: [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 45, 46, 47, 48, 49]
+Execution Time (s): 11.354636430740356
+
+Input: ['it', 'is', 'a', 'satisfying', 'summer', 'blockbuster', 'and', 'worth', 'a', 'look']
+Eps: 0.1 Window size: 5
+Classification: 1 (confidence 0.9944204688072205)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 8)
+MSE words: ['it', 'is', 'a', 'satisfying', 'summer', 'and', 'a', 'look']
+Complementary set of MSE: [25, 26, 27, 28, 29, 35, 36, 37, 38, 39]
+Execution Time (s): 19.06218147277832
+
+Input: ['it', 'is', 'probably', 'not', 'easy', 'to', 'make', 'such', 'a', 'worthless']
+Eps: 0.01 Window size: 5
+Classification: 0 (confidence 0.9945989847183228)
+MSE found: [] (size 0)
+MSE words: []
+Complementary set of MSE: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Execution Time (s): 0.0011224746704101562
+
+Input: ['it', 'is', 'probably', 'not', 'easy', 'to', 'make', 'such', 'a', 'worthless']
+Eps: 0.05 Window size: 5
+Classification: 0 (confidence 0.9945989847183228)
+MSE found: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 5)
+MSE words: ['is', 'probably', 'make', 'a', 'worthless']
+Complementary set of MSE: [0, 1, 2, 3, 4, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 35, 36, 37, 38, 39]
+Execution Time (s): 5.061532258987427
+
+Input: ['it', 'is', 'probably', 'not', 'easy', 'to', 'make', 'such', 'a', 'worthless']
+Eps: 0.1 Window size: 5
+Classification: 0 (confidence 0.9945989847183228)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 8)
+MSE words: ['it', 'is', 'probably', 'not', 'easy', 'make', 'a', 'worthless']
+Complementary set of MSE: [25, 26, 27, 28, 29, 35, 36, 37, 38, 39]
+Execution Time (s): 19.778869152069092
+
+Input: ['the', 'gorgeously', 'elaborate', 'continuation', 'of', 'the', 'lord', 'of', 'the', 'rings']
+Eps: 0.01 Window size: 5
+Classification: 1 (confidence 0.9975482821464539)
+MSE found: [] (size 0)
+MSE words: []
+Complementary set of MSE: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Execution Time (s): 0.0020377635955810547
+
+Input: ['the', 'gorgeously', 'elaborate', 'continuation', 'of', 'the', 'lord', 'of', 'the', 'rings']
+Eps: 0.05 Window size: 5
+Classification: 1 (confidence 0.9975482821464539)
+MSE found: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 40, 41, 42, 43, 44] (size 5)
+MSE words: ['gorgeously', 'elaborate', 'of', 'the', 'the']
+Complementary set of MSE: [0, 1, 2, 3, 4, 15, 16, 17, 18, 19, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 45, 46, 47, 48, 49]
+Execution Time (s): 5.300475835800171
+
+Input: ['the', 'gorgeously', 'elaborate', 'continuation', 'of', 'the', 'lord', 'of', 'the', 'rings']
+Eps: 0.1 Window size: 5
+Classification: 1 (confidence 0.9975482821464539)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 8)
+MSE words: ['the', 'gorgeously', 'elaborate', 'continuation', 'of', 'lord', 'the', 'rings']
+Complementary set of MSE: [25, 26, 27, 28, 29, 35, 36, 37, 38, 39]
+Execution Time (s): 19.15912890434265
+
+Input: ['when', 'leguizamo', 'finally', 'plugged', 'an', 'irritating', 'character', 'late', 'in', 'the']
+Eps: 0.01 Window size: 5
+Classification: 0 (confidence 0.9996503591537476)
+MSE found: [] (size 0)
+MSE words: []
+Complementary set of MSE: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Execution Time (s): 0.0017170906066894531
+
+Input: ['when', 'leguizamo', 'finally', 'plugged', 'an', 'irritating', 'character', 'late', 'in', 'the']
+Eps: 0.05 Window size: 5
+Classification: 0 (confidence 0.9996503591537476)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19] (size 4)
+MSE words: ['when', 'leguizamo', 'finally', 'plugged']
+Complementary set of MSE: [20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Execution Time (s): 2.364759922027588
+
+Input: ['when', 'leguizamo', 'finally', 'plugged', 'an', 'irritating', 'character', 'late', 'in', 'the']
+Eps: 0.1 Window size: 5
+Classification: 0 (confidence 0.9996503591537476)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 45, 46, 47, 48, 49] (size 7)
+MSE words: ['when', 'leguizamo', 'finally', 'plugged', 'an', 'irritating', 'the']
+Complementary set of MSE: [30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44]
+Execution Time (s): 17.24997329711914
+
+Input: ['at', 'least', 'one', 'scene', 'is', 'so', 'disgusting', 'that', 'viewers', 'may']
+Eps: 0.01 Window size: 5
+Classification: 0 (confidence 0.9613281488418579)
+MSE found: [] (size 0)
+MSE words: []
+Complementary set of MSE: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Execution Time (s): 0.001188516616821289
+
+Input: ['at', 'least', 'one', 'scene', 'is', 'so', 'disgusting', 'that', 'viewers', 'may']
+Eps: 0.05 Window size: 5
+Classification: 0 (confidence 0.9613281488418579)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 8)
+MSE words: ['at', 'least', 'one', 'scene', 'is', 'disgusting', 'viewers', 'may']
+Complementary set of MSE: [25, 26, 27, 28, 29, 35, 36, 37, 38, 39]
+Execution Time (s): 19.976950645446777
+
+Input: ['at', 'least', 'one', 'scene', 'is', 'so', 'disgusting', 'that', 'viewers', 'may']
+Eps: 0.1 Window size: 5
+Classification: 0 (confidence 0.9613281488418579)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 9)
+MSE words: ['at', 'least', 'one', 'scene', 'is', 'so', 'disgusting', 'viewers', 'may']
+Complementary set of MSE: [35, 36, 37, 38, 39]
+Execution Time (s): 20.688770055770874
+
+Input: ['like', 'its', 'title', 'character', 'esther', 'kahn', 'is', 'unusual', 'but', 'unfortunately']
+Eps: 0.01 Window size: 5
+Classification: 0 (confidence 0.9882521033287048)
+MSE found: [] (size 0)
+MSE words: []
+Complementary set of MSE: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Execution Time (s): 0.0012285709381103516
+
+Input: ['like', 'its', 'title', 'character', 'esther', 'kahn', 'is', 'unusual', 'but', 'unfortunately']
+Eps: 0.05 Window size: 5
+Classification: 0 (confidence 0.9882521033287048)
+MSE found: [0, 1, 2, 3, 4, 15, 16, 17, 18, 19, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 6)
+MSE words: ['like', 'character', 'kahn', 'is', 'but', 'unfortunately']
+Complementary set of MSE: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 20, 21, 22, 23, 24, 35, 36, 37, 38, 39]
+Execution Time (s): 11.397768497467041
+
+Input: ['like', 'its', 'title', 'character', 'esther', 'kahn', 'is', 'unusual', 'but', 'unfortunately']
+Eps: 0.1 Window size: 5
+Classification: 0 (confidence 0.9882521033287048)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 8)
+MSE words: ['like', 'its', 'title', 'character', 'esther', 'is', 'but', 'unfortunately']
+Complementary set of MSE: [25, 26, 27, 28, 29, 35, 36, 37, 38, 39]
+Execution Time (s): 19.34432888031006
+
+Input: ['staggeringly', 'dreadful', 'romance', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.1 Window size: 5
+Classification: 0 (confidence 0.9202315211296082)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 9)
+MSE words: ['staggeringly', 'dreadful', 'romance', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Complementary set of MSE: [35, 36, 37, 38, 39]
+Execution Time (s): 20.302257776260376
+
+Input: ['an', 'incredibly', 'irritating', 'comedy', 'about', 'thoroughly', 'vacuous', 'people', '...', 'manages']
+Eps: 0.01 Window size: 5
+Classification: 0 (confidence 0.8911648988723755)
+MSE found: [0, 1, 2, 3, 4, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 3)
+MSE words: ['an', '...', 'manages']
+Complementary set of MSE: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39]
+Execution Time (s): 0.4296250343322754
+
+Input: ['an', 'incredibly', 'irritating', 'comedy', 'about', 'thoroughly', 'vacuous', 'people', '...', 'manages']
+Eps: 0.1 Window size: 5
+Classification: 0 (confidence 0.8911648988723755)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 9)
+MSE words: ['an', 'incredibly', 'irritating', 'comedy', 'about', 'thoroughly', 'vacuous', '...', 'manages']
+Complementary set of MSE: [35, 36, 37, 38, 39]
+Execution Time (s): 20.645164012908936
+
+Input: ['as', 'vulgar', 'as', 'it', 'is', 'banal', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.01 Window size: 5
+Classification: 0 (confidence 0.9981265664100647)
+MSE found: [] (size 0)
+MSE words: []
+Complementary set of MSE: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Execution Time (s): 0.0015413761138916016
+
+Input: ['as', 'vulgar', 'as', 'it', 'is', 'banal', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.05 Window size: 5
+Classification: 0 (confidence 0.9981265664100647)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24] (size 5)
+MSE words: ['as', 'vulgar', 'as', 'it', 'is']
+Complementary set of MSE: [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Execution Time (s): 5.238563776016235
+
+Input: ['as', 'vulgar', 'as', 'it', 'is', 'banal', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.1 Window size: 5
+Classification: 0 (confidence 0.9981265664100647)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 8)
+MSE words: ['as', 'vulgar', 'as', 'it', 'is', '<PAD>', '<PAD>', '<PAD>']
+Complementary set of MSE: [25, 26, 27, 28, 29, 35, 36, 37, 38, 39]
+Execution Time (s): 20.168487071990967
+
+Input: ['just', 'dreadful', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.01 Window size: 5
+Classification: 0 (confidence 0.9922836422920227)
+MSE found: [] (size 0)
+MSE words: []
+Complementary set of MSE: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Execution Time (s): 0.001127481460571289
+
+Input: ['just', 'dreadful', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.05 Window size: 5
+Classification: 0 (confidence 0.9922836422920227)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 25, 26, 27, 28, 29, 45, 46, 47, 48, 49] (size 6)
+MSE words: ['just', 'dreadful', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Complementary set of MSE: [20, 21, 22, 23, 24, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44]
+Execution Time (s): 11.57499361038208
+
+Input: ['just', 'dreadful', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.1 Window size: 5
+Classification: 0 (confidence 0.9922836422920227)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 8)
+MSE words: ['just', 'dreadful', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Complementary set of MSE: [25, 26, 27, 28, 29, 35, 36, 37, 38, 39]
+Execution Time (s): 19.469043970108032
+
+Input: ['a', 'crushing', 'disappointment', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.01 Window size: 5
+Classification: 0 (confidence 0.9977782368659973)
+MSE found: [] (size 0)
+MSE words: []
+Complementary set of MSE: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Execution Time (s): 0.0011403560638427734
+
+Input: ['a', 'crushing', 'disappointment', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.05 Window size: 5
+Classification: 0 (confidence 0.9977782368659973)
+MSE found: [0, 1, 2, 3, 4, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 6)
+MSE words: ['a', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Complementary set of MSE: [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 25, 26, 27, 28, 29, 35, 36, 37, 38, 39]
+Execution Time (s): 10.822693586349487
+
+Input: ['a', 'crushing', 'disappointment', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.1 Window size: 5
+Classification: 0 (confidence 0.9977782368659973)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 8)
+MSE words: ['a', 'crushing', 'disappointment', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Complementary set of MSE: [25, 26, 27, 28, 29, 35, 36, 37, 38, 39]
+Execution Time (s): 20.109752655029297
+
+Input: ['it', 'is', 'not', 'life-affirming', 'its', 'vulgar', 'and', 'mean', 'but', 'i']
+Eps: 0.01 Window size: 5
+Classification: 0 (confidence 0.9944082498550415)
+MSE found: [] (size 0)
+MSE words: []
+Complementary set of MSE: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Execution Time (s): 0.0011246204376220703
+
+Input: ['it', 'is', 'not', 'life-affirming', 'its', 'vulgar', 'and', 'mean', 'but', 'i']
+Eps: 0.05 Window size: 5
+Classification: 0 (confidence 0.9944082498550415)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 40, 41, 42, 43, 44] (size 6)
+MSE words: ['it', 'is', 'not', 'life-affirming', 'its', 'but']
+Complementary set of MSE: [25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 45, 46, 47, 48, 49]
+Execution Time (s): 11.217039823532104
+
+Input: ['it', 'is', 'not', 'life-affirming', 'its', 'vulgar', 'and', 'mean', 'but', 'i']
+Eps: 0.1 Window size: 5
+Classification: 0 (confidence 0.9944082498550415)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 8)
+MSE words: ['it', 'is', 'not', 'life-affirming', 'its', 'and', 'but', 'i']
+Complementary set of MSE: [25, 26, 27, 28, 29, 35, 36, 37, 38, 39]
+Execution Time (s): 19.834293365478516
+
+Input: ['the', 'draw', 'for', 'big', 'bad', 'love', 'is', 'a', 'solid', 'performance']
+Eps: 0.01 Window size: 5
+Classification: 1 (confidence 0.9675043225288391)
+MSE found: [] (size 0)
+MSE words: []
+Complementary set of MSE: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Execution Time (s): 0.0014235973358154297
+
+Input: ['the', 'draw', 'for', 'big', 'bad', 'love', 'is', 'a', 'solid', 'performance']
+Eps: 0.05 Window size: 5
+Classification: 1 (confidence 0.9675043225288391)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 45, 46, 47, 48, 49] (size 7)
+MSE words: ['the', 'draw', 'for', 'big', 'bad', 'love', 'performance']
+Complementary set of MSE: [30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44]
+Execution Time (s): 16.407033920288086
+
+Input: ['the', 'draw', 'for', 'big', 'bad', 'love', 'is', 'a', 'solid', 'performance']
+Eps: 0.1 Window size: 5
+Classification: 1 (confidence 0.9675043225288391)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 9)
+MSE words: ['the', 'draw', 'for', 'big', 'bad', 'love', 'is', 'solid', 'performance']
+Complementary set of MSE: [35, 36, 37, 38, 39]
+Execution Time (s): 20.631489038467407
+
+Input: ['there', 'are', 'far', 'worse', 'messages', 'to', 'teach', 'a', 'young', 'audience']
+Eps: 0.01 Window size: 5
+Classification: 0 (confidence 0.971126914024353)
+MSE found: [] (size 0)
+MSE words: []
+Complementary set of MSE: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Execution Time (s): 0.0018765926361083984
+
+Input: ['there', 'are', 'far', 'worse', 'messages', 'to', 'teach', 'a', 'young', 'audience']
+Eps: 0.05 Window size: 5
+Classification: 0 (confidence 0.971126914024353)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 45, 46, 47, 48, 49] (size 7)
+MSE words: ['there', 'are', 'far', 'worse', 'messages', 'to', 'audience']
+Complementary set of MSE: [30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44]
+Execution Time (s): 17.226453065872192
+
+Input: ['the', 'main', 'story', '...', 'is', 'compelling', 'enough', 'but', 'it', 'is']
+Eps: 0.01 Window size: 5
+Classification: 1 (confidence 0.9578033089637756)
+MSE found: [] (size 0)
+MSE words: []
+Complementary set of MSE: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Execution Time (s): 0.006428718566894531
+
+Input: ['the', 'main', 'story', '...', 'is', 'compelling', 'enough', 'but', 'it', 'is']
+Eps: 0.05 Window size: 5
+Classification: 1 (confidence 0.9578033089637756)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 8)
+MSE words: ['the', 'main', 'story', '...', 'is', 'enough', 'it', 'is']
+Complementary set of MSE: [25, 26, 27, 28, 29, 35, 36, 37, 38, 39]
+Execution Time (s): 19.12371301651001
+
+Input: ['the', 'main', 'story', '...', 'is', 'compelling', 'enough', 'but', 'it', 'is']
+Eps: 0.1 Window size: 5
+Classification: 1 (confidence 0.9578033089637756)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 9)
+MSE words: ['the', 'main', 'story', '...', 'is', 'compelling', 'enough', 'it', 'is']
+Complementary set of MSE: [35, 36, 37, 38, 39]
+Execution Time (s): 20.012110233306885
+
+Input: ['a', 'painfully', 'funny', 'ode', 'to', 'bad', 'behavior', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.01 Window size: 5
+Classification: 0 (confidence 0.9661900401115417)
+MSE found: [] (size 0)
+MSE words: []
+Complementary set of MSE: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Execution Time (s): 0.0012590885162353516
+
+Input: ['a', 'painfully', 'funny', 'ode', 'to', 'bad', 'behavior', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.05 Window size: 5
+Classification: 0 (confidence 0.9661900401115417)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 45, 46, 47, 48, 49] (size 7)
+MSE words: ['a', 'painfully', 'funny', 'ode', 'to', 'bad', '<PAD>']
+Complementary set of MSE: [30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44]
+Execution Time (s): 16.827263593673706
+
+Input: ['a', 'painfully', 'funny', 'ode', 'to', 'bad', 'behavior', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.1 Window size: 5
+Classification: 0 (confidence 0.9661900401115417)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 9)
+MSE words: ['a', 'painfully', 'funny', 'ode', 'to', 'bad', 'behavior', '<PAD>', '<PAD>']
+Complementary set of MSE: [35, 36, 37, 38, 39]
+Execution Time (s): 20.658097982406616
+
+Input: ['...', 'spellbinding', 'fun', 'and', 'deliciously', 'exploitative', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.01 Window size: 5
+Classification: 1 (confidence 0.9959030747413635)
+MSE found: [] (size 0)
+MSE words: []
+Complementary set of MSE: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
+Execution Time (s): 0.0012760162353515625
+
+Input: ['...', 'spellbinding', 'fun', 'and', 'deliciously', 'exploitative', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.05 Window size: 5
+Classification: 1 (confidence 0.9959030747413635)
+MSE found: [0, 1, 2, 3, 4, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 25, 26, 27, 28, 29, 45, 46, 47, 48, 49] (size 5)
+MSE words: ['...', 'fun', 'and', 'exploitative', '<PAD>']
+Complementary set of MSE: [5, 6, 7, 8, 9, 20, 21, 22, 23, 24, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44]
+Execution Time (s): 5.585925102233887
+
+Input: ['...', 'spellbinding', 'fun', 'and', 'deliciously', 'exploitative', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.1 Window size: 5
+Classification: 1 (confidence 0.9959030747413635)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 8)
+MSE words: ['...', 'spellbinding', 'fun', 'and', 'deliciously', '<PAD>', '<PAD>', '<PAD>']
+Complementary set of MSE: [25, 26, 27, 28, 29, 35, 36, 37, 38, 39]
+Execution Time (s): 19.84227991104126
+
+Input: ['this', 'one', 'is', 'not', 'nearly', 'as', 'dreadful', 'as', 'expected', '<PAD>']
+Eps: 0.1 Window size: 5
+Classification: 0 (confidence 0.8215965032577515)
+MSE found: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49] (size 9)
+MSE words: ['this', 'one', 'is', 'not', 'nearly', 'as', 'dreadful', 'expected', '<PAD>']
+Complementary set of MSE: [35, 36, 37, 38, 39]
+Execution Time (s): 20.654266834259033
+

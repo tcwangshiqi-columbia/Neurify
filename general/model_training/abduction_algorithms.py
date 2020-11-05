@@ -190,7 +190,6 @@ def Entails(h, network, input_, input_bounds, output_constraints,
     inputVars = network.inputVars[0][0].flatten()
     outputVars = network.outputVars[0].flatten()
     # Set input bounds
-    print(input_bounds)
     for n in f_ranges:
         network.setLowerBound(inputVars[n], input_bounds[n][0])
         network.setUpperBound(inputVars[n], input_bounds[n][1])    
@@ -214,7 +213,7 @@ def Entails(h, network, input_, input_bounds, output_constraints,
     # Call to C++ Marabou solver
     logger("Results for value {}".format(h), verbose, "DEBUG")
     opts = Marabou.createOptions(verbosity=0)
-    vals, _ = network.solve(options=opts,verbose=True)
+    vals, _ = network.solve(options=opts,verbose=False)
     return vals
 
 def PickFalseLits(C_setminus_h, filename, input_, input_bounds, output_constraints, 

@@ -12,23 +12,17 @@
 #include "nnet.h"
 
 
-int PROPERTY = 5;
 char *LOG_FILE = "logs/log.txt";
-float INF = 1;
-
 int ERR_NODE=10;
-
-int NORM_INPUT=1;
-
 int CHECK_ADV_MODE = 0;
-
+int PROPERTY;
 struct timeval start,finish,last_finish;
 //FILE *fp;
 
 //Take in a .nnet filename with path and load the network from the file
 //Inputs:  filename - const char* that specifies the name and path of file
 //Outputs: void *   - points to the loaded neural network
-struct NNet *load_conv_network(const char* filename, int img)
+struct NNet *load_conv_network(const char* filename, float *input)
 {
     //Load file and check if it exists
     FILE *fstream = fopen(filename,"r");
@@ -241,22 +235,13 @@ struct NNet *load_conv_network(const char* filename, int img)
             i++;
         }            
     }
-    printf("load matrix done\n");
+    //printf("load matrix done\n");
     
-    float input_prev[nnet->inputSize];
-    printf("input size: %d\n",nnet->inputSize);
-    struct Matrix input_prev_matrix = {input_prev, 1, nnet->inputSize};
+    //printf("input size: %d\n",nnet->inputSize);
+    struct Matrix input_prev_matrix = {input, 1, nnet->inputSize};
     float o[nnet->outputSize];
     struct Matrix output = {o, nnet->outputSize, 1};
-    //printf("start load inputs\n");
-    load_inputs(img, nnet->inputSize, input_prev);
-    //printf("load inputs done\n");
-    if(NORM_INPUT){
-        normalize_input(nnet, &input_prev_matrix);
-    }
-    //printf("normalize_input done\n");
     evaluate_conv(nnet, &input_prev_matrix, &output);
-    printMatrix(&output);
     
     float largest = output.data[0];
     nnet->target = 0;
@@ -406,11 +391,17 @@ void set_input_constraints(struct Interval *input,
     for(int var=1;var<Ncol+1;var++){
         colno[0] = var;
         row[0] = 1;
-        add_constraintex(lp, 1, row, colno, LE,\
-                    input->upper_matrix.data[var-1]);
-        add_constraintex(lp, 1, row, colno, GE,\
-                    input->lower_matrix.data[var-1]);
-        *rule_num += 2;
+        if (input->upper_matrix.data[var-1] == input->lower_matrix.data[var-1]) {
+            add_constraintex(lp, 1, row, colno, EQ,\
+                        input->upper_matrix.data[var-1]);
+            *rule_num += 1;
+        } else {
+            add_constraintex(lp, 1, row, colno, LE,\
+                        input->upper_matrix.data[var-1]);
+            add_constraintex(lp, 1, row, colno, GE,\
+                        input->lower_matrix.data[var-1]);
+            *rule_num += 2;
+        }
     }
     set_add_rowmode(lp, FALSE);
 }
@@ -537,38 +528,41 @@ float set_wrong_node_constraints(lprec *lp,
     return unsat;
 }
 
+int find_in_h(int needle, int* h, int h_size) {
+    for (int i=0; i<h_size; i++){
+        if (needle == h[i]) {
+            return 1;
+        }
+    }
+    return 0;
+}
 
 void initialize_input_interval(struct NNet* nnet,
-                int img, int inputSize, float *input,
-                float *u, float *l)
+                float *input, int input_size,
+                int *h, int h_size,
+                float *u, float *l, float eps)
 {
-    load_inputs(img, inputSize, input);
-    if(PROPERTY == 0){
-        for(int i =0;i<inputSize;i++){
-            u[i] = input[i]+INF;
+    for(int i =0;i<input_size;i++){
+        // make the entries in the hitting set constant
+        if (find_in_h(i,h,h_size)) {
+            // make lower and upper bounds the same, this will affect how the constraints
+            // are added later on
+            u[i] = input[i];
+            l[i] = input[i];
+        } else {
+            u[i] = input[i]+eps;
             if(u[i] > nnet->max) {
                 u[i] = nnet->max;
             }
-            l[i] = input[i]-INF;
+            l[i] = input[i]-eps;
             if(l[i] < nnet->min) {
                 l[i] = nnet->min;
             }
         }
-        // used for biases
-        u[inputSize] = 1;
-        l[inputSize] = 1;
     }
-    else if(PROPERTY == 1){
-        /*
-         * Customize your own initial input range
-         */
-    }
-    else{
-        for(int i =0;i<inputSize;i++){
-            u[i] = input[i]+INF;
-            l[i] = input[i]-INF;
-        }
-    }
+    // used for biases
+    u[input_size] = 1;
+    l[input_size] = 1;
 
 }
 

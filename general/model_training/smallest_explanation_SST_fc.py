@@ -24,7 +24,7 @@ from tensorflow.keras.layers import Dense, Activation, Embedding, Dense, Dropout
 from maraboupy import Marabou
 from maraboupy import MarabouUtils, MarabouCore
 # import abduction algorithms
-from abduction_algorithms import logger, freeze_session, smallest_explanation 
+from abduction_algorithms import logger, smallest_explanation 
 # import embeddings relative path
 from glove_utils import load_embedding, pad_sequences
 from text_utils import clean_text, stem_lem
@@ -50,8 +50,10 @@ parser.add_argument('-e', '--epsilon', dest='eps', type=float, default=0.05, hel
 args = parser.parse_args()
 # Assign eps and wsize
 window_size = args.wsize
-eps = 0.05
-input_without_padding = '... spellbinding fun and deliciously exploitative'
+eps = args.eps
+input_without_padding = args.input
+
+print(eps, input_without_padding)
 
 # Global Variables
 verbose = True
