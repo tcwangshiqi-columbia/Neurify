@@ -50,6 +50,7 @@ struct NNet *load_conv_network(const char* filename, float *input)
     nnet->inputSize = atoi(strtok(NULL,",\n"));
     nnet->outputSize = atoi(strtok(NULL,",\n"));
     nnet->maxLayerSize = atoi(strtok(NULL,",\n"));
+    printf("max layer size %d\n",nnet->maxLayerSize);
 
 
     //Allocate space for and read values of the array members of the network
@@ -236,7 +237,7 @@ struct NNet *load_conv_network(const char* filename, float *input)
         }            
     }
     //printf("load matrix done\n");
-    
+
     //printf("input size: %d\n",nnet->inputSize);
     struct Matrix input_prev_matrix = {input, 1, nnet->inputSize};
     float o[nnet->outputSize];
@@ -692,11 +693,13 @@ int evaluate_conv(struct NNet *network, struct Matrix *input, struct Matrix *out
     float a[nnet->maxLayerSize];
 
     
-    //printf("start evaluate\n");
+    printf("start evaluate\n");
     for (i=0; i < nnet->inputSize; i++)
     {
         z[i] = input->data[i];
+
     }
+    printf("nnet input size: %d\n",nnet->inputSize);
 
     int out_channel=0, in_channel=0, kernel_size=0;
     int stride=0, padding=0;
@@ -706,7 +709,7 @@ int evaluate_conv(struct NNet *network, struct Matrix *input, struct Matrix *out
 
         memset(a, 0, sizeof(float)*nnet->maxLayerSize);
 
-        //printf("layer:%d %d\n",layer, nnet->layerTypes[layer]);        
+        printf("layer %d: %d\n",layer, nnet->layerTypes[layer]);        
         if(nnet->layerTypes[layer]==0){
             for (i=0; i < nnet->layerSizes[layer+1]; i++){
                 float **weights = matrix[layer][0];
@@ -723,7 +726,7 @@ int evaluate_conv(struct NNet *network, struct Matrix *input, struct Matrix *out
 
                 //Perform ReLU
                 if (tempVal<0.0 && layer<(numLayers-1)){
-                    // printf( "doing RELU on layer %u\n", layer );
+                     //printf( "doing RELU on layer %u\n", layer );
                     tempVal = 0.0;
                 }
                 a[i]=tempVal;
@@ -736,18 +739,25 @@ int evaluate_conv(struct NNet *network, struct Matrix *input, struct Matrix *out
         }
         else{
             out_channel = nnet->convLayer[layer][0];
+            printf("out_channel %d\n",out_channel);
             in_channel = nnet->convLayer[layer][1];
+            printf("in_channel %d\n",in_channel);
             kernel_size = nnet->convLayer[layer][2];
+            printf("kernel_size %d\n",kernel_size);
             stride = nnet->convLayer[layer][3];
+            printf("stride %d\n",stride);
             padding = nnet->convLayer[layer][4];
+            printf("padding %d\n",padding);
             //size is the input size in each channel
             int size = sqrt(nnet->layerSizes[layer]/in_channel);
+            printf("size %d\n",size);
             //padding size is the input size after padding
             int padding_size = size+2*padding;
             //this is only for compressed model
             if(kernel_size%2==1){
                 padding_size += 1;
             }
+            printf("size with padding %d\n",padding_size);
             //out_size is the output size in each channel after kernel
             int out_size = 0;
 
@@ -762,18 +772,23 @@ int evaluate_conv(struct NNet *network, struct Matrix *input, struct Matrix *out
             else{
                 out_size = (int)(tmp_out_size)-1;
             }
+            printf("out size %d\n",out_size);
 
             float *z_new = (float*)malloc(sizeof(float)*padding_size*padding_size*in_channel);
+
+            // this part adds in any padding to z_new
             memset(z_new, 0, sizeof(float)*padding_size*padding_size*in_channel);
             for(int ic=0;ic<in_channel;ic++){
                 for(int h=0;h<size;h++){
                     for(int w=0;w<size;w++){
+
                         z_new[ic*padding_size*padding_size+padding_size*(h+padding)+w+padding] =\
                                                             z[ic*size*size+size*h+w];
                     }
                 }
             }
 
+            // this part does the convolution
             for(int oc=0;oc<out_channel;oc++){
                 for(int oh=0;oh<out_size;oh++){
                     for(int ow=0;ow<out_size;ow++){
@@ -797,8 +812,10 @@ int evaluate_conv(struct NNet *network, struct Matrix *input, struct Matrix *out
                     a[j] = 0;
                 }
                 z[j] = a[j];
-
+                //printf("%f ",a[j]);
             }
+            
+            //printf("\n");
             free(z_new);
         }
     }

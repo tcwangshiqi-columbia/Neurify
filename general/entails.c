@@ -76,9 +76,10 @@ int entails( int *h, int h_size, float *input, int input_size, float eps, char* 
         }
     }
     
+    printf("--------------\n");
     evaluate_conv(nnet, &input_matrix, &output);
-    //printf("concrete output:");
-    //printMatrix(&output);
+    printf("concrete output:");
+    printMatrix(&output);
 
     bool is_overlap = false;
     int adv_num = 0;

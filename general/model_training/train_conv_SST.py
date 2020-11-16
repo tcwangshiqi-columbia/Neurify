@@ -6,7 +6,7 @@ import os
 import sys
 
 # quick fix to specify the GPUs to use, comment out if there is no one using 100% of them
-#os.environ["CUDA_VISIBLE_DEVICES"]="0,2"
+os.environ["CUDA_VISIBLE_DEVICES"]="1,2"
 
 import numpy as np
 import string
@@ -21,14 +21,14 @@ from glove_utils import load_embedding, pad_sequences
 from text_utils import clean_text, stem_lem
 
 # Global model variables
-maxlen = 9
-ksize = int(maxlen**0.5)
-kernel_dim = 2
-padding = "same"
+maxlen = 25
+kernel_dim = 6
+padding = "valid" # same = padding, valid = no padding
 stride = 1
-emb_dims = 5
-epochs = 10
+emb_dims = 25
+in_shape = (maxlen,emb_dims,1)
 round_ = None  # number of digits to round input (i.e., embedding), no round if None
+epochs = 15
 
 # Load STT dataset (eliminate punctuation, add padding etc.)
 X_train = read_csv('./data/SST_2__FULL.csv', sep=',',header=None).values
@@ -63,9 +63,9 @@ if round_ is not None:
 
 # Create the model
 model = Sequential()
-model.add(Conv2D(filters=150, kernel_size=kernel_dim, strides=stride, padding=padding,
-                 input_shape=(ksize, ksize, emb_dims), activation='relu'))
-model.add(MaxPooling2D())
+model.add(Conv2D(filters=64, kernel_size=kernel_dim, strides=(stride,stride), padding=padding,
+                 input_shape=in_shape, activation='relu'))
+#model.add(MaxPooling2D())
 '''
 model.add(Conv2D(filters=300, kernel_size=kernel_dim, strides=stride, padding=padding,
                  activation='relu'))
@@ -84,7 +84,7 @@ X_test = np.asarray(pad_sequences(X_test, maxlen=maxlen, emb_size=emb_dims))
 # normalise, Neurify requires >=0 inputs
 # original range is [-1,1], turn it into [0,1]
 X_test = (X_test+1)/2
-X_test = X_test.reshape(len(X_test), ksize, ksize, emb_dims)
+X_test = X_test.reshape(len(X_test), *in_shape)
 
 y_test = to_categorical(y_test, num_classes=2)
 
@@ -93,11 +93,11 @@ X_train_chunk = np.asarray(pad_sequences(X_train_chunk, maxlen=maxlen, emb_size=
 # normalise, Neurify requires >=0 inputs
 # original range is [-1,1], turn it into [0,1]
 X_train_chunk = (X_train_chunk+1)/2
-X_train_chunk = X_train_chunk.reshape(len(X_train_chunk), ksize, ksize, emb_dims)
+X_train_chunk = X_train_chunk.reshape(len(X_train_chunk), *in_shape)
 
 y_train_chunk = to_categorical(y_train, num_classes=2)
-model.fit(X_train_chunk, y_train_chunk, batch_size=512, epochs=100)
+model.fit(X_train_chunk, y_train_chunk, batch_size=512, epochs=epochs)
 model.evaluate(X_test, y_test, batch_size=512)
 
-model.save_weights('models/SST_conv_5d_9inp_norm.h5')
-model.save('models/fullmodel_SST_conv_5d_9inp_norm.h5')
+model.save_weights('models/SST_conv_test.h5')
+model.save('models/fullmodel_SST_conv_test.h5')

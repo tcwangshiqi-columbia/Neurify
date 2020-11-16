@@ -212,8 +212,9 @@ def Entails(h, network, input_, input_bounds, output_constraints,
 
     # Call to C++ Marabou solver
     logger("Results for value {}".format(h), verbose, "DEBUG")
-    opts = Marabou.createOptions(verbosity=0)
-    vals, _ = network.solve(options=opts,verbose=False)
+    opts = Marabou.createOptions(verbosity=2)
+    vals, _ = network.solve(options=opts,verbose=True)
+    sys.exit(0)
     return vals
 
 def PickFalseLits(C_setminus_h, filename, input_, input_bounds, output_constraints, 
