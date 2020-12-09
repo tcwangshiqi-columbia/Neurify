@@ -1,0 +1,9 @@
+Input: ['this', 'one', 'is', 'not', 'nearly', 'as', 'dreadful', 'as', 'expected', '<PAD>']
+Eps: 0.1
+Original smallest expl: ['this', 'one', 'is', 'not', 'nearly', 'as', 'dreadful', 'expected', '<PAD>']
+Number smallest expls: 1
+In form: [(word, index_in_input)]
+
+[('this', 0), ('one', 1), ('is', 2), ('not', 3), ('nearly', 4), ('as', 5), ('dreadful', 6), ('expected', 8), ('<PAD>', 9)]
+
+=====================================================================
