@@ -28,7 +28,7 @@ void sig_handler(int signo)
 // h: (array of int) indexes of elements in hitting set
 // input:  (array of float) the concrete input
 // eps: (float) the value of epsilon we want to verify within
-int entails( int *h, int h_size, float *input, int input_size, float eps, char* network_path){
+int entails( int *h, int h_size, float *input, int input_size, float *u_bounds, float *l_bounds, char* network_path){
     openblas_set_num_threads(1);
 
     PROPERTY = 0;
@@ -51,7 +51,7 @@ int entails( int *h, int h_size, float *input, int input_size, float eps, char* 
     struct Matrix input_lower = {l,1,nnet->inputSize+1};
     struct Interval input_interval = {input_lower, input_upper};
 
-    initialize_input_interval(nnet, input, input_size, h, h_size, u, l, eps);
+    initialize_input_interval(nnet, input, input_size, h, h_size, u, l, u_bounds, l_bounds);
 
     float o[nnet->outputSize];
     struct Matrix output = {o, outputSize, 1};
@@ -76,10 +76,10 @@ int entails( int *h, int h_size, float *input, int input_size, float eps, char* 
         }
     }
     
-    printf("--------------\n");
+    //printf("--------------\n");
     evaluate_conv(nnet, &input_matrix, &output);
-    printf("concrete output:");
-    printMatrix(&output);
+    //printf("concrete output:");
+    //printMatrix(&output);
 
     bool is_overlap = false;
     int adv_num = 0;
@@ -168,7 +168,7 @@ int entails( int *h, int h_size, float *input, int input_size, float eps, char* 
         if(full_wrong_node_length == 0) {
             printf("Not implemented: At least one node needs to be able to be split to " \
                 "test the LP. \n");
-            exit(1);
+            return 2;
         }
         if(CHECK_ADV_MODE){
             //printf("Check Adv Mode (CHECK_ADV_MODE)\n");
@@ -226,8 +226,10 @@ int entails( int *h, int h_size, float *input, int input_size, float eps, char* 
 
     // only need to know existence of an adv so return 1 if adv, else 0
     if (adv_found) {
+        //printf("Adv found.\n");
         return 1; 
     } else {
+        //printf("NO adv found.\n");
         return 0;
     }
     

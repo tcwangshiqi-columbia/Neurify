@@ -89,7 +89,7 @@ struct NNet *load_conv_network(const char *filename, float *input);
 void load_inputs(int img, int inputSize, float *input);
 
 int find_in_h(int needle, int* h, int h_size);
-void initialize_input_interval(struct NNet *nnet, float *input, int input_size, int *h, int h_size, float *u, float *l, float eps);
+void initialize_input_interval(struct NNet *nnet, float *input, int input_size, int *h, int h_size, float *u, float *l, float *u_bounds, float *l_bounds);
 
 /*  
  * Uses for loop to calculate the output

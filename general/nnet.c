@@ -50,7 +50,7 @@ struct NNet *load_conv_network(const char* filename, float *input)
     nnet->inputSize = atoi(strtok(NULL,",\n"));
     nnet->outputSize = atoi(strtok(NULL,",\n"));
     nnet->maxLayerSize = atoi(strtok(NULL,",\n"));
-    printf("max layer size %d\n",nnet->maxLayerSize);
+    //printf("max layer size %d\n",nnet->maxLayerSize);
 
 
     //Allocate space for and read values of the array members of the network
@@ -541,7 +541,7 @@ int find_in_h(int needle, int* h, int h_size) {
 void initialize_input_interval(struct NNet* nnet,
                 float *input, int input_size,
                 int *h, int h_size,
-                float *u, float *l, float eps)
+                float *u, float *l, float *u_bounds, float *l_bounds)
 {
     for(int i =0;i<input_size;i++){
         // make the entries in the hitting set constant
@@ -551,11 +551,11 @@ void initialize_input_interval(struct NNet* nnet,
             u[i] = input[i];
             l[i] = input[i];
         } else {
-            u[i] = input[i]+eps;
+            u[i] = u_bounds[i];
             if(u[i] > nnet->max) {
                 u[i] = nnet->max;
             }
-            l[i] = input[i]-eps;
+            l[i] = l_bounds[i];
             if(l[i] < nnet->min) {
                 l[i] = nnet->min;
             }
@@ -693,13 +693,13 @@ int evaluate_conv(struct NNet *network, struct Matrix *input, struct Matrix *out
     float a[nnet->maxLayerSize];
 
     
-    printf("start evaluate\n");
+    //printf("start evaluate\n");
     for (i=0; i < nnet->inputSize; i++)
     {
         z[i] = input->data[i];
 
     }
-    printf("nnet input size: %d\n",nnet->inputSize);
+    //printf("nnet input size: %d\n",nnet->inputSize);
 
     int out_channel=0, in_channel=0, kernel_size=0;
     int stride=0, padding=0;
@@ -709,7 +709,7 @@ int evaluate_conv(struct NNet *network, struct Matrix *input, struct Matrix *out
 
         memset(a, 0, sizeof(float)*nnet->maxLayerSize);
 
-        printf("layer %d: %d\n",layer, nnet->layerTypes[layer]);        
+        //printf("layer %d: %d\n",layer, nnet->layerTypes[layer]);        
         if(nnet->layerTypes[layer]==0){
             for (i=0; i < nnet->layerSizes[layer+1]; i++){
                 float **weights = matrix[layer][0];
@@ -739,25 +739,25 @@ int evaluate_conv(struct NNet *network, struct Matrix *input, struct Matrix *out
         }
         else{
             out_channel = nnet->convLayer[layer][0];
-            printf("out_channel %d\n",out_channel);
+            //printf("out_channel %d\n",out_channel);
             in_channel = nnet->convLayer[layer][1];
-            printf("in_channel %d\n",in_channel);
+            //printf("in_channel %d\n",in_channel);
             kernel_size = nnet->convLayer[layer][2];
-            printf("kernel_size %d\n",kernel_size);
+            //printf("kernel_size %d\n",kernel_size);
             stride = nnet->convLayer[layer][3];
-            printf("stride %d\n",stride);
+            //printf("stride %d\n",stride);
             padding = nnet->convLayer[layer][4];
-            printf("padding %d\n",padding);
+            //printf("padding %d\n",padding);
             //size is the input size in each channel
             int size = sqrt(nnet->layerSizes[layer]/in_channel);
-            printf("size %d\n",size);
+            //printf("size %d\n",size);
             //padding size is the input size after padding
             int padding_size = size+2*padding;
             //this is only for compressed model
             if(kernel_size%2==1){
                 padding_size += 1;
             }
-            printf("size with padding %d\n",padding_size);
+            //printf("size with padding %d\n",padding_size);
             //out_size is the output size in each channel after kernel
             int out_size = 0;
 
@@ -772,7 +772,7 @@ int evaluate_conv(struct NNet *network, struct Matrix *input, struct Matrix *out
             else{
                 out_size = (int)(tmp_out_size)-1;
             }
-            printf("out size %d\n",out_size);
+            //printf("out size %d\n",out_size);
 
             float *z_new = (float*)malloc(sizeof(float)*padding_size*padding_size*in_channel);
 
@@ -855,11 +855,12 @@ void backward_prop_conv(struct NNet *nnet, float *grad,
 
     for(layer = numLayers-2;layer>-1;layer--){
         //printf("layer:%d , %d\n", layer, nnet->layerTypes[layer]);
-        float **weights = nnet->matrix[layer][0];
+        float **weights;
         memset(grad1_upper, 0, sizeof(float)*maxLayerSize);
         memset(grad1_lower, 0, sizeof(float)*maxLayerSize);
 
         if(nnet->layerTypes[layer]!=1){
+            weights = nnet->matrix[layer][0];
             if(layer != 0){
                 for(j=0;j<nnet->layerSizes[numLayers-1];j++){
                     if(R[layer][j]==0){

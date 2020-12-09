@@ -21,9 +21,9 @@ from glove_utils import load_embedding, pad_sequences
 from text_utils import clean_text, stem_lem
 
 # Global model variables
-maxlen = 10
-emb_dims = 5
-epochs = 10
+maxlen = 50
+emb_dims = 25
+epochs = 50
 round_ = None  # number of digits to round input (i.e., embedding), no round if None
 
 # Load STT dataset (eliminate punctuation, add padding etc.)
@@ -59,8 +59,8 @@ if round_ is not None:
 
 # Create the model
 model = Sequential()
-model.add(Dense(16, input_shape=(maxlen*emb_dims,), activation='relu'))
-#model.add(Dense(32, activation='relu'))
+model.add(Dense(32, input_shape=(maxlen*emb_dims,), activation='relu'))
+model.add(Dense(16, activation='relu'))
 model.add(Dense(2,name='before_softmax'))
 model.add(Activation('softmax'))
 model.compile(loss='categorical_crossentropy', 
@@ -69,7 +69,7 @@ model.compile(loss='categorical_crossentropy',
 
 # Prepare test set in advance
 X_test = [[index2embedding[word2index[x]] for x in xx] for xx in X_test]
-X_test = np.asarray(pad_sequences(X_test, maxlen=maxlen, emb_size=emb_dims))
+X_test = np.asarray(pad_sequences(X_test, maxlen=maxlen, emb_size=emb_dims, square=False))
 X_test = X_test.reshape(len(X_test), maxlen*emb_dims)
 # normalise, Neurify requires >=0 inputs
 # original range is [-1,1], turn it into [0,1]
@@ -78,7 +78,7 @@ X_test = (X_test+1)/2
 y_test = to_categorical(y_test, num_classes=2)
 
 X_train_chunk = [[index2embedding[word2index[x]] for x in xx] for xx in X_train]        
-X_train_chunk = np.asarray(pad_sequences(X_train_chunk, maxlen=maxlen, emb_size=emb_dims))
+X_train_chunk = np.asarray(pad_sequences(X_train_chunk, maxlen=maxlen, emb_size=emb_dims, square=False))
 X_train_chunk = X_train_chunk.reshape(len(X_train_chunk), maxlen*emb_dims)
 # normalise, Neurify requires >=0 inputs
 # original range is [-1,1], turn it into [0,1]
@@ -86,7 +86,9 @@ X_train_chunk = (X_train_chunk+1)/2
 
 y_train_chunk = to_categorical(y_train, num_classes=2)
 model.fit(X_train_chunk, y_train_chunk, batch_size=512, epochs=100)
-model.evaluate(X_test, y_test, batch_size=512)
+acc = model.evaluate(X_test, y_test, batch_size=512)
+acc = acc[1]
 
-model.save_weights('models/SST_fc_5d_10inp_format_16hu_norm.h5')
-model.save('models/fullmodel_SST_fc_5d_10inp_format_16hu_norm.h5')
+model_name = f'models/fullmodel_SST_fc_{emb_dims}d_{maxlen}inp_32_16_2_{acc:.4f}acc.h5'
+print('Saved to:',model_name)
+model.save(model_name)

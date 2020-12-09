@@ -21,14 +21,16 @@ from glove_utils import load_embedding, pad_sequences
 from text_utils import clean_text, stem_lem
 
 # Global model variables
-maxlen = 25
-kernel_dim = 6
+maxlen = 10
+kernel_dim = 2
 padding = "valid" # same = padding, valid = no padding
 stride = 1
-emb_dims = 25
-in_shape = (maxlen,emb_dims,1)
+emb_dims = 5
+square = int((maxlen*emb_dims)**0.5)
+print('Input size:',square,'x',square)
+in_shape = (square,square,1)
 round_ = None  # number of digits to round input (i.e., embedding), no round if None
-epochs = 15
+epochs = 50
 
 # Load STT dataset (eliminate punctuation, add padding etc.)
 X_train = read_csv('./data/SST_2__FULL.csv', sep=',',header=None).values
@@ -63,7 +65,7 @@ if round_ is not None:
 
 # Create the model
 model = Sequential()
-model.add(Conv2D(filters=64, kernel_size=kernel_dim, strides=(stride,stride), padding=padding,
+model.add(Conv2D(filters=32, kernel_size=kernel_dim, strides=(stride,stride), padding=padding,
                  input_shape=in_shape, activation='relu'))
 #model.add(MaxPooling2D())
 '''
@@ -72,6 +74,8 @@ model.add(Conv2D(filters=300, kernel_size=kernel_dim, strides=stride, padding=pa
 model.add(MaxPooling2D())
 '''
 model.add(Flatten())
+model.add(Dense(32,activation='relu'))
+model.add(Dense(16,activation='relu'))
 model.add(Dense(2,name='before_softmax'))
 model.add(Activation('softmax'))
 model.compile(loss='categorical_crossentropy', 
@@ -97,7 +101,9 @@ X_train_chunk = X_train_chunk.reshape(len(X_train_chunk), *in_shape)
 
 y_train_chunk = to_categorical(y_train, num_classes=2)
 model.fit(X_train_chunk, y_train_chunk, batch_size=512, epochs=epochs)
-model.evaluate(X_test, y_test, batch_size=512)
+acc = model.evaluate(X_test, y_test, batch_size=512)
+acc = acc[1]
 
-model.save_weights('models/SST_conv_test.h5')
-model.save('models/fullmodel_SST_conv_test.h5')
+model_name = f'models/fullmodel_SST_conv_{emb_dims}d_{maxlen}inp_c32_f_d32_d16_d2_{acc:.4f}acc.h5'
+print('Saved to:',model_name)
+model.save(model_name)

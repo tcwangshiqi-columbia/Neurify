@@ -22,23 +22,20 @@ import numpy as np
 from glove_utils import load_embedding, pad_sequences
 from text_utils import clean_text, stem_lem
 
+import math
+
 if __name__ == '__main__':
-    if len(sys.argv) < 2:
-        print('Need model path.')
+    if len(sys.argv) < 3:
+        print('Need model path and embedding dim.')
         sys.exit(0)
 
     model = load_model(sys.argv[1])
+    emb_dims = int(sys.argv[2])
 
     input_without_padding = '... spellbinding fun and deliciously exploitative'
     in_shape = model.layers[0].input.shape
-    if not in_shape[3] == 1:
-        num_words = in_shape[1]*in_shape[2]
-        emb_dims = in_shape[3]
-        model_input_shape = (1, in_shape[1], in_shape[2], in_shape[3])
-    else:
-        num_words = in_shape[1]
-        emb_dims = in_shape[2]
-        model_input_shape = (1, in_shape[1], in_shape[2], in_shape[3])
+    num_words = int(math.ceil((in_shape[1]*in_shape[2])/emb_dims))
+    model_input_shape = (1, in_shape[1], in_shape[2], in_shape[3])
 
     path_to_embeddings = './embeddings/'
     EMBEDDING_FILENAME = path_to_embeddings+'custom-embedding-SST.{}d.txt'.format(emb_dims)
@@ -48,6 +45,8 @@ if __name__ == '__main__':
     input_without_padding = input_without_padding.lower().split(' ') 
     input_ = input_without_padding[:num_words] + ['<PAD>']*(num_words - len(input_without_padding))
     x = embedding(input_)
+    sq = in_shape[1]
+    x = x.flatten()[:(sq**2)].reshape(sq,sq)
     #with open('../text_inputs/1_spellbinding.csv','r') as f:
     #with open('../text_inputs/test','r') as f:
     #    text_in = f.read().split(',')[:-1]

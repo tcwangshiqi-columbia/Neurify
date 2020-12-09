@@ -28,27 +28,6 @@ from text_utils import clean_text, stem_lem
 
 import json
 
-def FCModel(weights_path, max_len, emb_dims, layer_sizes, layer_types):
-    model = Sequential()
-    for idx, si in enumerate(layer_sizes):
-        if layer_types[idx] == 0:
-            if idx == 0:
-                model.add(Dense(si, input_shape=(max_len*emb_dims,), activation='relu'))
-            elif idx == len(layer_types)-1:
-                model.add(Dense(si))
-            else:
-                model.add(Dense(si,activation='relu'))
-        else:
-            print('unsupported layer type')
-            return
-
-    model.add(Activation('softmax'))
-    model.compile(loss='categorical_crossentropy', 
-                  optimizer='adam',
-                  metrics=['accuracy'])
-    model.load_weights(weights_path)
-    return model
-
 def to_words(h, inp_w_pad, wsize, emb_dim):
     word_starts = h[0::wsize]
     words = []
@@ -57,7 +36,6 @@ def to_words(h, inp_w_pad, wsize, emb_dim):
         words.append(inp_w_pad[idx])
     return words
     
-
 # Parse epsilon and window size from command line
 parser = argparse.ArgumentParser(description='Input string, window size and epsilon can be passed as arguments.')
 parser.add_argument('-i', '--input', dest='input', type=str, default='... spellbinding fun and deliciously exploitative', help='input string')
@@ -78,13 +56,11 @@ print('Starting experiment with eps = '+ str(eps) + ', on review: "'+input_witho
 verbose = config['verbose']
 randomize_pickfalselits = config['random_pfl']  # shuffle free variables before feeding them to pickfalselits
 emb_dims = config['emb_dims']
+model = load_model(config['keras_file'])
 num_words = config['max_len']
 input_len = emb_dims*num_words
 model_input_shape = (1, input_len)
 HS_max_len = config['hs_maxlen']  # max size of GAMMA in smallest_explanation
-
-# Load model and test the input_ review
-model = FCModel(config['kweights_file'],num_words,emb_dims,config['layer_sizes'],config['layer_types'])
 
 # Load embedding
 word2index, _, index2embedding = load_embedding(config['embedding_file'])
@@ -127,7 +103,7 @@ out_string += "Complementary set of MSE: {}".format([i for i in range(input_len)
 out_string += "Execution Time (s): {}".format(exec_time) + "\n\n"
 print(out_string,end='')
 
-out_file = config['nnet_file'].split('/')[-1].split('.')[0] + "_results.txt"
+out_file = config['nnet_file'].split('/')[-1][:-5] + "_results.txt"
 out_file_path = os.path.join(config['out_folder'],out_file)
 with open(out_file_path,'a') as f:
     f.write(out_string)

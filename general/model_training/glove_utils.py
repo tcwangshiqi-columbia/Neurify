@@ -6,14 +6,26 @@ from numpy import linalg as LA
 import time
 from embedding import Embedding
 
-def pad_sequences(X, maxlen, emb_size=50):
-    for i in range(len(X)):
-        if len(X[i]) > maxlen:
-            X[i] = X[i][:maxlen]
-        elif len(X[i]) < maxlen:
-            pad = np.zeros(shape=(maxlen-len(X[i]), emb_size))
-            X[i] = np.append(X[i], pad, axis=0)
-    return X
+def pad_sequences(X, maxlen, emb_size=50, square=True):
+    if not square:
+        for i in range(len(X)):
+            if len(X[i]) > maxlen:
+                X[i] = X[i][:maxlen]
+            elif len(X[i]) < maxlen:
+                pad = np.zeros(shape=(maxlen-len(X[i]), emb_size))
+                X[i] = np.append(X[i], pad, axis=0)
+        return X
+    else:
+        sq = int((maxlen*emb_size)**0.5)
+        for i in range(len(X)):
+            if len(X[i]) > maxlen:
+                X[i] = X[i][:maxlen]
+            elif len(X[i]) < maxlen:
+                pad = np.zeros(shape=(maxlen-len(X[i]), emb_size))
+                X[i] = np.append(X[i], pad, axis=0)
+            if sq**2 < maxlen*emb_size:
+                X[i] = np.array(X[i]).flatten()[:(sq**2)].reshape(sq,sq)
+        return X
 
 
 def index_to_word(word2index) :

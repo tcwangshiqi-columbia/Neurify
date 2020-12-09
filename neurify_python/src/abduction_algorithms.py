@@ -122,7 +122,7 @@ def MinimumHS(subsets,
         raise NotImplementedError("{} is not a vald htype method".format(htype))
 
 
-def PickFalseLits(C_setminus_h, filename, input_, epsilon, output_constraints, 
+def PickFalseLits(C_setminus_h, filename, input_, input_bounds, output_constraints, 
                   window_size=1, randomize=False, verbose=False):
     """
     Search for a subset of free variables in C_setminus_h s.t. the adversarial attack is still effective.
@@ -159,7 +159,9 @@ def PickFalseLits(C_setminus_h, filename, input_, epsilon, output_constraints,
         random.shuffle(free_vars)
     for i in free_vars:
         h = fixed_vars + idx2word([i], window_size, input_len)  # fix i-th window
-        res = entails(h, len(h), input_, len(input_), epsilon, filename)
+        u_bounds = [e[1] for e in input_bounds]
+        l_bounds = [e[0] for e in input_bounds]
+        res = entails(h, len(h), input_, len(input_), u_bounds, l_bounds, filename)
         if res != 0:  # if there is an attack
             fixed_vars += idx2word([i], window_size, input_len)  # var will be discarded (the attack is still adversarial)
     adv = [i for i in free_vars if i not in fixed_vars]  # keep all free vars that were really adversarial
@@ -169,7 +171,7 @@ def PickFalseLits(C_setminus_h, filename, input_, epsilon, output_constraints,
     return C_prime
 
 def smallest_explanation(model, filename, numpy_input, epsilon, y_hat, output_constraints, window_size, 
-                         adv_attacks=False, adv_args=(None, None), sims=10, randomize_pickfalselits=False, HS_maxlen=100, verbose=True):
+                     adv_attacks=False, adv_args=(None, None), sims=10, randomize_pickfalselits=False, HS_maxlen=100, verbose=True):
     """
     Smallest Explanation API, algorithm 2 paper "Abduction-Based Explanation for ML Models", AAAI-2019.
     Input:
@@ -234,12 +236,16 @@ def smallest_explanation(model, filename, numpy_input, epsilon, y_hat, output_co
             found, res = adv_args[0](*adv_args[1])
             if found is False:
                 logger("Adversarial attack not found on free vars {}. Run Entails on vars {}".format([f for f in range(input_len) if f not in h], h), verbose, 'DEBUG')
-                res = entails(h, len(h), input_, len(input_), epsilon, filename)
+                u_bounds = [e[1] for e in input_bounds]
+                l_bounds = [e[0] for e in input_bounds]
+                res = entails(h, len(h), input_, len(input_), u_bounds, l_bounds, filename)
             else:
                 logger("Adversarial attack found on free vars {}".format([f for f in range(input_len) if f not in h]), verbose, 'DEBUG')
         else:
             logger("Run Entails on vars {}".format(h), verbose, "DEBUG")
-            res = entails(h, len(h), input_, len(input_), epsilon, filename)
+            u_bounds = [e[1] for e in input_bounds]
+            l_bounds = [e[0] for e in input_bounds]
+            res = entails(h, len(h), input_, len(input_), u_bounds, l_bounds, filename)
         if res == 0:  # return if there is no attack with h as a smallest explanation
             break
         else:

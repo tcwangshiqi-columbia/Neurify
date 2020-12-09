@@ -8,20 +8,24 @@ intp = ctypes.POINTER(ctypes.c_int)
 floatp = ctypes.POINTER(ctypes.c_float)
 
 c_lib.entails.restype = ctypes.c_int
-c_lib.entails.argtypes = [intp,ctypes.c_int,floatp,ctypes.c_int,ctypes.c_float,ctypes.c_char_p]
+c_lib.entails.argtypes = [intp,ctypes.c_int,floatp,ctypes.c_int,floatp,floatp,ctypes.c_char_p]
 
-#int entails( int *h, int h_size, float *input, int input_size, float eps, char* network_path);
-def entails(h,h_size,inp,inp_size,eps,network_path):
+#int entails( int *h, int h_size, float *input, int input_size, float *u_bounds, float *l_bounds, char* network_path);
+def entails(h,h_size,inp,inp_size,u_bounds,l_bounds,network_path):
     # needed for c_char_p type
     network_path = network_path.encode('utf-8')
 
     h = np.array(h,dtype=ctypes.c_int)
     inp = np.array(inp,dtype=ctypes.c_float)
+    u_bounds = np.array(u_bounds,dtype=ctypes.c_float)
+    l_bounds = np.array(l_bounds,dtype=ctypes.c_float)
 
     h_c = h.ctypes.data_as(intp)
     inp_c = inp.ctypes.data_as(floatp)
+    u_bounds = u_bounds.ctypes.data_as(floatp)
+    l_bounds = l_bounds.ctypes.data_as(floatp)
     
-    res = c_lib.entails(h_c,h_size,inp_c,inp_size,eps,network_path)
+    res = c_lib.entails(h_c,h_size,inp_c,inp_size,u_bounds,l_bounds,network_path)
     return res
 
 
