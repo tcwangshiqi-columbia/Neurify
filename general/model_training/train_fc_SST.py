@@ -21,8 +21,12 @@ from glove_utils import load_embedding, pad_sequences
 from text_utils import clean_text, stem_lem
 
 # Global model variables
-maxlen = 50
-emb_dims = 25
+if not len(sys.argv) >= 3:
+    print('Need input length and dimension.')
+    sys.exit(0)
+
+maxlen = int(sys.argv[1])
+emb_dims = int(sys.argv[2])
 epochs = 50
 round_ = None  # number of digits to round input (i.e., embedding), no round if None
 
@@ -59,8 +63,7 @@ if round_ is not None:
 
 # Create the model
 model = Sequential()
-model.add(Dense(32, input_shape=(maxlen*emb_dims,), activation='relu'))
-model.add(Dense(16, activation='relu'))
+model.add(Dense(16, input_shape=(maxlen*emb_dims,), activation='relu'))
 model.add(Dense(2,name='before_softmax'))
 model.add(Activation('softmax'))
 model.compile(loss='categorical_crossentropy', 
@@ -85,10 +88,10 @@ X_train_chunk = X_train_chunk.reshape(len(X_train_chunk), maxlen*emb_dims)
 X_train_chunk = (X_train_chunk+1)/2
 
 y_train_chunk = to_categorical(y_train, num_classes=2)
-model.fit(X_train_chunk, y_train_chunk, batch_size=512, epochs=100)
+model.fit(X_train_chunk, y_train_chunk, batch_size=512, epochs=epochs)
 acc = model.evaluate(X_test, y_test, batch_size=512)
 acc = acc[1]
 
-model_name = f'models/fullmodel_SST_fc_{emb_dims}d_{maxlen}inp_32_16_2_{acc:.4f}acc.h5'
+model_name = f'models/fullmodel_SST_fc_{emb_dims}d_{maxlen}inp_16_2_{acc:.4f}acc.h5'
 print('Saved to:',model_name)
 model.save(model_name)

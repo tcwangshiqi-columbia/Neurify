@@ -1,0 +1,11 @@
+{
+    "keras_file":"../models/fullmodel_SST_fc_5d_10inp_16_2_0.7901acc.h5",
+    "nnet_file":"../models/fullmodel_SST_fc_5d_10inp_16_2_0.7901acc.nnet",
+    "embedding_file":"../embeddings/custom-embedding-SST.5d.txt",
+    "max_len":10,
+    "emb_dims":5,
+    "verbose":true,
+    "hs_maxlen":100000,
+    "random_pfl":false,
+    "out_folder":"../results/"
+}

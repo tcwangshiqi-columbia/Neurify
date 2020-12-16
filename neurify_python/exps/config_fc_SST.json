@@ -1,6 +1,6 @@
 {
-    "keras_file":"../models/fullmodel_SST_fc_5d_25inp_32_16_2_0.8060acc.h5",
-    "nnet_file":"../models/fullmodel_SST_fc_5d_25inp_32_16_2_0.8060acc.nnet",
+    "keras_file":"../models/fullmodel_SST_fc_5d_25inp_16_2_0.8440acc.h5",
+    "nnet_file":"../models/fullmodel_SST_fc_5d_25inp_16_2_0.8440acc.nnet",
     "embedding_file":"../embeddings/custom-embedding-SST.5d.txt",
     "max_len":25,
     "emb_dims":5,

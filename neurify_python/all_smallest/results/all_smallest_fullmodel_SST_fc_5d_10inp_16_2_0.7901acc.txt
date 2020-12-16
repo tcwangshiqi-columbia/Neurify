@@ -1,0 +1,1816 @@
+Input: ['you', 'will', 'probably', 'love', 'it', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.01
+Original smallest expl: ['love', '<PAD>']
+Number smallest expls: 33
+In form: [(word, index_in_input)]
+
+[('you', 0), ('will', 1)]
+[('you', 0), ('probably', 2)]
+[('you', 0), ('love', 3)]
+[('you', 0), ('it', 4)]
+[('you', 0), ('<PAD>', 5)]
+[('you', 0), ('<PAD>', 6)]
+[('you', 0), ('<PAD>', 7)]
+[('you', 0), ('<PAD>', 8)]
+[('you', 0), ('<PAD>', 9)]
+[('will', 1), ('probably', 2)]
+[('will', 1), ('love', 3)]
+[('will', 1), ('it', 4)]
+[('will', 1), ('<PAD>', 5)]
+[('will', 1), ('<PAD>', 6)]
+[('will', 1), ('<PAD>', 7)]
+[('will', 1), ('<PAD>', 8)]
+[('will', 1), ('<PAD>', 9)]
+[('probably', 2), ('love', 3)]
+[('probably', 2), ('it', 4)]
+[('probably', 2), ('<PAD>', 5)]
+[('probably', 2), ('<PAD>', 6)]
+[('probably', 2), ('<PAD>', 7)]
+[('probably', 2), ('<PAD>', 8)]
+[('probably', 2), ('<PAD>', 9)]
+[('love', 3), ('it', 4)]
+[('love', 3), ('<PAD>', 5)]
+[('love', 3), ('<PAD>', 6)]
+[('love', 3), ('<PAD>', 8)]
+[('love', 3), ('<PAD>', 9)]
+[('it', 4), ('<PAD>', 5)]
+[('it', 4), ('<PAD>', 6)]
+[('it', 4), ('<PAD>', 8)]
+[('it', 4), ('<PAD>', 9)]
+
+=====================================================================
+Input: ['you', 'will', 'probably', 'love', 'it', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.05
+Original smallest expl: ['you', 'will', 'probably', 'love', 'it', '<PAD>', '<PAD>', '<PAD>']
+Number smallest expls: 9
+In form: [(word, index_in_input)]
+
+[('you', 0), ('will', 1), ('probably', 2), ('love', 3), ('it', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 7)]
+[('you', 0), ('will', 1), ('probably', 2), ('love', 3), ('it', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 8)]
+[('you', 0), ('will', 1), ('probably', 2), ('love', 3), ('it', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 9)]
+[('you', 0), ('will', 1), ('probably', 2), ('love', 3), ('it', 4), ('<PAD>', 5), ('<PAD>', 7), ('<PAD>', 8)]
+[('you', 0), ('will', 1), ('probably', 2), ('love', 3), ('it', 4), ('<PAD>', 5), ('<PAD>', 7), ('<PAD>', 9)]
+[('you', 0), ('will', 1), ('probably', 2), ('love', 3), ('it', 4), ('<PAD>', 5), ('<PAD>', 8), ('<PAD>', 9)]
+[('you', 0), ('will', 1), ('probably', 2), ('love', 3), ('it', 4), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+[('you', 0), ('will', 1), ('probably', 2), ('love', 3), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+[('you', 0), ('will', 1), ('probably', 2), ('it', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+
+=====================================================================
+Input: ['you', 'will', 'probably', 'love', 'it', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.1
+Original smallest expl: ['you', 'will', 'probably', 'love', 'it', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Number smallest expls: 3
+In form: [(word, index_in_input)]
+
+[('you', 0), ('will', 1), ('probably', 2), ('love', 3), ('it', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8)]
+[('you', 0), ('will', 1), ('probably', 2), ('love', 3), ('it', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 9)]
+[('you', 0), ('will', 1), ('probably', 2), ('love', 3), ('it', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+
+=====================================================================
+Input: ['a', 'delightful', 'coming-of-age', 'story', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.01
+Original smallest expl: ['story']
+Number smallest expls: 10
+In form: [(word, index_in_input)]
+
+[('a', 0)]
+[('delightful', 1)]
+[('coming-of-age', 2)]
+[('story', 3)]
+[('<PAD>', 4)]
+[('<PAD>', 5)]
+[('<PAD>', 6)]
+[('<PAD>', 7)]
+[('<PAD>', 8)]
+[('<PAD>', 9)]
+
+=====================================================================
+Input: ['a', 'delightful', 'coming-of-age', 'story', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.05
+Original smallest expl: ['a', 'delightful', 'coming-of-age', 'story', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Number smallest expls: 23
+In form: [(word, index_in_input)]
+
+[('a', 0), ('delightful', 1), ('coming-of-age', 2), ('story', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 7)]
+[('a', 0), ('delightful', 1), ('coming-of-age', 2), ('story', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 8)]
+[('a', 0), ('delightful', 1), ('coming-of-age', 2), ('story', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 9)]
+[('a', 0), ('delightful', 1), ('coming-of-age', 2), ('story', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 7), ('<PAD>', 8)]
+[('a', 0), ('delightful', 1), ('coming-of-age', 2), ('story', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 7), ('<PAD>', 9)]
+[('a', 0), ('delightful', 1), ('coming-of-age', 2), ('story', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 8), ('<PAD>', 9)]
+[('a', 0), ('delightful', 1), ('coming-of-age', 2), ('story', 3), ('<PAD>', 4), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8)]
+[('a', 0), ('delightful', 1), ('coming-of-age', 2), ('story', 3), ('<PAD>', 4), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 9)]
+[('a', 0), ('delightful', 1), ('coming-of-age', 2), ('story', 3), ('<PAD>', 4), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+[('a', 0), ('delightful', 1), ('coming-of-age', 2), ('story', 3), ('<PAD>', 4), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('a', 0), ('delightful', 1), ('coming-of-age', 2), ('story', 3), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8)]
+[('a', 0), ('delightful', 1), ('coming-of-age', 2), ('story', 3), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 9)]
+[('a', 0), ('delightful', 1), ('coming-of-age', 2), ('story', 3), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+[('a', 0), ('delightful', 1), ('coming-of-age', 2), ('story', 3), ('<PAD>', 5), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('a', 0), ('delightful', 1), ('coming-of-age', 2), ('story', 3), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('a', 0), ('delightful', 1), ('coming-of-age', 2), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8)]
+[('a', 0), ('delightful', 1), ('coming-of-age', 2), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 9)]
+[('a', 0), ('delightful', 1), ('coming-of-age', 2), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+[('a', 0), ('delightful', 1), ('coming-of-age', 2), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('a', 0), ('delightful', 1), ('coming-of-age', 2), ('<PAD>', 4), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('a', 0), ('delightful', 1), ('story', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8)]
+[('a', 0), ('delightful', 1), ('story', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 9)]
+[('a', 0), ('delightful', 1), ('story', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+
+=====================================================================
+Input: ['a', 'delightful', 'coming-of-age', 'story', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.1
+Original smallest expl: ['a', 'delightful', 'coming-of-age', 'story', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Number smallest expls: 6
+In form: [(word, index_in_input)]
+
+[('a', 0), ('delightful', 1), ('coming-of-age', 2), ('story', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8)]
+[('a', 0), ('delightful', 1), ('coming-of-age', 2), ('story', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 9)]
+[('a', 0), ('delightful', 1), ('coming-of-age', 2), ('story', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+[('a', 0), ('delightful', 1), ('coming-of-age', 2), ('story', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('a', 0), ('delightful', 1), ('coming-of-age', 2), ('story', 3), ('<PAD>', 4), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('a', 0), ('delightful', 1), ('coming-of-age', 2), ('story', 3), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+
+=====================================================================
+Input: ['insanely', 'hilarious', '!', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.05
+Original smallest expl: ['insanely', 'hilarious', '!', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Number smallest expls: 36
+In form: [(word, index_in_input)]
+
+[('insanely', 0), ('hilarious', 1), ('!', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6)]
+[('insanely', 0), ('hilarious', 1), ('!', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 7)]
+[('insanely', 0), ('hilarious', 1), ('!', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 8)]
+[('insanely', 0), ('hilarious', 1), ('!', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 9)]
+[('insanely', 0), ('hilarious', 1), ('!', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 6), ('<PAD>', 7)]
+[('insanely', 0), ('hilarious', 1), ('!', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 6), ('<PAD>', 8)]
+[('insanely', 0), ('hilarious', 1), ('!', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 6), ('<PAD>', 9)]
+[('insanely', 0), ('hilarious', 1), ('!', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 7), ('<PAD>', 8)]
+[('insanely', 0), ('hilarious', 1), ('!', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 7), ('<PAD>', 9)]
+[('insanely', 0), ('hilarious', 1), ('!', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 8), ('<PAD>', 9)]
+[('insanely', 0), ('hilarious', 1), ('!', 2), ('<PAD>', 3), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 7)]
+[('insanely', 0), ('hilarious', 1), ('!', 2), ('<PAD>', 3), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 8)]
+[('insanely', 0), ('hilarious', 1), ('!', 2), ('<PAD>', 3), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 9)]
+[('insanely', 0), ('hilarious', 1), ('!', 2), ('<PAD>', 3), ('<PAD>', 5), ('<PAD>', 7), ('<PAD>', 8)]
+[('insanely', 0), ('hilarious', 1), ('!', 2), ('<PAD>', 3), ('<PAD>', 5), ('<PAD>', 7), ('<PAD>', 9)]
+[('insanely', 0), ('hilarious', 1), ('!', 2), ('<PAD>', 3), ('<PAD>', 5), ('<PAD>', 8), ('<PAD>', 9)]
+[('insanely', 0), ('hilarious', 1), ('!', 2), ('<PAD>', 3), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8)]
+[('insanely', 0), ('hilarious', 1), ('!', 2), ('<PAD>', 3), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 9)]
+[('insanely', 0), ('hilarious', 1), ('!', 2), ('<PAD>', 3), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+[('insanely', 0), ('hilarious', 1), ('!', 2), ('<PAD>', 3), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('insanely', 0), ('hilarious', 1), ('!', 2), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 7)]
+[('insanely', 0), ('hilarious', 1), ('!', 2), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 8)]
+[('insanely', 0), ('hilarious', 1), ('!', 2), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 9)]
+[('insanely', 0), ('hilarious', 1), ('!', 2), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 7), ('<PAD>', 8)]
+[('insanely', 0), ('hilarious', 1), ('!', 2), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 7), ('<PAD>', 9)]
+[('insanely', 0), ('hilarious', 1), ('!', 2), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 8), ('<PAD>', 9)]
+[('insanely', 0), ('hilarious', 1), ('!', 2), ('<PAD>', 4), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8)]
+[('insanely', 0), ('hilarious', 1), ('!', 2), ('<PAD>', 4), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 9)]
+[('insanely', 0), ('hilarious', 1), ('!', 2), ('<PAD>', 4), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+[('insanely', 0), ('hilarious', 1), ('!', 2), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+[('insanely', 0), ('hilarious', 1), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 7)]
+[('insanely', 0), ('hilarious', 1), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 8)]
+[('insanely', 0), ('hilarious', 1), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 9)]
+[('insanely', 0), ('hilarious', 1), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 8), ('<PAD>', 9)]
+[('insanely', 0), ('hilarious', 1), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+[('insanely', 0), ('hilarious', 1), ('<PAD>', 3), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+
+=====================================================================
+Input: ['insanely', 'hilarious', '!', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.1
+Original smallest expl: ['insanely', 'hilarious', '!', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Number smallest expls: 1
+In form: [(word, index_in_input)]
+
+[('insanely', 0), ('hilarious', 1), ('!', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 9)]
+
+=====================================================================
+Input: ['yet', 'the', 'act', 'is', 'still', 'charming', 'here', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.05
+Original smallest expl: ['yet', 'the', 'act', 'is', 'still', 'charming', '<PAD>']
+Number smallest expls: 4
+In form: [(word, index_in_input)]
+
+[('yet', 0), ('the', 1), ('act', 2), ('is', 3), ('still', 4), ('charming', 5), ('here', 6)]
+[('yet', 0), ('the', 1), ('act', 2), ('is', 3), ('still', 4), ('charming', 5), ('<PAD>', 8)]
+[('yet', 0), ('the', 1), ('act', 2), ('is', 3), ('still', 4), ('charming', 5), ('<PAD>', 9)]
+[('yet', 0), ('the', 1), ('act', 2), ('is', 3), ('still', 4), ('here', 6), ('<PAD>', 9)]
+
+=====================================================================
+Input: ['yet', 'the', 'act', 'is', 'still', 'charming', 'here', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.1
+Original smallest expl: ['yet', 'the', 'act', 'is', 'still', 'charming', 'here', '<PAD>', '<PAD>']
+Number smallest expls: 7
+In form: [(word, index_in_input)]
+
+[('yet', 0), ('the', 1), ('act', 2), ('is', 3), ('still', 4), ('charming', 5), ('here', 6), ('<PAD>', 7), ('<PAD>', 8)]
+[('yet', 0), ('the', 1), ('act', 2), ('is', 3), ('still', 4), ('charming', 5), ('here', 6), ('<PAD>', 7), ('<PAD>', 9)]
+[('yet', 0), ('the', 1), ('act', 2), ('is', 3), ('still', 4), ('charming', 5), ('here', 6), ('<PAD>', 8), ('<PAD>', 9)]
+[('yet', 0), ('the', 1), ('act', 2), ('is', 3), ('still', 4), ('charming', 5), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('yet', 0), ('the', 1), ('act', 2), ('is', 3), ('still', 4), ('here', 6), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('yet', 0), ('the', 1), ('act', 2), ('is', 3), ('charming', 5), ('here', 6), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('yet', 0), ('the', 1), ('act', 2), ('still', 4), ('charming', 5), ('here', 6), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+
+=====================================================================
+Input: ['it', 'is', 'amusing', 'and', 'that', 'is', 'all', 'it', 'needs', 'to']
+Eps: 0.01
+Original smallest expl: ['it', 'is', 'amusing', 'and', 'that', 'is']
+Number smallest expls: 2
+In form: [(word, index_in_input)]
+
+[('it', 0), ('is', 1), ('amusing', 2), ('and', 3), ('that', 4), ('is', 5)]
+[('it', 0), ('is', 1), ('amusing', 2), ('and', 3), ('that', 4), ('all', 6)]
+
+=====================================================================
+Input: ['it', 'is', 'amusing', 'and', 'that', 'is', 'all', 'it', 'needs', 'to']
+Eps: 0.05
+Original smallest expl: ['it', 'is', 'amusing', 'and', 'that', 'is', 'all', 'needs', 'to']
+Number smallest expls: 1
+In form: [(word, index_in_input)]
+
+[('it', 0), ('is', 1), ('amusing', 2), ('and', 3), ('that', 4), ('is', 5), ('all', 6), ('needs', 8), ('to', 9)]
+
+=====================================================================
+Input: ['the', 'extent', 'to', 'which', 'it', 'succeeds', 'is', 'impressive', '<PAD>', '<PAD>']
+Eps: 0.05
+Original smallest expl: ['the', 'extent', 'to', 'which', 'it', '<PAD>']
+Number smallest expls: 28
+In form: [(word, index_in_input)]
+
+[('the', 0), ('extent', 1), ('to', 2), ('which', 3), ('it', 4), ('succeeds', 5)]
+[('the', 0), ('extent', 1), ('to', 2), ('which', 3), ('it', 4), ('is', 6)]
+[('the', 0), ('extent', 1), ('to', 2), ('which', 3), ('it', 4), ('impressive', 7)]
+[('the', 0), ('extent', 1), ('to', 2), ('which', 3), ('it', 4), ('<PAD>', 8)]
+[('the', 0), ('extent', 1), ('to', 2), ('which', 3), ('it', 4), ('<PAD>', 9)]
+[('the', 0), ('extent', 1), ('to', 2), ('which', 3), ('succeeds', 5), ('is', 6)]
+[('the', 0), ('extent', 1), ('to', 2), ('which', 3), ('succeeds', 5), ('impressive', 7)]
+[('the', 0), ('extent', 1), ('to', 2), ('which', 3), ('succeeds', 5), ('<PAD>', 8)]
+[('the', 0), ('extent', 1), ('to', 2), ('which', 3), ('succeeds', 5), ('<PAD>', 9)]
+[('the', 0), ('extent', 1), ('to', 2), ('which', 3), ('is', 6), ('impressive', 7)]
+[('the', 0), ('extent', 1), ('to', 2), ('which', 3), ('is', 6), ('<PAD>', 8)]
+[('the', 0), ('extent', 1), ('to', 2), ('which', 3), ('is', 6), ('<PAD>', 9)]
+[('the', 0), ('extent', 1), ('to', 2), ('which', 3), ('<PAD>', 8), ('<PAD>', 9)]
+[('the', 0), ('extent', 1), ('to', 2), ('it', 4), ('succeeds', 5), ('is', 6)]
+[('the', 0), ('extent', 1), ('to', 2), ('it', 4), ('succeeds', 5), ('impressive', 7)]
+[('the', 0), ('extent', 1), ('to', 2), ('it', 4), ('succeeds', 5), ('<PAD>', 8)]
+[('the', 0), ('extent', 1), ('to', 2), ('it', 4), ('succeeds', 5), ('<PAD>', 9)]
+[('the', 0), ('extent', 1), ('to', 2), ('it', 4), ('is', 6), ('<PAD>', 8)]
+[('the', 0), ('extent', 1), ('to', 2), ('it', 4), ('is', 6), ('<PAD>', 9)]
+[('the', 0), ('extent', 1), ('to', 2), ('it', 4), ('<PAD>', 8), ('<PAD>', 9)]
+[('the', 0), ('extent', 1), ('to', 2), ('succeeds', 5), ('is', 6), ('<PAD>', 8)]
+[('the', 0), ('extent', 1), ('to', 2), ('succeeds', 5), ('is', 6), ('<PAD>', 9)]
+[('the', 0), ('extent', 1), ('to', 2), ('succeeds', 5), ('<PAD>', 8), ('<PAD>', 9)]
+[('the', 0), ('extent', 1), ('which', 3), ('it', 4), ('succeeds', 5), ('is', 6)]
+[('the', 0), ('extent', 1), ('which', 3), ('it', 4), ('succeeds', 5), ('<PAD>', 8)]
+[('the', 0), ('extent', 1), ('which', 3), ('it', 4), ('succeeds', 5), ('<PAD>', 9)]
+[('the', 0), ('extent', 1), ('which', 3), ('it', 4), ('is', 6), ('<PAD>', 8)]
+[('the', 0), ('extent', 1), ('which', 3), ('it', 4), ('is', 6), ('<PAD>', 9)]
+
+=====================================================================
+Input: ['the', 'extent', 'to', 'which', 'it', 'succeeds', 'is', 'impressive', '<PAD>', '<PAD>']
+Eps: 0.1
+Original smallest expl: ['the', 'extent', 'to', 'which', 'it', 'is', '<PAD>', '<PAD>']
+Number smallest expls: 12
+In form: [(word, index_in_input)]
+
+[('the', 0), ('extent', 1), ('to', 2), ('which', 3), ('it', 4), ('succeeds', 5), ('is', 6), ('impressive', 7)]
+[('the', 0), ('extent', 1), ('to', 2), ('which', 3), ('it', 4), ('succeeds', 5), ('is', 6), ('<PAD>', 8)]
+[('the', 0), ('extent', 1), ('to', 2), ('which', 3), ('it', 4), ('succeeds', 5), ('is', 6), ('<PAD>', 9)]
+[('the', 0), ('extent', 1), ('to', 2), ('which', 3), ('it', 4), ('succeeds', 5), ('impressive', 7), ('<PAD>', 8)]
+[('the', 0), ('extent', 1), ('to', 2), ('which', 3), ('it', 4), ('succeeds', 5), ('impressive', 7), ('<PAD>', 9)]
+[('the', 0), ('extent', 1), ('to', 2), ('which', 3), ('it', 4), ('succeeds', 5), ('<PAD>', 8), ('<PAD>', 9)]
+[('the', 0), ('extent', 1), ('to', 2), ('which', 3), ('it', 4), ('is', 6), ('impressive', 7), ('<PAD>', 8)]
+[('the', 0), ('extent', 1), ('to', 2), ('which', 3), ('it', 4), ('is', 6), ('impressive', 7), ('<PAD>', 9)]
+[('the', 0), ('extent', 1), ('to', 2), ('which', 3), ('it', 4), ('is', 6), ('<PAD>', 8), ('<PAD>', 9)]
+[('the', 0), ('extent', 1), ('to', 2), ('which', 3), ('it', 4), ('impressive', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('the', 0), ('extent', 1), ('to', 2), ('which', 3), ('succeeds', 5), ('is', 6), ('<PAD>', 8), ('<PAD>', 9)]
+[('the', 0), ('extent', 1), ('to', 2), ('it', 4), ('succeeds', 5), ('is', 6), ('<PAD>', 8), ('<PAD>', 9)]
+
+=====================================================================
+Input: ['strange', 'funny', 'twisted', 'brilliant', 'and', 'macabre', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.01
+Original smallest expl: ['brilliant']
+Number smallest expls: 10
+In form: [(word, index_in_input)]
+
+[('strange', 0)]
+[('funny', 1)]
+[('twisted', 2)]
+[('brilliant', 3)]
+[('and', 4)]
+[('macabre', 5)]
+[('<PAD>', 6)]
+[('<PAD>', 7)]
+[('<PAD>', 8)]
+[('<PAD>', 9)]
+
+=====================================================================
+Input: ['strange', 'funny', 'twisted', 'brilliant', 'and', 'macabre', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.05
+Original smallest expl: ['strange', 'funny', 'twisted', 'brilliant', 'and', '<PAD>', '<PAD>', '<PAD>']
+Number smallest expls: 25
+In form: [(word, index_in_input)]
+
+[('strange', 0), ('funny', 1), ('twisted', 2), ('brilliant', 3), ('and', 4), ('macabre', 5), ('<PAD>', 6), ('<PAD>', 7)]
+[('strange', 0), ('funny', 1), ('twisted', 2), ('brilliant', 3), ('and', 4), ('macabre', 5), ('<PAD>', 6), ('<PAD>', 8)]
+[('strange', 0), ('funny', 1), ('twisted', 2), ('brilliant', 3), ('and', 4), ('macabre', 5), ('<PAD>', 6), ('<PAD>', 9)]
+[('strange', 0), ('funny', 1), ('twisted', 2), ('brilliant', 3), ('and', 4), ('macabre', 5), ('<PAD>', 7), ('<PAD>', 8)]
+[('strange', 0), ('funny', 1), ('twisted', 2), ('brilliant', 3), ('and', 4), ('macabre', 5), ('<PAD>', 7), ('<PAD>', 9)]
+[('strange', 0), ('funny', 1), ('twisted', 2), ('brilliant', 3), ('and', 4), ('macabre', 5), ('<PAD>', 8), ('<PAD>', 9)]
+[('strange', 0), ('funny', 1), ('twisted', 2), ('brilliant', 3), ('and', 4), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8)]
+[('strange', 0), ('funny', 1), ('twisted', 2), ('brilliant', 3), ('and', 4), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 9)]
+[('strange', 0), ('funny', 1), ('twisted', 2), ('brilliant', 3), ('and', 4), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+[('strange', 0), ('funny', 1), ('twisted', 2), ('brilliant', 3), ('and', 4), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('strange', 0), ('funny', 1), ('twisted', 2), ('brilliant', 3), ('macabre', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8)]
+[('strange', 0), ('funny', 1), ('twisted', 2), ('brilliant', 3), ('macabre', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 9)]
+[('strange', 0), ('funny', 1), ('twisted', 2), ('brilliant', 3), ('macabre', 5), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+[('strange', 0), ('funny', 1), ('twisted', 2), ('brilliant', 3), ('macabre', 5), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('strange', 0), ('funny', 1), ('twisted', 2), ('brilliant', 3), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('strange', 0), ('funny', 1), ('twisted', 2), ('and', 4), ('macabre', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8)]
+[('strange', 0), ('funny', 1), ('twisted', 2), ('and', 4), ('macabre', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 9)]
+[('strange', 0), ('funny', 1), ('twisted', 2), ('and', 4), ('macabre', 5), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+[('strange', 0), ('funny', 1), ('twisted', 2), ('and', 4), ('macabre', 5), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('strange', 0), ('funny', 1), ('twisted', 2), ('and', 4), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('strange', 0), ('funny', 1), ('brilliant', 3), ('and', 4), ('macabre', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8)]
+[('strange', 0), ('funny', 1), ('brilliant', 3), ('and', 4), ('macabre', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 9)]
+[('strange', 0), ('funny', 1), ('brilliant', 3), ('and', 4), ('macabre', 5), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+[('strange', 0), ('funny', 1), ('brilliant', 3), ('and', 4), ('macabre', 5), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('strange', 0), ('twisted', 2), ('brilliant', 3), ('and', 4), ('macabre', 5), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+
+=====================================================================
+Input: ['strange', 'funny', 'twisted', 'brilliant', 'and', 'macabre', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.1
+Original smallest expl: ['strange', 'funny', 'twisted', 'brilliant', 'and', 'macabre', '<PAD>', '<PAD>', '<PAD>']
+Number smallest expls: 6
+In form: [(word, index_in_input)]
+
+[('strange', 0), ('funny', 1), ('twisted', 2), ('brilliant', 3), ('and', 4), ('macabre', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8)]
+[('strange', 0), ('funny', 1), ('twisted', 2), ('brilliant', 3), ('and', 4), ('macabre', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 9)]
+[('strange', 0), ('funny', 1), ('twisted', 2), ('brilliant', 3), ('and', 4), ('macabre', 5), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+[('strange', 0), ('funny', 1), ('twisted', 2), ('brilliant', 3), ('and', 4), ('macabre', 5), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('strange', 0), ('funny', 1), ('twisted', 2), ('brilliant', 3), ('and', 4), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('strange', 0), ('funny', 1), ('twisted', 2), ('brilliant', 3), ('macabre', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+
+=====================================================================
+Input: ['still', 'this', 'flick', 'is', 'fun', 'and', 'host', 'to', 'some', 'truly']
+Eps: 0.05
+Original smallest expl: ['still', 'this', 'flick', 'is', 'fun', 'and']
+Number smallest expls: 1
+In form: [(word, index_in_input)]
+
+[('still', 0), ('this', 1), ('flick', 2), ('is', 3), ('fun', 4), ('and', 5)]
+
+=====================================================================
+Input: ['still', 'this', 'flick', 'is', 'fun', 'and', 'host', 'to', 'some', 'truly']
+Eps: 0.1
+Original smallest expl: ['still', 'this', 'flick', 'is', 'fun', 'host', 'some', 'truly']
+Number smallest expls: 4
+In form: [(word, index_in_input)]
+
+[('still', 0), ('this', 1), ('flick', 2), ('is', 3), ('fun', 4), ('and', 5), ('host', 6), ('some', 8)]
+[('still', 0), ('this', 1), ('flick', 2), ('is', 3), ('fun', 4), ('and', 5), ('host', 6), ('truly', 9)]
+[('still', 0), ('this', 1), ('flick', 2), ('is', 3), ('fun', 4), ('and', 5), ('some', 8), ('truly', 9)]
+[('still', 0), ('this', 1), ('flick', 2), ('is', 3), ('fun', 4), ('host', 6), ('some', 8), ('truly', 9)]
+
+=====================================================================
+Input: ['a', 'rigorously', 'structured', 'and', 'exquisitely', 'filmed', 'drama', 'about', 'a', 'father']
+Eps: 0.05
+Original smallest expl: ['a', 'rigorously', 'structured', 'and', 'exquisitely', 'filmed']
+Number smallest expls: 1
+In form: [(word, index_in_input)]
+
+[('a', 0), ('rigorously', 1), ('structured', 2), ('and', 3), ('exquisitely', 4), ('filmed', 5)]
+
+=====================================================================
+Input: ['a', 'rigorously', 'structured', 'and', 'exquisitely', 'filmed', 'drama', 'about', 'a', 'father']
+Eps: 0.1
+Original smallest expl: ['a', 'rigorously', 'structured', 'and', 'exquisitely', 'drama', 'a', 'father']
+Number smallest expls: 4
+In form: [(word, index_in_input)]
+
+[('a', 0), ('rigorously', 1), ('structured', 2), ('and', 3), ('exquisitely', 4), ('filmed', 5), ('drama', 6), ('a', 8)]
+[('a', 0), ('rigorously', 1), ('structured', 2), ('and', 3), ('exquisitely', 4), ('filmed', 5), ('drama', 6), ('father', 9)]
+[('a', 0), ('rigorously', 1), ('structured', 2), ('and', 3), ('exquisitely', 4), ('filmed', 5), ('a', 8), ('father', 9)]
+[('a', 0), ('rigorously', 1), ('structured', 2), ('and', 3), ('exquisitely', 4), ('drama', 6), ('a', 8), ('father', 9)]
+
+=====================================================================
+Input: ['an', 'operatic', 'sprawling', 'picture', 'that', 'is', 'entertainingly', 'acted', 'magnificently', 'shot']
+Eps: 0.05
+Original smallest expl: ['an', 'operatic', 'sprawling', 'picture', 'that', 'magnificently']
+Number smallest expls: 50
+In form: [(word, index_in_input)]
+
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('picture', 3), ('that', 4), ('is', 5)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('picture', 3), ('that', 4), ('entertainingly', 6)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('picture', 3), ('that', 4), ('acted', 7)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('picture', 3), ('that', 4), ('magnificently', 8)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('picture', 3), ('that', 4), ('shot', 9)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('picture', 3), ('is', 5), ('entertainingly', 6)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('picture', 3), ('is', 5), ('acted', 7)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('picture', 3), ('is', 5), ('magnificently', 8)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('picture', 3), ('is', 5), ('shot', 9)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('picture', 3), ('entertainingly', 6), ('acted', 7)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('picture', 3), ('entertainingly', 6), ('magnificently', 8)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('picture', 3), ('entertainingly', 6), ('shot', 9)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('picture', 3), ('acted', 7), ('magnificently', 8)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('picture', 3), ('acted', 7), ('shot', 9)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('picture', 3), ('magnificently', 8), ('shot', 9)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('that', 4), ('is', 5), ('entertainingly', 6)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('that', 4), ('is', 5), ('acted', 7)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('that', 4), ('is', 5), ('magnificently', 8)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('that', 4), ('is', 5), ('shot', 9)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('that', 4), ('entertainingly', 6), ('acted', 7)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('that', 4), ('entertainingly', 6), ('magnificently', 8)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('that', 4), ('entertainingly', 6), ('shot', 9)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('that', 4), ('acted', 7), ('magnificently', 8)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('that', 4), ('acted', 7), ('shot', 9)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('that', 4), ('magnificently', 8), ('shot', 9)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('is', 5), ('entertainingly', 6), ('acted', 7)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('is', 5), ('entertainingly', 6), ('magnificently', 8)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('is', 5), ('entertainingly', 6), ('shot', 9)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('is', 5), ('acted', 7), ('magnificently', 8)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('is', 5), ('acted', 7), ('shot', 9)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('is', 5), ('magnificently', 8), ('shot', 9)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('entertainingly', 6), ('magnificently', 8), ('shot', 9)]
+[('an', 0), ('operatic', 1), ('picture', 3), ('that', 4), ('is', 5), ('entertainingly', 6)]
+[('an', 0), ('operatic', 1), ('picture', 3), ('that', 4), ('is', 5), ('acted', 7)]
+[('an', 0), ('operatic', 1), ('picture', 3), ('that', 4), ('is', 5), ('magnificently', 8)]
+[('an', 0), ('operatic', 1), ('picture', 3), ('that', 4), ('is', 5), ('shot', 9)]
+[('an', 0), ('operatic', 1), ('picture', 3), ('that', 4), ('entertainingly', 6), ('acted', 7)]
+[('an', 0), ('operatic', 1), ('picture', 3), ('that', 4), ('entertainingly', 6), ('magnificently', 8)]
+[('an', 0), ('operatic', 1), ('picture', 3), ('that', 4), ('entertainingly', 6), ('shot', 9)]
+[('an', 0), ('operatic', 1), ('picture', 3), ('that', 4), ('magnificently', 8), ('shot', 9)]
+[('an', 0), ('operatic', 1), ('picture', 3), ('is', 5), ('entertainingly', 6), ('magnificently', 8)]
+[('an', 0), ('operatic', 1), ('picture', 3), ('is', 5), ('entertainingly', 6), ('shot', 9)]
+[('an', 0), ('operatic', 1), ('picture', 3), ('is', 5), ('magnificently', 8), ('shot', 9)]
+[('an', 0), ('operatic', 1), ('picture', 3), ('entertainingly', 6), ('magnificently', 8), ('shot', 9)]
+[('an', 0), ('operatic', 1), ('that', 4), ('is', 5), ('entertainingly', 6), ('magnificently', 8)]
+[('an', 0), ('operatic', 1), ('that', 4), ('is', 5), ('entertainingly', 6), ('shot', 9)]
+[('an', 0), ('operatic', 1), ('that', 4), ('is', 5), ('magnificently', 8), ('shot', 9)]
+[('an', 0), ('sprawling', 2), ('picture', 3), ('that', 4), ('is', 5), ('entertainingly', 6)]
+[('an', 0), ('sprawling', 2), ('picture', 3), ('that', 4), ('is', 5), ('magnificently', 8)]
+[('an', 0), ('sprawling', 2), ('picture', 3), ('that', 4), ('is', 5), ('shot', 9)]
+
+=====================================================================
+Input: ['an', 'operatic', 'sprawling', 'picture', 'that', 'is', 'entertainingly', 'acted', 'magnificently', 'shot']
+Eps: 0.1
+Original smallest expl: ['an', 'operatic', 'sprawling', 'picture', 'that', 'entertainingly', 'magnificently', 'shot']
+Number smallest expls: 17
+In form: [(word, index_in_input)]
+
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('picture', 3), ('that', 4), ('is', 5), ('entertainingly', 6), ('acted', 7)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('picture', 3), ('that', 4), ('is', 5), ('entertainingly', 6), ('magnificently', 8)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('picture', 3), ('that', 4), ('is', 5), ('entertainingly', 6), ('shot', 9)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('picture', 3), ('that', 4), ('is', 5), ('acted', 7), ('magnificently', 8)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('picture', 3), ('that', 4), ('is', 5), ('acted', 7), ('shot', 9)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('picture', 3), ('that', 4), ('is', 5), ('magnificently', 8), ('shot', 9)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('picture', 3), ('that', 4), ('entertainingly', 6), ('acted', 7), ('magnificently', 8)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('picture', 3), ('that', 4), ('entertainingly', 6), ('acted', 7), ('shot', 9)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('picture', 3), ('that', 4), ('entertainingly', 6), ('magnificently', 8), ('shot', 9)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('picture', 3), ('that', 4), ('acted', 7), ('magnificently', 8), ('shot', 9)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('picture', 3), ('is', 5), ('entertainingly', 6), ('acted', 7), ('magnificently', 8)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('picture', 3), ('is', 5), ('entertainingly', 6), ('acted', 7), ('shot', 9)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('picture', 3), ('is', 5), ('entertainingly', 6), ('magnificently', 8), ('shot', 9)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('picture', 3), ('is', 5), ('acted', 7), ('magnificently', 8), ('shot', 9)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('that', 4), ('is', 5), ('entertainingly', 6), ('acted', 7), ('shot', 9)]
+[('an', 0), ('operatic', 1), ('sprawling', 2), ('that', 4), ('is', 5), ('entertainingly', 6), ('magnificently', 8), ('shot', 9)]
+[('an', 0), ('operatic', 1), ('picture', 3), ('that', 4), ('is', 5), ('entertainingly', 6), ('magnificently', 8), ('shot', 9)]
+
+=====================================================================
+Input: ['more', 'romantic', 'more', 'emotional', 'and', 'ultimately', 'more', 'satisfying', 'than', 'the']
+Eps: 0.01
+Original smallest expl: ['more', 'and', 'ultimately', 'more']
+Number smallest expls: 69
+In form: [(word, index_in_input)]
+
+[('more', 0), ('romantic', 1), ('more', 2), ('emotional', 3)]
+[('more', 0), ('romantic', 1), ('more', 2), ('and', 4)]
+[('more', 0), ('romantic', 1), ('more', 2), ('ultimately', 5)]
+[('more', 0), ('romantic', 1), ('more', 2), ('more', 6)]
+[('more', 0), ('romantic', 1), ('more', 2), ('satisfying', 7)]
+[('more', 0), ('romantic', 1), ('more', 2), ('than', 8)]
+[('more', 0), ('romantic', 1), ('more', 2), ('the', 9)]
+[('more', 0), ('romantic', 1), ('emotional', 3), ('and', 4)]
+[('more', 0), ('romantic', 1), ('emotional', 3), ('ultimately', 5)]
+[('more', 0), ('romantic', 1), ('emotional', 3), ('more', 6)]
+[('more', 0), ('romantic', 1), ('emotional', 3), ('satisfying', 7)]
+[('more', 0), ('romantic', 1), ('emotional', 3), ('than', 8)]
+[('more', 0), ('romantic', 1), ('emotional', 3), ('the', 9)]
+[('more', 0), ('romantic', 1), ('and', 4), ('ultimately', 5)]
+[('more', 0), ('romantic', 1), ('and', 4), ('more', 6)]
+[('more', 0), ('romantic', 1), ('and', 4), ('satisfying', 7)]
+[('more', 0), ('romantic', 1), ('and', 4), ('than', 8)]
+[('more', 0), ('romantic', 1), ('and', 4), ('the', 9)]
+[('more', 0), ('romantic', 1), ('ultimately', 5), ('more', 6)]
+[('more', 0), ('romantic', 1), ('ultimately', 5), ('satisfying', 7)]
+[('more', 0), ('romantic', 1), ('ultimately', 5), ('than', 8)]
+[('more', 0), ('romantic', 1), ('ultimately', 5), ('the', 9)]
+[('more', 0), ('romantic', 1), ('more', 6), ('satisfying', 7)]
+[('more', 0), ('romantic', 1), ('more', 6), ('than', 8)]
+[('more', 0), ('romantic', 1), ('more', 6), ('the', 9)]
+[('more', 0), ('romantic', 1), ('satisfying', 7), ('than', 8)]
+[('more', 0), ('romantic', 1), ('satisfying', 7), ('the', 9)]
+[('more', 0), ('romantic', 1), ('than', 8), ('the', 9)]
+[('more', 0), ('more', 2), ('emotional', 3), ('and', 4)]
+[('more', 0), ('more', 2), ('emotional', 3), ('ultimately', 5)]
+[('more', 0), ('more', 2), ('emotional', 3), ('more', 6)]
+[('more', 0), ('more', 2), ('emotional', 3), ('satisfying', 7)]
+[('more', 0), ('more', 2), ('emotional', 3), ('than', 8)]
+[('more', 0), ('more', 2), ('emotional', 3), ('the', 9)]
+[('more', 0), ('more', 2), ('and', 4), ('ultimately', 5)]
+[('more', 0), ('more', 2), ('and', 4), ('more', 6)]
+[('more', 0), ('more', 2), ('and', 4), ('satisfying', 7)]
+[('more', 0), ('more', 2), ('and', 4), ('than', 8)]
+[('more', 0), ('more', 2), ('and', 4), ('the', 9)]
+[('more', 0), ('more', 2), ('ultimately', 5), ('more', 6)]
+[('more', 0), ('more', 2), ('ultimately', 5), ('than', 8)]
+[('more', 0), ('more', 2), ('ultimately', 5), ('the', 9)]
+[('more', 0), ('more', 2), ('more', 6), ('than', 8)]
+[('more', 0), ('more', 2), ('more', 6), ('the', 9)]
+[('more', 0), ('more', 2), ('than', 8), ('the', 9)]
+[('more', 0), ('emotional', 3), ('and', 4), ('ultimately', 5)]
+[('more', 0), ('emotional', 3), ('and', 4), ('more', 6)]
+[('more', 0), ('emotional', 3), ('and', 4), ('than', 8)]
+[('more', 0), ('emotional', 3), ('and', 4), ('the', 9)]
+[('more', 0), ('emotional', 3), ('ultimately', 5), ('more', 6)]
+[('more', 0), ('emotional', 3), ('ultimately', 5), ('than', 8)]
+[('more', 0), ('emotional', 3), ('ultimately', 5), ('the', 9)]
+[('more', 0), ('and', 4), ('ultimately', 5), ('more', 6)]
+[('romantic', 1), ('more', 2), ('emotional', 3), ('and', 4)]
+[('romantic', 1), ('more', 2), ('emotional', 3), ('ultimately', 5)]
+[('romantic', 1), ('more', 2), ('emotional', 3), ('more', 6)]
+[('romantic', 1), ('more', 2), ('emotional', 3), ('satisfying', 7)]
+[('romantic', 1), ('more', 2), ('emotional', 3), ('than', 8)]
+[('romantic', 1), ('more', 2), ('emotional', 3), ('the', 9)]
+[('romantic', 1), ('more', 2), ('and', 4), ('ultimately', 5)]
+[('romantic', 1), ('more', 2), ('and', 4), ('more', 6)]
+[('romantic', 1), ('more', 2), ('and', 4), ('than', 8)]
+[('romantic', 1), ('more', 2), ('and', 4), ('the', 9)]
+[('romantic', 1), ('more', 2), ('ultimately', 5), ('more', 6)]
+[('romantic', 1), ('more', 2), ('ultimately', 5), ('than', 8)]
+[('romantic', 1), ('more', 2), ('ultimately', 5), ('the', 9)]
+[('romantic', 1), ('emotional', 3), ('and', 4), ('ultimately', 5)]
+[('romantic', 1), ('emotional', 3), ('and', 4), ('more', 6)]
+[('romantic', 1), ('emotional', 3), ('and', 4), ('the', 9)]
+
+=====================================================================
+Input: ['more', 'romantic', 'more', 'emotional', 'and', 'ultimately', 'more', 'satisfying', 'than', 'the']
+Eps: 0.05
+Original smallest expl: ['more', 'romantic', 'more', 'emotional', 'and', 'ultimately', 'more', 'than', 'the']
+Number smallest expls: 7
+In form: [(word, index_in_input)]
+
+[('more', 0), ('romantic', 1), ('more', 2), ('emotional', 3), ('and', 4), ('ultimately', 5), ('more', 6), ('satisfying', 7), ('than', 8)]
+[('more', 0), ('romantic', 1), ('more', 2), ('emotional', 3), ('and', 4), ('ultimately', 5), ('more', 6), ('satisfying', 7), ('the', 9)]
+[('more', 0), ('romantic', 1), ('more', 2), ('emotional', 3), ('and', 4), ('ultimately', 5), ('more', 6), ('than', 8), ('the', 9)]
+[('more', 0), ('romantic', 1), ('more', 2), ('emotional', 3), ('and', 4), ('ultimately', 5), ('satisfying', 7), ('than', 8), ('the', 9)]
+[('more', 0), ('romantic', 1), ('more', 2), ('emotional', 3), ('and', 4), ('more', 6), ('satisfying', 7), ('than', 8), ('the', 9)]
+[('more', 0), ('romantic', 1), ('more', 2), ('emotional', 3), ('ultimately', 5), ('more', 6), ('satisfying', 7), ('than', 8), ('the', 9)]
+[('more', 0), ('romantic', 1), ('more', 2), ('and', 4), ('ultimately', 5), ('more', 6), ('satisfying', 7), ('than', 8), ('the', 9)]
+
+=====================================================================
+Input: ['whether', 'or', 'not', 'you', 'are', 'enlightened', 'by', 'any', 'of', 'derrida']
+Eps: 0.01
+Original smallest expl: ['whether', 'or', 'not']
+Number smallest expls: 17
+In form: [(word, index_in_input)]
+
+[('whether', 0), ('or', 1), ('not', 2)]
+[('whether', 0), ('or', 1), ('you', 3)]
+[('whether', 0), ('or', 1), ('are', 4)]
+[('whether', 0), ('or', 1), ('enlightened', 5)]
+[('whether', 0), ('or', 1), ('by', 6)]
+[('whether', 0), ('or', 1), ('any', 7)]
+[('whether', 0), ('or', 1), ('of', 8)]
+[('whether', 0), ('or', 1), ('derrida', 9)]
+[('whether', 0), ('not', 2), ('you', 3)]
+[('whether', 0), ('not', 2), ('are', 4)]
+[('whether', 0), ('not', 2), ('enlightened', 5)]
+[('whether', 0), ('not', 2), ('by', 6)]
+[('whether', 0), ('not', 2), ('of', 8)]
+[('whether', 0), ('you', 3), ('are', 4)]
+[('or', 1), ('not', 2), ('you', 3)]
+[('or', 1), ('not', 2), ('are', 4)]
+[('or', 1), ('not', 2), ('enlightened', 5)]
+
+=====================================================================
+Input: ['whether', 'or', 'not', 'you', 'are', 'enlightened', 'by', 'any', 'of', 'derrida']
+Eps: 0.05
+Original smallest expl: ['whether', 'or', 'not', 'you', 'are', 'enlightened', 'by', 'of', 'derrida']
+Number smallest expls: 8
+In form: [(word, index_in_input)]
+
+[('whether', 0), ('or', 1), ('not', 2), ('you', 3), ('are', 4), ('enlightened', 5), ('by', 6), ('any', 7), ('of', 8)]
+[('whether', 0), ('or', 1), ('not', 2), ('you', 3), ('are', 4), ('enlightened', 5), ('by', 6), ('any', 7), ('derrida', 9)]
+[('whether', 0), ('or', 1), ('not', 2), ('you', 3), ('are', 4), ('enlightened', 5), ('by', 6), ('of', 8), ('derrida', 9)]
+[('whether', 0), ('or', 1), ('not', 2), ('you', 3), ('are', 4), ('enlightened', 5), ('any', 7), ('of', 8), ('derrida', 9)]
+[('whether', 0), ('or', 1), ('not', 2), ('you', 3), ('are', 4), ('by', 6), ('any', 7), ('of', 8), ('derrida', 9)]
+[('whether', 0), ('or', 1), ('not', 2), ('you', 3), ('enlightened', 5), ('by', 6), ('any', 7), ('of', 8), ('derrida', 9)]
+[('whether', 0), ('or', 1), ('not', 2), ('are', 4), ('enlightened', 5), ('by', 6), ('any', 7), ('of', 8), ('derrida', 9)]
+[('whether', 0), ('or', 1), ('you', 3), ('are', 4), ('enlightened', 5), ('by', 6), ('any', 7), ('of', 8), ('derrida', 9)]
+
+=====================================================================
+Input: ['whether', 'or', 'not', 'you', 'are', 'enlightened', 'by', 'any', 'of', 'derrida']
+Eps: 0.1
+Original smallest expl: ['whether', 'or', 'not', 'you', 'are', 'enlightened', 'by', 'of', 'derrida']
+Number smallest expls: 1
+In form: [(word, index_in_input)]
+
+[('whether', 0), ('or', 1), ('not', 2), ('you', 3), ('are', 4), ('enlightened', 5), ('by', 6), ('of', 8), ('derrida', 9)]
+
+=====================================================================
+Input: ['exquisitely', 'nuanced', 'in', 'mood', 'tics', 'and', 'dialogue', 'this', 'chamber', 'drama']
+Eps: 0.05
+Original smallest expl: ['exquisitely', 'nuanced', 'in', 'mood', 'tics']
+Number smallest expls: 1
+In form: [(word, index_in_input)]
+
+[('exquisitely', 0), ('nuanced', 1), ('in', 2), ('mood', 3), ('tics', 4)]
+
+=====================================================================
+Input: ['exquisitely', 'nuanced', 'in', 'mood', 'tics', 'and', 'dialogue', 'this', 'chamber', 'drama']
+Eps: 0.1
+Original smallest expl: ['exquisitely', 'nuanced', 'in', 'mood', 'tics', 'dialogue', 'chamber', 'drama']
+Number smallest expls: 23
+In form: [(word, index_in_input)]
+
+[('exquisitely', 0), ('nuanced', 1), ('in', 2), ('mood', 3), ('tics', 4), ('and', 5), ('dialogue', 6), ('this', 7)]
+[('exquisitely', 0), ('nuanced', 1), ('in', 2), ('mood', 3), ('tics', 4), ('and', 5), ('dialogue', 6), ('chamber', 8)]
+[('exquisitely', 0), ('nuanced', 1), ('in', 2), ('mood', 3), ('tics', 4), ('and', 5), ('dialogue', 6), ('drama', 9)]
+[('exquisitely', 0), ('nuanced', 1), ('in', 2), ('mood', 3), ('tics', 4), ('and', 5), ('this', 7), ('chamber', 8)]
+[('exquisitely', 0), ('nuanced', 1), ('in', 2), ('mood', 3), ('tics', 4), ('and', 5), ('this', 7), ('drama', 9)]
+[('exquisitely', 0), ('nuanced', 1), ('in', 2), ('mood', 3), ('tics', 4), ('and', 5), ('chamber', 8), ('drama', 9)]
+[('exquisitely', 0), ('nuanced', 1), ('in', 2), ('mood', 3), ('tics', 4), ('dialogue', 6), ('this', 7), ('chamber', 8)]
+[('exquisitely', 0), ('nuanced', 1), ('in', 2), ('mood', 3), ('tics', 4), ('dialogue', 6), ('this', 7), ('drama', 9)]
+[('exquisitely', 0), ('nuanced', 1), ('in', 2), ('mood', 3), ('tics', 4), ('dialogue', 6), ('chamber', 8), ('drama', 9)]
+[('exquisitely', 0), ('nuanced', 1), ('in', 2), ('mood', 3), ('tics', 4), ('this', 7), ('chamber', 8), ('drama', 9)]
+[('exquisitely', 0), ('nuanced', 1), ('in', 2), ('mood', 3), ('and', 5), ('dialogue', 6), ('this', 7), ('chamber', 8)]
+[('exquisitely', 0), ('nuanced', 1), ('in', 2), ('mood', 3), ('and', 5), ('dialogue', 6), ('this', 7), ('drama', 9)]
+[('exquisitely', 0), ('nuanced', 1), ('in', 2), ('mood', 3), ('and', 5), ('dialogue', 6), ('chamber', 8), ('drama', 9)]
+[('exquisitely', 0), ('nuanced', 1), ('in', 2), ('mood', 3), ('and', 5), ('this', 7), ('chamber', 8), ('drama', 9)]
+[('exquisitely', 0), ('nuanced', 1), ('in', 2), ('mood', 3), ('dialogue', 6), ('this', 7), ('chamber', 8), ('drama', 9)]
+[('exquisitely', 0), ('nuanced', 1), ('in', 2), ('tics', 4), ('and', 5), ('dialogue', 6), ('this', 7), ('chamber', 8)]
+[('exquisitely', 0), ('nuanced', 1), ('in', 2), ('tics', 4), ('and', 5), ('dialogue', 6), ('this', 7), ('drama', 9)]
+[('exquisitely', 0), ('nuanced', 1), ('in', 2), ('tics', 4), ('and', 5), ('dialogue', 6), ('chamber', 8), ('drama', 9)]
+[('exquisitely', 0), ('nuanced', 1), ('in', 2), ('tics', 4), ('and', 5), ('this', 7), ('chamber', 8), ('drama', 9)]
+[('exquisitely', 0), ('nuanced', 1), ('in', 2), ('tics', 4), ('dialogue', 6), ('this', 7), ('chamber', 8), ('drama', 9)]
+[('exquisitely', 0), ('nuanced', 1), ('mood', 3), ('tics', 4), ('and', 5), ('dialogue', 6), ('this', 7), ('chamber', 8)]
+[('exquisitely', 0), ('nuanced', 1), ('mood', 3), ('tics', 4), ('and', 5), ('dialogue', 6), ('this', 7), ('drama', 9)]
+[('exquisitely', 0), ('nuanced', 1), ('mood', 3), ('tics', 4), ('and', 5), ('dialogue', 6), ('chamber', 8), ('drama', 9)]
+
+=====================================================================
+Input: ['it', 'is', 'a', 'much', 'more', 'emotional', 'journey', 'than', 'what', 'shyamalan']
+Eps: 0.01
+Original smallest expl: ['it', 'what', 'shyamalan']
+Number smallest expls: 53
+In form: [(word, index_in_input)]
+
+[('it', 0), ('is', 1), ('a', 2)]
+[('it', 0), ('is', 1), ('much', 3)]
+[('it', 0), ('is', 1), ('more', 4)]
+[('it', 0), ('is', 1), ('emotional', 5)]
+[('it', 0), ('is', 1), ('journey', 6)]
+[('it', 0), ('is', 1), ('than', 7)]
+[('it', 0), ('is', 1), ('what', 8)]
+[('it', 0), ('is', 1), ('shyamalan', 9)]
+[('it', 0), ('a', 2), ('much', 3)]
+[('it', 0), ('a', 2), ('more', 4)]
+[('it', 0), ('a', 2), ('emotional', 5)]
+[('it', 0), ('a', 2), ('journey', 6)]
+[('it', 0), ('a', 2), ('than', 7)]
+[('it', 0), ('a', 2), ('what', 8)]
+[('it', 0), ('a', 2), ('shyamalan', 9)]
+[('it', 0), ('much', 3), ('more', 4)]
+[('it', 0), ('much', 3), ('emotional', 5)]
+[('it', 0), ('much', 3), ('journey', 6)]
+[('it', 0), ('much', 3), ('than', 7)]
+[('it', 0), ('much', 3), ('what', 8)]
+[('it', 0), ('much', 3), ('shyamalan', 9)]
+[('it', 0), ('more', 4), ('emotional', 5)]
+[('it', 0), ('more', 4), ('journey', 6)]
+[('it', 0), ('more', 4), ('than', 7)]
+[('it', 0), ('more', 4), ('what', 8)]
+[('it', 0), ('more', 4), ('shyamalan', 9)]
+[('it', 0), ('emotional', 5), ('journey', 6)]
+[('it', 0), ('emotional', 5), ('what', 8)]
+[('it', 0), ('emotional', 5), ('shyamalan', 9)]
+[('it', 0), ('journey', 6), ('what', 8)]
+[('it', 0), ('journey', 6), ('shyamalan', 9)]
+[('it', 0), ('what', 8), ('shyamalan', 9)]
+[('is', 1), ('a', 2), ('much', 3)]
+[('is', 1), ('a', 2), ('more', 4)]
+[('is', 1), ('a', 2), ('emotional', 5)]
+[('is', 1), ('a', 2), ('journey', 6)]
+[('is', 1), ('a', 2), ('than', 7)]
+[('is', 1), ('a', 2), ('what', 8)]
+[('is', 1), ('a', 2), ('shyamalan', 9)]
+[('is', 1), ('much', 3), ('more', 4)]
+[('is', 1), ('much', 3), ('emotional', 5)]
+[('is', 1), ('much', 3), ('journey', 6)]
+[('is', 1), ('much', 3), ('what', 8)]
+[('is', 1), ('much', 3), ('shyamalan', 9)]
+[('is', 1), ('more', 4), ('emotional', 5)]
+[('is', 1), ('more', 4), ('journey', 6)]
+[('is', 1), ('more', 4), ('what', 8)]
+[('is', 1), ('more', 4), ('shyamalan', 9)]
+[('is', 1), ('emotional', 5), ('journey', 6)]
+[('is', 1), ('emotional', 5), ('what', 8)]
+[('is', 1), ('emotional', 5), ('shyamalan', 9)]
+[('a', 2), ('much', 3), ('more', 4)]
+[('a', 2), ('much', 3), ('emotional', 5)]
+
+=====================================================================
+Input: ['it', 'is', 'a', 'much', 'more', 'emotional', 'journey', 'than', 'what', 'shyamalan']
+Eps: 0.05
+Original smallest expl: ['it', 'is', 'a', 'much', 'more', 'emotional', 'journey', 'shyamalan']
+Number smallest expls: 1
+In form: [(word, index_in_input)]
+
+[('it', 0), ('is', 1), ('a', 2), ('much', 3), ('more', 4), ('emotional', 5), ('journey', 6), ('shyamalan', 9)]
+
+=====================================================================
+Input: ['it', 'is', 'a', 'much', 'more', 'emotional', 'journey', 'than', 'what', 'shyamalan']
+Eps: 0.1
+Original smallest expl: ['it', 'is', 'a', 'much', 'more', 'emotional', 'journey', 'what', 'shyamalan']
+Number smallest expls: 1
+In form: [(word, index_in_input)]
+
+[('it', 0), ('is', 1), ('a', 2), ('much', 3), ('more', 4), ('emotional', 5), ('journey', 6), ('what', 8), ('shyamalan', 9)]
+
+=====================================================================
+Input: ['you', 'really', 'have', 'to', 'salute', 'writer-director', 'haneke', '(', 'he', 'adapted']
+Eps: 0.05
+Original smallest expl: ['you', 'really', 'have', 'to', 'salute', 'writer-director']
+Number smallest expls: 1
+In form: [(word, index_in_input)]
+
+[('you', 0), ('really', 1), ('have', 2), ('to', 3), ('salute', 4), ('writer-director', 5)]
+
+=====================================================================
+Input: ['you', 'really', 'have', 'to', 'salute', 'writer-director', 'haneke', '(', 'he', 'adapted']
+Eps: 0.1
+Original smallest expl: ['you', 'really', 'have', 'to', 'salute', 'haneke', 'he', 'adapted']
+Number smallest expls: 4
+In form: [(word, index_in_input)]
+
+[('you', 0), ('really', 1), ('have', 2), ('to', 3), ('salute', 4), ('writer-director', 5), ('haneke', 6), ('he', 8)]
+[('you', 0), ('really', 1), ('have', 2), ('to', 3), ('salute', 4), ('writer-director', 5), ('haneke', 6), ('adapted', 9)]
+[('you', 0), ('really', 1), ('have', 2), ('to', 3), ('salute', 4), ('writer-director', 5), ('he', 8), ('adapted', 9)]
+[('you', 0), ('really', 1), ('have', 2), ('to', 3), ('salute', 4), ('haneke', 6), ('he', 8), ('adapted', 9)]
+
+=====================================================================
+Input: ['star/producer', 'salma', 'hayek', 'and', 'director', 'julie', 'taymor', 'have', 'infused', 'frida']
+Eps: 0.05
+Original smallest expl: ['star/producer', 'salma', 'hayek', 'and', 'director', 'julie', 'frida']
+Number smallest expls: 26
+In form: [(word, index_in_input)]
+
+[('star/producer', 0), ('salma', 1), ('hayek', 2), ('and', 3), ('director', 4), ('julie', 5), ('taymor', 6)]
+[('star/producer', 0), ('salma', 1), ('hayek', 2), ('and', 3), ('director', 4), ('julie', 5), ('have', 7)]
+[('star/producer', 0), ('salma', 1), ('hayek', 2), ('and', 3), ('director', 4), ('julie', 5), ('infused', 8)]
+[('star/producer', 0), ('salma', 1), ('hayek', 2), ('and', 3), ('director', 4), ('julie', 5), ('frida', 9)]
+[('star/producer', 0), ('salma', 1), ('hayek', 2), ('and', 3), ('director', 4), ('taymor', 6), ('have', 7)]
+[('star/producer', 0), ('salma', 1), ('hayek', 2), ('and', 3), ('director', 4), ('taymor', 6), ('infused', 8)]
+[('star/producer', 0), ('salma', 1), ('hayek', 2), ('and', 3), ('director', 4), ('taymor', 6), ('frida', 9)]
+[('star/producer', 0), ('salma', 1), ('hayek', 2), ('and', 3), ('director', 4), ('have', 7), ('infused', 8)]
+[('star/producer', 0), ('salma', 1), ('hayek', 2), ('and', 3), ('director', 4), ('have', 7), ('frida', 9)]
+[('star/producer', 0), ('salma', 1), ('hayek', 2), ('and', 3), ('director', 4), ('infused', 8), ('frida', 9)]
+[('star/producer', 0), ('salma', 1), ('hayek', 2), ('and', 3), ('julie', 5), ('taymor', 6), ('have', 7)]
+[('star/producer', 0), ('salma', 1), ('hayek', 2), ('and', 3), ('julie', 5), ('taymor', 6), ('infused', 8)]
+[('star/producer', 0), ('salma', 1), ('hayek', 2), ('and', 3), ('julie', 5), ('taymor', 6), ('frida', 9)]
+[('star/producer', 0), ('salma', 1), ('hayek', 2), ('and', 3), ('julie', 5), ('have', 7), ('infused', 8)]
+[('star/producer', 0), ('salma', 1), ('hayek', 2), ('and', 3), ('julie', 5), ('have', 7), ('frida', 9)]
+[('star/producer', 0), ('salma', 1), ('hayek', 2), ('and', 3), ('julie', 5), ('infused', 8), ('frida', 9)]
+[('star/producer', 0), ('salma', 1), ('hayek', 2), ('and', 3), ('taymor', 6), ('infused', 8), ('frida', 9)]
+[('star/producer', 0), ('salma', 1), ('hayek', 2), ('director', 4), ('julie', 5), ('taymor', 6), ('have', 7)]
+[('star/producer', 0), ('salma', 1), ('hayek', 2), ('director', 4), ('julie', 5), ('taymor', 6), ('infused', 8)]
+[('star/producer', 0), ('salma', 1), ('hayek', 2), ('director', 4), ('julie', 5), ('taymor', 6), ('frida', 9)]
+[('star/producer', 0), ('salma', 1), ('hayek', 2), ('director', 4), ('julie', 5), ('infused', 8), ('frida', 9)]
+[('star/producer', 0), ('salma', 1), ('hayek', 2), ('director', 4), ('taymor', 6), ('infused', 8), ('frida', 9)]
+[('star/producer', 0), ('salma', 1), ('hayek', 2), ('julie', 5), ('taymor', 6), ('infused', 8), ('frida', 9)]
+[('star/producer', 0), ('salma', 1), ('and', 3), ('director', 4), ('julie', 5), ('taymor', 6), ('infused', 8)]
+[('star/producer', 0), ('salma', 1), ('and', 3), ('director', 4), ('julie', 5), ('taymor', 6), ('frida', 9)]
+[('star/producer', 0), ('salma', 1), ('and', 3), ('director', 4), ('julie', 5), ('infused', 8), ('frida', 9)]
+
+=====================================================================
+Input: ['star/producer', 'salma', 'hayek', 'and', 'director', 'julie', 'taymor', 'have', 'infused', 'frida']
+Eps: 0.1
+Original smallest expl: ['star/producer', 'salma', 'hayek', 'and', 'director', 'julie', 'taymor', 'infused', 'frida']
+Number smallest expls: 8
+In form: [(word, index_in_input)]
+
+[('star/producer', 0), ('salma', 1), ('hayek', 2), ('and', 3), ('director', 4), ('julie', 5), ('taymor', 6), ('have', 7), ('infused', 8)]
+[('star/producer', 0), ('salma', 1), ('hayek', 2), ('and', 3), ('director', 4), ('julie', 5), ('taymor', 6), ('have', 7), ('frida', 9)]
+[('star/producer', 0), ('salma', 1), ('hayek', 2), ('and', 3), ('director', 4), ('julie', 5), ('taymor', 6), ('infused', 8), ('frida', 9)]
+[('star/producer', 0), ('salma', 1), ('hayek', 2), ('and', 3), ('director', 4), ('julie', 5), ('have', 7), ('infused', 8), ('frida', 9)]
+[('star/producer', 0), ('salma', 1), ('hayek', 2), ('and', 3), ('director', 4), ('taymor', 6), ('have', 7), ('infused', 8), ('frida', 9)]
+[('star/producer', 0), ('salma', 1), ('hayek', 2), ('and', 3), ('julie', 5), ('taymor', 6), ('have', 7), ('infused', 8), ('frida', 9)]
+[('star/producer', 0), ('salma', 1), ('hayek', 2), ('director', 4), ('julie', 5), ('taymor', 6), ('have', 7), ('infused', 8), ('frida', 9)]
+[('star/producer', 0), ('salma', 1), ('and', 3), ('director', 4), ('julie', 5), ('taymor', 6), ('have', 7), ('infused', 8), ('frida', 9)]
+
+=====================================================================
+Input: ['this', 'is', 'wild', 'surreal', 'stuff', ',', 'but', 'brilliant', 'and', 'the']
+Eps: 0.05
+Original smallest expl: ['this', 'is', 'wild', 'surreal', 'stuff', ',', 'the']
+Number smallest expls: 48
+In form: [(word, index_in_input)]
+
+[('this', 0), ('is', 1), ('wild', 2), ('surreal', 3), ('stuff', 4), (',', 5), ('but', 6)]
+[('this', 0), ('is', 1), ('wild', 2), ('surreal', 3), ('stuff', 4), (',', 5), ('brilliant', 7)]
+[('this', 0), ('is', 1), ('wild', 2), ('surreal', 3), ('stuff', 4), (',', 5), ('and', 8)]
+[('this', 0), ('is', 1), ('wild', 2), ('surreal', 3), ('stuff', 4), (',', 5), ('the', 9)]
+[('this', 0), ('is', 1), ('wild', 2), ('surreal', 3), ('stuff', 4), ('but', 6), ('brilliant', 7)]
+[('this', 0), ('is', 1), ('wild', 2), ('surreal', 3), ('stuff', 4), ('but', 6), ('and', 8)]
+[('this', 0), ('is', 1), ('wild', 2), ('surreal', 3), ('stuff', 4), ('but', 6), ('the', 9)]
+[('this', 0), ('is', 1), ('wild', 2), ('surreal', 3), ('stuff', 4), ('brilliant', 7), ('and', 8)]
+[('this', 0), ('is', 1), ('wild', 2), ('surreal', 3), ('stuff', 4), ('brilliant', 7), ('the', 9)]
+[('this', 0), ('is', 1), ('wild', 2), ('surreal', 3), ('stuff', 4), ('and', 8), ('the', 9)]
+[('this', 0), ('is', 1), ('wild', 2), ('surreal', 3), (',', 5), ('but', 6), ('brilliant', 7)]
+[('this', 0), ('is', 1), ('wild', 2), ('surreal', 3), (',', 5), ('but', 6), ('and', 8)]
+[('this', 0), ('is', 1), ('wild', 2), ('surreal', 3), (',', 5), ('but', 6), ('the', 9)]
+[('this', 0), ('is', 1), ('wild', 2), ('surreal', 3), (',', 5), ('brilliant', 7), ('and', 8)]
+[('this', 0), ('is', 1), ('wild', 2), ('surreal', 3), (',', 5), ('brilliant', 7), ('the', 9)]
+[('this', 0), ('is', 1), ('wild', 2), ('surreal', 3), (',', 5), ('and', 8), ('the', 9)]
+[('this', 0), ('is', 1), ('wild', 2), ('surreal', 3), ('but', 6), ('brilliant', 7), ('and', 8)]
+[('this', 0), ('is', 1), ('wild', 2), ('surreal', 3), ('but', 6), ('brilliant', 7), ('the', 9)]
+[('this', 0), ('is', 1), ('wild', 2), ('surreal', 3), ('but', 6), ('and', 8), ('the', 9)]
+[('this', 0), ('is', 1), ('wild', 2), ('surreal', 3), ('brilliant', 7), ('and', 8), ('the', 9)]
+[('this', 0), ('is', 1), ('wild', 2), ('stuff', 4), (',', 5), ('but', 6), ('brilliant', 7)]
+[('this', 0), ('is', 1), ('wild', 2), ('stuff', 4), (',', 5), ('but', 6), ('and', 8)]
+[('this', 0), ('is', 1), ('wild', 2), ('stuff', 4), (',', 5), ('but', 6), ('the', 9)]
+[('this', 0), ('is', 1), ('wild', 2), ('stuff', 4), (',', 5), ('brilliant', 7), ('and', 8)]
+[('this', 0), ('is', 1), ('wild', 2), ('stuff', 4), (',', 5), ('brilliant', 7), ('the', 9)]
+[('this', 0), ('is', 1), ('wild', 2), ('stuff', 4), (',', 5), ('and', 8), ('the', 9)]
+[('this', 0), ('is', 1), ('wild', 2), ('stuff', 4), ('but', 6), ('brilliant', 7), ('and', 8)]
+[('this', 0), ('is', 1), ('wild', 2), ('stuff', 4), ('but', 6), ('brilliant', 7), ('the', 9)]
+[('this', 0), ('is', 1), ('wild', 2), ('stuff', 4), ('but', 6), ('and', 8), ('the', 9)]
+[('this', 0), ('is', 1), ('wild', 2), ('stuff', 4), ('brilliant', 7), ('and', 8), ('the', 9)]
+[('this', 0), ('is', 1), ('wild', 2), (',', 5), ('but', 6), ('brilliant', 7), ('and', 8)]
+[('this', 0), ('is', 1), ('wild', 2), (',', 5), ('but', 6), ('brilliant', 7), ('the', 9)]
+[('this', 0), ('is', 1), ('wild', 2), (',', 5), ('but', 6), ('and', 8), ('the', 9)]
+[('this', 0), ('is', 1), ('wild', 2), (',', 5), ('brilliant', 7), ('and', 8), ('the', 9)]
+[('this', 0), ('is', 1), ('surreal', 3), ('stuff', 4), (',', 5), ('but', 6), ('brilliant', 7)]
+[('this', 0), ('is', 1), ('surreal', 3), ('stuff', 4), (',', 5), ('but', 6), ('and', 8)]
+[('this', 0), ('is', 1), ('surreal', 3), ('stuff', 4), (',', 5), ('but', 6), ('the', 9)]
+[('this', 0), ('is', 1), ('surreal', 3), ('stuff', 4), (',', 5), ('brilliant', 7), ('and', 8)]
+[('this', 0), ('is', 1), ('surreal', 3), ('stuff', 4), (',', 5), ('brilliant', 7), ('the', 9)]
+[('this', 0), ('is', 1), ('surreal', 3), ('stuff', 4), (',', 5), ('and', 8), ('the', 9)]
+[('this', 0), ('is', 1), ('surreal', 3), ('stuff', 4), ('but', 6), ('brilliant', 7), ('and', 8)]
+[('this', 0), ('is', 1), ('surreal', 3), ('stuff', 4), ('but', 6), ('brilliant', 7), ('the', 9)]
+[('this', 0), ('is', 1), ('surreal', 3), ('stuff', 4), ('but', 6), ('and', 8), ('the', 9)]
+[('this', 0), ('is', 1), ('surreal', 3), (',', 5), ('but', 6), ('and', 8), ('the', 9)]
+[('this', 0), ('is', 1), ('stuff', 4), (',', 5), ('but', 6), ('and', 8), ('the', 9)]
+[('this', 0), ('wild', 2), ('surreal', 3), ('stuff', 4), (',', 5), ('but', 6), ('and', 8)]
+[('this', 0), ('wild', 2), ('surreal', 3), ('stuff', 4), (',', 5), ('but', 6), ('the', 9)]
+[('this', 0), ('wild', 2), ('surreal', 3), ('stuff', 4), (',', 5), ('and', 8), ('the', 9)]
+
+=====================================================================
+Input: ['this', 'is', 'wild', 'surreal', 'stuff', ',', 'but', 'brilliant', 'and', 'the']
+Eps: 0.1
+Original smallest expl: ['this', 'is', 'wild', 'surreal', 'stuff', ',', 'but', 'the']
+Number smallest expls: 3
+In form: [(word, index_in_input)]
+
+[('this', 0), ('is', 1), ('wild', 2), ('surreal', 3), ('stuff', 4), (',', 5), ('but', 6), ('and', 8)]
+[('this', 0), ('is', 1), ('wild', 2), ('surreal', 3), ('stuff', 4), (',', 5), ('but', 6), ('the', 9)]
+[('this', 0), ('is', 1), ('wild', 2), ('surreal', 3), ('stuff', 4), (',', 5), ('and', 8), ('the', 9)]
+
+=====================================================================
+Input: ['this', 'odd', 'poetic', 'road', 'movie', 'spiked', 'by', 'jolts', 'of', 'pop']
+Eps: 0.01
+Original smallest expl: ['this', 'poetic', 'road', 'movie', 'spiked']
+Number smallest expls: 61
+In form: [(word, index_in_input)]
+
+[('this', 0), ('odd', 1), ('poetic', 2), ('road', 3), ('movie', 4)]
+[('this', 0), ('odd', 1), ('poetic', 2), ('road', 3), ('spiked', 5)]
+[('this', 0), ('odd', 1), ('poetic', 2), ('road', 3), ('by', 6)]
+[('this', 0), ('odd', 1), ('poetic', 2), ('road', 3), ('jolts', 7)]
+[('this', 0), ('odd', 1), ('poetic', 2), ('road', 3), ('of', 8)]
+[('this', 0), ('odd', 1), ('poetic', 2), ('road', 3), ('pop', 9)]
+[('this', 0), ('odd', 1), ('poetic', 2), ('movie', 4), ('spiked', 5)]
+[('this', 0), ('odd', 1), ('poetic', 2), ('movie', 4), ('by', 6)]
+[('this', 0), ('odd', 1), ('poetic', 2), ('movie', 4), ('jolts', 7)]
+[('this', 0), ('odd', 1), ('poetic', 2), ('movie', 4), ('of', 8)]
+[('this', 0), ('odd', 1), ('poetic', 2), ('movie', 4), ('pop', 9)]
+[('this', 0), ('odd', 1), ('poetic', 2), ('spiked', 5), ('by', 6)]
+[('this', 0), ('odd', 1), ('poetic', 2), ('spiked', 5), ('jolts', 7)]
+[('this', 0), ('odd', 1), ('poetic', 2), ('spiked', 5), ('of', 8)]
+[('this', 0), ('odd', 1), ('poetic', 2), ('spiked', 5), ('pop', 9)]
+[('this', 0), ('odd', 1), ('poetic', 2), ('by', 6), ('jolts', 7)]
+[('this', 0), ('odd', 1), ('poetic', 2), ('by', 6), ('of', 8)]
+[('this', 0), ('odd', 1), ('poetic', 2), ('by', 6), ('pop', 9)]
+[('this', 0), ('odd', 1), ('poetic', 2), ('jolts', 7), ('of', 8)]
+[('this', 0), ('odd', 1), ('poetic', 2), ('jolts', 7), ('pop', 9)]
+[('this', 0), ('odd', 1), ('poetic', 2), ('of', 8), ('pop', 9)]
+[('this', 0), ('odd', 1), ('road', 3), ('movie', 4), ('spiked', 5)]
+[('this', 0), ('odd', 1), ('road', 3), ('movie', 4), ('by', 6)]
+[('this', 0), ('odd', 1), ('road', 3), ('movie', 4), ('jolts', 7)]
+[('this', 0), ('odd', 1), ('road', 3), ('movie', 4), ('of', 8)]
+[('this', 0), ('odd', 1), ('road', 3), ('movie', 4), ('pop', 9)]
+[('this', 0), ('odd', 1), ('road', 3), ('spiked', 5), ('by', 6)]
+[('this', 0), ('odd', 1), ('road', 3), ('spiked', 5), ('jolts', 7)]
+[('this', 0), ('odd', 1), ('road', 3), ('spiked', 5), ('of', 8)]
+[('this', 0), ('odd', 1), ('road', 3), ('spiked', 5), ('pop', 9)]
+[('this', 0), ('odd', 1), ('road', 3), ('by', 6), ('jolts', 7)]
+[('this', 0), ('odd', 1), ('road', 3), ('by', 6), ('of', 8)]
+[('this', 0), ('odd', 1), ('road', 3), ('by', 6), ('pop', 9)]
+[('this', 0), ('odd', 1), ('road', 3), ('jolts', 7), ('pop', 9)]
+[('this', 0), ('odd', 1), ('road', 3), ('of', 8), ('pop', 9)]
+[('this', 0), ('odd', 1), ('movie', 4), ('spiked', 5), ('by', 6)]
+[('this', 0), ('odd', 1), ('movie', 4), ('spiked', 5), ('jolts', 7)]
+[('this', 0), ('odd', 1), ('movie', 4), ('spiked', 5), ('of', 8)]
+[('this', 0), ('odd', 1), ('movie', 4), ('spiked', 5), ('pop', 9)]
+[('this', 0), ('odd', 1), ('movie', 4), ('by', 6), ('of', 8)]
+[('this', 0), ('odd', 1), ('movie', 4), ('by', 6), ('pop', 9)]
+[('this', 0), ('odd', 1), ('movie', 4), ('of', 8), ('pop', 9)]
+[('this', 0), ('odd', 1), ('spiked', 5), ('by', 6), ('of', 8)]
+[('this', 0), ('odd', 1), ('spiked', 5), ('by', 6), ('pop', 9)]
+[('this', 0), ('odd', 1), ('spiked', 5), ('of', 8), ('pop', 9)]
+[('this', 0), ('poetic', 2), ('road', 3), ('movie', 4), ('spiked', 5)]
+[('this', 0), ('poetic', 2), ('road', 3), ('movie', 4), ('by', 6)]
+[('this', 0), ('poetic', 2), ('road', 3), ('movie', 4), ('of', 8)]
+[('this', 0), ('poetic', 2), ('road', 3), ('movie', 4), ('pop', 9)]
+[('this', 0), ('poetic', 2), ('road', 3), ('spiked', 5), ('by', 6)]
+[('this', 0), ('poetic', 2), ('road', 3), ('spiked', 5), ('of', 8)]
+[('this', 0), ('poetic', 2), ('road', 3), ('spiked', 5), ('pop', 9)]
+[('this', 0), ('poetic', 2), ('road', 3), ('by', 6), ('pop', 9)]
+[('this', 0), ('poetic', 2), ('movie', 4), ('spiked', 5), ('by', 6)]
+[('this', 0), ('poetic', 2), ('movie', 4), ('spiked', 5), ('of', 8)]
+[('this', 0), ('poetic', 2), ('movie', 4), ('spiked', 5), ('pop', 9)]
+[('odd', 1), ('poetic', 2), ('road', 3), ('movie', 4), ('spiked', 5)]
+[('odd', 1), ('poetic', 2), ('road', 3), ('movie', 4), ('by', 6)]
+[('odd', 1), ('poetic', 2), ('road', 3), ('movie', 4), ('of', 8)]
+[('odd', 1), ('poetic', 2), ('road', 3), ('movie', 4), ('pop', 9)]
+[('odd', 1), ('poetic', 2), ('road', 3), ('spiked', 5), ('by', 6)]
+
+=====================================================================
+Input: ['this', 'odd', 'poetic', 'road', 'movie', 'spiked', 'by', 'jolts', 'of', 'pop']
+Eps: 0.05
+Original smallest expl: ['this', 'odd', 'poetic', 'road', 'movie', 'spiked', 'by', 'of', 'pop']
+Number smallest expls: 5
+In form: [(word, index_in_input)]
+
+[('this', 0), ('odd', 1), ('poetic', 2), ('road', 3), ('movie', 4), ('spiked', 5), ('by', 6), ('jolts', 7), ('of', 8)]
+[('this', 0), ('odd', 1), ('poetic', 2), ('road', 3), ('movie', 4), ('spiked', 5), ('by', 6), ('jolts', 7), ('pop', 9)]
+[('this', 0), ('odd', 1), ('poetic', 2), ('road', 3), ('movie', 4), ('spiked', 5), ('by', 6), ('of', 8), ('pop', 9)]
+[('this', 0), ('odd', 1), ('poetic', 2), ('road', 3), ('movie', 4), ('spiked', 5), ('jolts', 7), ('of', 8), ('pop', 9)]
+[('this', 0), ('odd', 1), ('poetic', 2), ('road', 3), ('movie', 4), ('by', 6), ('jolts', 7), ('of', 8), ('pop', 9)]
+
+=====================================================================
+Input: ['it', 'is', 'a', 'satisfying', 'summer', 'blockbuster', 'and', 'worth', 'a', 'look']
+Eps: 0.05
+Original smallest expl: ['it', 'is', 'a', 'satisfying']
+Number smallest expls: 1
+In form: [(word, index_in_input)]
+
+[('it', 0), ('is', 1), ('a', 2), ('satisfying', 3)]
+
+=====================================================================
+Input: ['it', 'is', 'a', 'satisfying', 'summer', 'blockbuster', 'and', 'worth', 'a', 'look']
+Eps: 0.1
+Original smallest expl: ['it', 'is', 'a', 'satisfying', 'summer', 'blockbuster', 'look']
+Number smallest expls: 13
+In form: [(word, index_in_input)]
+
+[('it', 0), ('is', 1), ('a', 2), ('satisfying', 3), ('summer', 4), ('blockbuster', 5), ('and', 6)]
+[('it', 0), ('is', 1), ('a', 2), ('satisfying', 3), ('summer', 4), ('blockbuster', 5), ('worth', 7)]
+[('it', 0), ('is', 1), ('a', 2), ('satisfying', 3), ('summer', 4), ('blockbuster', 5), ('a', 8)]
+[('it', 0), ('is', 1), ('a', 2), ('satisfying', 3), ('summer', 4), ('blockbuster', 5), ('look', 9)]
+[('it', 0), ('is', 1), ('a', 2), ('satisfying', 3), ('summer', 4), ('and', 6), ('a', 8)]
+[('it', 0), ('is', 1), ('a', 2), ('satisfying', 3), ('summer', 4), ('and', 6), ('look', 9)]
+[('it', 0), ('is', 1), ('a', 2), ('satisfying', 3), ('summer', 4), ('a', 8), ('look', 9)]
+[('it', 0), ('is', 1), ('a', 2), ('satisfying', 3), ('blockbuster', 5), ('and', 6), ('a', 8)]
+[('it', 0), ('is', 1), ('a', 2), ('satisfying', 3), ('blockbuster', 5), ('and', 6), ('look', 9)]
+[('it', 0), ('is', 1), ('a', 2), ('satisfying', 3), ('blockbuster', 5), ('a', 8), ('look', 9)]
+[('it', 0), ('is', 1), ('a', 2), ('summer', 4), ('blockbuster', 5), ('and', 6), ('a', 8)]
+[('it', 0), ('is', 1), ('a', 2), ('summer', 4), ('blockbuster', 5), ('and', 6), ('look', 9)]
+[('it', 0), ('is', 1), ('a', 2), ('summer', 4), ('blockbuster', 5), ('a', 8), ('look', 9)]
+
+=====================================================================
+Input: ['it', 'is', 'probably', 'not', 'easy', 'to', 'make', 'such', 'a', 'worthless']
+Eps: 0.01
+Original smallest expl: ['not']
+Number smallest expls: 9
+In form: [(word, index_in_input)]
+
+[('it', 0)]
+[('is', 1)]
+[('probably', 2)]
+[('not', 3)]
+[('easy', 4)]
+[('to', 5)]
+[('make', 6)]
+[('a', 8)]
+[('worthless', 9)]
+
+=====================================================================
+Input: ['it', 'is', 'probably', 'not', 'easy', 'to', 'make', 'such', 'a', 'worthless']
+Eps: 0.05
+Original smallest expl: ['it', 'is', 'probably', 'not', 'easy', 'make', 'a', 'worthless']
+Number smallest expls: 18
+In form: [(word, index_in_input)]
+
+[('it', 0), ('is', 1), ('probably', 2), ('not', 3), ('easy', 4), ('to', 5), ('make', 6), ('such', 7)]
+[('it', 0), ('is', 1), ('probably', 2), ('not', 3), ('easy', 4), ('to', 5), ('make', 6), ('a', 8)]
+[('it', 0), ('is', 1), ('probably', 2), ('not', 3), ('easy', 4), ('to', 5), ('make', 6), ('worthless', 9)]
+[('it', 0), ('is', 1), ('probably', 2), ('not', 3), ('easy', 4), ('to', 5), ('such', 7), ('a', 8)]
+[('it', 0), ('is', 1), ('probably', 2), ('not', 3), ('easy', 4), ('to', 5), ('such', 7), ('worthless', 9)]
+[('it', 0), ('is', 1), ('probably', 2), ('not', 3), ('easy', 4), ('to', 5), ('a', 8), ('worthless', 9)]
+[('it', 0), ('is', 1), ('probably', 2), ('not', 3), ('easy', 4), ('make', 6), ('such', 7), ('a', 8)]
+[('it', 0), ('is', 1), ('probably', 2), ('not', 3), ('easy', 4), ('make', 6), ('such', 7), ('worthless', 9)]
+[('it', 0), ('is', 1), ('probably', 2), ('not', 3), ('easy', 4), ('make', 6), ('a', 8), ('worthless', 9)]
+[('it', 0), ('is', 1), ('probably', 2), ('not', 3), ('easy', 4), ('such', 7), ('a', 8), ('worthless', 9)]
+[('it', 0), ('is', 1), ('probably', 2), ('not', 3), ('to', 5), ('make', 6), ('such', 7), ('a', 8)]
+[('it', 0), ('is', 1), ('probably', 2), ('not', 3), ('to', 5), ('make', 6), ('such', 7), ('worthless', 9)]
+[('it', 0), ('is', 1), ('probably', 2), ('not', 3), ('to', 5), ('make', 6), ('a', 8), ('worthless', 9)]
+[('it', 0), ('is', 1), ('probably', 2), ('not', 3), ('to', 5), ('such', 7), ('a', 8), ('worthless', 9)]
+[('it', 0), ('is', 1), ('probably', 2), ('easy', 4), ('to', 5), ('make', 6), ('such', 7), ('a', 8)]
+[('it', 0), ('is', 1), ('probably', 2), ('easy', 4), ('to', 5), ('make', 6), ('such', 7), ('worthless', 9)]
+[('it', 0), ('is', 1), ('probably', 2), ('easy', 4), ('to', 5), ('make', 6), ('a', 8), ('worthless', 9)]
+[('it', 0), ('is', 1), ('not', 3), ('easy', 4), ('to', 5), ('make', 6), ('a', 8), ('worthless', 9)]
+
+=====================================================================
+Input: ['it', 'is', 'probably', 'not', 'easy', 'to', 'make', 'such', 'a', 'worthless']
+Eps: 0.1
+Original smallest expl: ['it', 'is', 'probably', 'not', 'easy', 'to', 'make', 'a', 'worthless']
+Number smallest expls: 5
+In form: [(word, index_in_input)]
+
+[('it', 0), ('is', 1), ('probably', 2), ('not', 3), ('easy', 4), ('to', 5), ('make', 6), ('such', 7), ('a', 8)]
+[('it', 0), ('is', 1), ('probably', 2), ('not', 3), ('easy', 4), ('to', 5), ('make', 6), ('such', 7), ('worthless', 9)]
+[('it', 0), ('is', 1), ('probably', 2), ('not', 3), ('easy', 4), ('to', 5), ('make', 6), ('a', 8), ('worthless', 9)]
+[('it', 0), ('is', 1), ('probably', 2), ('not', 3), ('easy', 4), ('to', 5), ('such', 7), ('a', 8), ('worthless', 9)]
+[('it', 0), ('is', 1), ('probably', 2), ('not', 3), ('easy', 4), ('make', 6), ('such', 7), ('a', 8), ('worthless', 9)]
+
+=====================================================================
+Input: ['the', 'gorgeously', 'elaborate', 'continuation', 'of', 'the', 'lord', 'of', 'the', 'rings']
+Eps: 0.05
+Original smallest expl: ['the', 'gorgeously', 'elaborate', 'continuation']
+Number smallest expls: 11
+In form: [(word, index_in_input)]
+
+[('the', 0), ('gorgeously', 1), ('elaborate', 2), ('continuation', 3)]
+[('the', 0), ('gorgeously', 1), ('elaborate', 2), ('of', 4)]
+[('the', 0), ('gorgeously', 1), ('elaborate', 2), ('the', 5)]
+[('the', 0), ('gorgeously', 1), ('elaborate', 2), ('lord', 6)]
+[('the', 0), ('gorgeously', 1), ('elaborate', 2), ('the', 8)]
+[('the', 0), ('gorgeously', 1), ('elaborate', 2), ('rings', 9)]
+[('the', 0), ('gorgeously', 1), ('continuation', 3), ('of', 4)]
+[('the', 0), ('gorgeously', 1), ('continuation', 3), ('the', 5)]
+[('the', 0), ('gorgeously', 1), ('continuation', 3), ('lord', 6)]
+[('the', 0), ('gorgeously', 1), ('continuation', 3), ('rings', 9)]
+[('the', 0), ('gorgeously', 1), ('of', 4), ('the', 5)]
+
+=====================================================================
+Input: ['the', 'gorgeously', 'elaborate', 'continuation', 'of', 'the', 'lord', 'of', 'the', 'rings']
+Eps: 0.1
+Original smallest expl: ['the', 'gorgeously', 'elaborate', 'continuation', 'of', 'the', 'rings']
+Number smallest expls: 26
+In form: [(word, index_in_input)]
+
+[('the', 0), ('gorgeously', 1), ('elaborate', 2), ('continuation', 3), ('of', 4), ('the', 5), ('lord', 6)]
+[('the', 0), ('gorgeously', 1), ('elaborate', 2), ('continuation', 3), ('of', 4), ('the', 5), ('of', 7)]
+[('the', 0), ('gorgeously', 1), ('elaborate', 2), ('continuation', 3), ('of', 4), ('the', 5), ('the', 8)]
+[('the', 0), ('gorgeously', 1), ('elaborate', 2), ('continuation', 3), ('of', 4), ('the', 5), ('rings', 9)]
+[('the', 0), ('gorgeously', 1), ('elaborate', 2), ('continuation', 3), ('of', 4), ('lord', 6), ('of', 7)]
+[('the', 0), ('gorgeously', 1), ('elaborate', 2), ('continuation', 3), ('of', 4), ('lord', 6), ('the', 8)]
+[('the', 0), ('gorgeously', 1), ('elaborate', 2), ('continuation', 3), ('of', 4), ('lord', 6), ('rings', 9)]
+[('the', 0), ('gorgeously', 1), ('elaborate', 2), ('continuation', 3), ('of', 4), ('of', 7), ('the', 8)]
+[('the', 0), ('gorgeously', 1), ('elaborate', 2), ('continuation', 3), ('of', 4), ('of', 7), ('rings', 9)]
+[('the', 0), ('gorgeously', 1), ('elaborate', 2), ('continuation', 3), ('of', 4), ('the', 8), ('rings', 9)]
+[('the', 0), ('gorgeously', 1), ('elaborate', 2), ('continuation', 3), ('the', 5), ('lord', 6), ('of', 7)]
+[('the', 0), ('gorgeously', 1), ('elaborate', 2), ('continuation', 3), ('the', 5), ('lord', 6), ('the', 8)]
+[('the', 0), ('gorgeously', 1), ('elaborate', 2), ('continuation', 3), ('the', 5), ('lord', 6), ('rings', 9)]
+[('the', 0), ('gorgeously', 1), ('elaborate', 2), ('continuation', 3), ('the', 5), ('of', 7), ('the', 8)]
+[('the', 0), ('gorgeously', 1), ('elaborate', 2), ('continuation', 3), ('the', 5), ('of', 7), ('rings', 9)]
+[('the', 0), ('gorgeously', 1), ('elaborate', 2), ('continuation', 3), ('the', 5), ('the', 8), ('rings', 9)]
+[('the', 0), ('gorgeously', 1), ('elaborate', 2), ('continuation', 3), ('lord', 6), ('the', 8), ('rings', 9)]
+[('the', 0), ('gorgeously', 1), ('elaborate', 2), ('of', 4), ('the', 5), ('lord', 6), ('of', 7)]
+[('the', 0), ('gorgeously', 1), ('elaborate', 2), ('of', 4), ('the', 5), ('lord', 6), ('the', 8)]
+[('the', 0), ('gorgeously', 1), ('elaborate', 2), ('of', 4), ('the', 5), ('lord', 6), ('rings', 9)]
+[('the', 0), ('gorgeously', 1), ('elaborate', 2), ('of', 4), ('the', 5), ('the', 8), ('rings', 9)]
+[('the', 0), ('gorgeously', 1), ('elaborate', 2), ('of', 4), ('lord', 6), ('the', 8), ('rings', 9)]
+[('the', 0), ('gorgeously', 1), ('elaborate', 2), ('the', 5), ('lord', 6), ('the', 8), ('rings', 9)]
+[('the', 0), ('gorgeously', 1), ('continuation', 3), ('of', 4), ('the', 5), ('lord', 6), ('the', 8)]
+[('the', 0), ('gorgeously', 1), ('continuation', 3), ('of', 4), ('the', 5), ('lord', 6), ('rings', 9)]
+[('the', 0), ('gorgeously', 1), ('continuation', 3), ('of', 4), ('the', 5), ('the', 8), ('rings', 9)]
+
+=====================================================================
+Input: ['when', 'leguizamo', 'finally', 'plugged', 'an', 'irritating', 'character', 'late', 'in', 'the']
+Eps: 0.05
+Original smallest expl: ['when', 'leguizamo', 'finally', 'plugged', 'an', 'in']
+Number smallest expls: 46
+In form: [(word, index_in_input)]
+
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('plugged', 3), ('an', 4), ('irritating', 5)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('plugged', 3), ('an', 4), ('character', 6)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('plugged', 3), ('an', 4), ('late', 7)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('plugged', 3), ('an', 4), ('in', 8)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('plugged', 3), ('an', 4), ('the', 9)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('plugged', 3), ('irritating', 5), ('character', 6)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('plugged', 3), ('irritating', 5), ('late', 7)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('plugged', 3), ('irritating', 5), ('in', 8)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('plugged', 3), ('irritating', 5), ('the', 9)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('plugged', 3), ('character', 6), ('late', 7)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('plugged', 3), ('character', 6), ('in', 8)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('plugged', 3), ('character', 6), ('the', 9)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('plugged', 3), ('late', 7), ('in', 8)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('plugged', 3), ('late', 7), ('the', 9)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('plugged', 3), ('in', 8), ('the', 9)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('an', 4), ('irritating', 5), ('character', 6)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('an', 4), ('irritating', 5), ('late', 7)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('an', 4), ('irritating', 5), ('in', 8)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('an', 4), ('irritating', 5), ('the', 9)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('an', 4), ('character', 6), ('late', 7)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('an', 4), ('character', 6), ('in', 8)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('an', 4), ('character', 6), ('the', 9)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('an', 4), ('late', 7), ('in', 8)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('an', 4), ('late', 7), ('the', 9)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('an', 4), ('in', 8), ('the', 9)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('irritating', 5), ('character', 6), ('late', 7)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('irritating', 5), ('character', 6), ('in', 8)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('irritating', 5), ('character', 6), ('the', 9)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('irritating', 5), ('late', 7), ('the', 9)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('irritating', 5), ('in', 8), ('the', 9)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('character', 6), ('in', 8), ('the', 9)]
+[('when', 0), ('leguizamo', 1), ('plugged', 3), ('an', 4), ('irritating', 5), ('character', 6)]
+[('when', 0), ('leguizamo', 1), ('plugged', 3), ('an', 4), ('irritating', 5), ('late', 7)]
+[('when', 0), ('leguizamo', 1), ('plugged', 3), ('an', 4), ('irritating', 5), ('in', 8)]
+[('when', 0), ('leguizamo', 1), ('plugged', 3), ('an', 4), ('irritating', 5), ('the', 9)]
+[('when', 0), ('leguizamo', 1), ('plugged', 3), ('an', 4), ('character', 6), ('in', 8)]
+[('when', 0), ('leguizamo', 1), ('plugged', 3), ('an', 4), ('character', 6), ('the', 9)]
+[('when', 0), ('leguizamo', 1), ('plugged', 3), ('an', 4), ('in', 8), ('the', 9)]
+[('when', 0), ('leguizamo', 1), ('plugged', 3), ('irritating', 5), ('character', 6), ('in', 8)]
+[('when', 0), ('leguizamo', 1), ('plugged', 3), ('irritating', 5), ('character', 6), ('the', 9)]
+[('when', 0), ('leguizamo', 1), ('plugged', 3), ('irritating', 5), ('in', 8), ('the', 9)]
+[('when', 0), ('leguizamo', 1), ('an', 4), ('irritating', 5), ('character', 6), ('in', 8)]
+[('when', 0), ('leguizamo', 1), ('an', 4), ('irritating', 5), ('character', 6), ('the', 9)]
+[('when', 0), ('finally', 2), ('plugged', 3), ('an', 4), ('irritating', 5), ('character', 6)]
+[('when', 0), ('finally', 2), ('plugged', 3), ('an', 4), ('irritating', 5), ('in', 8)]
+[('when', 0), ('finally', 2), ('plugged', 3), ('an', 4), ('irritating', 5), ('the', 9)]
+
+=====================================================================
+Input: ['when', 'leguizamo', 'finally', 'plugged', 'an', 'irritating', 'character', 'late', 'in', 'the']
+Eps: 0.1
+Original smallest expl: ['when', 'leguizamo', 'finally', 'plugged', 'an', 'character', 'in', 'the']
+Number smallest expls: 16
+In form: [(word, index_in_input)]
+
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('plugged', 3), ('an', 4), ('irritating', 5), ('character', 6), ('late', 7)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('plugged', 3), ('an', 4), ('irritating', 5), ('character', 6), ('in', 8)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('plugged', 3), ('an', 4), ('irritating', 5), ('character', 6), ('the', 9)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('plugged', 3), ('an', 4), ('irritating', 5), ('late', 7), ('in', 8)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('plugged', 3), ('an', 4), ('irritating', 5), ('late', 7), ('the', 9)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('plugged', 3), ('an', 4), ('irritating', 5), ('in', 8), ('the', 9)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('plugged', 3), ('an', 4), ('character', 6), ('late', 7), ('in', 8)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('plugged', 3), ('an', 4), ('character', 6), ('late', 7), ('the', 9)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('plugged', 3), ('an', 4), ('character', 6), ('in', 8), ('the', 9)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('plugged', 3), ('an', 4), ('late', 7), ('in', 8), ('the', 9)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('plugged', 3), ('irritating', 5), ('character', 6), ('late', 7), ('in', 8)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('plugged', 3), ('irritating', 5), ('character', 6), ('late', 7), ('the', 9)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('plugged', 3), ('irritating', 5), ('character', 6), ('in', 8), ('the', 9)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('plugged', 3), ('irritating', 5), ('late', 7), ('in', 8), ('the', 9)]
+[('when', 0), ('leguizamo', 1), ('finally', 2), ('an', 4), ('irritating', 5), ('character', 6), ('in', 8), ('the', 9)]
+[('when', 0), ('leguizamo', 1), ('plugged', 3), ('an', 4), ('irritating', 5), ('character', 6), ('in', 8), ('the', 9)]
+
+=====================================================================
+Input: ['at', 'least', 'one', 'scene', 'is', 'so', 'disgusting', 'that', 'viewers', 'may']
+Eps: 0.01
+Original smallest expl: ['least']
+Number smallest expls: 2
+In form: [(word, index_in_input)]
+
+[('at', 0)]
+[('least', 1)]
+
+=====================================================================
+Input: ['at', 'least', 'one', 'scene', 'is', 'so', 'disgusting', 'that', 'viewers', 'may']
+Eps: 0.05
+Original smallest expl: ['at', 'least', 'one', 'scene', 'is', 'disgusting', 'viewers', 'may']
+Number smallest expls: 13
+In form: [(word, index_in_input)]
+
+[('at', 0), ('least', 1), ('one', 2), ('scene', 3), ('is', 4), ('so', 5), ('disgusting', 6), ('that', 7)]
+[('at', 0), ('least', 1), ('one', 2), ('scene', 3), ('is', 4), ('so', 5), ('disgusting', 6), ('viewers', 8)]
+[('at', 0), ('least', 1), ('one', 2), ('scene', 3), ('is', 4), ('so', 5), ('disgusting', 6), ('may', 9)]
+[('at', 0), ('least', 1), ('one', 2), ('scene', 3), ('is', 4), ('so', 5), ('that', 7), ('viewers', 8)]
+[('at', 0), ('least', 1), ('one', 2), ('scene', 3), ('is', 4), ('so', 5), ('that', 7), ('may', 9)]
+[('at', 0), ('least', 1), ('one', 2), ('scene', 3), ('is', 4), ('so', 5), ('viewers', 8), ('may', 9)]
+[('at', 0), ('least', 1), ('one', 2), ('scene', 3), ('is', 4), ('disgusting', 6), ('that', 7), ('viewers', 8)]
+[('at', 0), ('least', 1), ('one', 2), ('scene', 3), ('is', 4), ('disgusting', 6), ('that', 7), ('may', 9)]
+[('at', 0), ('least', 1), ('one', 2), ('scene', 3), ('is', 4), ('disgusting', 6), ('viewers', 8), ('may', 9)]
+[('at', 0), ('least', 1), ('one', 2), ('scene', 3), ('is', 4), ('that', 7), ('viewers', 8), ('may', 9)]
+[('at', 0), ('least', 1), ('one', 2), ('scene', 3), ('so', 5), ('disgusting', 6), ('that', 7), ('may', 9)]
+[('at', 0), ('least', 1), ('one', 2), ('scene', 3), ('so', 5), ('disgusting', 6), ('viewers', 8), ('may', 9)]
+[('at', 0), ('least', 1), ('one', 2), ('is', 4), ('so', 5), ('disgusting', 6), ('viewers', 8), ('may', 9)]
+
+=====================================================================
+Input: ['at', 'least', 'one', 'scene', 'is', 'so', 'disgusting', 'that', 'viewers', 'may']
+Eps: 0.1
+Original smallest expl: ['at', 'least', 'one', 'scene', 'is', 'so', 'disgusting', 'viewers', 'may']
+Number smallest expls: 4
+In form: [(word, index_in_input)]
+
+[('at', 0), ('least', 1), ('one', 2), ('scene', 3), ('is', 4), ('so', 5), ('disgusting', 6), ('that', 7), ('viewers', 8)]
+[('at', 0), ('least', 1), ('one', 2), ('scene', 3), ('is', 4), ('so', 5), ('disgusting', 6), ('that', 7), ('may', 9)]
+[('at', 0), ('least', 1), ('one', 2), ('scene', 3), ('is', 4), ('so', 5), ('disgusting', 6), ('viewers', 8), ('may', 9)]
+[('at', 0), ('least', 1), ('one', 2), ('scene', 3), ('is', 4), ('so', 5), ('that', 7), ('viewers', 8), ('may', 9)]
+
+=====================================================================
+Input: ['like', 'its', 'title', 'character', 'esther', 'kahn', 'is', 'unusual', 'but', 'unfortunately']
+Eps: 0.05
+Original smallest expl: ['like', 'its', 'title', 'character', 'esther', 'kahn', 'is']
+Number smallest expls: 1
+In form: [(word, index_in_input)]
+
+[('like', 0), ('its', 1), ('title', 2), ('character', 3), ('esther', 4), ('kahn', 5), ('is', 6)]
+
+=====================================================================
+Input: ['like', 'its', 'title', 'character', 'esther', 'kahn', 'is', 'unusual', 'but', 'unfortunately']
+Eps: 0.1
+Original smallest expl: ['like', 'its', 'title', 'character', 'esther', 'kahn', 'is', 'but', 'unfortunately']
+Number smallest expls: 7
+In form: [(word, index_in_input)]
+
+[('like', 0), ('its', 1), ('title', 2), ('character', 3), ('esther', 4), ('kahn', 5), ('is', 6), ('unusual', 7), ('but', 8)]
+[('like', 0), ('its', 1), ('title', 2), ('character', 3), ('esther', 4), ('kahn', 5), ('is', 6), ('unusual', 7), ('unfortunately', 9)]
+[('like', 0), ('its', 1), ('title', 2), ('character', 3), ('esther', 4), ('kahn', 5), ('is', 6), ('but', 8), ('unfortunately', 9)]
+[('like', 0), ('its', 1), ('title', 2), ('character', 3), ('esther', 4), ('kahn', 5), ('unusual', 7), ('but', 8), ('unfortunately', 9)]
+[('like', 0), ('its', 1), ('title', 2), ('character', 3), ('esther', 4), ('is', 6), ('unusual', 7), ('but', 8), ('unfortunately', 9)]
+[('like', 0), ('its', 1), ('title', 2), ('character', 3), ('kahn', 5), ('is', 6), ('unusual', 7), ('but', 8), ('unfortunately', 9)]
+[('like', 0), ('its', 1), ('title', 2), ('esther', 4), ('kahn', 5), ('is', 6), ('unusual', 7), ('but', 8), ('unfortunately', 9)]
+
+=====================================================================
+Input: ['staggeringly', 'dreadful', 'romance', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.01
+Original smallest expl: ['staggeringly', 'dreadful', 'romance', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Number smallest expls: 31
+In form: [(word, index_in_input)]
+
+[('staggeringly', 0), ('dreadful', 1), ('romance', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6)]
+[('staggeringly', 0), ('dreadful', 1), ('romance', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 7)]
+[('staggeringly', 0), ('dreadful', 1), ('romance', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 8)]
+[('staggeringly', 0), ('dreadful', 1), ('romance', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 9)]
+[('staggeringly', 0), ('dreadful', 1), ('romance', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 6), ('<PAD>', 7)]
+[('staggeringly', 0), ('dreadful', 1), ('romance', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 6), ('<PAD>', 8)]
+[('staggeringly', 0), ('dreadful', 1), ('romance', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 6), ('<PAD>', 9)]
+[('staggeringly', 0), ('dreadful', 1), ('romance', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 7), ('<PAD>', 8)]
+[('staggeringly', 0), ('dreadful', 1), ('romance', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 7), ('<PAD>', 9)]
+[('staggeringly', 0), ('dreadful', 1), ('romance', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 8), ('<PAD>', 9)]
+[('staggeringly', 0), ('dreadful', 1), ('romance', 2), ('<PAD>', 3), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 7)]
+[('staggeringly', 0), ('dreadful', 1), ('romance', 2), ('<PAD>', 3), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 8)]
+[('staggeringly', 0), ('dreadful', 1), ('romance', 2), ('<PAD>', 3), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 9)]
+[('staggeringly', 0), ('dreadful', 1), ('romance', 2), ('<PAD>', 3), ('<PAD>', 5), ('<PAD>', 7), ('<PAD>', 8)]
+[('staggeringly', 0), ('dreadful', 1), ('romance', 2), ('<PAD>', 3), ('<PAD>', 5), ('<PAD>', 7), ('<PAD>', 9)]
+[('staggeringly', 0), ('dreadful', 1), ('romance', 2), ('<PAD>', 3), ('<PAD>', 5), ('<PAD>', 8), ('<PAD>', 9)]
+[('staggeringly', 0), ('dreadful', 1), ('romance', 2), ('<PAD>', 3), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8)]
+[('staggeringly', 0), ('dreadful', 1), ('romance', 2), ('<PAD>', 3), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 9)]
+[('staggeringly', 0), ('dreadful', 1), ('romance', 2), ('<PAD>', 3), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+[('staggeringly', 0), ('dreadful', 1), ('romance', 2), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 7)]
+[('staggeringly', 0), ('dreadful', 1), ('romance', 2), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 8)]
+[('staggeringly', 0), ('dreadful', 1), ('romance', 2), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 9)]
+[('staggeringly', 0), ('dreadful', 1), ('romance', 2), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 7), ('<PAD>', 8)]
+[('staggeringly', 0), ('dreadful', 1), ('romance', 2), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 7), ('<PAD>', 9)]
+[('staggeringly', 0), ('dreadful', 1), ('romance', 2), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 8), ('<PAD>', 9)]
+[('staggeringly', 0), ('dreadful', 1), ('romance', 2), ('<PAD>', 4), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+[('staggeringly', 0), ('dreadful', 1), ('romance', 2), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+[('staggeringly', 0), ('dreadful', 1), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 8)]
+[('staggeringly', 0), ('dreadful', 1), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 9)]
+[('staggeringly', 0), ('dreadful', 1), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 8), ('<PAD>', 9)]
+[('staggeringly', 0), ('dreadful', 1), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+
+=====================================================================
+Input: ['an', 'incredibly', 'irritating', 'comedy', 'about', 'thoroughly', 'vacuous', 'people', '...', 'manages']
+Eps: 0.01
+Original smallest expl: ['an', 'incredibly', 'irritating', 'comedy', 'about', 'vacuous', '...', 'manages']
+Number smallest expls: 27
+In form: [(word, index_in_input)]
+
+[('an', 0), ('incredibly', 1), ('irritating', 2), ('comedy', 3), ('about', 4), ('thoroughly', 5), ('vacuous', 6), ('people', 7)]
+[('an', 0), ('incredibly', 1), ('irritating', 2), ('comedy', 3), ('about', 4), ('thoroughly', 5), ('vacuous', 6), ('...', 8)]
+[('an', 0), ('incredibly', 1), ('irritating', 2), ('comedy', 3), ('about', 4), ('thoroughly', 5), ('vacuous', 6), ('manages', 9)]
+[('an', 0), ('incredibly', 1), ('irritating', 2), ('comedy', 3), ('about', 4), ('thoroughly', 5), ('people', 7), ('...', 8)]
+[('an', 0), ('incredibly', 1), ('irritating', 2), ('comedy', 3), ('about', 4), ('thoroughly', 5), ('people', 7), ('manages', 9)]
+[('an', 0), ('incredibly', 1), ('irritating', 2), ('comedy', 3), ('about', 4), ('thoroughly', 5), ('...', 8), ('manages', 9)]
+[('an', 0), ('incredibly', 1), ('irritating', 2), ('comedy', 3), ('about', 4), ('vacuous', 6), ('people', 7), ('...', 8)]
+[('an', 0), ('incredibly', 1), ('irritating', 2), ('comedy', 3), ('about', 4), ('vacuous', 6), ('people', 7), ('manages', 9)]
+[('an', 0), ('incredibly', 1), ('irritating', 2), ('comedy', 3), ('about', 4), ('vacuous', 6), ('...', 8), ('manages', 9)]
+[('an', 0), ('incredibly', 1), ('irritating', 2), ('comedy', 3), ('about', 4), ('people', 7), ('...', 8), ('manages', 9)]
+[('an', 0), ('incredibly', 1), ('irritating', 2), ('comedy', 3), ('thoroughly', 5), ('vacuous', 6), ('people', 7), ('...', 8)]
+[('an', 0), ('incredibly', 1), ('irritating', 2), ('comedy', 3), ('thoroughly', 5), ('vacuous', 6), ('people', 7), ('manages', 9)]
+[('an', 0), ('incredibly', 1), ('irritating', 2), ('comedy', 3), ('thoroughly', 5), ('vacuous', 6), ('...', 8), ('manages', 9)]
+[('an', 0), ('incredibly', 1), ('irritating', 2), ('comedy', 3), ('thoroughly', 5), ('people', 7), ('...', 8), ('manages', 9)]
+[('an', 0), ('incredibly', 1), ('irritating', 2), ('comedy', 3), ('vacuous', 6), ('people', 7), ('...', 8), ('manages', 9)]
+[('an', 0), ('incredibly', 1), ('irritating', 2), ('about', 4), ('thoroughly', 5), ('vacuous', 6), ('people', 7), ('...', 8)]
+[('an', 0), ('incredibly', 1), ('irritating', 2), ('about', 4), ('thoroughly', 5), ('vacuous', 6), ('people', 7), ('manages', 9)]
+[('an', 0), ('incredibly', 1), ('irritating', 2), ('about', 4), ('thoroughly', 5), ('vacuous', 6), ('...', 8), ('manages', 9)]
+[('an', 0), ('incredibly', 1), ('irritating', 2), ('about', 4), ('thoroughly', 5), ('people', 7), ('...', 8), ('manages', 9)]
+[('an', 0), ('incredibly', 1), ('irritating', 2), ('about', 4), ('vacuous', 6), ('people', 7), ('...', 8), ('manages', 9)]
+[('an', 0), ('incredibly', 1), ('irritating', 2), ('thoroughly', 5), ('vacuous', 6), ('people', 7), ('...', 8), ('manages', 9)]
+[('an', 0), ('incredibly', 1), ('comedy', 3), ('about', 4), ('thoroughly', 5), ('vacuous', 6), ('people', 7), ('...', 8)]
+[('an', 0), ('incredibly', 1), ('comedy', 3), ('about', 4), ('thoroughly', 5), ('vacuous', 6), ('people', 7), ('manages', 9)]
+[('an', 0), ('incredibly', 1), ('comedy', 3), ('about', 4), ('thoroughly', 5), ('vacuous', 6), ('...', 8), ('manages', 9)]
+[('an', 0), ('incredibly', 1), ('comedy', 3), ('about', 4), ('thoroughly', 5), ('people', 7), ('...', 8), ('manages', 9)]
+[('an', 0), ('incredibly', 1), ('comedy', 3), ('about', 4), ('vacuous', 6), ('people', 7), ('...', 8), ('manages', 9)]
+[('an', 0), ('irritating', 2), ('comedy', 3), ('about', 4), ('thoroughly', 5), ('vacuous', 6), ('...', 8), ('manages', 9)]
+
+=====================================================================
+Input: ['the', 'film', 'just', 'might', 'turn', 'on', 'many', 'people', 'to', 'opera']
+Eps: 0.01
+Original smallest expl: ['the', 'film', 'just', 'might', 'turn', 'on', 'many', 'to', 'opera']
+Number smallest expls: 8
+In form: [(word, index_in_input)]
+
+[('the', 0), ('film', 1), ('just', 2), ('might', 3), ('turn', 4), ('on', 5), ('many', 6), ('people', 7), ('to', 8)]
+[('the', 0), ('film', 1), ('just', 2), ('might', 3), ('turn', 4), ('on', 5), ('many', 6), ('people', 7), ('opera', 9)]
+[('the', 0), ('film', 1), ('just', 2), ('might', 3), ('turn', 4), ('on', 5), ('many', 6), ('to', 8), ('opera', 9)]
+[('the', 0), ('film', 1), ('just', 2), ('might', 3), ('turn', 4), ('on', 5), ('people', 7), ('to', 8), ('opera', 9)]
+[('the', 0), ('film', 1), ('just', 2), ('might', 3), ('turn', 4), ('many', 6), ('people', 7), ('to', 8), ('opera', 9)]
+[('the', 0), ('film', 1), ('just', 2), ('might', 3), ('on', 5), ('many', 6), ('people', 7), ('to', 8), ('opera', 9)]
+[('the', 0), ('film', 1), ('just', 2), ('turn', 4), ('on', 5), ('many', 6), ('people', 7), ('to', 8), ('opera', 9)]
+[('the', 0), ('film', 1), ('might', 3), ('turn', 4), ('on', 5), ('many', 6), ('people', 7), ('to', 8), ('opera', 9)]
+
+=====================================================================
+Input: ['as', 'vulgar', 'as', 'it', 'is', 'banal', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.05
+Original smallest expl: ['as', 'vulgar', 'as', 'it', 'is', 'banal']
+Number smallest expls: 3
+In form: [(word, index_in_input)]
+
+[('as', 0), ('vulgar', 1), ('as', 2), ('it', 3), ('is', 4), ('banal', 5)]
+[('as', 0), ('vulgar', 1), ('as', 2), ('it', 3), ('is', 4), ('<PAD>', 6)]
+[('as', 0), ('vulgar', 1), ('as', 2), ('it', 3), ('is', 4), ('<PAD>', 9)]
+
+=====================================================================
+Input: ['as', 'vulgar', 'as', 'it', 'is', 'banal', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.1
+Original smallest expl: ['as', 'vulgar', 'as', 'it', 'is', '<PAD>', '<PAD>', '<PAD>']
+Number smallest expls: 4
+In form: [(word, index_in_input)]
+
+[('as', 0), ('vulgar', 1), ('as', 2), ('it', 3), ('is', 4), ('banal', 5), ('<PAD>', 6), ('<PAD>', 8)]
+[('as', 0), ('vulgar', 1), ('as', 2), ('it', 3), ('is', 4), ('banal', 5), ('<PAD>', 6), ('<PAD>', 9)]
+[('as', 0), ('vulgar', 1), ('as', 2), ('it', 3), ('is', 4), ('banal', 5), ('<PAD>', 8), ('<PAD>', 9)]
+[('as', 0), ('vulgar', 1), ('as', 2), ('it', 3), ('is', 4), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+
+=====================================================================
+Input: ['just', 'dreadful', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.05
+Original smallest expl: ['just', 'dreadful', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Number smallest expls: 30
+In form: [(word, index_in_input)]
+
+[('just', 0), ('dreadful', 1), ('<PAD>', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 7)]
+[('just', 0), ('dreadful', 1), ('<PAD>', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 8)]
+[('just', 0), ('dreadful', 1), ('<PAD>', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 9)]
+[('just', 0), ('dreadful', 1), ('<PAD>', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 7), ('<PAD>', 8)]
+[('just', 0), ('dreadful', 1), ('<PAD>', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 7), ('<PAD>', 9)]
+[('just', 0), ('dreadful', 1), ('<PAD>', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 8), ('<PAD>', 9)]
+[('just', 0), ('dreadful', 1), ('<PAD>', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8)]
+[('just', 0), ('dreadful', 1), ('<PAD>', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 9)]
+[('just', 0), ('dreadful', 1), ('<PAD>', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+[('just', 0), ('dreadful', 1), ('<PAD>', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('just', 0), ('dreadful', 1), ('<PAD>', 2), ('<PAD>', 3), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8)]
+[('just', 0), ('dreadful', 1), ('<PAD>', 2), ('<PAD>', 3), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 9)]
+[('just', 0), ('dreadful', 1), ('<PAD>', 2), ('<PAD>', 3), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+[('just', 0), ('dreadful', 1), ('<PAD>', 2), ('<PAD>', 3), ('<PAD>', 5), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('just', 0), ('dreadful', 1), ('<PAD>', 2), ('<PAD>', 3), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('just', 0), ('dreadful', 1), ('<PAD>', 2), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8)]
+[('just', 0), ('dreadful', 1), ('<PAD>', 2), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 9)]
+[('just', 0), ('dreadful', 1), ('<PAD>', 2), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+[('just', 0), ('dreadful', 1), ('<PAD>', 2), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('just', 0), ('dreadful', 1), ('<PAD>', 2), ('<PAD>', 4), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('just', 0), ('dreadful', 1), ('<PAD>', 2), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('just', 0), ('dreadful', 1), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8)]
+[('just', 0), ('dreadful', 1), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 9)]
+[('just', 0), ('dreadful', 1), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+[('just', 0), ('dreadful', 1), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('just', 0), ('dreadful', 1), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('just', 0), ('dreadful', 1), ('<PAD>', 3), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('just', 0), ('<PAD>', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 9)]
+[('just', 0), ('<PAD>', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+[('dreadful', 1), ('<PAD>', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+
+=====================================================================
+Input: ['just', 'dreadful', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.1
+Original smallest expl: ['just', 'dreadful', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Number smallest expls: 7
+In form: [(word, index_in_input)]
+
+[('just', 0), ('dreadful', 1), ('<PAD>', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8)]
+[('just', 0), ('dreadful', 1), ('<PAD>', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 9)]
+[('just', 0), ('dreadful', 1), ('<PAD>', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+[('just', 0), ('dreadful', 1), ('<PAD>', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('just', 0), ('dreadful', 1), ('<PAD>', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('just', 0), ('dreadful', 1), ('<PAD>', 2), ('<PAD>', 3), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('just', 0), ('dreadful', 1), ('<PAD>', 2), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+
+=====================================================================
+Input: ['a', 'crushing', 'disappointment', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.05
+Original smallest expl: ['a', 'crushing', 'disappointment', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Number smallest expls: 15
+In form: [(word, index_in_input)]
+
+[('a', 0), ('crushing', 1), ('disappointment', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6)]
+[('a', 0), ('crushing', 1), ('disappointment', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 7)]
+[('a', 0), ('crushing', 1), ('disappointment', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 8)]
+[('a', 0), ('crushing', 1), ('disappointment', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 9)]
+[('a', 0), ('crushing', 1), ('disappointment', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 6), ('<PAD>', 7)]
+[('a', 0), ('crushing', 1), ('disappointment', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 6), ('<PAD>', 8)]
+[('a', 0), ('crushing', 1), ('disappointment', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 6), ('<PAD>', 9)]
+[('a', 0), ('crushing', 1), ('disappointment', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 8), ('<PAD>', 9)]
+[('a', 0), ('crushing', 1), ('disappointment', 2), ('<PAD>', 3), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 8)]
+[('a', 0), ('crushing', 1), ('disappointment', 2), ('<PAD>', 3), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 9)]
+[('a', 0), ('crushing', 1), ('disappointment', 2), ('<PAD>', 3), ('<PAD>', 5), ('<PAD>', 8), ('<PAD>', 9)]
+[('a', 0), ('crushing', 1), ('disappointment', 2), ('<PAD>', 3), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+[('a', 0), ('crushing', 1), ('disappointment', 2), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 8)]
+[('a', 0), ('crushing', 1), ('disappointment', 2), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 9)]
+[('a', 0), ('crushing', 1), ('disappointment', 2), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 8), ('<PAD>', 9)]
+
+=====================================================================
+Input: ['a', 'crushing', 'disappointment', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.1
+Original smallest expl: ['a', 'crushing', 'disappointment', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Number smallest expls: 8
+In form: [(word, index_in_input)]
+
+[('a', 0), ('crushing', 1), ('disappointment', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8)]
+[('a', 0), ('crushing', 1), ('disappointment', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 9)]
+[('a', 0), ('crushing', 1), ('disappointment', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+[('a', 0), ('crushing', 1), ('disappointment', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('a', 0), ('crushing', 1), ('disappointment', 2), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('a', 0), ('crushing', 1), ('disappointment', 2), ('<PAD>', 3), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('a', 0), ('crushing', 1), ('disappointment', 2), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('a', 0), ('crushing', 1), ('<PAD>', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+
+=====================================================================
+Input: ['it', 'is', 'not', 'life-affirming', 'its', 'vulgar', 'and', 'mean', 'but', 'i']
+Eps: 0.05
+Original smallest expl: ['it', 'is', 'not', 'life-affirming', 'its', 'and', 'but', 'i']
+Number smallest expls: 26
+In form: [(word, index_in_input)]
+
+[('it', 0), ('is', 1), ('not', 2), ('life-affirming', 3), ('its', 4), ('vulgar', 5), ('and', 6), ('mean', 7)]
+[('it', 0), ('is', 1), ('not', 2), ('life-affirming', 3), ('its', 4), ('vulgar', 5), ('and', 6), ('but', 8)]
+[('it', 0), ('is', 1), ('not', 2), ('life-affirming', 3), ('its', 4), ('vulgar', 5), ('and', 6), ('i', 9)]
+[('it', 0), ('is', 1), ('not', 2), ('life-affirming', 3), ('its', 4), ('vulgar', 5), ('mean', 7), ('but', 8)]
+[('it', 0), ('is', 1), ('not', 2), ('life-affirming', 3), ('its', 4), ('vulgar', 5), ('mean', 7), ('i', 9)]
+[('it', 0), ('is', 1), ('not', 2), ('life-affirming', 3), ('its', 4), ('vulgar', 5), ('but', 8), ('i', 9)]
+[('it', 0), ('is', 1), ('not', 2), ('life-affirming', 3), ('its', 4), ('and', 6), ('mean', 7), ('but', 8)]
+[('it', 0), ('is', 1), ('not', 2), ('life-affirming', 3), ('its', 4), ('and', 6), ('mean', 7), ('i', 9)]
+[('it', 0), ('is', 1), ('not', 2), ('life-affirming', 3), ('its', 4), ('and', 6), ('but', 8), ('i', 9)]
+[('it', 0), ('is', 1), ('not', 2), ('life-affirming', 3), ('its', 4), ('mean', 7), ('but', 8), ('i', 9)]
+[('it', 0), ('is', 1), ('not', 2), ('life-affirming', 3), ('vulgar', 5), ('and', 6), ('mean', 7), ('but', 8)]
+[('it', 0), ('is', 1), ('not', 2), ('life-affirming', 3), ('vulgar', 5), ('and', 6), ('mean', 7), ('i', 9)]
+[('it', 0), ('is', 1), ('not', 2), ('life-affirming', 3), ('vulgar', 5), ('and', 6), ('but', 8), ('i', 9)]
+[('it', 0), ('is', 1), ('not', 2), ('life-affirming', 3), ('vulgar', 5), ('mean', 7), ('but', 8), ('i', 9)]
+[('it', 0), ('is', 1), ('not', 2), ('life-affirming', 3), ('and', 6), ('mean', 7), ('but', 8), ('i', 9)]
+[('it', 0), ('is', 1), ('not', 2), ('its', 4), ('vulgar', 5), ('and', 6), ('mean', 7), ('but', 8)]
+[('it', 0), ('is', 1), ('not', 2), ('its', 4), ('vulgar', 5), ('and', 6), ('mean', 7), ('i', 9)]
+[('it', 0), ('is', 1), ('not', 2), ('its', 4), ('vulgar', 5), ('and', 6), ('but', 8), ('i', 9)]
+[('it', 0), ('is', 1), ('not', 2), ('its', 4), ('vulgar', 5), ('mean', 7), ('but', 8), ('i', 9)]
+[('it', 0), ('is', 1), ('not', 2), ('its', 4), ('and', 6), ('mean', 7), ('but', 8), ('i', 9)]
+[('it', 0), ('is', 1), ('not', 2), ('vulgar', 5), ('and', 6), ('mean', 7), ('but', 8), ('i', 9)]
+[('it', 0), ('is', 1), ('life-affirming', 3), ('its', 4), ('vulgar', 5), ('and', 6), ('mean', 7), ('but', 8)]
+[('it', 0), ('is', 1), ('life-affirming', 3), ('its', 4), ('vulgar', 5), ('and', 6), ('mean', 7), ('i', 9)]
+[('it', 0), ('is', 1), ('life-affirming', 3), ('its', 4), ('vulgar', 5), ('and', 6), ('but', 8), ('i', 9)]
+[('it', 0), ('is', 1), ('life-affirming', 3), ('its', 4), ('vulgar', 5), ('mean', 7), ('but', 8), ('i', 9)]
+[('it', 0), ('not', 2), ('life-affirming', 3), ('its', 4), ('vulgar', 5), ('and', 6), ('but', 8), ('i', 9)]
+
+=====================================================================
+Input: ['it', 'is', 'not', 'life-affirming', 'its', 'vulgar', 'and', 'mean', 'but', 'i']
+Eps: 0.1
+Original smallest expl: ['it', 'is', 'not', 'life-affirming', 'its', 'vulgar', 'and', 'but', 'i']
+Number smallest expls: 6
+In form: [(word, index_in_input)]
+
+[('it', 0), ('is', 1), ('not', 2), ('life-affirming', 3), ('its', 4), ('vulgar', 5), ('and', 6), ('mean', 7), ('but', 8)]
+[('it', 0), ('is', 1), ('not', 2), ('life-affirming', 3), ('its', 4), ('vulgar', 5), ('and', 6), ('mean', 7), ('i', 9)]
+[('it', 0), ('is', 1), ('not', 2), ('life-affirming', 3), ('its', 4), ('vulgar', 5), ('and', 6), ('but', 8), ('i', 9)]
+[('it', 0), ('is', 1), ('not', 2), ('life-affirming', 3), ('its', 4), ('vulgar', 5), ('mean', 7), ('but', 8), ('i', 9)]
+[('it', 0), ('is', 1), ('not', 2), ('life-affirming', 3), ('its', 4), ('and', 6), ('mean', 7), ('but', 8), ('i', 9)]
+[('it', 0), ('is', 1), ('not', 2), ('life-affirming', 3), ('vulgar', 5), ('and', 6), ('mean', 7), ('but', 8), ('i', 9)]
+
+=====================================================================
+Input: ['the', 'draw', 'for', 'big', 'bad', 'love', 'is', 'a', 'solid', 'performance']
+Eps: 0.05
+Original smallest expl: ['the', 'draw', 'for', 'big', 'bad', 'love']
+Number smallest expls: 1
+In form: [(word, index_in_input)]
+
+[('the', 0), ('draw', 1), ('for', 2), ('big', 3), ('bad', 4), ('love', 5)]
+
+=====================================================================
+Input: ['the', 'draw', 'for', 'big', 'bad', 'love', 'is', 'a', 'solid', 'performance']
+Eps: 0.1
+Original smallest expl: ['the', 'draw', 'for', 'big', 'bad', 'is', 'solid', 'performance']
+Number smallest expls: 4
+In form: [(word, index_in_input)]
+
+[('the', 0), ('draw', 1), ('for', 2), ('big', 3), ('bad', 4), ('love', 5), ('is', 6), ('solid', 8)]
+[('the', 0), ('draw', 1), ('for', 2), ('big', 3), ('bad', 4), ('love', 5), ('is', 6), ('performance', 9)]
+[('the', 0), ('draw', 1), ('for', 2), ('big', 3), ('bad', 4), ('love', 5), ('solid', 8), ('performance', 9)]
+[('the', 0), ('draw', 1), ('for', 2), ('big', 3), ('bad', 4), ('is', 6), ('solid', 8), ('performance', 9)]
+
+=====================================================================
+Input: ['there', 'are', 'far', 'worse', 'messages', 'to', 'teach', 'a', 'young', 'audience']
+Eps: 0.01
+Original smallest expl: ['there', 'messages', 'to', 'teach']
+Number smallest expls: 79
+In form: [(word, index_in_input)]
+
+[('there', 0), ('are', 1), ('far', 2), ('worse', 3)]
+[('there', 0), ('are', 1), ('far', 2), ('messages', 4)]
+[('there', 0), ('are', 1), ('far', 2), ('to', 5)]
+[('there', 0), ('are', 1), ('far', 2), ('teach', 6)]
+[('there', 0), ('are', 1), ('far', 2), ('a', 7)]
+[('there', 0), ('are', 1), ('far', 2), ('young', 8)]
+[('there', 0), ('are', 1), ('far', 2), ('audience', 9)]
+[('there', 0), ('are', 1), ('worse', 3), ('messages', 4)]
+[('there', 0), ('are', 1), ('worse', 3), ('to', 5)]
+[('there', 0), ('are', 1), ('worse', 3), ('teach', 6)]
+[('there', 0), ('are', 1), ('worse', 3), ('a', 7)]
+[('there', 0), ('are', 1), ('worse', 3), ('young', 8)]
+[('there', 0), ('are', 1), ('worse', 3), ('audience', 9)]
+[('there', 0), ('are', 1), ('messages', 4), ('to', 5)]
+[('there', 0), ('are', 1), ('messages', 4), ('teach', 6)]
+[('there', 0), ('are', 1), ('messages', 4), ('a', 7)]
+[('there', 0), ('are', 1), ('messages', 4), ('young', 8)]
+[('there', 0), ('are', 1), ('messages', 4), ('audience', 9)]
+[('there', 0), ('are', 1), ('to', 5), ('teach', 6)]
+[('there', 0), ('are', 1), ('to', 5), ('a', 7)]
+[('there', 0), ('are', 1), ('to', 5), ('young', 8)]
+[('there', 0), ('are', 1), ('to', 5), ('audience', 9)]
+[('there', 0), ('are', 1), ('teach', 6), ('a', 7)]
+[('there', 0), ('are', 1), ('teach', 6), ('young', 8)]
+[('there', 0), ('are', 1), ('teach', 6), ('audience', 9)]
+[('there', 0), ('are', 1), ('a', 7), ('young', 8)]
+[('there', 0), ('are', 1), ('a', 7), ('audience', 9)]
+[('there', 0), ('are', 1), ('young', 8), ('audience', 9)]
+[('there', 0), ('far', 2), ('worse', 3), ('messages', 4)]
+[('there', 0), ('far', 2), ('worse', 3), ('to', 5)]
+[('there', 0), ('far', 2), ('worse', 3), ('teach', 6)]
+[('there', 0), ('far', 2), ('worse', 3), ('a', 7)]
+[('there', 0), ('far', 2), ('worse', 3), ('young', 8)]
+[('there', 0), ('far', 2), ('worse', 3), ('audience', 9)]
+[('there', 0), ('far', 2), ('messages', 4), ('to', 5)]
+[('there', 0), ('far', 2), ('messages', 4), ('teach', 6)]
+[('there', 0), ('far', 2), ('messages', 4), ('a', 7)]
+[('there', 0), ('far', 2), ('messages', 4), ('young', 8)]
+[('there', 0), ('far', 2), ('messages', 4), ('audience', 9)]
+[('there', 0), ('far', 2), ('to', 5), ('teach', 6)]
+[('there', 0), ('far', 2), ('to', 5), ('a', 7)]
+[('there', 0), ('far', 2), ('to', 5), ('young', 8)]
+[('there', 0), ('far', 2), ('to', 5), ('audience', 9)]
+[('there', 0), ('far', 2), ('teach', 6), ('young', 8)]
+[('there', 0), ('far', 2), ('teach', 6), ('audience', 9)]
+[('there', 0), ('far', 2), ('young', 8), ('audience', 9)]
+[('there', 0), ('worse', 3), ('messages', 4), ('to', 5)]
+[('there', 0), ('worse', 3), ('messages', 4), ('teach', 6)]
+[('there', 0), ('worse', 3), ('messages', 4), ('young', 8)]
+[('there', 0), ('worse', 3), ('messages', 4), ('audience', 9)]
+[('there', 0), ('worse', 3), ('to', 5), ('teach', 6)]
+[('there', 0), ('worse', 3), ('to', 5), ('young', 8)]
+[('there', 0), ('worse', 3), ('to', 5), ('audience', 9)]
+[('there', 0), ('worse', 3), ('teach', 6), ('young', 8)]
+[('there', 0), ('worse', 3), ('teach', 6), ('audience', 9)]
+[('there', 0), ('messages', 4), ('to', 5), ('teach', 6)]
+[('there', 0), ('messages', 4), ('to', 5), ('young', 8)]
+[('there', 0), ('messages', 4), ('to', 5), ('audience', 9)]
+[('are', 1), ('far', 2), ('worse', 3), ('messages', 4)]
+[('are', 1), ('far', 2), ('worse', 3), ('to', 5)]
+[('are', 1), ('far', 2), ('worse', 3), ('teach', 6)]
+[('are', 1), ('far', 2), ('worse', 3), ('a', 7)]
+[('are', 1), ('far', 2), ('worse', 3), ('young', 8)]
+[('are', 1), ('far', 2), ('worse', 3), ('audience', 9)]
+[('are', 1), ('far', 2), ('messages', 4), ('to', 5)]
+[('are', 1), ('far', 2), ('messages', 4), ('teach', 6)]
+[('are', 1), ('far', 2), ('messages', 4), ('young', 8)]
+[('are', 1), ('far', 2), ('messages', 4), ('audience', 9)]
+[('are', 1), ('far', 2), ('to', 5), ('teach', 6)]
+[('are', 1), ('far', 2), ('to', 5), ('young', 8)]
+[('are', 1), ('far', 2), ('to', 5), ('audience', 9)]
+[('are', 1), ('far', 2), ('teach', 6), ('young', 8)]
+[('are', 1), ('far', 2), ('teach', 6), ('audience', 9)]
+[('are', 1), ('worse', 3), ('messages', 4), ('to', 5)]
+[('are', 1), ('worse', 3), ('messages', 4), ('teach', 6)]
+[('are', 1), ('worse', 3), ('messages', 4), ('young', 8)]
+[('are', 1), ('worse', 3), ('messages', 4), ('audience', 9)]
+[('are', 1), ('worse', 3), ('to', 5), ('teach', 6)]
+[('are', 1), ('worse', 3), ('to', 5), ('audience', 9)]
+
+=====================================================================
+Input: ['there', 'are', 'far', 'worse', 'messages', 'to', 'teach', 'a', 'young', 'audience']
+Eps: 0.05
+Original smallest expl: ['there', 'are', 'far', 'worse', 'messages', 'to', 'teach', 'young', 'audience']
+Number smallest expls: 8
+In form: [(word, index_in_input)]
+
+[('there', 0), ('are', 1), ('far', 2), ('worse', 3), ('messages', 4), ('to', 5), ('teach', 6), ('a', 7), ('young', 8)]
+[('there', 0), ('are', 1), ('far', 2), ('worse', 3), ('messages', 4), ('to', 5), ('teach', 6), ('a', 7), ('audience', 9)]
+[('there', 0), ('are', 1), ('far', 2), ('worse', 3), ('messages', 4), ('to', 5), ('teach', 6), ('young', 8), ('audience', 9)]
+[('there', 0), ('are', 1), ('far', 2), ('worse', 3), ('messages', 4), ('to', 5), ('a', 7), ('young', 8), ('audience', 9)]
+[('there', 0), ('are', 1), ('far', 2), ('worse', 3), ('messages', 4), ('teach', 6), ('a', 7), ('young', 8), ('audience', 9)]
+[('there', 0), ('are', 1), ('far', 2), ('worse', 3), ('to', 5), ('teach', 6), ('a', 7), ('young', 8), ('audience', 9)]
+[('there', 0), ('are', 1), ('far', 2), ('messages', 4), ('to', 5), ('teach', 6), ('a', 7), ('young', 8), ('audience', 9)]
+[('there', 0), ('are', 1), ('worse', 3), ('messages', 4), ('to', 5), ('teach', 6), ('a', 7), ('young', 8), ('audience', 9)]
+
+=====================================================================
+Input: ['the', 'main', 'story', '...', 'is', 'compelling', 'enough', 'but', 'it', 'is']
+Eps: 0.01
+Original smallest expl: ['...']
+Number smallest expls: 4
+In form: [(word, index_in_input)]
+
+[('the', 0)]
+[('main', 1)]
+[('story', 2)]
+[('...', 3)]
+
+=====================================================================
+Input: ['the', 'main', 'story', '...', 'is', 'compelling', 'enough', 'but', 'it', 'is']
+Eps: 0.05
+Original smallest expl: ['the', 'main', 'story', '...', 'is', 'enough', 'it', 'is']
+Number smallest expls: 15
+In form: [(word, index_in_input)]
+
+[('the', 0), ('main', 1), ('story', 2), ('...', 3), ('is', 4), ('compelling', 5), ('enough', 6), ('but', 7)]
+[('the', 0), ('main', 1), ('story', 2), ('...', 3), ('is', 4), ('compelling', 5), ('enough', 6), ('it', 8)]
+[('the', 0), ('main', 1), ('story', 2), ('...', 3), ('is', 4), ('compelling', 5), ('enough', 6), ('is', 9)]
+[('the', 0), ('main', 1), ('story', 2), ('...', 3), ('is', 4), ('compelling', 5), ('but', 7), ('it', 8)]
+[('the', 0), ('main', 1), ('story', 2), ('...', 3), ('is', 4), ('compelling', 5), ('but', 7), ('is', 9)]
+[('the', 0), ('main', 1), ('story', 2), ('...', 3), ('is', 4), ('compelling', 5), ('it', 8), ('is', 9)]
+[('the', 0), ('main', 1), ('story', 2), ('...', 3), ('is', 4), ('enough', 6), ('but', 7), ('it', 8)]
+[('the', 0), ('main', 1), ('story', 2), ('...', 3), ('is', 4), ('enough', 6), ('but', 7), ('is', 9)]
+[('the', 0), ('main', 1), ('story', 2), ('...', 3), ('is', 4), ('enough', 6), ('it', 8), ('is', 9)]
+[('the', 0), ('main', 1), ('story', 2), ('...', 3), ('is', 4), ('but', 7), ('it', 8), ('is', 9)]
+[('the', 0), ('main', 1), ('story', 2), ('...', 3), ('compelling', 5), ('enough', 6), ('but', 7), ('it', 8)]
+[('the', 0), ('main', 1), ('story', 2), ('...', 3), ('compelling', 5), ('enough', 6), ('but', 7), ('is', 9)]
+[('the', 0), ('main', 1), ('story', 2), ('...', 3), ('compelling', 5), ('enough', 6), ('it', 8), ('is', 9)]
+[('the', 0), ('main', 1), ('story', 2), ('is', 4), ('compelling', 5), ('enough', 6), ('it', 8), ('is', 9)]
+[('the', 0), ('main', 1), ('...', 3), ('is', 4), ('compelling', 5), ('enough', 6), ('it', 8), ('is', 9)]
+
+=====================================================================
+Input: ['the', 'main', 'story', '...', 'is', 'compelling', 'enough', 'but', 'it', 'is']
+Eps: 0.1
+Original smallest expl: ['the', 'main', 'story', '...', 'is', 'compelling', 'enough', 'it', 'is']
+Number smallest expls: 4
+In form: [(word, index_in_input)]
+
+[('the', 0), ('main', 1), ('story', 2), ('...', 3), ('is', 4), ('compelling', 5), ('enough', 6), ('but', 7), ('it', 8)]
+[('the', 0), ('main', 1), ('story', 2), ('...', 3), ('is', 4), ('compelling', 5), ('enough', 6), ('but', 7), ('is', 9)]
+[('the', 0), ('main', 1), ('story', 2), ('...', 3), ('is', 4), ('compelling', 5), ('enough', 6), ('it', 8), ('is', 9)]
+[('the', 0), ('main', 1), ('story', 2), ('...', 3), ('is', 4), ('compelling', 5), ('but', 7), ('it', 8), ('is', 9)]
+
+=====================================================================
+Input: ['a', 'painfully', 'funny', 'ode', 'to', 'bad', 'behavior', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.01
+Original smallest expl: ['a', 'painfully', 'funny', 'ode']
+Number smallest expls: 1
+In form: [(word, index_in_input)]
+
+[('a', 0), ('painfully', 1), ('funny', 2), ('ode', 3)]
+
+=====================================================================
+Input: ['a', 'painfully', 'funny', 'ode', 'to', 'bad', 'behavior', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.05
+Original smallest expl: ['a', 'painfully', 'funny', 'ode', 'to', 'bad', 'behavior', '<PAD>', '<PAD>']
+Number smallest expls: 6
+In form: [(word, index_in_input)]
+
+[('a', 0), ('painfully', 1), ('funny', 2), ('ode', 3), ('to', 4), ('bad', 5), ('behavior', 6), ('<PAD>', 7), ('<PAD>', 8)]
+[('a', 0), ('painfully', 1), ('funny', 2), ('ode', 3), ('to', 4), ('bad', 5), ('behavior', 6), ('<PAD>', 7), ('<PAD>', 9)]
+[('a', 0), ('painfully', 1), ('funny', 2), ('ode', 3), ('to', 4), ('bad', 5), ('behavior', 6), ('<PAD>', 8), ('<PAD>', 9)]
+[('a', 0), ('painfully', 1), ('funny', 2), ('ode', 3), ('to', 4), ('bad', 5), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('a', 0), ('painfully', 1), ('funny', 2), ('ode', 3), ('to', 4), ('behavior', 6), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('a', 0), ('painfully', 1), ('funny', 2), ('ode', 3), ('bad', 5), ('behavior', 6), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+
+=====================================================================
+Input: ['...', 'spellbinding', 'fun', 'and', 'deliciously', 'exploitative', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.05
+Original smallest expl: ['...', 'spellbinding', 'exploitative', '<PAD>']
+Number smallest expls: 30
+In form: [(word, index_in_input)]
+
+[('...', 0), ('spellbinding', 1), ('fun', 2), ('and', 3)]
+[('...', 0), ('spellbinding', 1), ('fun', 2), ('deliciously', 4)]
+[('...', 0), ('spellbinding', 1), ('fun', 2), ('exploitative', 5)]
+[('...', 0), ('spellbinding', 1), ('fun', 2), ('<PAD>', 6)]
+[('...', 0), ('spellbinding', 1), ('fun', 2), ('<PAD>', 7)]
+[('...', 0), ('spellbinding', 1), ('fun', 2), ('<PAD>', 8)]
+[('...', 0), ('spellbinding', 1), ('fun', 2), ('<PAD>', 9)]
+[('...', 0), ('spellbinding', 1), ('and', 3), ('deliciously', 4)]
+[('...', 0), ('spellbinding', 1), ('and', 3), ('exploitative', 5)]
+[('...', 0), ('spellbinding', 1), ('and', 3), ('<PAD>', 6)]
+[('...', 0), ('spellbinding', 1), ('and', 3), ('<PAD>', 7)]
+[('...', 0), ('spellbinding', 1), ('and', 3), ('<PAD>', 8)]
+[('...', 0), ('spellbinding', 1), ('and', 3), ('<PAD>', 9)]
+[('...', 0), ('spellbinding', 1), ('deliciously', 4), ('exploitative', 5)]
+[('...', 0), ('spellbinding', 1), ('deliciously', 4), ('<PAD>', 6)]
+[('...', 0), ('spellbinding', 1), ('deliciously', 4), ('<PAD>', 8)]
+[('...', 0), ('spellbinding', 1), ('deliciously', 4), ('<PAD>', 9)]
+[('...', 0), ('spellbinding', 1), ('exploitative', 5), ('<PAD>', 6)]
+[('...', 0), ('spellbinding', 1), ('exploitative', 5), ('<PAD>', 8)]
+[('...', 0), ('spellbinding', 1), ('exploitative', 5), ('<PAD>', 9)]
+[('...', 0), ('spellbinding', 1), ('<PAD>', 6), ('<PAD>', 8)]
+[('...', 0), ('spellbinding', 1), ('<PAD>', 6), ('<PAD>', 9)]
+[('...', 0), ('fun', 2), ('and', 3), ('deliciously', 4)]
+[('...', 0), ('fun', 2), ('and', 3), ('exploitative', 5)]
+[('...', 0), ('fun', 2), ('and', 3), ('<PAD>', 6)]
+[('...', 0), ('fun', 2), ('and', 3), ('<PAD>', 8)]
+[('...', 0), ('fun', 2), ('and', 3), ('<PAD>', 9)]
+[('...', 0), ('fun', 2), ('deliciously', 4), ('exploitative', 5)]
+[('spellbinding', 1), ('fun', 2), ('and', 3), ('deliciously', 4)]
+[('spellbinding', 1), ('fun', 2), ('and', 3), ('exploitative', 5)]
+
+=====================================================================
+Input: ['...', 'spellbinding', 'fun', 'and', 'deliciously', 'exploitative', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.1
+Original smallest expl: ['...', 'spellbinding', 'fun', 'and', 'deliciously', 'exploitative', '<PAD>']
+Number smallest expls: 36
+In form: [(word, index_in_input)]
+
+[('...', 0), ('spellbinding', 1), ('fun', 2), ('and', 3), ('deliciously', 4), ('exploitative', 5), ('<PAD>', 6)]
+[('...', 0), ('spellbinding', 1), ('fun', 2), ('and', 3), ('deliciously', 4), ('exploitative', 5), ('<PAD>', 7)]
+[('...', 0), ('spellbinding', 1), ('fun', 2), ('and', 3), ('deliciously', 4), ('exploitative', 5), ('<PAD>', 8)]
+[('...', 0), ('spellbinding', 1), ('fun', 2), ('and', 3), ('deliciously', 4), ('exploitative', 5), ('<PAD>', 9)]
+[('...', 0), ('spellbinding', 1), ('fun', 2), ('and', 3), ('deliciously', 4), ('<PAD>', 6), ('<PAD>', 7)]
+[('...', 0), ('spellbinding', 1), ('fun', 2), ('and', 3), ('deliciously', 4), ('<PAD>', 6), ('<PAD>', 8)]
+[('...', 0), ('spellbinding', 1), ('fun', 2), ('and', 3), ('deliciously', 4), ('<PAD>', 6), ('<PAD>', 9)]
+[('...', 0), ('spellbinding', 1), ('fun', 2), ('and', 3), ('deliciously', 4), ('<PAD>', 7), ('<PAD>', 8)]
+[('...', 0), ('spellbinding', 1), ('fun', 2), ('and', 3), ('deliciously', 4), ('<PAD>', 7), ('<PAD>', 9)]
+[('...', 0), ('spellbinding', 1), ('fun', 2), ('and', 3), ('deliciously', 4), ('<PAD>', 8), ('<PAD>', 9)]
+[('...', 0), ('spellbinding', 1), ('fun', 2), ('and', 3), ('exploitative', 5), ('<PAD>', 6), ('<PAD>', 7)]
+[('...', 0), ('spellbinding', 1), ('fun', 2), ('and', 3), ('exploitative', 5), ('<PAD>', 6), ('<PAD>', 8)]
+[('...', 0), ('spellbinding', 1), ('fun', 2), ('and', 3), ('exploitative', 5), ('<PAD>', 6), ('<PAD>', 9)]
+[('...', 0), ('spellbinding', 1), ('fun', 2), ('and', 3), ('exploitative', 5), ('<PAD>', 7), ('<PAD>', 8)]
+[('...', 0), ('spellbinding', 1), ('fun', 2), ('and', 3), ('exploitative', 5), ('<PAD>', 7), ('<PAD>', 9)]
+[('...', 0), ('spellbinding', 1), ('fun', 2), ('and', 3), ('exploitative', 5), ('<PAD>', 8), ('<PAD>', 9)]
+[('...', 0), ('spellbinding', 1), ('fun', 2), ('and', 3), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8)]
+[('...', 0), ('spellbinding', 1), ('fun', 2), ('and', 3), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 9)]
+[('...', 0), ('spellbinding', 1), ('fun', 2), ('and', 3), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+[('...', 0), ('spellbinding', 1), ('fun', 2), ('and', 3), ('<PAD>', 7), ('<PAD>', 8), ('<PAD>', 9)]
+[('...', 0), ('spellbinding', 1), ('fun', 2), ('deliciously', 4), ('exploitative', 5), ('<PAD>', 6), ('<PAD>', 7)]
+[('...', 0), ('spellbinding', 1), ('fun', 2), ('deliciously', 4), ('exploitative', 5), ('<PAD>', 6), ('<PAD>', 8)]
+[('...', 0), ('spellbinding', 1), ('fun', 2), ('deliciously', 4), ('exploitative', 5), ('<PAD>', 6), ('<PAD>', 9)]
+[('...', 0), ('spellbinding', 1), ('fun', 2), ('deliciously', 4), ('exploitative', 5), ('<PAD>', 7), ('<PAD>', 8)]
+[('...', 0), ('spellbinding', 1), ('fun', 2), ('deliciously', 4), ('exploitative', 5), ('<PAD>', 7), ('<PAD>', 9)]
+[('...', 0), ('spellbinding', 1), ('fun', 2), ('deliciously', 4), ('exploitative', 5), ('<PAD>', 8), ('<PAD>', 9)]
+[('...', 0), ('spellbinding', 1), ('fun', 2), ('deliciously', 4), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 8)]
+[('...', 0), ('spellbinding', 1), ('fun', 2), ('deliciously', 4), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 9)]
+[('...', 0), ('spellbinding', 1), ('fun', 2), ('deliciously', 4), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+[('...', 0), ('spellbinding', 1), ('fun', 2), ('exploitative', 5), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+[('...', 0), ('spellbinding', 1), ('and', 3), ('deliciously', 4), ('exploitative', 5), ('<PAD>', 6), ('<PAD>', 7)]
+[('...', 0), ('spellbinding', 1), ('and', 3), ('deliciously', 4), ('exploitative', 5), ('<PAD>', 6), ('<PAD>', 8)]
+[('...', 0), ('spellbinding', 1), ('and', 3), ('deliciously', 4), ('exploitative', 5), ('<PAD>', 6), ('<PAD>', 9)]
+[('...', 0), ('spellbinding', 1), ('and', 3), ('deliciously', 4), ('exploitative', 5), ('<PAD>', 8), ('<PAD>', 9)]
+[('...', 0), ('spellbinding', 1), ('and', 3), ('deliciously', 4), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+[('...', 0), ('spellbinding', 1), ('and', 3), ('exploitative', 5), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+
+=====================================================================
+Input: ['ah', 'what', 'the', 'hell', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.01
+Original smallest expl: ['ah', 'what', 'the', 'hell', '<PAD>']
+Number smallest expls: 1
+In form: [(word, index_in_input)]
+
+[('ah', 0), ('what', 1), ('the', 2), ('hell', 3), ('<PAD>', 4)]
+
+=====================================================================
+Input: ['ah', 'what', 'the', 'hell', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Eps: 0.05
+Original smallest expl: ['ah', 'what', 'the', 'hell', '<PAD>', '<PAD>', '<PAD>', '<PAD>', '<PAD>']
+Number smallest expls: 2
+In form: [(word, index_in_input)]
+
+[('ah', 0), ('what', 1), ('the', 2), ('hell', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 7), ('<PAD>', 9)]
+[('ah', 0), ('what', 1), ('the', 2), ('hell', 3), ('<PAD>', 4), ('<PAD>', 5), ('<PAD>', 6), ('<PAD>', 8), ('<PAD>', 9)]
+
+=====================================================================
+Input: ['this', 'one', 'is', 'not', 'nearly', 'as', 'dreadful', 'as', 'expected', '<PAD>']
+Eps: 0.05
+Original smallest expl: ['this', 'one', 'is', 'not', 'nearly', 'as', '<PAD>']
+Number smallest expls: 3
+In form: [(word, index_in_input)]
+
+[('this', 0), ('one', 1), ('is', 2), ('not', 3), ('nearly', 4), ('as', 5), ('dreadful', 6)]
+[('this', 0), ('one', 1), ('is', 2), ('not', 3), ('nearly', 4), ('as', 5), ('expected', 8)]
+[('this', 0), ('one', 1), ('is', 2), ('not', 3), ('nearly', 4), ('as', 5), ('<PAD>', 9)]
+
+=====================================================================
+Input: ['this', 'one', 'is', 'not', 'nearly', 'as', 'dreadful', 'as', 'expected', '<PAD>']
+Eps: 0.1
+Original smallest expl: ['this', 'one', 'is', 'not', 'nearly', 'as', 'dreadful', 'expected', '<PAD>']
+Number smallest expls: 7
+In form: [(word, index_in_input)]
+
+[('this', 0), ('one', 1), ('is', 2), ('not', 3), ('nearly', 4), ('as', 5), ('dreadful', 6), ('as', 7), ('expected', 8)]
+[('this', 0), ('one', 1), ('is', 2), ('not', 3), ('nearly', 4), ('as', 5), ('dreadful', 6), ('as', 7), ('<PAD>', 9)]
+[('this', 0), ('one', 1), ('is', 2), ('not', 3), ('nearly', 4), ('as', 5), ('dreadful', 6), ('expected', 8), ('<PAD>', 9)]
+[('this', 0), ('one', 1), ('is', 2), ('not', 3), ('nearly', 4), ('as', 5), ('as', 7), ('expected', 8), ('<PAD>', 9)]
+[('this', 0), ('one', 1), ('is', 2), ('not', 3), ('nearly', 4), ('dreadful', 6), ('as', 7), ('expected', 8), ('<PAD>', 9)]
+[('this', 0), ('one', 1), ('is', 2), ('not', 3), ('as', 5), ('dreadful', 6), ('as', 7), ('expected', 8), ('<PAD>', 9)]
+[('this', 0), ('one', 1), ('is', 2), ('nearly', 4), ('as', 5), ('dreadful', 6), ('as', 7), ('expected', 8), ('<PAD>', 9)]
+
+=====================================================================

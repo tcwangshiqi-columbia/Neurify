@@ -19,6 +19,7 @@ if __name__ == '__main__':
         print('Need model path.')
         sys.exit(0)
 
+    out_string = ''
     model = load_model(sys.argv[1])
     layer_num = 0
     layer_types = []
@@ -50,11 +51,14 @@ if __name__ == '__main__':
     max_input_size = max(input_sizes)
 
 
-    print(layer_num,num_inputs,num_outputs,max_input_size,'',sep=',')
+    #print(layer_num,num_inputs,num_outputs,max_input_size,'',sep=',')
+    out_string += ','.join(list(map(str,[layer_num,num_inputs,num_outputs,max_input_size])))+ ',\n'
     # layer input sizes
-    print(','.join(list(map(str,input_sizes)))+','+str(num_outputs)+',')
+    #print(','.join(list(map(str,input_sizes)))+','+str(num_outputs)+',')
+    out_string += ','.join(list(map(str,input_sizes)))+','+str(num_outputs)+',\n'
 
-    print(','.join(layer_types)+',') 
+    #print(','.join(layer_types)+',') 
+    out_string += ','.join(layer_types)+',\n'
     # for each conv layer: out_channel,in_channel,kernel,stride,padding
     for layer in model.layers:
         if isinstance(layer,Conv2D):
@@ -67,8 +71,9 @@ if __name__ == '__main__':
             else:
                 # this is wrong, need to work out actual value here
                 pd = 1
-            print(oc,ic,ks,st,pd,sep=',',end='')
-            print(',')
+            #print(oc,ic,ks,st,pd,sep=',',end='')
+            out_string += ','.join(list(map(str,[oc,ic,ks,st,pd]))) + ',\n'
+            #print(',')
 
     idx_counter = 0
     # structure of w is [w1,b1,w2,b2...]
@@ -76,7 +81,8 @@ if __name__ == '__main__':
         if len(wi.shape)==1:
             # bias
             for i in range(wi.shape[0]):
-                print(str(wi[i])+",")
+                #print(str(wi[i])+",")
+                out_string += str(wi[i])+',\n'
             idx_counter += 1
         if len(wi.shape)==2:
             # flatten or dense
@@ -98,8 +104,10 @@ if __name__ == '__main__':
             wi = wi.T
             for i in range(wi.shape[0]):
                 for j in range(wi.shape[1]):
-                    print(str(wi[i,j])+',',end="")
-                print("")
+                    #print(str(wi[i,j])+',',end="")
+                    out_string += str(wi[i,j])+','
+                out_string += '\n'
+                #print("")
         if len(wi.shape)==4:
             #conv layer
             for oc in range(wi.shape[3]):
@@ -107,5 +115,11 @@ if __name__ == '__main__':
                     #wi[:,:,ic,oc] = wi[:,:,ic,oc].T
                     for w in range(wi.shape[1]):
                         for h in range(wi.shape[0]):
-                            print(str(wi[w,h,ic,oc])+',',end="")
-                print("")
+                            #print(str(wi[w,h,ic,oc])+',',end="")
+                            out_string += str(wi[w,h,ic,oc])+','
+                #print("")
+                out_string += '\n'
+
+    out_file = sys.argv[1][:-2] + 'nnet'
+    with open(out_file,'w') as f:
+        f.write(out_string)

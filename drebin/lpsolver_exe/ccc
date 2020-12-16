@@ -1,6 +1,0 @@
-#This script expects to be located in a subdirectory of a subdirectory of the base lpsolve files
-cc -DEXPLICIT -I../.. -O3 demo.c explicit.c -lm -ldl -o demoe ../../lpsolve55/liblpsolve55.so
-opts='-O3'
-opts=''
-
-cc -I../.. $opts demo.c implicit.c -lm -ldl -o demoi ../../lpsolve55/liblpsolve55.a

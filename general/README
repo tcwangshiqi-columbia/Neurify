@@ -3,3 +3,5 @@
 3) `cp libentails.so ~/home/username/your/lib/dir`
 4) Make sure your .so dir is in your ld library path by doing `export LD_LIBRARY_PATH=/home/username/your/lib/dir:$PATH`
 5) `cp entails.h /home/username/your/include/dir`
+
+NB. Need to compile lp_solve on your own machine if this version doesn't work.
