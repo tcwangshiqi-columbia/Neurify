@@ -23,7 +23,7 @@ protobuf==3.10.0
 pyasn1==0.4.7
 pyasn1-modules==0.2.7
 python-utils==2.3.0
-PyYAML==5.1.2
+PyYAML==5.4
 requests==2.22.0
 requests-oauthlib==1.2.0
 rsa==4.0
