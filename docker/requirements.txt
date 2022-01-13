@@ -17,7 +17,7 @@ Markdown==3.1.1
 numpy==1.17.3
 oauthlib==3.1.0
 opt-einsum==3.1.0
-Pillow==6.2.1
+Pillow==9.0.0
 progressbar2==3.47.0
 protobuf==3.10.0
 pyasn1==0.4.7
