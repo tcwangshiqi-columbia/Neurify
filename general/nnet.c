@@ -50,7 +50,8 @@ struct NNet *load_conv_network(const char* filename, float *input)
     nnet->inputSize = atoi(strtok(NULL,",\n"));
     nnet->outputSize = atoi(strtok(NULL,",\n"));
     nnet->maxLayerSize = atoi(strtok(NULL,",\n"));
-    //printf("max layer size %d\n",nnet->maxLayerSize);
+
+    printf("max layer size %d\n",nnet->maxLayerSize);
 
 
     //Allocate space for and read values of the array members of the network
@@ -89,10 +90,13 @@ struct NNet *load_conv_network(const char* filename, float *input)
         record = strtok(line,",\n");
         for (int i = 0; i<5; i++){
             nnet->convLayer[cl][i] = atoi(record);
+
             //printf("%d,", nnet->convLayer[cl][i]);
+
             record = strtok(NULL,",\n");
         }
-        //printf("\n");
+
+        printf("\n");
     }
 
     //Allocate space for matrix of Neural Network
@@ -149,6 +153,8 @@ struct NNet *load_conv_network(const char* filename, float *input)
     int out_channel=0,kernel_size=0;
 
     //Read in parameters and put them in the matrix
+
+    // ERROR IS IN THIS BLOCK
     float w = 0.0;
     while((line=fgets(buffer,bufferSize,fstream))!=NULL){
         if(nnet->layerTypes[layer]==1){
@@ -236,7 +242,8 @@ struct NNet *load_conv_network(const char* filename, float *input)
             i++;
         }            
     }
-    //printf("load matrix done\n");
+    // ERROR IS IN THE BLOCK ABOVE
+    printf("load matrix done\n");
 
     //printf("input size: %d\n",nnet->inputSize);
     struct Matrix input_prev_matrix = {input, 1, nnet->inputSize};
@@ -548,8 +555,15 @@ void initialize_input_interval(struct NNet* nnet,
         if (find_in_h(i,h,h_size)) {
             // make lower and upper bounds the same, this will affect how the constraints
             // are added later on
-            u[i] = input[i];
-            l[i] = input[i];
+            float ERR = 1e-3;
+            u[i] = input[i]+ERR;
+            l[i] = input[i]-ERR;
+            if(u[i] > nnet->max) {
+                u[i] = nnet->max;
+            }
+            if(l[i] < nnet->min) {
+                l[i] = nnet->min;
+            }
         } else {
             u[i] = u_bounds[i];
             if(u[i] > nnet->max) {

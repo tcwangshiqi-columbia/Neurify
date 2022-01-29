@@ -32,12 +32,26 @@ int entails( int *h, int h_size, float *input, int input_size, float *u_bounds, 
     openblas_set_num_threads(1);
 
     PROPERTY = 0;
+    int i;
+    printf("in len %d\n",input_size);
+    printf(" \n");
+    for (i=0;i < input_size ;i++) {
+            printf("%lf ",u_bounds[i]);
+            fflush(stdout);
+    }
+    printf(" \n");
+    for (i=0;i < input_size; i++) {
+            printf("%lf ",l_bounds[i]);
+            fflush(stdout);
+    }
+    printf("\n\n");
+    fflush(stdout);
 
     adv_found = false;
     analysis_uncertain = false;
-    //printf("start loading network\n");
+    printf("start loading network\n");
     struct NNet* nnet = load_conv_network(network_path, input);
-    //printf("done loading network\n");
+    printf("done loading network\n");
 
     int numLayers    = nnet->numLayers;
     int inputSize    = nnet->inputSize;
@@ -62,13 +76,14 @@ int entails( int *h, int h_size, float *input, int input_size, float *u_bounds, 
                 (struct Matrix){o_upper, outputSize, 1}
             };
 
-    //printf("running input %d with network %s\n", 0, network_path);
+    printf("running input %d with network %s\n", 0, network_path);
     //printf("Infinite Norm: %f\n", eps);
-    //printMatrix(&input_upper);
-    //printMatrix(&input_lower);
+    printMatrix(&input_upper);
+    printMatrix(&input_lower);
 
     for(int i=0;i<inputSize;i++){
 
+       // printf("upper: %f, lower: %f",input_interval.upper_matrix.data[i],input_interval.lower_matrix.data[i]);
         if(input_interval.upper_matrix.data[i]<\
                     input_interval.lower_matrix.data[i]){
             printf("wrong input!\n");
@@ -114,13 +129,11 @@ int entails( int *h, int h_size, float *input, int input_size, float *u_bounds, 
                          &full_wrong_node_length,\
                          equation_conv, equation_conv_err, &err_row_conv);
 
-    /*
     printf("One shot approximation:\n");
     printf("upper_matrix:");
     printMatrix(&output_interval.upper_matrix);
     printf("lower matrix:");
     printMatrix(&output_interval.lower_matrix);
-    */
 
     for(int i = 0; i < outputSize; i++) {
         if(output_interval.upper_matrix.data[i] < output.data[i] ||
@@ -130,8 +143,8 @@ int entails( int *h, int h_size, float *input, int input_size, float *u_bounds, 
         }
     }
 
-    /*
 
+    /*
     printf("total wrong nodes: %d, wrong nodes in "\
                 "fully connected layers: %d\n", wrong_node_length,\
                 full_wrong_node_length );
@@ -165,7 +178,8 @@ int entails( int *h, int h_size, float *input, int input_size, float *u_bounds, 
     //write_LP(lp, stdout);
 
     if(is_overlap){
-        if(full_wrong_node_length == 0) {
+        //if(full_wrong_node_length == 0) {
+        if(wrong_node_length == 0) {
             printf("Not implemented: At least one node needs to be able to be split to " \
                 "test the LP. \n");
             return 2;
